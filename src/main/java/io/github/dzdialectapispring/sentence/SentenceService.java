@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class SentenceService {
 
   private final SentenceRepository sentenceRepository;
-  // @todo the random sentence generator should be called there ?
+
   public List<Sentence> generateRandomSentences(Integer count){
     if(count==null){
       count = 1;
@@ -21,12 +21,17 @@ public class SentenceService {
     } else if (count>30){
       throw new IllegalArgumentException("count argument should be less than 30");
     }
-    System.out.println("generate " + count + " random sentences");
+    System.out.println("generating " + count + " random sentences");
     List<Sentence> result = new ArrayList<>();
     for(int i=0;i<count;i++){
-      result.add(new Sentence(Set.of(new Translation(Lang.FR,"Bonjour " + i),new Translation(Lang.DZ,"Salam Alakyoum " + i))));
+      result.add(generateRandomSentence());
     }
     return result;
+  }
+
+  // @todo to implement
+  public Sentence generateRandomSentence(){
+    return new Sentence(Set.of(new Translation(Lang.FR,"Bonjour "),new Translation(Lang.DZ,"Salam Alakyoum ")));
   }
 
   public Sentence getSentenceById(final String id) {
