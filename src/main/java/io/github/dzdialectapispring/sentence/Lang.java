@@ -8,5 +8,5 @@ public enum Lang {
   DZ("Dardja (Alger)");
   // add other dialects here
 
-  final String   value;
+  final String description;
 }

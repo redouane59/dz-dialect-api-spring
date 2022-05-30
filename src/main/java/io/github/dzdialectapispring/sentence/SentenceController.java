@@ -1,5 +1,6 @@
 package io.github.dzdialectapispring.sentence;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +15,8 @@ public class SentenceController {
   private final SentenceService sentenceService;
 
   @GetMapping("/generate")
-  public Sentence generateRandomSentence(){
-    return sentenceService.generateRandomSentence();
+  public List<Sentence> generateRandomSentence(@RequestParam(required = false) Integer count){
+    return sentenceService.generateRandomSentences(count);
   }
 
   @GetMapping("/{id}")
