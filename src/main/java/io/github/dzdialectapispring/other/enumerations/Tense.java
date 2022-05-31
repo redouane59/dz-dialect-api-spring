@@ -9,6 +9,7 @@ import lombok.Getter;
 public enum Tense {
   PAST_AVOIR(RootTense.PAST),
   PAST_ETRE(RootTense.PAST), // @todo dev verbs
+  PAST_IMPARFAIT(RootTense.PAST), // @todo dev verbs
   PRESENT(RootTense.PRESENT),
   FUTURE(RootTense.FUTURE),
   IMPERATIVE(RootTense.IMPERATIVE);

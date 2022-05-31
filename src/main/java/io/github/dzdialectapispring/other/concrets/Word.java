@@ -23,4 +23,20 @@ public class Word {
     return translations.stream().filter(t -> t.getLang() == lang).findAny();
   }
 
+  @JsonProperty("dz_value")
+  public String getDzTranslation() {
+    return getTranslationByLang(Lang.DZ).orElse(new Translation(Lang.DZ, "")).getValue();
+  }
+
+  @JsonProperty("dz_value_ar")
+  public String getDzTranslationAr() {
+    return (getTranslationByLang(Lang.DZ).orElse(new Translation(Lang.DZ, "", ""))).getArValue();
+  }
+
+  @JsonProperty("fr_value")
+  public String getFrTranslation() {
+    return getTranslationByLang(Lang.FR).orElse(new Translation(Lang.FR, "")).getValue();
+  }
+
+
 }
