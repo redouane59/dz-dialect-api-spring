@@ -1,15 +1,20 @@
 package io.github.dzdialectapispring.sentence;
 
-import java.util.HashSet;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import io.github.dzdialectapispring.other.concrets.Translation;
+import io.github.dzdialectapispring.other.concrets.Word;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @AllArgsConstructor
 @Data
-public class Sentence {
+@JsonSerialize(using = SentenceSerializer.class)
+public class Sentence extends Word {
 
-  private Set<Translation> translations = new HashSet<>();
+  public Sentence(Set<Translation> translations) {
+    super(translations);
+  }
 
 
 }
