@@ -1,9 +1,17 @@
 package io.github.dzdialectapispring.pronoun;
 
+import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.Possession;
 import io.github.dzdialectapispring.other.concrets.PossessiveWord;
+import io.github.dzdialectapispring.other.concrets.Translation;
+import io.github.dzdialectapispring.other.concrets.Word;
 import io.github.dzdialectapispring.other.enumerations.Gender;
+import io.github.dzdialectapispring.other.enumerations.Lang;
+import io.github.dzdialectapispring.sentence.Sentence;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +34,17 @@ public class PronounService {
     }
     return result.get();
 
+  }
+
+  public List<Sentence> getAllPronouns() {
+    List<? super Word> values = pronounRepository.findAll().stream().map(AbstractWord::getValues).collect(Collectors.toList());
+    List<Sentence>     result = new ArrayList<>();
+    for (Object word : values) {
+      PossessiveWord possessiveWord = (PossessiveWord) ((ArrayList) word).get(0);
+      Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, possessiveWord.getFrTranslation()),
+                                               new Translation(Lang.DZ, possessiveWord.getDzTranslation(), possessiveWord.getDzTranslationAr())));
+      result.add(sentence);
+    }
+    return result;
   }
 }

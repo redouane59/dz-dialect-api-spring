@@ -24,9 +24,11 @@ public class SentenceSerializer extends StdSerializer<Sentence> {
     jgen.writeStringField(Lang.DZ.getId(), sentence.getTranslationByLang(Lang.DZ).get().getValue());
     jgen.writeStringField(Lang.DZ.getId() + "_ar", sentence.getTranslationByLang(Lang.DZ).get().getArValue());
     jgen.writeStringField(Lang.FR.getId(), sentence.getTranslationByLang(Lang.FR).get().getValue());
-    /*if (Config.SERIALIZE_ADDITIONAL_INFO) {
+    // if (Config.SERIALIZE_ADDITIONAL_INFO) {
+    if (!sentence.getAdditionalInformations().isEmpty()) {
       jgen.writeObjectField("additional_information", sentence.getAdditionalInformations());
     }
+    /* }
     if (Config.SERIALIZE_WORD_PROPOSITIONS) {
       //fr
       jgen.writeFieldName("word_propositions_fr");
