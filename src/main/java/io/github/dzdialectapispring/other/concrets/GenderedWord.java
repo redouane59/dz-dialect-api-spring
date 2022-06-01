@@ -2,7 +2,7 @@ package io.github.dzdialectapispring.other.concrets;
 
 import io.github.dzdialectapispring.other.enumerations.Gender;
 import io.github.dzdialectapispring.other.enumerations.Lang;
-import java.util.Set;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,7 @@ public class GenderedWord extends Word {
   private Gender  gender; // to split between pronouns and noun which can change depending on the lang
   private boolean singular;
 
-  public GenderedWord(Set<Translation> translations, Gender gender, boolean singular) {
+  public GenderedWord(List<Translation> translations, Gender gender, boolean singular) {
     super(translations);
     this.gender   = gender;
     this.singular = singular;

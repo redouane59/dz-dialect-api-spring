@@ -16,7 +16,6 @@ import io.github.dzdialectapispring.other.enumerations.Tense;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class ConjugationListDeserializer extends JsonDeserializer {
 
@@ -27,7 +26,7 @@ public class ConjugationListDeserializer extends JsonDeserializer {
     List<? super Word> result  = new ArrayList<>();
     if (arrNode.isArray()) {
       for (final JsonNode node : arrNode) {
-        Set<Translation> translations = Config.OBJECT_MAPPER.readValue(node.get("translations").toString(), new TypeReference<Set<Translation>>() {
+        List<Translation> translations = Config.OBJECT_MAPPER.readValue(node.get("translations").toString(), new TypeReference<List<Translation>>() {
         });
         if (node.has("singular") && (node.has("gender") || translations.stream().findFirst().get().getGender() != null)) {
           Gender gender = null;

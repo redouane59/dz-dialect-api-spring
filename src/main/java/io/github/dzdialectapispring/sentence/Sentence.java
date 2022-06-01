@@ -3,7 +3,7 @@ package io.github.dzdialectapispring.sentence;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.concrets.Word;
-import java.util.Set;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -12,7 +12,7 @@ import lombok.Data;
 @JsonSerialize(using = SentenceSerializer.class)
 public class Sentence extends Word {
 
-  public Sentence(Set<Translation> translations) {
+  public Sentence(List<Translation> translations) {
     super(translations);
   }
 

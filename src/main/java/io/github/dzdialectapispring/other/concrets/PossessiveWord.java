@@ -1,7 +1,7 @@
 package io.github.dzdialectapispring.other.concrets;
 
 import io.github.dzdialectapispring.other.enumerations.Gender;
-import java.util.Set;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,7 @@ public class PossessiveWord extends GenderedWord {
 
   private Possession possession;
 
-  public PossessiveWord(Set<Translation> translation, Gender gender, boolean singular, Possession possession) {
+  public PossessiveWord(List<Translation> translation, Gender gender, boolean singular, Possession possession) {
     super(translation, gender, singular);
     this.possession = possession;
   }

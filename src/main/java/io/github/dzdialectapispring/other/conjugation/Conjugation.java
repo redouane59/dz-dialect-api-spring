@@ -5,7 +5,7 @@ import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.enumerations.Gender;
 import io.github.dzdialectapispring.other.enumerations.Tense;
-import java.util.Set;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,7 +22,7 @@ public class Conjugation extends PossessiveWord {
   private Tense tense;
   private int   index;
 
-  public Conjugation(Set<Translation> translations, Gender gender, boolean singular, Possession possession, Tense tense, int index) {
+  public Conjugation(List<Translation> translations, Gender gender, boolean singular, Possession possession, Tense tense, int index) {
     super(translations, gender, singular, possession);
     this.tense = tense;
     this.index = index;

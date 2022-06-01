@@ -3,10 +3,13 @@ package io.github.dzdialectapispring;
 import static io.github.dzdialectapispring.other.Config.OBJECT_MAPPER;
 
 import io.github.dzdialectapispring.generic.ResourceList;
+import io.github.dzdialectapispring.pronoun.Pronoun;
+import io.github.dzdialectapispring.pronoun.PronounRepository;
 import io.github.dzdialectapispring.verb.Verb;
 import io.github.dzdialectapispring.verb.VerbRepository;
 import java.io.File;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -24,7 +27,7 @@ public class DzDialectApiSpringApplication {
   }
 
   @Bean
-  CommandLineRunner runner(VerbRepository repository, MongoTemplate mongoTemplate) {
+  CommandLineRunner verbsInit(VerbRepository repository, MongoTemplate mongoTemplate) {
     return args -> {
       repository.deleteAll();
       Set<String>
@@ -36,6 +39,17 @@ public class DzDialectApiSpringApplication {
         repository.insert(verb);
       }
 
+    };
+  }
+
+  @Bean
+  CommandLineRunner pronounsInit(PronounRepository repository, MongoTemplate mongoTemplate) {
+    return args -> {
+      repository.deleteAll();
+
+      List<Pronoun> pronouns = List.of(OBJECT_MAPPER.readValue(new File("./src/main/resources/static/other/personal_pronouns.json"),
+                                                               Pronoun[].class));
+      repository.insert(pronouns);
     };
   }
 

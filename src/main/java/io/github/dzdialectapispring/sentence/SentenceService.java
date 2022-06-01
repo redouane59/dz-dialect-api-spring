@@ -6,7 +6,6 @@ import io.github.dzdialectapispring.other.enumerations.RootTense;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +33,7 @@ public class SentenceService {
 
   // @todo to implement
   public Sentence generateRandomSentence(RootTense tense) {
-    return new Sentence(Set.of(new Translation(Lang.FR, "Bonjour"), new Translation(Lang.DZ, "Salam Alakyoum", "____")));
+    return new Sentence(List.of(new Translation(Lang.FR, "Bonjour"), new Translation(Lang.DZ, "Salam Alakyoum", "____")));
   }
 
   public Sentence getSentenceById(final String id) {
