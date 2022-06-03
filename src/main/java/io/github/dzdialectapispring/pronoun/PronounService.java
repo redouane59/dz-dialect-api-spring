@@ -10,6 +10,7 @@ import io.github.dzdialectapispring.other.concrets.Word;
 import io.github.dzdialectapispring.other.enumerations.Gender;
 import io.github.dzdialectapispring.other.enumerations.Lang;
 import io.github.dzdialectapispring.sentence.Sentence;
+import io.github.dzdialectapispring.sentence.Sentence.SentenceContent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -41,14 +42,20 @@ public class PronounService {
   }
 
   public List<Sentence> getAllPronouns() {
-    List<? super Word> values = pronounRepository.findAll().stream().map(AbstractWord::getValues).collect(Collectors.toList());
-    List<Sentence>     result = new ArrayList<>();
-    for (Object word : values) {
-      PossessiveWord possessiveWord = (PossessiveWord) ((ArrayList) word).get(0);
-      Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, possessiveWord.getFrTranslation()),
-                                               new Translation(Lang.DZ, possessiveWord.getDzTranslation(), possessiveWord.getDzTranslationAr())));
-      result.add(sentence);
+    List<AbstractPronoun> abtractPronouns = pronounRepository.findAll();
+    List<Sentence>        result          = new ArrayList<>();
+    for (AbstractPronoun abstractPronoun : abtractPronouns) {
+      for (Object word : abstractPronoun.getValues()) {
+        PossessiveWord possessiveWord = (PossessiveWord) word;
+        Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, possessiveWord.getFrTranslation()),
+                                                 new Translation(Lang.DZ, possessiveWord.getDzTranslation(), possessiveWord.getDzTranslationAr())));
+        sentence.setContent(SentenceContent.builder().abstractPronoun(abstractPronoun).build());
+
+        result.add(sentence);
+      }
     }
+    List<? super Word> values = abtractPronouns.stream().map(AbstractWord::getValues).collect(Collectors.toList());
+
     return result;
   }
 

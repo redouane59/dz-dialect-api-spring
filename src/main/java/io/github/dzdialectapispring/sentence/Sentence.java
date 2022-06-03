@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.concrets.Word;
+import io.github.dzdialectapispring.other.enumerations.Lang;
 import io.github.dzdialectapispring.other.enumerations.Subtense;
 import io.github.dzdialectapispring.verb.Verb;
 import java.util.HashMap;
@@ -16,6 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.util.Pair;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -51,19 +53,17 @@ public class Sentence extends Word {
   @Builder
   public static class SentenceContent {
 
-    private Verb                abstractVerb;
-    private AbstractWord        abstractPronoun;
-    private AbstractWord        abstractAdverb;
-    private AbstractWord        abstractQuestion;
+    private Verb                                  abstractVerb;
+    private AbstractWord                          abstractPronoun;
+    private AbstractWord                          abstractAdverb;
+    private AbstractWord                          abstractQuestion;
     //  private Adjective      abstractAdjective;
     //  private Noun           abstractNoun;
-    private Subtense            subtense;
-    private SentenceSchema      sentenceSchema;
-    private boolean             negation;
+    private Subtense                              subtense;
+    private SentenceSchema                        sentenceSchema;
+    private boolean                               negation;
     @Builder.Default
-    private Map<String, String> randomFrWords = new HashMap<>();
-    @Builder.Default
-    private Map<String, String> randomArWords = new HashMap<>();
+    private Map<Lang, List<Pair<String, String>>> randomWords = new HashMap<>();
   }
 
 }

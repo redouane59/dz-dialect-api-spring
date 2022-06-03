@@ -19,7 +19,11 @@ public class SentenceController {
   public List<Sentence> generateRandomSentence(@RequestParam(required = false) Integer count,
                                                @RequestParam(required = false, name = "pronoun") String pronounId,
                                                @RequestParam(required = false, name = "verb") String verbId,
-                                               @RequestParam(required = false, name = "tense") String tenseId) {
+                                               @RequestParam(required = false, name = "tense") String tenseId,
+                                               @RequestParam(required = false, name = "noun") String nounId,
+                                               @RequestParam(required = false, name = "adjective") String adjectiveId,
+                                               @RequestParam(required = false, name = "adverb") String adverbId,
+                                               @RequestParam(required = false, name = "question") String questionId) {
     return sentenceService.generateRandomSentences(count, pronounId, verbId, tenseId);
   }
 

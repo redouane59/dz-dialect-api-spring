@@ -47,9 +47,9 @@ public class SentenceBuilder {
     this.verbService    = verbService;
   }
 
-  public Optional<Sentence> generate(AbstractPronoun pronoun, Verb verb, Tense tense) {
+  public Optional<Sentence> generate(GeneratorParameters generatorParameters) {
     sentenceContent = SentenceContent.builder().build();
-    boolean resultOk = fillWordListFromSchema(pronoun, verb, tense);
+    boolean resultOk = fillWordListFromSchema(generatorParameters);
     if (!resultOk) {
       System.err.println("no sentence generated");
       return Optional.empty();
@@ -60,18 +60,18 @@ public class SentenceBuilder {
     Translation dzTranslation = generateArTranslation(Lang.DZ);
     sentence.getTranslations().add(frTranslation);
     // word_propositions part
-    sentenceContent.setRandomFrWords(SentenceBuilderHelper.splitSentenceInWords(frTranslation.getValue(), false));
-    sentenceContent.setRandomArWords(SentenceBuilderHelper.splitSentenceInWords(dzTranslation.getValue(), false));
+    sentenceContent.getRandomWords().put(Lang.FR, SentenceBuilderHelper.splitSentenceInWords(frTranslation, false));
+    sentenceContent.getRandomWords().put(Lang.DZ, SentenceBuilderHelper.splitSentenceInWords(dzTranslation, false));
     // generating a second random sentence
     sentence.setContent(sentenceContent);
-    addRandomWordPropositions(sentence, pronoun, verb, tense);
+    addRandomWordPropositions(sentence, generatorParameters);
     return Optional.of(sentence);
   }
 
-  private void addRandomWordPropositions(Sentence sentence, AbstractPronoun pronoun, Verb verb, Tense tense) {
-    fillWordListFromSchema(pronoun, verb, tense);
-    sentence.getContent().getRandomFrWords().putAll(SentenceBuilderHelper.splitSentenceInWords(generateFrTranslation().getValue(), true));
-    sentence.getContent().getRandomArWords().putAll(SentenceBuilderHelper.splitSentenceInWords(generateArTranslation(Lang.DZ).getValue(), true));
+  private void addRandomWordPropositions(Sentence sentence, GeneratorParameters generatorParameters) {
+    fillWordListFromSchema(generatorParameters);
+    sentence.getContent().getRandomWords().get(Lang.FR).addAll(SentenceBuilderHelper.splitSentenceInWords(generateFrTranslation(), true));
+    sentence.getContent().getRandomWords().get(Lang.DZ).addAll(SentenceBuilderHelper.splitSentenceInWords(generateArTranslation(Lang.DZ), true));
   }
 
   private void resetAttributes() {
@@ -84,7 +84,7 @@ public class SentenceBuilder {
     wordListAr      = new ArrayList<>();
     sentenceContent = SentenceContent.builder().build();
     sentenceContent.setSentenceSchema(schema);
-    sentenceContent.setNegation(true);
+    //   sentenceContent.setNegation(true);
 /*    if (schema.isPossibleNegation()) {
       if (bodyArgs.isPossibleNegation() && bodyArgs.isPossibleAffirmation()) {
         sentenceContent.setNegation(RANDOM.nextBoolean());
@@ -95,14 +95,14 @@ public class SentenceBuilder {
   }
 
   // @todo split FR & DZ
-  private boolean fillWordListFromSchema(AbstractPronoun pronoun, Verb verb, Tense tense) {
+  private boolean fillWordListFromSchema(GeneratorParameters generatorParameters) {
     resetAttributes();
     for (int index = 0; index < schema.getFrSequence().size(); index++) {
       WordType wordType = schema.getFrSequence().get(index);
       boolean  success;
       switch (wordType) {
         case PRONOUN:
-          buildPronoun(index, pronoun);
+          buildPronoun(index, generatorParameters.getAbstractPronoun());
           break;
         case NOUN:
           success = buildNoun(index);
@@ -111,7 +111,7 @@ public class SentenceBuilder {
           }
           break;
         case VERB:
-          success = buildVerb(index, verb, tense);
+          success = buildVerb(index, generatorParameters.getAbstractVerb(), generatorParameters.getTense());
           if (!success) {
             return false;
           }
