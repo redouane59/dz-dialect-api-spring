@@ -1,0 +1,16 @@
+{
+  "id": "PVS",
+  "fr_sequence": [
+    "PRONOUN",
+    "SUFFIX",
+    "VERB"
+  ],
+  "ar_sequence": [
+    "VERB",
+    "SUFFIX"
+  ],
+  "tenses": [
+    "PRESENT"
+  ],
+  "subject_position": 0
+}

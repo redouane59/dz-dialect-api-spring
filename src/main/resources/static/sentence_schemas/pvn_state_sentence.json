@@ -1,0 +1,24 @@
+{
+  "id": "PVN_STA",
+  "fr_sequence": [
+    "PRONOUN",
+    "VERB",
+    "PREPOSITION",
+    "NOUN"
+  ],
+  "ar_sequence": [
+    "VERB",
+    "PREPOSITION",
+    "NOUN"
+  ],
+  "subject_position": 0,
+  "tenses": [
+    "PAST",
+    "PRESENT",
+    "FUTURE"
+  ],
+  "verb_type": "STATE",
+  "noun_types": [
+    "PLACE"
+  ]
+}

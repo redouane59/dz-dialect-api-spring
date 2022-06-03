@@ -229,7 +229,7 @@
         },
         {
           "lang": "DZ",
-          "value": "ndjarreb",
+          "value": "tdjarreb",
           "ar_value": "تجرب"
         }
       ],
@@ -353,4 +353,10 @@
         }
       ],
       "gender": "X",
-      "possession": "OTHER","singular":false,"tense":"PRESENT"}],"id":"essayer"}
+      "possession": "OTHER",
+      "singular": false,
+      "tense": "PRESENT"
+    }
+  ],
+  "id": "essayer"
+}

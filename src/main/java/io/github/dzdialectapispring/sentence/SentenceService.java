@@ -1,19 +1,24 @@
 package io.github.dzdialectapispring.sentence;
 
-import io.github.dzdialectapispring.other.concrets.Translation;
-import io.github.dzdialectapispring.other.enumerations.Lang;
+import static io.github.dzdialectapispring.other.Config.OBJECT_MAPPER;
+
 import io.github.dzdialectapispring.other.enumerations.RootTense;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-@AllArgsConstructor
 @Service
 public class SentenceService {
 
   private final SentenceRepository sentenceRepository;
+  private       SentenceBuilder    sentenceBuilder;
+
+  public SentenceService(SentenceRepository sentenceRepository) {
+    this.sentenceRepository = sentenceRepository;
+  }
 
   public List<Sentence> generateRandomSentences(Integer count, RootTense tense) {
     if (count == null) {
@@ -33,7 +38,15 @@ public class SentenceService {
 
   // @todo to implement
   public Sentence generateRandomSentence(RootTense tense) {
-    return new Sentence(List.of(new Translation(Lang.FR, "Bonjour"), new Translation(Lang.DZ, "Salam Alakyoum", "____")));
+    SentenceSchema sentenceSchema = null;
+    try {
+      sentenceSchema  = OBJECT_MAPPER.readValue(new File("./src/main/resources/static/sentence_schemas/pv_sentence.json"), SentenceSchema.class);
+      sentenceBuilder = new SentenceBuilder(sentenceSchema);
+      return sentenceBuilder.generate().get();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return null;
   }
 
   public Sentence getSentenceById(final String id) {

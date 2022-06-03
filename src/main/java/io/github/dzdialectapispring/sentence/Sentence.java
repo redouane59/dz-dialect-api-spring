@@ -15,8 +15,10 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @JsonSerialize(using = SentenceSerializer.class)
 public class Sentence extends Word {
@@ -50,7 +52,7 @@ public class Sentence extends Word {
     //  private Adjective      abstractAdjective;
     //  private Noun           abstractNoun;
     private Tense          tense;
-    //   private SentenceSchema sentenceSchema;
+    private SentenceSchema sentenceSchema;
     private boolean        negation;
     @Builder.Default
     private List<String>   randomFrWords = new ArrayList<>();

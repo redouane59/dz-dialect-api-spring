@@ -3,8 +3,8 @@ package io.github.dzdialectapispring;
 import static io.github.dzdialectapispring.other.Config.OBJECT_MAPPER;
 
 import io.github.dzdialectapispring.generic.ResourceList;
+import io.github.dzdialectapispring.pronoun.AbstractPronoun;
 import io.github.dzdialectapispring.pronoun.PronounRepository;
-import io.github.dzdialectapispring.pronoun.Pronouns;
 import io.github.dzdialectapispring.verb.Verb;
 import io.github.dzdialectapispring.verb.VerbRepository;
 import java.io.File;
@@ -47,8 +47,8 @@ public class DzDialectApiSpringApplication {
     return args -> {
       repository.deleteAll();
 
-      List<Pronouns> pronouns = List.of(OBJECT_MAPPER.readValue(new File("./src/main/resources/static/other/personal_pronouns.json"),
-                                                                Pronouns[].class));
+      List<AbstractPronoun> pronouns = List.of(OBJECT_MAPPER.readValue(new File("./src/main/resources/static/other/personal_pronouns.json"),
+                                                                       AbstractPronoun[].class));
       repository.insert(pronouns);
     };
   }

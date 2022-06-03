@@ -26,4 +26,5 @@ public class PossessiveWord extends GenderedWord {
     this.possession = Possession.OTHER;
     this.setTranslations(genderedWord.getTranslations());
   }
+
 }

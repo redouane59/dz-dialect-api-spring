@@ -1,5 +1,7 @@
 package io.github.dzdialectapispring.pronoun;
 
+import static io.github.dzdialectapispring.other.Config.RANDOM;
+
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.Possession;
 import io.github.dzdialectapispring.other.concrets.PossessiveWord;
@@ -46,5 +48,11 @@ public class PronounService {
       result.add(sentence);
     }
     return result;
+  }
+
+  public PossessiveWord getRandomPronoun() {
+    List<AbstractPronoun> pronouns        = pronounRepository.findAll();
+    AbstractPronoun       abstractPronoun = pronouns.stream().skip(RANDOM.nextInt(pronouns.size())).findFirst().get();
+    return (PossessiveWord) abstractPronoun.getValues().get(0);
   }
 }

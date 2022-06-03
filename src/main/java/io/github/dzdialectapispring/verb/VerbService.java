@@ -1,15 +1,20 @@
 package io.github.dzdialectapispring.verb;
 
+import static io.github.dzdialectapispring.other.Config.RANDOM;
+
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.conjugation.Conjugation;
 import io.github.dzdialectapispring.other.enumerations.Lang;
 import io.github.dzdialectapispring.other.enumerations.RootTense;
+import io.github.dzdialectapispring.other.enumerations.Tense;
 import io.github.dzdialectapispring.pronoun.PronounService;
 import io.github.dzdialectapispring.sentence.Sentence;
 import io.github.dzdialectapispring.sentence.Sentence.SentenceContent;
+import io.github.dzdialectapispring.sentence.SentenceSchema;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -29,6 +34,10 @@ public class VerbService {
 
   public Set<String> getAllVerbIds() {
     return verbRepository.findAll().stream().map(AbstractWord::getId).collect(Collectors.toSet());
+  }
+
+  public Set<Verb> getAllVerbs() {
+    return new HashSet<>(verbRepository.findAll());
   }
 
   public List<Sentence> getVerbConjugationsById(final String id, RootTense rootTense) {
@@ -52,4 +61,77 @@ public class VerbService {
     }
     return result;
   }
+
+  public Optional<Verb> getRandomAbstractVerb(SentenceSchema schema) {
+    Set<Verb> verbs = getAllVerbs();
+    if (schema.getTenses() != null) {
+      verbs = verbs.stream()
+                   .filter(v -> v.getValues()
+                                 .stream()
+                                 .map(o -> (Conjugation) o)
+                                 .map(Conjugation::getTense)
+                                 .anyMatch(c -> schema.getTenses().contains(c.getRootTense()))).collect(
+              Collectors.toSet());
+      if (verbs.size() == 0) {
+        System.out.println("no verb found based on tenses");
+      }
+    }
+    if (schema.getVerbType() != null) {
+      verbs = verbs.stream().filter(v -> v.getVerbType() == schema.getVerbType()).collect(Collectors.toSet());
+      if (verbs.size() == 0) {
+        System.out.println("no verb found based on type (" + schema.getVerbType() + " expected)");
+      }
+    }
+/*    if (schema.getFrSequence().contains(WordType.QUESTION)) {
+      verbs = verbs.stream().filter(v -> v.getPossibleQuestionIds().contains(question.getId())).collect(Collectors.toSet());
+      if (verbs.size() == 0) {
+        System.out.println("no verb found based on question");
+      }
+    }*/
+/*    if (schema.getFrSequence().contains(WordType.SUFFIX)) {
+      if (schema.getFrSequence().contains(WordType.NOUN)) {
+        verbs = verbs.stream().filter(Verb::isIndirectComplement)
+                     .collect(Collectors.toSet());
+      } else {
+        verbs = verbs.stream().filter(Verb::isDirectComplement).collect(Collectors.toSet());
+      }
+      if (verbs.size() == 0) {
+        System.out.println("no verb found based on suffix");
+      }
+    }*/
+/*    if (schema.getFrSequence().contains(WordType.NOUN)) {
+      verbs = verbs.stream().filter(v -> !v.getPossibleComplements().isEmpty())
+                   .filter(v -> v.getPossibleComplements().size() > 1 || !v.getPossibleComplements().contains(NounType.ADVERB)) // @todo dirty
+                   .collect(Collectors.toSet());
+      if (verbs.size() == 0) {
+        System.out.println("no verb found based on noun complements");
+      }
+    }*/
+    if (verbs.size() == 0) {
+      return Optional.empty();
+    }
+    return verbs.stream().skip(RANDOM.nextInt(verbs.size())).findFirst();
+
+  }
+
+  public Conjugation getVerbConjugation(Verb verb, PossessiveWord subject, Tense tense, Lang lang) {
+
+    if (subject == null) {
+      subject = pronounService.getRandomPronoun();
+      tense   = Tense.IMPERATIVE;
+    }
+    Optional<Conjugation>
+        conjugation =
+        verb.getConjugationByGenderSingularPossessionAndTense(subject.getGender(lang),
+                                                              subject.isSingular(),
+                                                              subject.getPossession(),
+                                                              tense.getRootTense());
+    if (conjugation.isEmpty()) {
+      System.err.println("no conjugation found for");
+      return null;
+    }
+    return conjugation.get();
+  }
+
+
 }
