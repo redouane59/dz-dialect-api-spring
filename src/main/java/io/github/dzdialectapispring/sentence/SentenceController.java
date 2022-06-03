@@ -1,6 +1,5 @@
 package io.github.dzdialectapispring.sentence;
 
-import io.github.dzdialectapispring.other.enumerations.RootTense;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +17,10 @@ public class SentenceController {
 
   @GetMapping("/generate")
   public List<Sentence> generateRandomSentence(@RequestParam(required = false) Integer count,
-                                               @RequestParam(required = false) RootTense tense) {
-    return sentenceService.generateRandomSentences(count, tense);
+                                               @RequestParam(required = false, name = "pronoun") String pronounId,
+                                               @RequestParam(required = false, name = "verb") String verbId,
+                                               @RequestParam(required = false, name = "tense") String tenseId) {
+    return sentenceService.generateRandomSentences(count, pronounId, verbId, tenseId);
   }
 
   @GetMapping("/{id}")

@@ -1,18 +1,21 @@
 package io.github.dzdialectapispring.other.enumerations;
 
+import java.util.Arrays;
+import java.util.Optional;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-// @todo add root tense
 public enum Tense {
-  PAST_AVOIR(RootTense.PAST),
-  PAST_ETRE(RootTense.PAST), // @todo dev verbs
-  PAST_IMPARFAIT(RootTense.PAST), // @todo dev verbs
-  PRESENT(RootTense.PRESENT),
-  FUTURE(RootTense.FUTURE),
-  IMPERATIVE(RootTense.IMPERATIVE);
+  PAST("past", "passé"),
+  PRESENT("present", "présent"),
+  FUTURE("future", "futur"),
+  IMPERATIVE("imperative", "impératif");
+  String id;
+  String descriptionFr;
 
-  RootTense rootTense;
+  public static Optional<Tense> findById(String id) {
+    return Arrays.stream(values()).filter(t -> t.getId().equals(id)).findFirst();
+  }
 }

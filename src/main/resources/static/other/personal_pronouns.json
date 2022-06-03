@@ -1,34 +1,12 @@
 [
   {
-    "id": "I_M",
+    "id": "I",
     "values": [
       {
         "possession": "I",
         "singular": true,
-        "gender": "M",
+        "gender": "X",
         "index": 1,
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "je"
-          },
-          {
-            "lang": "DZ",
-            "value": "ana",
-            "ar_value": "ان"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "I_F",
-    "values": [
-      {
-        "possession": "I",
-        "singular": true,
-        "gender": "F",
-        "index": 2,
         "translations": [
           {
             "lang": "FR",
@@ -132,12 +110,12 @@
     ]
   },
   {
-    "id": "WE_M",
+    "id": "WE",
     "values": [
       {
         "possession": "I",
         "singular": false,
-        "gender": "M",
+        "gender": "X",
         "index": 8,
         "translations": [
           {
@@ -154,57 +132,13 @@
     ]
   },
   {
-    "id": "WE_F",
-    "values": [
-      {
-        "possession": "I",
-        "singular": false,
-        "gender": "F",
-        "index": 9,
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "on"
-          },
-          {
-            "lang": "DZ",
-            "value": "7na",
-            "ar_value": "حن"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "YOU_M_P",
+    "id": "YOU_P",
     "values": [
       {
         "possession": "YOU",
         "singular": false,
-        "gender": "M",
+        "gender": "X",
         "index": 10,
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "vous"
-          },
-          {
-            "lang": "DZ",
-            "value": "ntouma",
-            "ar_value": "أنتما"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "YOU_F_P",
-    "values": [
-      {
-        "possession": "YOU",
-        "singular": false,
-        "gender": "F",
-        "index": 11,
         "translations": [
           {
             "lang": "FR",

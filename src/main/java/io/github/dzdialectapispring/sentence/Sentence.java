@@ -8,10 +8,11 @@ import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.concrets.Word;
-import io.github.dzdialectapispring.other.enumerations.Tense;
+import io.github.dzdialectapispring.other.enumerations.Subtense;
 import io.github.dzdialectapispring.verb.Verb;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,8 +36,11 @@ public class Sentence extends Word {
     if (content == null) {
       return node;
     }
-    if (this.content.getTense() != null) {
-      node.put("tense", this.content.getTense().name());
+    if (this.content.getSubtense() != null) {
+      node.put("tense", this.content.getSubtense().getTense().getId());
+    }
+    if (this.content.getAbstractVerb() != null) {
+      node.put("verb", this.content.getAbstractVerb().getId());
     }
     return node;
   }
@@ -45,19 +49,19 @@ public class Sentence extends Word {
   @Builder
   public static class SentenceContent {
 
-    private Verb           abstractVerb;
-    private PossessiveWord pronoun;
-    private AbstractWord   abstractAdverb;
-    private AbstractWord   abstractQuestion;
+    private Verb                abstractVerb;
+    private PossessiveWord      pronoun;
+    private AbstractWord        abstractAdverb;
+    private AbstractWord        abstractQuestion;
     //  private Adjective      abstractAdjective;
     //  private Noun           abstractNoun;
-    private Tense          tense;
-    private SentenceSchema sentenceSchema;
-    private boolean        negation;
+    private Subtense            subtense;
+    private SentenceSchema      sentenceSchema;
+    private boolean             negation;
     @Builder.Default
-    private List<String>   randomFrWords = new ArrayList<>();
+    private Map<String, String> randomFrWords = new HashMap<>();
     @Builder.Default
-    private List<String>   randomArWords = new ArrayList<>();
+    private Map<String, String> randomArWords = new HashMap<>();
   }
 
 }

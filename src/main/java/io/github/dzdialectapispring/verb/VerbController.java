@@ -1,6 +1,5 @@
 package io.github.dzdialectapispring.verb;
 
-import io.github.dzdialectapispring.other.enumerations.RootTense;
 import io.github.dzdialectapispring.sentence.Sentence;
 import java.util.List;
 import java.util.Set;
@@ -23,9 +22,14 @@ public class VerbController {
     return verbService.getAllVerbIds();
   }
 
+  @GetMapping("/{id}/tenses")
+  public Set<String> getAvailableTenses(@PathVariable String id) {
+    return verbService.getAvailableTenses(id);
+  }
+
   @GetMapping("/{id}/values")
-  public List<Sentence> getVerbById(@PathVariable String id, @RequestParam(required = false) RootTense tense) {
-    return verbService.getVerbConjugationsById(id, tense);
+  public List<Sentence> getVerbById(@PathVariable String id, @RequestParam(required = false, name = "tense") String tenseId) {
+    return verbService.getVerbConjugationsById(id, tenseId);
   }
 
 

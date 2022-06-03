@@ -5,17 +5,17 @@ import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.concrets.Word;
-import io.github.dzdialectapispring.other.conjugation.Conjugation;
 import io.github.dzdialectapispring.other.enumerations.Lang;
-import io.github.dzdialectapispring.other.enumerations.RootTense;
+import io.github.dzdialectapispring.other.enumerations.Subtense;
 import io.github.dzdialectapispring.other.enumerations.Tense;
 import io.github.dzdialectapispring.other.enumerations.WordType;
+import io.github.dzdialectapispring.pronoun.AbstractPronoun;
 import io.github.dzdialectapispring.pronoun.PronounService;
 import io.github.dzdialectapispring.sentence.Sentence.SentenceContent;
 import io.github.dzdialectapispring.verb.Verb;
 import io.github.dzdialectapispring.verb.VerbService;
+import io.github.dzdialectapispring.verb.conjugation.Conjugation;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -36,21 +36,20 @@ public class SentenceBuilder {
   List<WordTypeWordTuple> wordListAr;
   PossessiveWord          subject         = null;
   AbstractWord            abstractSubject = null;
-  private SentenceContent sentenceContent;
-  @Autowired
-  private PronounService  pronounService;
-  @Autowired
-  private VerbService     verbService;
+  private       SentenceContent sentenceContent;
+  private final PronounService  pronounService;
+  private final VerbService     verbService;
 
   @Autowired
-  public SentenceBuilder(SentenceSchema sentenceSchema) {
-    this.schema = sentenceSchema;
+  public SentenceBuilder(SentenceSchema sentenceSchema, PronounService pronounService, VerbService verbService) {
+    this.schema         = sentenceSchema;
+    this.pronounService = pronounService;
+    this.verbService    = verbService;
   }
 
-  public Optional<Sentence> generate() {
-
+  public Optional<Sentence> generate(AbstractPronoun pronoun, Verb verb, Tense tense) {
     sentenceContent = SentenceContent.builder().build();
-    boolean resultOk = fillWordListFromSchema();
+    boolean resultOk = fillWordListFromSchema(pronoun, verb, tense);
     if (!resultOk) {
       System.err.println("no sentence generated");
       return Optional.empty();
@@ -61,24 +60,22 @@ public class SentenceBuilder {
     Translation dzTranslation = generateArTranslation(Lang.DZ);
     sentence.getTranslations().add(frTranslation);
     // word_propositions part
-    sentenceContent.setRandomFrWords(SentenceBuilderHelper.splitSentenceInWords(frTranslation.getValue()));
-    sentenceContent.setRandomArWords(SentenceBuilderHelper.splitSentenceInWords(dzTranslation.getValue()));
+    sentenceContent.setRandomFrWords(SentenceBuilderHelper.splitSentenceInWords(frTranslation.getValue(), false));
+    sentenceContent.setRandomArWords(SentenceBuilderHelper.splitSentenceInWords(dzTranslation.getValue(), false));
     // generating a second random sentence
     sentence.setContent(sentenceContent);
-    addRandomWordPropositions(sentence);
+    addRandomWordPropositions(sentence, pronoun, verb, tense);
     return Optional.of(sentence);
   }
 
-  private void addRandomWordPropositions(Sentence sentence) {
-    fillWordListFromSchema();
-    sentence.getContent().getRandomFrWords().addAll(SentenceBuilderHelper.splitSentenceInWords(generateFrTranslation().getValue()));
-    sentence.getContent().getRandomArWords().addAll(SentenceBuilderHelper.splitSentenceInWords(generateArTranslation(Lang.DZ).getValue()));
-    Collections.shuffle(sentence.getContent().getRandomFrWords());
-    Collections.shuffle(sentence.getContent().getRandomArWords());
+  private void addRandomWordPropositions(Sentence sentence, AbstractPronoun pronoun, Verb verb, Tense tense) {
+    fillWordListFromSchema(pronoun, verb, tense);
+    sentence.getContent().getRandomFrWords().putAll(SentenceBuilderHelper.splitSentenceInWords(generateFrTranslation().getValue(), true));
+    sentence.getContent().getRandomArWords().putAll(SentenceBuilderHelper.splitSentenceInWords(generateArTranslation(Lang.DZ).getValue(), true));
   }
 
   private void resetAttributes() {
-/*    abstractVerb     = null;
+/*
     nounSubject      = null;
     abstractQuestion = null;*/
     subject         = null;
@@ -87,6 +84,7 @@ public class SentenceBuilder {
     wordListAr      = new ArrayList<>();
     sentenceContent = SentenceContent.builder().build();
     sentenceContent.setSentenceSchema(schema);
+    sentenceContent.setNegation(true);
 /*    if (schema.isPossibleNegation()) {
       if (bodyArgs.isPossibleNegation() && bodyArgs.isPossibleAffirmation()) {
         sentenceContent.setNegation(RANDOM.nextBoolean());
@@ -97,30 +95,30 @@ public class SentenceBuilder {
   }
 
   // @todo split FR & DZ
-  private boolean fillWordListFromSchema() {
+  private boolean fillWordListFromSchema(AbstractPronoun pronoun, Verb verb, Tense tense) {
     resetAttributes();
     for (int index = 0; index < schema.getFrSequence().size(); index++) {
       WordType wordType = schema.getFrSequence().get(index);
-      boolean  worked;
+      boolean  success;
       switch (wordType) {
         case PRONOUN:
-          buildPronoun(index);
+          buildPronoun(index, pronoun);
           break;
         case NOUN:
-          worked = buildNoun(index);
-          if (!worked) {
+          success = buildNoun(index);
+          if (!success) {
             return false;
           }
           break;
         case VERB:
-          worked = buildVerb(index);
-          if (!worked) {
+          success = buildVerb(index, verb, tense);
+          if (!success) {
             return false;
           }
           break;
         case ADJECTIVE:
-          worked = buildAdjective(index);
-          if (!worked) {
+          success = buildAdjective(index);
+          if (!success) {
             return false;
           }
           break;
@@ -135,8 +133,11 @@ public class SentenceBuilder {
     return true;
   }
 
-  private boolean buildPronoun(int index) {
-    PossessiveWord pronoun = pronounService.getRandomPronoun();
+  private boolean buildPronoun(int index, AbstractPronoun abstractPronoun) {
+    if (abstractPronoun == null) {
+      abstractPronoun = pronounService.getRandomAbstractPronoun();
+    }
+    PossessiveWord pronoun = (PossessiveWord) abstractPronoun.getValues().get(0);
     sentenceContent.setPronoun(pronoun);
     wordListFr.add(new WordTypeWordTuple(WordType.PRONOUN, pronoun, index));
     wordListAr.add(new WordTypeWordTuple(WordType.PRONOUN, pronoun, index));
@@ -179,31 +180,38 @@ public class SentenceBuilder {
     return true;
   }
 
-  private boolean buildVerb(int index) {
-    Optional<Verb> abstractVerbOpt = verbService.getRandomAbstractVerb(schema);
-    if (abstractVerbOpt.isEmpty()) {
-      return false;
+  private boolean buildVerb(int index, Verb abstractVerb, Tense tense) {
+    if (abstractVerb == null) {
+      Optional<Verb> abstractVerbOpt = verbService.getRandomAbstractVerb(schema);
+      if (abstractVerbOpt.isEmpty()) {
+        return false;
+      }
+      abstractVerb = abstractVerbOpt.get();
     }
-    Verb abstractVerb = abstractVerbOpt.get();
     sentenceContent.setAbstractVerb(abstractVerb);
-    Tense tense;
-    if (!schema.getTenses().isEmpty() && schema.getTenses().contains(RootTense.IMPERATIVE)) {
-      tense = Tense.IMPERATIVE;
+    Subtense subtense;
+    if (tense == null) {
+      if (!schema.getTenses().isEmpty() && schema.getTenses().contains(Tense.IMPERATIVE)) {
+        subtense = Subtense.IMPERATIVE;
+      } else {
+        Set<Subtense> availableTenses = abstractVerb.getValues().stream().map(o -> (Conjugation) o).map(Conjugation::getSubtense)
+                                                    .filter(t -> schema.getTenses().contains(t.getTense()))
+                                                    .filter(t -> t != Subtense.IMPERATIVE)
+                                                    .collect(Collectors.toSet());
+        subtense = availableTenses.stream().skip(RANDOM.nextInt(availableTenses.size())).findFirst().get();
+      }
     } else {
-      Set<Tense> availableTenses = abstractVerb.getValues().stream().map(o -> (Conjugation) o).map(Conjugation::getTense)
-                                               .filter(t -> schema.getTenses().contains(t.getRootTense()))
-                                               .filter(t -> t != Tense.IMPERATIVE)
-                                               .collect(Collectors.toSet());
-      tense = availableTenses.stream().skip(RANDOM.nextInt(availableTenses.size())).findFirst().get();
+      subtense = abstractVerb.getValues().stream().map(o -> (Conjugation) o).map(Conjugation::getSubtense)
+                             .filter(t -> t.getTense() == tense).findFirst().get();
     }
 
-    sentenceContent.setTense(tense);
-    if (tense.getRootTense() == RootTense.PAST) {
+    sentenceContent.setSubtense(subtense);
+    if (subtense.getTense() == Tense.PAST) {
       sentenceContent.setNegation(false);
     }
-    if (tense != Tense.IMPERATIVE) {
-      wordListFr.add(new WordTypeWordTuple(WordType.VERB, verbService.getVerbConjugation(abstractVerb, subject, tense, Lang.FR), index));
-      wordListAr.add(new WordTypeWordTuple(WordType.VERB, verbService.getVerbConjugation(abstractVerb, subject, tense, Lang.DZ), index));
+    if (subtense != Subtense.IMPERATIVE) {
+      wordListFr.add(new WordTypeWordTuple(WordType.VERB, abstractVerb.getVerbConjugation(abstractVerb, subject, subtense, Lang.FR), index));
+      wordListAr.add(new WordTypeWordTuple(WordType.VERB, abstractVerb.getVerbConjugation(abstractVerb, subject, subtense, Lang.DZ), index));
     } else {
 /*      PossessiveWord randomPronoun = AbstractWord.getRandomImperativePersonalPronoun();
       Optional<Conjugation> frConjugation = helper.getImperativeVerbConjugation(abstractVerb,
@@ -271,13 +279,13 @@ public class SentenceBuilder {
     StringBuilder sentenceValue = new StringBuilder();
     for (int i = 0; i < schema.getFrSequence().size(); i++) {
       WordType wordType = schema.getFrSequence().get(i);
-      if (wordType == WordType.SUFFIX && sentenceContent.getTense() == Tense.IMPERATIVE) { // add imperative condition
+      if (wordType == WordType.SUFFIX && sentenceContent.getSubtense() == Subtense.IMPERATIVE) { // add imperative condition
         sentenceValue.deleteCharAt(sentenceValue.length() - 1);
         sentenceValue.append("-");
       }
       if (wordType == WordType.VERB
           && sentenceContent.isNegation()
-          && sentenceContent.getTense().getRootTense() != RootTense.PAST) {
+          && sentenceContent.getSubtense().getTense() != Tense.PAST) {
         sentenceValue.append("ne "); // @todo use Traduction class and remove it
       }
       Word w = getFirstWordFromWordTypeFr(wordType, i);
@@ -286,7 +294,7 @@ public class SentenceBuilder {
       }
       if (wordType == WordType.VERB
           && sentenceContent.isNegation()
-          && sentenceContent.getTense().getRootTense() != RootTense.PAST) {
+          && sentenceContent.getSubtense().getTense() != Tense.PAST) {
         sentenceValue.append(" pas");
       }
 
@@ -318,15 +326,16 @@ public class SentenceBuilder {
           sentenceValue = new StringBuilder(sentenceValue.toString().replace(m.getKey(), m.getValue()));
         }*/
       } else {
-        if (sentenceContent.isNegation() && sentenceContent.getTense().getRootTense() != RootTense.PAST) {
-/*          if (wordType == WordType.VERB) {
+        if (sentenceContent.isNegation() && sentenceContent.getSubtense().getTense() != Tense.PAST) {
+          if (wordType == WordType.VERB) {
             sentenceValue.append("ma ");
             sentenceValueAr.append("ما ");
-          } else if (wordType == WordType.ADJECTIVE && sentenceContent.getAbstractAdjective() != null && sentenceContent.getAbstractAdjective()
-                                                                                                                        .isDefinitive()) {
+          } else if (wordType == WordType.ADJECTIVE
+            //  && sentenceContent.getAbstractAdjective() != null && sentenceContent.getAbstractAdjective().isDefinitive()
+          ) {
             sentenceValue.append("machi ");
             sentenceValueAr.append("ماشي ");
-          }*/
+          }
         }
         Word   w       = getFirstWordFromWordTypeAr(wordType, i);
         String arValue = "";
@@ -335,11 +344,11 @@ public class SentenceBuilder {
           arValue = w.getTranslationByLang(lang).get().getArValue();
         }
         sentenceValueAr.append(Objects.requireNonNullElse(arValue, " ٠٠٠ "));
-        if (wordType == WordType.VERB && sentenceContent.isNegation() && sentenceContent.getTense().getRootTense() != RootTense.PAST) {
-/*          if (sentenceContent.getAbstractAdjective() == null || sentenceContent.getAbstractAdjective().isTemporal()) {
-            sentenceValue.append("ch ");
-            sentenceValueAr.append("ش");
-          }*/
+        if (wordType == WordType.VERB && sentenceContent.isNegation() && sentenceContent.getSubtense().getTense() != Tense.PAST) {
+//          if (sentenceContent.getAbstractAdjective() == null || sentenceContent.getAbstractAdjective().isTemporal()) {
+          sentenceValue.append("ch ");
+          sentenceValueAr.append("ش");
+//          }
         }
       }
       sentenceValue.append(" ");

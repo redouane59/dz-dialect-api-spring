@@ -15,10 +15,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
 @Service
+@Data
 public class PronounService {
 
   private final PronounRepository pronounRepository;
@@ -54,5 +56,10 @@ public class PronounService {
     List<AbstractPronoun> pronouns        = pronounRepository.findAll();
     AbstractPronoun       abstractPronoun = pronouns.stream().skip(RANDOM.nextInt(pronouns.size())).findFirst().get();
     return (PossessiveWord) abstractPronoun.getValues().get(0);
+  }
+
+  public AbstractPronoun getRandomAbstractPronoun() {
+    List<AbstractPronoun> pronouns = pronounRepository.findAll();
+    return pronouns.stream().skip(RANDOM.nextInt(pronouns.size())).findFirst().get();
   }
 }

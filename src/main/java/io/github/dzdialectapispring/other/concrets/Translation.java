@@ -29,9 +29,10 @@ public class Translation {
   }
 
   public Translation(final Lang lang, final String value, final String arValue) {
-    this.lang  = lang;
-    this.value = value;
-    this.value = cleanValue(value);
+    this.lang    = lang;
+    this.value   = value;
+    this.arValue = arValue;
+    this.value   = cleanValue(value);
   }
 
   public String cleanValue(String value) {

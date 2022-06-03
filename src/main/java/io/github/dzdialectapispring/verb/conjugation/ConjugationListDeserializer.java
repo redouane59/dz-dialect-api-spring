@@ -1,4 +1,4 @@
-package io.github.dzdialectapispring.other.conjugation;
+package io.github.dzdialectapispring.verb.conjugation;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -12,7 +12,7 @@ import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.concrets.Word;
 import io.github.dzdialectapispring.other.enumerations.Gender;
-import io.github.dzdialectapispring.other.enumerations.Tense;
+import io.github.dzdialectapispring.other.enumerations.Subtense;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,8 +37,8 @@ public class ConjugationListDeserializer extends JsonDeserializer {
           if (node.has("possession")) {
             Possession possession = Possession.valueOf(node.get("possession").asText());
             if (node.has("tense")) {
-              Tense tense = Tense.valueOf(node.get("tense").asText());
-              int   index = -1;
+              Subtense tense = Subtense.valueOf(node.get("tense").asText());
+              int      index = -1;
               if (node.has("index")) {
                 index = node.get("index").asInt();
               }

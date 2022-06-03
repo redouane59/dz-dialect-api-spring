@@ -38,7 +38,6 @@ public class DzDialectApiSpringApplication {
         Verb verb = OBJECT_MAPPER.readValue(new File(fileName), Verb.class);
         repository.insert(verb);
       }
-
     };
   }
 

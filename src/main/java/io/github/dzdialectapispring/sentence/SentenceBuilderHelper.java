@@ -1,22 +1,28 @@
 package io.github.dzdialectapispring.sentence;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SentenceBuilderHelper {
 
-  public static List<String> splitSentenceInWords(String frSentence) {
-    List<String> result = new ArrayList<>();
-    long         count  = frSentence.chars().filter(ch -> ch == '-').count();
+  public static Map<String, String> splitSentenceInWords(String frSentence, boolean alternative) {
+    Map<String, String> result = new HashMap<>();
+    long                count  = frSentence.chars().filter(ch -> ch == '-').count();
     for (int i = 0; i < count; i++) {
-      result.add("-");
+      result.put("t" + i, "-");
     }
-    for (String s : frSentence.split("[- ]")) {
+    String[] split = frSentence.split("[- ]");
+    for (int i = 0; i < split.length; i++) {
+      String s  = split[i];
+      String id = "s" + i;
+      if (alternative) {
+        id += "a";
+      }
       if (!s.contains("'")) {
-        result.add(s);
+        result.put(id, s);
       } else {
-        result.add(s.substring(0, s.indexOf("'") + 1));
-        result.add(s.substring(s.indexOf("'") + 1));
+        result.put(id + "1", s.substring(0, s.indexOf("'") + 1));
+        result.put(id + "2", s.substring(s.indexOf("'") + 1));
       }
     }
     return result;
