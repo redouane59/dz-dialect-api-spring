@@ -110,7 +110,7 @@
     ]
   },
   {
-    "id": "we_x",
+    "id": "1px",
     "values": [
       {
         "possession": "I",
@@ -132,7 +132,7 @@
     ]
   },
   {
-    "id": "you_px",
+    "id": "2px",
     "values": [
       {
         "possession": "YOU",
@@ -154,7 +154,7 @@
     ]
   },
   {
-    "id": "they_m",
+    "id": "3pm",
     "values": [
       {
         "possession": "OTHER",
@@ -176,7 +176,7 @@
     ]
   },
   {
-    "id": "they_f",
+    "id": "3pf",
     "values": [
       {
         "possession": "OTHER",
