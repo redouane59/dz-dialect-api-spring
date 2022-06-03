@@ -1,0 +1,19 @@
+{
+  "id": "PVA_DEF",
+  "fr_sequence": [
+    "PRONOUN",
+    "VERB",
+    "ADJECTIVE"
+  ],
+  "ar_sequence": [
+    "PRONOUN",
+    "ADJECTIVE"
+  ],
+  "subject_position": 0,
+  "tenses": [
+    "PRESENT"
+  ],
+  "verb_type": "STATE",
+  "definitive_adjective": true,
+  "possible_negation": true
+}

@@ -1,0 +1,18 @@
+{
+  "id": "QPV",
+  "fr_sequence": [
+    "QUESTION",
+    "PRONOUN",
+    "VERB"
+  ],
+  "ar_sequence": [
+    "QUESTION",
+    "VERB"
+  ],
+  "subject_position": 1,
+  "tenses": [
+    "PAST",
+    "PRESENT",
+    "FUTURE"
+  ]
+}

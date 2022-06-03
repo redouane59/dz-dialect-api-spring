@@ -1,0 +1,13 @@
+{
+  "id": "V",
+  "fr_sequence": [
+    "VERB"
+  ],
+  "ar_sequence": [
+    "VERB"
+  ],
+  "tenses": [
+    "IMPERATIVE"
+  ],
+  "possible_negation": true
+}
