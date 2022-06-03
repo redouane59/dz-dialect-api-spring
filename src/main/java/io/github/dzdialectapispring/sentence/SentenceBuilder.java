@@ -32,13 +32,13 @@ public class SentenceBuilder {
 
   public static Random         RANDOM = new Random();
   private final SentenceSchema schema;
+  private final PronounService pronounService;
+  private final VerbService    verbService;
   List<WordTypeWordTuple> wordListFr;
   List<WordTypeWordTuple> wordListAr;
   PossessiveWord          subject         = null;
   AbstractWord            abstractSubject = null;
-  private       SentenceContent sentenceContent;
-  private final PronounService  pronounService;
-  private final VerbService     verbService;
+  private SentenceContent sentenceContent;
 
   @Autowired
   public SentenceBuilder(SentenceSchema sentenceSchema, PronounService pronounService, VerbService verbService) {
@@ -138,7 +138,7 @@ public class SentenceBuilder {
       abstractPronoun = pronounService.getRandomAbstractPronoun();
     }
     PossessiveWord pronoun = (PossessiveWord) abstractPronoun.getValues().get(0);
-    sentenceContent.setPronoun(pronoun);
+    sentenceContent.setAbstractPronoun(abstractPronoun);
     wordListFr.add(new WordTypeWordTuple(WordType.PRONOUN, pronoun, index));
     wordListAr.add(new WordTypeWordTuple(WordType.PRONOUN, pronoun, index));
     if (schema.getSubjectPosition() == index) {

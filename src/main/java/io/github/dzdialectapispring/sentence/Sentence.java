@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
-import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.concrets.Word;
 import io.github.dzdialectapispring.other.enumerations.Subtense;
@@ -42,6 +41,9 @@ public class Sentence extends Word {
     if (this.content.getAbstractVerb() != null) {
       node.put("verb", this.content.getAbstractVerb().getId());
     }
+    if (this.content.getAbstractPronoun() != null) {
+      node.put("pronoun", this.content.getAbstractPronoun().getId());
+    }
     return node;
   }
 
@@ -50,7 +52,7 @@ public class Sentence extends Word {
   public static class SentenceContent {
 
     private Verb                abstractVerb;
-    private PossessiveWord      pronoun;
+    private AbstractWord        abstractPronoun;
     private AbstractWord        abstractAdverb;
     private AbstractWord        abstractQuestion;
     //  private Adjective      abstractAdjective;

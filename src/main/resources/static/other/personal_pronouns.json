@@ -1,6 +1,6 @@
 [
   {
-    "id": "I",
+    "id": "1sx",
     "values": [
       {
         "possession": "I",
@@ -22,7 +22,7 @@
     ]
   },
   {
-    "id": "YOU_M",
+    "id": "2sm",
     "values": [
       {
         "possession": "YOU",
@@ -44,7 +44,7 @@
     ]
   },
   {
-    "id": "YOU_F",
+    "id": "2sf",
     "values": [
       {
         "possession": "YOU",
@@ -66,7 +66,7 @@
     ]
   },
   {
-    "id": "HE",
+    "id": "3sm",
     "values": [
       {
         "possession": "OTHER",
@@ -88,7 +88,7 @@
     ]
   },
   {
-    "id": "SHE",
+    "id": "3fs",
     "values": [
       {
         "possession": "OTHER",
@@ -110,7 +110,7 @@
     ]
   },
   {
-    "id": "WE",
+    "id": "we_x",
     "values": [
       {
         "possession": "I",
@@ -132,7 +132,7 @@
     ]
   },
   {
-    "id": "YOU_P",
+    "id": "you_px",
     "values": [
       {
         "possession": "YOU",
@@ -154,7 +154,7 @@
     ]
   },
   {
-    "id": "THEY_M",
+    "id": "they_m",
     "values": [
       {
         "possession": "OTHER",
@@ -176,7 +176,7 @@
     ]
   },
   {
-    "id": "THEY_F",
+    "id": "they_f",
     "values": [
       {
         "possession": "OTHER",
