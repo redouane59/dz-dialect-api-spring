@@ -16,6 +16,7 @@ import io.github.dzdialectapispring.verb.Verb;
 import io.github.dzdialectapispring.verb.VerbService;
 import io.github.dzdialectapispring.verb.conjugation.Conjugation;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -60,18 +61,24 @@ public class SentenceBuilder {
     Translation dzTranslation = generateArTranslation(Lang.DZ);
     sentence.getTranslations().add(frTranslation);
     // word_propositions part
-    sentenceContent.getRandomWords().put(Lang.FR, SentenceBuilderHelper.splitSentenceInWords(frTranslation, false));
-    sentenceContent.getRandomWords().put(Lang.DZ, SentenceBuilderHelper.splitSentenceInWords(dzTranslation, false));
-    // generating a second random sentence
+    sentence.getRandomWords().put(Lang.FR, SentenceBuilderHelper.splitSentenceInWords(frTranslation, false));
+    sentence.getRandomWords().put(Lang.DZ, SentenceBuilderHelper.splitSentenceInWords(dzTranslation, false));
     sentence.setContent(sentenceContent);
+    // generating a second random sentence
     addRandomWordPropositions(sentence, generatorParameters);
+    Collections.shuffle(sentence.getRandomWords().get(Lang.FR));
+    Collections.shuffle(sentence.getRandomWords().get(Lang.DZ));
     return Optional.of(sentence);
   }
 
   private void addRandomWordPropositions(Sentence sentence, GeneratorParameters generatorParameters) {
+    if (sentence.getContent().getAbstractPronoun() != null) {
+      PossessiveWord pronoun = (PossessiveWord) sentence.getContent().getAbstractPronoun().getValues().get(0);
+      generatorParameters.setAbstractPronoun(pronounService.getRandomAbstractPronoun(pronoun.getPossession()));
+    }
     fillWordListFromSchema(generatorParameters);
-    sentence.getContent().getRandomWords().get(Lang.FR).addAll(SentenceBuilderHelper.splitSentenceInWords(generateFrTranslation(), true));
-    sentence.getContent().getRandomWords().get(Lang.DZ).addAll(SentenceBuilderHelper.splitSentenceInWords(generateArTranslation(Lang.DZ), true));
+    sentence.getRandomWords().get(Lang.FR).addAll(SentenceBuilderHelper.splitSentenceInWords(generateFrTranslation(), true));
+    sentence.getRandomWords().get(Lang.DZ).addAll(SentenceBuilderHelper.splitSentenceInWords(generateArTranslation(Lang.DZ), true));
   }
 
   private void resetAttributes() {

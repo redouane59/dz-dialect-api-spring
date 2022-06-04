@@ -1,5 +1,6 @@
 package io.github.dzdialectapispring.verb;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,6 +24,7 @@ import lombok.Setter;
 // @todo reflexive verbs (ça me plaît, il me faut, etc.)
 public class Verb extends AbstractWord {
 
+  @JsonIgnore
   @JsonProperty("verb_type")
   private VerbType verbType;
 

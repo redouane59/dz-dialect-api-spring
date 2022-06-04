@@ -17,6 +17,7 @@ import java.util.Optional;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
 
 @NoArgsConstructor
 @Getter
@@ -26,8 +27,10 @@ public class AbstractWord {
   @JsonInclude(Include.NON_EMPTY)
   @JsonDeserialize(using = ConjugationListDeserializer.class)
   private List<? super Word> values = new ArrayList<>();
+  @Id
   private String             id;
   @JsonProperty("word_type")
+  @JsonIgnore
   private WordType           wordType;
 
   @JsonIgnore

@@ -41,6 +41,7 @@ public class DzDialectApiSpringApplication {
     };
   }
 
+
   @Bean
   CommandLineRunner pronounsInit(PronounRepository repository, MongoTemplate mongoTemplate) {
     return args -> {
@@ -51,5 +52,6 @@ public class DzDialectApiSpringApplication {
       repository.insert(pronouns);
     };
   }
+
 
 }

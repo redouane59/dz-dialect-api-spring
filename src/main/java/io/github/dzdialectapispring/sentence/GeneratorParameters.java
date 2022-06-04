@@ -4,10 +4,10 @@ import io.github.dzdialectapispring.other.enumerations.Tense;
 import io.github.dzdialectapispring.pronoun.AbstractPronoun;
 import io.github.dzdialectapispring.verb.Verb;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 
 @Builder
-@Getter
+@Data
 public class GeneratorParameters {
 
   @Builder.Default

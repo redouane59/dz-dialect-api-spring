@@ -7,6 +7,7 @@ import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.enumerations.Lang;
 import io.github.dzdialectapispring.other.enumerations.Tense;
+import io.github.dzdialectapispring.pronoun.AbstractPronoun;
 import io.github.dzdialectapispring.pronoun.PronounService;
 import io.github.dzdialectapispring.sentence.Sentence;
 import io.github.dzdialectapispring.sentence.Sentence.SentenceContent;
@@ -70,12 +71,27 @@ public class VerbService {
     }
     List<Sentence> result = new ArrayList();
     for (Conjugation conjugation : conjugations) {
-      PossessiveWord pronoun   = pronounService.getPronoun(conjugation.getGender(), conjugation.isSingular(), conjugation.getPossession());
-      String         frValue   = pronoun.getFrTranslation() + " " + conjugation.getFrTranslation();
-      String         dzValue   = pronoun.getDzTranslation() + " " + conjugation.getDzTranslation();
-      String         dzValueAr = pronoun.getDzTranslationAr() + " " + conjugation.getDzTranslationAr();
-      Sentence       sentence  = new Sentence(List.of(new Translation(Lang.FR, frValue), new Translation(Lang.DZ, dzValue, dzValueAr)));
-      sentence.setContent(SentenceContent.builder().subtense(conjugation.getSubtense()).abstractVerb(verbOptional.get()).build());
+      AbstractPronoun
+          abstractPronoun =
+          pronounService.getAbstractPronoun(conjugation.getGender(), conjugation.isSingular(), conjugation.getPossession());
+      PossessiveWord pronoun   = (PossessiveWord) abstractPronoun.getValues().get(0);
+      String         frValue   = "";
+      String         dzValue   = "";
+      String         dzValueAr = "";
+      if (conjugation.getSubtense().getTense() != Tense.IMPERATIVE) {
+        frValue += pronoun.getFrTranslation() + " ";
+        dzValue += pronoun.getDzTranslation() + " ";
+        dzValueAr += pronoun.getDzTranslationAr() + " ";
+      }
+      frValue += conjugation.getFrTranslation();
+      dzValue += conjugation.getDzTranslation();
+      dzValueAr += conjugation.getDzTranslationAr();
+      Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, frValue), new Translation(Lang.DZ, dzValue, dzValueAr)));
+      sentence.setContent(SentenceContent.builder()
+                                         .subtense(conjugation.getSubtense())
+                                         .abstractPronoun(abstractPronoun)
+                                         .abstractVerb(verbOptional.get())
+                                         .build());
       result.add(sentence);
     }
     return result;

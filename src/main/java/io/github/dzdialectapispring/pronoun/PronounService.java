@@ -2,11 +2,9 @@ package io.github.dzdialectapispring.pronoun;
 
 import static io.github.dzdialectapispring.other.Config.RANDOM;
 
-import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.Possession;
 import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
-import io.github.dzdialectapispring.other.concrets.Word;
 import io.github.dzdialectapispring.other.enumerations.Gender;
 import io.github.dzdialectapispring.other.enumerations.Lang;
 import io.github.dzdialectapispring.sentence.Sentence;
@@ -26,6 +24,23 @@ public class PronounService {
 
   private final PronounRepository pronounRepository;
 
+  public AbstractPronoun getAbstractPronoun(final Gender gender, final boolean isSingular, final Possession possession) {
+    Optional<AbstractPronoun> abstractPronounOptional = pronounRepository.findAll().stream()
+                                                                         .filter(p -> ((PossessiveWord) p.getValues().get(0)).getPossession()
+                                                                                      == possession)
+                                                                         .filter(p -> ((PossessiveWord) p.getValues().get(0)).isSingular()
+                                                                                      == isSingular)
+                                                                         .filter(p -> ((PossessiveWord) p.getValues().get(0)).getGender() == gender
+                                                                                      || ((PossessiveWord) p.getValues().get(0)).getGender()
+                                                                                         == Gender.X
+                                                                                      || gender == Gender.X)
+                                                                         .findFirst();
+    if (abstractPronounOptional.isEmpty()) {
+      throw new IllegalStateException("no abstract pronoun found");
+    }
+    return abstractPronounOptional.get();
+  }
+
   public PossessiveWord getPronoun(final Gender gender, final boolean isSingular, final Possession possession) {
     Optional<PossessiveWord> result = pronounRepository.findAll().stream()
                                                        .map(o -> o.getValues().get(0))//@todo dirty ?
@@ -38,7 +53,6 @@ public class PronounService {
       throw new IllegalStateException("no pronoun found");
     }
     return result.get();
-
   }
 
   public List<Sentence> getAllPronouns() {
@@ -50,11 +64,9 @@ public class PronounService {
         Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, possessiveWord.getFrTranslation()),
                                                  new Translation(Lang.DZ, possessiveWord.getDzTranslation(), possessiveWord.getDzTranslationAr())));
         sentence.setContent(SentenceContent.builder().abstractPronoun(abstractPronoun).build());
-
         result.add(sentence);
       }
     }
-    List<? super Word> values = abtractPronouns.stream().map(AbstractWord::getValues).collect(Collectors.toList());
 
     return result;
   }
@@ -63,6 +75,13 @@ public class PronounService {
     List<AbstractPronoun> pronouns        = pronounRepository.findAll();
     AbstractPronoun       abstractPronoun = pronouns.stream().skip(RANDOM.nextInt(pronouns.size())).findFirst().get();
     return (PossessiveWord) abstractPronoun.getValues().get(0);
+  }
+
+  public AbstractPronoun getRandomAbstractPronoun(Possession possession) {
+    List<AbstractPronoun> pronouns = pronounRepository.findAll().stream()
+                                                      .filter(p -> ((PossessiveWord) p.getValues().get(0)).getPossession() == possession)
+                                                      .collect(Collectors.toList());
+    return pronouns.stream().skip(RANDOM.nextInt(pronouns.size())).findFirst().get();
   }
 
   public AbstractPronoun getRandomAbstractPronoun() {
