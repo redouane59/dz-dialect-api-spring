@@ -23,6 +23,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Schema(name = "DifferentModel", description = "Sample model for the documentation")
 public class Sentence extends Word {
 
   @JsonProperty("additional_information")
@@ -46,8 +47,8 @@ public class Sentence extends Word {
     private AbstractPronoun abstractPronoun;
     private AbstractWord    abstractAdverb;
     private AbstractWord    abstractQuestion;
-    //  private Adjective      abstractAdjective;
-    //  private Noun           abstractNoun;
+    private AbstractWord    abstractAdjective;
+    private AbstractWord    abstractNoun;
     private Subtense        subtense;
     private SentenceSchema  sentenceSchema;
     private boolean         negation;

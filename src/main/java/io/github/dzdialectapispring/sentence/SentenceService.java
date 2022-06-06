@@ -29,16 +29,16 @@ public class SentenceService {
     this.sentenceRepository = sentenceRepository;
   }
 
-  public List<Sentence> generateRandomSentences(Integer count,
-                                                String pronounId,
-                                                String verbId,
-                                                String tenseId,
-                                                String nounId,
-                                                String adjectiveId,
-                                                String questionId,
-                                                String adverbId,
-                                                boolean positive,
-                                                boolean negative) {
+  public List<SentenceDTO> generateRandomSentences(Integer count,
+                                                   String pronounId,
+                                                   String verbId,
+                                                   String tenseId,
+                                                   String nounId,
+                                                   String adjectiveId,
+                                                   String questionId,
+                                                   String adverbId,
+                                                   boolean positive,
+                                                   boolean negative) {
     if (count == null) {
       count = 1;
     } else if (count <= 0) {
@@ -50,10 +50,9 @@ public class SentenceService {
     GeneratorParameters
         generatorParameters =
         buildParameters(pronounId, verbId, tenseId, nounId, adjectiveId, questionId, adverbId, positive, negative);
-    System.out.println("generating " + count + " random sentences");
-    List<Sentence> result = new ArrayList<>();
+    List<SentenceDTO> result = new ArrayList<>();
     for (int i = 0; i < count; i++) {
-      result.add(generateRandomSentence(generatorParameters));
+      result.add(new SentenceDTO(generateRandomSentence(generatorParameters)));
     }
     return result;
   }

@@ -16,16 +16,16 @@ public class SentenceController {
   private final SentenceService sentenceService;
 
   @GetMapping("/generate")
-  public List<Sentence> generateRandomSentence(@RequestParam(required = false) Integer count,
-                                               @RequestParam(required = false, name = "pronoun") String pronounId,
-                                               @RequestParam(required = false, name = "verb") String verbId,
-                                               @RequestParam(required = false, name = "tense") String tenseId,
-                                               @RequestParam(required = false, name = "noun") String nounId,
-                                               @RequestParam(required = false, name = "adjective") String adjectiveId,
-                                               @RequestParam(required = false, name = "question") String questionId,
-                                               @RequestParam(required = false, name = "adverb") String adverb,
-                                               @RequestParam(required = false, name = "exclude_positive") boolean excludePositive,
-                                               @RequestParam(required = false, name = "exclude_negative") boolean excludeNegative
+  public List<SentenceDTO> generateRandomSentence(@RequestParam(required = false) Integer count,
+                                                  @RequestParam(required = false, name = "pronoun") String pronounId,
+                                                  @RequestParam(required = false, name = "verb") String verbId,
+                                                  @RequestParam(required = false, name = "tense") String tenseId,
+                                                  @RequestParam(required = false, name = "noun") String nounId,
+                                                  @RequestParam(required = false, name = "adjective") String adjectiveId,
+                                                  @RequestParam(required = false, name = "question") String questionId,
+                                                  @RequestParam(required = false, name = "adverb") String adverb,
+                                                  @RequestParam(required = false, name = "exclude_positive") boolean excludePositive,
+                                                  @RequestParam(required = false, name = "exclude_negative") boolean excludeNegative
   ) {
     return sentenceService.generateRandomSentences(count,
                                                    pronounId,
