@@ -8,6 +8,8 @@ class DzDialectApiSpringApplicationTests {
 
   @Test
   void contextLoads() {
+    System.out.println("ok");
   }
+
 
 }

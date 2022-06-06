@@ -29,7 +29,16 @@ public class SentenceService {
     this.sentenceRepository = sentenceRepository;
   }
 
-  public List<Sentence> generateRandomSentences(Integer count, String pronounId, String verbId, String tenseId) {
+  public List<Sentence> generateRandomSentences(Integer count,
+                                                String pronounId,
+                                                String verbId,
+                                                String tenseId,
+                                                String nounId,
+                                                String adjectiveId,
+                                                String questionId,
+                                                String adverbId,
+                                                boolean positive,
+                                                boolean negative) {
     if (count == null) {
       count = 1;
     } else if (count <= 0) {
@@ -38,7 +47,9 @@ public class SentenceService {
       throw new IllegalArgumentException("count argument should be less than 30");
     }
 
-    GeneratorParameters generatorParameters = buildParameters(pronounId, verbId, tenseId);
+    GeneratorParameters
+        generatorParameters =
+        buildParameters(pronounId, verbId, tenseId, nounId, adjectiveId, questionId, adverbId, positive, negative);
     System.out.println("generating " + count + " random sentences");
     List<Sentence> result = new ArrayList<>();
     for (int i = 0; i < count; i++) {
@@ -47,7 +58,12 @@ public class SentenceService {
     return result;
   }
 
-  public GeneratorParameters buildParameters(String pronounId, String verbId, String tenseId) {
+  public GeneratorParameters buildParameters(String pronounId, String verbId, String tenseId, String nounId,
+                                             String adjectiveId,
+                                             String questionId,
+                                             String adverbId,
+                                             boolean excludePositive,
+                                             boolean excludeNegative) {
     Verb verb = null;
     if (verbId != null) {
       Optional<Verb> verbOptional = verbService.getVerbRepository().findById(verbId);
@@ -75,7 +91,13 @@ public class SentenceService {
         tense = tenseOptional.get();
       }
     }
-    return GeneratorParameters.builder().abstractPronoun(pronoun).abstractVerb(verb).tense(tense).build();
+    return GeneratorParameters.builder()
+                              .abstractPronoun(pronoun)
+                              .abstractVerb(verb)
+                              .tense(tense)
+                              .excludePositive(excludePositive)
+                              .excludeNegative(excludeNegative)
+                              .build();
   }
 
   // @todo to implement

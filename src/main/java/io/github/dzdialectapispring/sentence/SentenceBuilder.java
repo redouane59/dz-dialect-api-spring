@@ -81,7 +81,7 @@ public class SentenceBuilder {
     sentence.getRandomWords().get(Lang.DZ).addAll(SentenceBuilderHelper.splitSentenceInWords(generateArTranslation(Lang.DZ), true));
   }
 
-  private void resetAttributes() {
+  private void resetAttributes(GeneratorParameters generatorParameters) {
 /*
     nounSubject      = null;
     abstractQuestion = null;*/
@@ -91,19 +91,18 @@ public class SentenceBuilder {
     wordListAr      = new ArrayList<>();
     sentenceContent = SentenceContent.builder().build();
     sentenceContent.setSentenceSchema(schema);
-    //   sentenceContent.setNegation(true);
-/*    if (schema.isPossibleNegation()) {
-      if (bodyArgs.isPossibleNegation() && bodyArgs.isPossibleAffirmation()) {
+    if (schema.isPossibleNegation()) {
+      if (generatorParameters.isExcludeNegative() == generatorParameters.isExcludePositive()) {
         sentenceContent.setNegation(RANDOM.nextBoolean());
-      } else if (bodyArgs.isPossibleNegation()) {
-        sentenceContent.setNegation(true);
+      } else {
+        sentenceContent.setNegation(generatorParameters.isExcludePositive());
       }
-    }*/
+    }
   }
 
   // @todo split FR & DZ
   private boolean fillWordListFromSchema(GeneratorParameters generatorParameters) {
-    resetAttributes();
+    resetAttributes(generatorParameters);
     for (int index = 0; index < schema.getFrSequence().size(); index++) {
       WordType wordType = schema.getFrSequence().get(index);
       boolean  success;

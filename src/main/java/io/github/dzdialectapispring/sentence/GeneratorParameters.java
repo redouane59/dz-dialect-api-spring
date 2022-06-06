@@ -15,4 +15,6 @@ public class GeneratorParameters {
   private AbstractPronoun abstractPronoun;
   private Verb            abstractVerb;
   private Tense           tense;
+  private boolean         excludePositive;
+  private boolean         excludeNegative;
 }

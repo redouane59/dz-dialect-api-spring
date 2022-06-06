@@ -23,7 +23,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@JsonSerialize(using = SentenceSerializer.class)
 public class Sentence extends Word {
 
   @JsonProperty("additional_information")
