@@ -3,10 +3,14 @@ package io.github.dzdialectapispring.sentence;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.enumerations.Lang;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map.Entry;
+import org.springframework.boot.jackson.JsonComponent;
 
+@JsonComponent
 public class SentenceSerializer extends StdSerializer<Sentence> {
 
   public SentenceSerializer() {
@@ -22,38 +26,28 @@ public class SentenceSerializer extends StdSerializer<Sentence> {
       Sentence sentence, JsonGenerator jgen, SerializerProvider provider)
   throws IOException {
     jgen.writeStartObject();
-    jgen.writeStringField(Lang.DZ.getId() + "_value", sentence.getTranslationByLang(Lang.DZ).get().getValue());
-    jgen.writeStringField(Lang.DZ.getId() + "_ar_value", sentence.getTranslationByLang(Lang.DZ).get().getArValue());
-    jgen.writeStringField(Lang.FR.getId() + "_value", sentence.getTranslationByLang(Lang.FR).get().getValue());
-    // if (Config.SERIALIZE_ADDITIONAL_INFO) {
-    if (!sentence.getAdditionalInformations().isEmpty()) {
-      jgen.writeObjectField("additional_information", sentence.getAdditionalInformations());
+ /*   jgen.writeFieldName("values");
+    jgen.writeStartObject()*/
+    for (Translation t : sentence.getTranslations()) {
+      jgen.writeObjectField(t.getLang().getId(), t.getValue());
+      if (t.getArValue() != null) {
+        jgen.writeObjectField(t.getLang().getId() + "_ar", t.getArValue());
+      }
     }
-    //if (Config.SERIALIZE_WORD_PROPOSITIONS) {
-    if (!sentence.getContent().getRandomFrWords().isEmpty()) {
-      jgen.writeFieldName("word_propositions_fr");
+    //  jgen.writeEndObject();
+    //   if (!sentence.getAdditionalInformations().isEmpty()) {
+    jgen.writeObjectField("additional_information", sentence.getContent());
+    //   }
+    if (!sentence.getRandomWords().isEmpty()) {
+      jgen.writeFieldName("word_propositions");
       jgen.writeStartArray();
-      for (Entry<String, String> s : sentence.getContent().getRandomFrWords().entrySet()) {
+      for (Entry<Lang, List<String>> s : sentence.getRandomWords().entrySet()) {
         jgen.writeStartObject();
-        jgen.writeObjectField("key", s.getKey());
-        jgen.writeObjectField("value", s.getValue());
+        jgen.writeObjectField(s.getKey().getId(), s.getValue());
         jgen.writeEndObject();
       }
       jgen.writeEndArray();
     }
-    if (!sentence.getContent().getRandomArWords().isEmpty()) {
-      //ar
-      jgen.writeFieldName("word_propositions_ar");
-      jgen.writeStartArray();
-      for (Entry<String, String> s : sentence.getContent().getRandomArWords().entrySet()) {
-        jgen.writeStartObject();
-        jgen.writeObjectField("key", s.getKey());
-        jgen.writeObjectField("value", s.getValue());
-        jgen.writeEndObject();
-      }
-      jgen.writeEndArray();
-    }
-    //  }
     jgen.writeEndObject();
   }
 

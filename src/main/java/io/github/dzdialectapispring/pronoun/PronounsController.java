@@ -1,6 +1,6 @@
 package io.github.dzdialectapispring.pronoun;
 
-import io.github.dzdialectapispring.sentence.Sentence;
+import io.github.dzdialectapispring.sentence.SentenceDTO;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ public class PronounsController {
   private final PronounService pronounService;
 
   @GetMapping
-  public List<Sentence> getAllPronouns() {
+  public List<SentenceDTO> getAllPronouns() {
     return pronounService.getAllPronouns();
   }
 }

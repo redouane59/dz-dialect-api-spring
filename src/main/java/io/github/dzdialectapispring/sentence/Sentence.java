@@ -1,14 +1,17 @@
 package io.github.dzdialectapispring.sentence;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.concrets.Word;
+import io.github.dzdialectapispring.other.enumerations.Lang;
 import io.github.dzdialectapispring.other.enumerations.Subtense;
+import io.github.dzdialectapispring.pronoun.AbstractPronoun;
 import io.github.dzdialectapispring.verb.Verb;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,50 +23,36 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@JsonSerialize(using = SentenceSerializer.class)
+@Schema(name = "DifferentModel", description = "Sample model for the documentation")
 public class Sentence extends Word {
 
-  private SentenceContent content;
+  @JsonProperty("additional_information")
+  @Schema(name = "additional_information")
+  private SentenceContent         content;
+  @JsonProperty("word_propositions")
+  @JsonInclude(Include.NON_EMPTY)
+  @JsonSerialize(using = RandomWordsSerializer.class)
+  private Map<Lang, List<String>> randomWords = new HashMap<>();
 
   public Sentence(List<Translation> translations) {
     super(translations);
   }
 
-  // used for serialization
-  public JsonNode getAdditionalInformations() {
-    ObjectNode node = new ObjectMapper().createObjectNode();
-    if (content == null) {
-      return node;
-    }
-    if (this.content.getSubtense() != null) {
-      node.put("tense", this.content.getSubtense().getTense().getId());
-    }
-    if (this.content.getAbstractVerb() != null) {
-      node.put("verb", this.content.getAbstractVerb().getId());
-    }
-    if (this.content.getAbstractPronoun() != null) {
-      node.put("pronoun", this.content.getAbstractPronoun().getId());
-    }
-    return node;
-  }
-
   @Data
   @Builder
+  @JsonSerialize(using = SentenceContentSerializer.class)
   public static class SentenceContent {
 
-    private Verb                abstractVerb;
-    private AbstractWord        abstractPronoun;
-    private AbstractWord        abstractAdverb;
-    private AbstractWord        abstractQuestion;
-    //  private Adjective      abstractAdjective;
-    //  private Noun           abstractNoun;
-    private Subtense            subtense;
-    private SentenceSchema      sentenceSchema;
-    private boolean             negation;
-    @Builder.Default
-    private Map<String, String> randomFrWords = new HashMap<>();
-    @Builder.Default
-    private Map<String, String> randomArWords = new HashMap<>();
+    private Verb            abstractVerb;
+    private AbstractPronoun abstractPronoun;
+    private AbstractWord    abstractAdverb;
+    private AbstractWord    abstractQuestion;
+    private AbstractWord    abstractAdjective;
+    private AbstractWord    abstractNoun;
+    private Subtense        subtense;
+    private SentenceSchema  sentenceSchema;
+    private boolean         negation;
+
   }
 
 }

@@ -16,6 +16,7 @@ import io.github.dzdialectapispring.verb.Verb;
 import io.github.dzdialectapispring.verb.VerbService;
 import io.github.dzdialectapispring.verb.conjugation.Conjugation;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -47,9 +48,9 @@ public class SentenceBuilder {
     this.verbService    = verbService;
   }
 
-  public Optional<Sentence> generate(AbstractPronoun pronoun, Verb verb, Tense tense) {
+  public Optional<Sentence> generate(GeneratorParameters generatorParameters) {
     sentenceContent = SentenceContent.builder().build();
-    boolean resultOk = fillWordListFromSchema(pronoun, verb, tense);
+    boolean resultOk = fillWordListFromSchema(generatorParameters);
     if (!resultOk) {
       System.err.println("no sentence generated");
       return Optional.empty();
@@ -60,21 +61,27 @@ public class SentenceBuilder {
     Translation dzTranslation = generateArTranslation(Lang.DZ);
     sentence.getTranslations().add(frTranslation);
     // word_propositions part
-    sentenceContent.setRandomFrWords(SentenceBuilderHelper.splitSentenceInWords(frTranslation.getValue(), false));
-    sentenceContent.setRandomArWords(SentenceBuilderHelper.splitSentenceInWords(dzTranslation.getValue(), false));
-    // generating a second random sentence
+    sentence.getRandomWords().put(Lang.FR, SentenceBuilderHelper.splitSentenceInWords(frTranslation, false));
+    sentence.getRandomWords().put(Lang.DZ, SentenceBuilderHelper.splitSentenceInWords(dzTranslation, false));
     sentence.setContent(sentenceContent);
-    addRandomWordPropositions(sentence, pronoun, verb, tense);
+    // generating a second random sentence
+    addRandomWordPropositions(sentence, generatorParameters);
+    Collections.shuffle(sentence.getRandomWords().get(Lang.FR));
+    Collections.shuffle(sentence.getRandomWords().get(Lang.DZ));
     return Optional.of(sentence);
   }
 
-  private void addRandomWordPropositions(Sentence sentence, AbstractPronoun pronoun, Verb verb, Tense tense) {
-    fillWordListFromSchema(pronoun, verb, tense);
-    sentence.getContent().getRandomFrWords().putAll(SentenceBuilderHelper.splitSentenceInWords(generateFrTranslation().getValue(), true));
-    sentence.getContent().getRandomArWords().putAll(SentenceBuilderHelper.splitSentenceInWords(generateArTranslation(Lang.DZ).getValue(), true));
+  private void addRandomWordPropositions(Sentence sentence, GeneratorParameters generatorParameters) {
+    if (sentence.getContent().getAbstractPronoun() != null) {
+      PossessiveWord pronoun = (PossessiveWord) sentence.getContent().getAbstractPronoun().getValues().get(0);
+      generatorParameters.setAbstractPronoun(pronounService.getRandomAbstractPronoun(pronoun.getPossession()));
+    }
+    fillWordListFromSchema(generatorParameters);
+    sentence.getRandomWords().get(Lang.FR).addAll(SentenceBuilderHelper.splitSentenceInWords(generateFrTranslation(), true));
+    sentence.getRandomWords().get(Lang.DZ).addAll(SentenceBuilderHelper.splitSentenceInWords(generateArTranslation(Lang.DZ), true));
   }
 
-  private void resetAttributes() {
+  private void resetAttributes(GeneratorParameters generatorParameters) {
 /*
     nounSubject      = null;
     abstractQuestion = null;*/
@@ -84,25 +91,24 @@ public class SentenceBuilder {
     wordListAr      = new ArrayList<>();
     sentenceContent = SentenceContent.builder().build();
     sentenceContent.setSentenceSchema(schema);
-    sentenceContent.setNegation(true);
-/*    if (schema.isPossibleNegation()) {
-      if (bodyArgs.isPossibleNegation() && bodyArgs.isPossibleAffirmation()) {
+    if (schema.isPossibleNegation()) {
+      if (generatorParameters.isExcludeNegative() == generatorParameters.isExcludePositive()) {
         sentenceContent.setNegation(RANDOM.nextBoolean());
-      } else if (bodyArgs.isPossibleNegation()) {
-        sentenceContent.setNegation(true);
+      } else {
+        sentenceContent.setNegation(generatorParameters.isExcludePositive());
       }
-    }*/
+    }
   }
 
   // @todo split FR & DZ
-  private boolean fillWordListFromSchema(AbstractPronoun pronoun, Verb verb, Tense tense) {
-    resetAttributes();
+  private boolean fillWordListFromSchema(GeneratorParameters generatorParameters) {
+    resetAttributes(generatorParameters);
     for (int index = 0; index < schema.getFrSequence().size(); index++) {
       WordType wordType = schema.getFrSequence().get(index);
       boolean  success;
       switch (wordType) {
         case PRONOUN:
-          buildPronoun(index, pronoun);
+          buildPronoun(index, generatorParameters.getAbstractPronoun());
           break;
         case NOUN:
           success = buildNoun(index);
@@ -111,7 +117,7 @@ public class SentenceBuilder {
           }
           break;
         case VERB:
-          success = buildVerb(index, verb, tense);
+          success = buildVerb(index, generatorParameters.getAbstractVerb(), generatorParameters.getTense());
           if (!success) {
             return false;
           }

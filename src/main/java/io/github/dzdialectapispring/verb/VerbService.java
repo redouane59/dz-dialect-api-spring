@@ -7,9 +7,11 @@ import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.enumerations.Lang;
 import io.github.dzdialectapispring.other.enumerations.Tense;
+import io.github.dzdialectapispring.pronoun.AbstractPronoun;
 import io.github.dzdialectapispring.pronoun.PronounService;
 import io.github.dzdialectapispring.sentence.Sentence;
 import io.github.dzdialectapispring.sentence.Sentence.SentenceContent;
+import io.github.dzdialectapispring.sentence.SentenceDTO;
 import io.github.dzdialectapispring.sentence.SentenceSchema;
 import io.github.dzdialectapispring.verb.conjugation.Conjugation;
 import java.util.ArrayList;
@@ -55,7 +57,7 @@ public class VerbService {
     return new HashSet<>(verbRepository.findAll());
   }
 
-  public List<Sentence> getVerbConjugationsById(final String verbId, String tenseId) {
+  public List<SentenceDTO> getVerbConjugationsById(final String verbId, String tenseId) {
     Optional<Verb> verbOptional = verbRepository.findById(verbId);
     if (verbOptional.isEmpty()) {
       throw new IllegalArgumentException("No verb found with id " + verbId);
@@ -68,15 +70,30 @@ public class VerbService {
       }
       conjugations = conjugations.stream().filter(c -> c.getSubtense().getTense() == tenseOptional.get()).collect(Collectors.toList());
     }
-    List<Sentence> result = new ArrayList();
+    List<SentenceDTO> result = new ArrayList();
     for (Conjugation conjugation : conjugations) {
-      PossessiveWord pronoun   = pronounService.getPronoun(conjugation.getGender(), conjugation.isSingular(), conjugation.getPossession());
-      String         frValue   = pronoun.getFrTranslation() + " " + conjugation.getFrTranslation();
-      String         dzValue   = pronoun.getDzTranslation() + " " + conjugation.getDzTranslation();
-      String         dzValueAr = pronoun.getDzTranslationAr() + " " + conjugation.getDzTranslationAr();
-      Sentence       sentence  = new Sentence(List.of(new Translation(Lang.FR, frValue), new Translation(Lang.DZ, dzValue, dzValueAr)));
-      sentence.setContent(SentenceContent.builder().subtense(conjugation.getSubtense()).abstractVerb(verbOptional.get()).build());
-      result.add(sentence);
+      AbstractPronoun
+          abstractPronoun =
+          pronounService.getAbstractPronoun(conjugation.getGender(), conjugation.isSingular(), conjugation.getPossession());
+      PossessiveWord pronoun   = (PossessiveWord) abstractPronoun.getValues().get(0);
+      String         frValue   = "";
+      String         dzValue   = "";
+      String         dzValueAr = "";
+      if (conjugation.getSubtense().getTense() != Tense.IMPERATIVE) {
+        frValue += pronoun.getFrTranslation() + " ";
+        dzValue += pronoun.getDzTranslation() + " ";
+        dzValueAr += pronoun.getDzTranslationAr() + " ";
+      }
+      frValue += conjugation.getFrTranslation();
+      dzValue += conjugation.getDzTranslation();
+      dzValueAr += conjugation.getDzTranslationAr();
+      Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, frValue), new Translation(Lang.DZ, dzValue, dzValueAr)));
+      sentence.setContent(SentenceContent.builder()
+                                         .subtense(conjugation.getSubtense())
+                                         .abstractPronoun(abstractPronoun)
+                                         .abstractVerb(verbOptional.get())
+                                         .build());
+      result.add(new SentenceDTO(sentence));
     }
     return result;
   }

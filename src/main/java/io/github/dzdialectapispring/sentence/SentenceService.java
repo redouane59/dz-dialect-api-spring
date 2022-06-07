@@ -29,7 +29,16 @@ public class SentenceService {
     this.sentenceRepository = sentenceRepository;
   }
 
-  public List<Sentence> generateRandomSentences(Integer count, String pronounId, String verbId, String tenseId) {
+  public List<SentenceDTO> generateRandomSentences(Integer count,
+                                                   String pronounId,
+                                                   String verbId,
+                                                   String tenseId,
+                                                   String nounId,
+                                                   String adjectiveId,
+                                                   String questionId,
+                                                   String adverbId,
+                                                   boolean positive,
+                                                   boolean negative) {
     if (count == null) {
       count = 1;
     } else if (count <= 0) {
@@ -37,6 +46,23 @@ public class SentenceService {
     } else if (count > 30) {
       throw new IllegalArgumentException("count argument should be less than 30");
     }
+
+    GeneratorParameters
+        generatorParameters =
+        buildParameters(pronounId, verbId, tenseId, nounId, adjectiveId, questionId, adverbId, positive, negative);
+    List<SentenceDTO> result = new ArrayList<>();
+    for (int i = 0; i < count; i++) {
+      result.add(new SentenceDTO(generateRandomSentence(generatorParameters)));
+    }
+    return result;
+  }
+
+  public GeneratorParameters buildParameters(String pronounId, String verbId, String tenseId, String nounId,
+                                             String adjectiveId,
+                                             String questionId,
+                                             String adverbId,
+                                             boolean excludePositive,
+                                             boolean excludeNegative) {
     Verb verb = null;
     if (verbId != null) {
       Optional<Verb> verbOptional = verbService.getVerbRepository().findById(verbId);
@@ -64,32 +90,33 @@ public class SentenceService {
         tense = tenseOptional.get();
       }
     }
-    System.out.println("generating " + count + " random sentences");
-    List<Sentence> result = new ArrayList<>();
-    for (int i = 0; i < count; i++) {
-      result.add(generateRandomSentence(pronoun, verb, tense));
-    }
-    return result;
+    return GeneratorParameters.builder()
+                              .abstractPronoun(pronoun)
+                              .abstractVerb(verb)
+                              .tense(tense)
+                              .excludePositive(excludePositive)
+                              .excludeNegative(excludeNegative)
+                              .build();
   }
 
   // @todo to implement
-  public Sentence generateRandomSentence(AbstractPronoun pronoun, Verb verb, Tense tense) {
+  public Sentence generateRandomSentence(GeneratorParameters generatorParameters) {
     SentenceSchema sentenceSchema = null;
     try {
       sentenceSchema  = OBJECT_MAPPER.readValue(new File("./src/main/resources/static/sentence_schemas/pv_sentence.json"), SentenceSchema.class);
       sentenceBuilder = new SentenceBuilder(sentenceSchema, pronounService, verbService);
-      return sentenceBuilder.generate(pronoun, verb, tense).get();
+      return sentenceBuilder.generate(generatorParameters).get();
     } catch (IOException e) {
       e.printStackTrace();
     }
     return null;
   }
 
-  public Sentence getSentenceById(final String id) {
+  public SentenceDTO getSentenceById(final String id) {
     Optional<Sentence> sentenceOpt = sentenceRepository.findById(id);
     if (sentenceOpt.isEmpty()) {
       throw new IllegalArgumentException("No sentence found with id " + id);
     }
-    return sentenceRepository.findById(id).get();
+    return new SentenceDTO(sentenceOpt.get());
   }
 }

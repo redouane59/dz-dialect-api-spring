@@ -2,14 +2,14 @@ package io.github.dzdialectapispring.pronoun;
 
 import static io.github.dzdialectapispring.other.Config.RANDOM;
 
-import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.Possession;
 import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
-import io.github.dzdialectapispring.other.concrets.Word;
 import io.github.dzdialectapispring.other.enumerations.Gender;
 import io.github.dzdialectapispring.other.enumerations.Lang;
 import io.github.dzdialectapispring.sentence.Sentence;
+import io.github.dzdialectapispring.sentence.Sentence.SentenceContent;
+import io.github.dzdialectapispring.sentence.SentenceDTO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +25,23 @@ public class PronounService {
 
   private final PronounRepository pronounRepository;
 
+  public AbstractPronoun getAbstractPronoun(final Gender gender, final boolean isSingular, final Possession possession) {
+    Optional<AbstractPronoun> abstractPronounOptional = pronounRepository.findAll().stream()
+                                                                         .filter(p -> ((PossessiveWord) p.getValues().get(0)).getPossession()
+                                                                                      == possession)
+                                                                         .filter(p -> ((PossessiveWord) p.getValues().get(0)).isSingular()
+                                                                                      == isSingular)
+                                                                         .filter(p -> ((PossessiveWord) p.getValues().get(0)).getGender() == gender
+                                                                                      || ((PossessiveWord) p.getValues().get(0)).getGender()
+                                                                                         == Gender.X
+                                                                                      || gender == Gender.X)
+                                                                         .findFirst();
+    if (abstractPronounOptional.isEmpty()) {
+      throw new IllegalStateException("no abstract pronoun found");
+    }
+    return abstractPronounOptional.get();
+  }
+
   public PossessiveWord getPronoun(final Gender gender, final boolean isSingular, final Possession possession) {
     Optional<PossessiveWord> result = pronounRepository.findAll().stream()
                                                        .map(o -> o.getValues().get(0))//@todo dirty ?
@@ -37,18 +54,21 @@ public class PronounService {
       throw new IllegalStateException("no pronoun found");
     }
     return result.get();
-
   }
 
-  public List<Sentence> getAllPronouns() {
-    List<? super Word> values = pronounRepository.findAll().stream().map(AbstractWord::getValues).collect(Collectors.toList());
-    List<Sentence>     result = new ArrayList<>();
-    for (Object word : values) {
-      PossessiveWord possessiveWord = (PossessiveWord) ((ArrayList) word).get(0);
-      Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, possessiveWord.getFrTranslation()),
-                                               new Translation(Lang.DZ, possessiveWord.getDzTranslation(), possessiveWord.getDzTranslationAr())));
-      result.add(sentence);
+  public List<SentenceDTO> getAllPronouns() {
+    List<AbstractPronoun> abtractPronouns = pronounRepository.findAll();
+    List<SentenceDTO>     result          = new ArrayList<>();
+    for (AbstractPronoun abstractPronoun : abtractPronouns) {
+      for (Object word : abstractPronoun.getValues()) {
+        PossessiveWord possessiveWord = (PossessiveWord) word;
+        Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, possessiveWord.getFrTranslation()),
+                                                 new Translation(Lang.DZ, possessiveWord.getDzTranslation(), possessiveWord.getDzTranslationAr())));
+        sentence.setContent(SentenceContent.builder().abstractPronoun(abstractPronoun).build());
+        result.add(new SentenceDTO(sentence));
+      }
     }
+
     return result;
   }
 
@@ -56,6 +76,13 @@ public class PronounService {
     List<AbstractPronoun> pronouns        = pronounRepository.findAll();
     AbstractPronoun       abstractPronoun = pronouns.stream().skip(RANDOM.nextInt(pronouns.size())).findFirst().get();
     return (PossessiveWord) abstractPronoun.getValues().get(0);
+  }
+
+  public AbstractPronoun getRandomAbstractPronoun(Possession possession) {
+    List<AbstractPronoun> pronouns = pronounRepository.findAll().stream()
+                                                      .filter(p -> ((PossessiveWord) p.getValues().get(0)).getPossession() == possession)
+                                                      .collect(Collectors.toList());
+    return pronouns.stream().skip(RANDOM.nextInt(pronouns.size())).findFirst().get();
   }
 
   public AbstractPronoun getRandomAbstractPronoun() {

@@ -1,6 +1,6 @@
 package io.github.dzdialectapispring.verb;
 
-import io.github.dzdialectapispring.sentence.Sentence;
+import io.github.dzdialectapispring.sentence.SentenceDTO;
 import java.util.List;
 import java.util.Set;
 import lombok.AllArgsConstructor;
@@ -28,7 +28,7 @@ public class VerbController {
   }
 
   @GetMapping("/{id}/values")
-  public List<Sentence> getVerbById(@PathVariable String id, @RequestParam(required = false, name = "tense") String tenseId) {
+  public List<SentenceDTO> getVerbById(@PathVariable String id, @RequestParam(required = false, name = "tense") String tenseId) {
     return verbService.getVerbConjugationsById(id, tenseId);
   }
 
