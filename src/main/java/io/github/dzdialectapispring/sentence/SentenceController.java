@@ -40,7 +40,7 @@ public class SentenceController {
   }
 
   @GetMapping("/{id}")
-  public Sentence getSentenceById(@PathVariable String id) {
+  public SentenceDTO getSentenceById(@PathVariable String id) {
     return sentenceService.getSentenceById(id);
   }
 

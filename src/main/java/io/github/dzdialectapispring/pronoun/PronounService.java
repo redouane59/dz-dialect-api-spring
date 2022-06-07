@@ -9,6 +9,7 @@ import io.github.dzdialectapispring.other.enumerations.Gender;
 import io.github.dzdialectapispring.other.enumerations.Lang;
 import io.github.dzdialectapispring.sentence.Sentence;
 import io.github.dzdialectapispring.sentence.Sentence.SentenceContent;
+import io.github.dzdialectapispring.sentence.SentenceDTO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -55,16 +56,16 @@ public class PronounService {
     return result.get();
   }
 
-  public List<Sentence> getAllPronouns() {
+  public List<SentenceDTO> getAllPronouns() {
     List<AbstractPronoun> abtractPronouns = pronounRepository.findAll();
-    List<Sentence>        result          = new ArrayList<>();
+    List<SentenceDTO>     result          = new ArrayList<>();
     for (AbstractPronoun abstractPronoun : abtractPronouns) {
       for (Object word : abstractPronoun.getValues()) {
         PossessiveWord possessiveWord = (PossessiveWord) word;
         Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, possessiveWord.getFrTranslation()),
                                                  new Translation(Lang.DZ, possessiveWord.getDzTranslation(), possessiveWord.getDzTranslationAr())));
         sentence.setContent(SentenceContent.builder().abstractPronoun(abstractPronoun).build());
-        result.add(sentence);
+        result.add(new SentenceDTO(sentence));
       }
     }
 

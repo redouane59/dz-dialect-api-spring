@@ -112,11 +112,11 @@ public class SentenceService {
     return null;
   }
 
-  public Sentence getSentenceById(final String id) {
+  public SentenceDTO getSentenceById(final String id) {
     Optional<Sentence> sentenceOpt = sentenceRepository.findById(id);
     if (sentenceOpt.isEmpty()) {
       throw new IllegalArgumentException("No sentence found with id " + id);
     }
-    return sentenceRepository.findById(id).get();
+    return new SentenceDTO(sentenceOpt.get());
   }
 }

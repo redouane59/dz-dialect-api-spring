@@ -11,6 +11,7 @@ import io.github.dzdialectapispring.pronoun.AbstractPronoun;
 import io.github.dzdialectapispring.pronoun.PronounService;
 import io.github.dzdialectapispring.sentence.Sentence;
 import io.github.dzdialectapispring.sentence.Sentence.SentenceContent;
+import io.github.dzdialectapispring.sentence.SentenceDTO;
 import io.github.dzdialectapispring.sentence.SentenceSchema;
 import io.github.dzdialectapispring.verb.conjugation.Conjugation;
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class VerbService {
     return new HashSet<>(verbRepository.findAll());
   }
 
-  public List<Sentence> getVerbConjugationsById(final String verbId, String tenseId) {
+  public List<SentenceDTO> getVerbConjugationsById(final String verbId, String tenseId) {
     Optional<Verb> verbOptional = verbRepository.findById(verbId);
     if (verbOptional.isEmpty()) {
       throw new IllegalArgumentException("No verb found with id " + verbId);
@@ -69,7 +70,7 @@ public class VerbService {
       }
       conjugations = conjugations.stream().filter(c -> c.getSubtense().getTense() == tenseOptional.get()).collect(Collectors.toList());
     }
-    List<Sentence> result = new ArrayList();
+    List<SentenceDTO> result = new ArrayList();
     for (Conjugation conjugation : conjugations) {
       AbstractPronoun
           abstractPronoun =
@@ -92,7 +93,7 @@ public class VerbService {
                                          .abstractPronoun(abstractPronoun)
                                          .abstractVerb(verbOptional.get())
                                          .build());
-      result.add(sentence);
+      result.add(new SentenceDTO(sentence));
     }
     return result;
   }
