@@ -1,11 +1,17 @@
 package io.github.dzdialectapispring.sentence;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.dzdialectapispring.other.enumerations.Lang;
 import io.github.dzdialectapispring.sentence.Sentence.SentenceContent;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Getter
 public class SentenceDTO {
 
   @JsonProperty("dz")
@@ -17,6 +23,7 @@ public class SentenceDTO {
   @JsonProperty("additionnal_information")
   private final SentenceContentDTO  sentenceContent;
   @JsonProperty("word_propositions")
+  @JsonInclude(value = JsonInclude.Include.CUSTOM, valueFilter = WordPropositionsDTO.class)
   private final WordPropositionsDTO wordPropositions;
 
   public SentenceDTO(Sentence sentence) {
@@ -27,40 +34,68 @@ public class SentenceDTO {
     wordPropositions     = new WordPropositionsDTO(sentence.getRandomWords());
   }
 
+  @NoArgsConstructor
+  @Getter
   public static class WordPropositionsDTO {
 
     @JsonProperty("dz")
-    private final List<String> dz;
+    @JsonInclude(Include.NON_EMPTY)
+    private List<String> dz   = new ArrayList<>();
     @JsonProperty("dz_ar")
-    private final List<String> dzAr;
+    @JsonInclude(Include.NON_EMPTY)
+    private List<String> dzAr = new ArrayList<>();
     @JsonProperty("fr")
-    private final List<String> fr;
+    @JsonInclude(Include.NON_EMPTY)
+    private List<String> fr   = new ArrayList<>();
 
     public WordPropositionsDTO(final Map<Lang, List<String>> randomWords) {
       this.dz   = randomWords.get("dz");
       this.dzAr = randomWords.get("dz_Ar");
       this.fr   = randomWords.get("fr");
     }
+
+    // to manage empty serialization
+    @Override
+    public boolean equals(Object other) {
+      if (!(other instanceof WordPropositionsDTO)) {
+        return false;
+      }
+      WordPropositionsDTO prop2 = (WordPropositionsDTO) other;
+      for (String s : this.dz) {
+        if (!prop2.getDz().contains(s)) {
+          return false;
+        }
+      }
+      return true;
+    }
   }
 
   public static class SentenceContentDTO {
 
     @JsonProperty("verb")
+    @JsonInclude(Include.NON_NULL)
     private final String  abstractVerb;
     @JsonProperty("adverb")
+    @JsonInclude(Include.NON_NULL)
     private final String  abstractAdverb;
     @JsonProperty("question")
+    @JsonInclude(Include.NON_NULL)
     private final String  abstractQuestion;
     @JsonProperty("adjective")
+    @JsonInclude(Include.NON_NULL)
     private final String  abstractAdjective;
     @JsonProperty("noun")
+    @JsonInclude(Include.NON_NULL)
     private final String  abstractNoun;
     @JsonProperty("tense")
+    @JsonInclude(Include.NON_NULL)
     private final String  subtense;
     @JsonProperty("schema")
+    @JsonInclude(Include.NON_NULL)
     private final String  sentenceSchema;
     private final boolean negation;
     @JsonProperty("pronoun")
+    @JsonInclude(Include.NON_NULL)
     private final String  abstractPronoun;
 
     public SentenceContentDTO(final SentenceContent content) {

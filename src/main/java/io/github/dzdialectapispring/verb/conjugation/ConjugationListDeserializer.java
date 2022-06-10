@@ -36,21 +36,22 @@ public class ConjugationListDeserializer extends JsonDeserializer {
           boolean singular = node.get("singular").asBoolean();
           if (node.has("possession")) {
             Possession possession = Possession.valueOf(node.get("possession").asText());
+            int        index      = 0;
+            if (node.has("index")) {
+              index = node.get("index").asInt();
+            }
             if (node.has("tense")) {
               Subtense tense = Subtense.valueOf(node.get("tense").asText());
-              int      index = -1;
-              if (node.has("index")) {
-                index = node.get("index").asInt();
-              }
+
               result.add(new Conjugation(translations, gender, singular, possession, tense, index));
             } else {
-              result.add(new PossessiveWord(translations, gender, singular, possession));
+              result.add(new PossessiveWord(translations, gender, singular, possession, index));
             }
           } else {
-            result.add(new GenderedWord(translations, gender, singular));
+            result.add(new GenderedWord(translations, gender, singular, 0));
           }
         } else {
-          result.add(new Word(translations));
+          result.add(new Word(translations, 0));
         }
       }
     }

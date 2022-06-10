@@ -73,7 +73,7 @@ public class SentenceBuilder {
 
   private void addRandomWordPropositions(Sentence sentence, GeneratorParameters generatorParameters) {
     if (sentence.getContent().getAbstractPronoun() != null) {
-      PossessiveWord pronoun = (PossessiveWord) sentence.getContent().getAbstractPronoun().getValues().get(0);
+      PossessiveWord pronoun = sentence.getContent().getAbstractPronoun().getValues().get(0);
       generatorParameters.setAbstractPronoun(pronounService.getRandomAbstractPronoun(pronoun.getPossession()));
     }
     fillWordListFromSchema(generatorParameters);
@@ -143,7 +143,7 @@ public class SentenceBuilder {
     if (abstractPronoun == null) {
       abstractPronoun = pronounService.getRandomAbstractPronoun();
     }
-    PossessiveWord pronoun = (PossessiveWord) abstractPronoun.getValues().get(0);
+    PossessiveWord pronoun = abstractPronoun.getValues().get(0);
     sentenceContent.setAbstractPronoun(abstractPronoun);
     wordListFr.add(new WordTypeWordTuple(WordType.PRONOUN, pronoun, index));
     wordListAr.add(new WordTypeWordTuple(WordType.PRONOUN, pronoun, index));
@@ -200,14 +200,14 @@ public class SentenceBuilder {
       if (!schema.getTenses().isEmpty() && schema.getTenses().contains(Tense.IMPERATIVE)) {
         subtense = Subtense.IMPERATIVE;
       } else {
-        Set<Subtense> availableTenses = abstractVerb.getValues().stream().map(o -> (Conjugation) o).map(Conjugation::getSubtense)
+        Set<Subtense> availableTenses = abstractVerb.getValues().stream().map(o -> o).map(Conjugation::getSubtense)
                                                     .filter(t -> schema.getTenses().contains(t.getTense()))
                                                     .filter(t -> t != Subtense.IMPERATIVE)
                                                     .collect(Collectors.toSet());
         subtense = availableTenses.stream().skip(RANDOM.nextInt(availableTenses.size())).findFirst().get();
       }
     } else {
-      subtense = abstractVerb.getValues().stream().map(o -> (Conjugation) o).map(Conjugation::getSubtense)
+      subtense = abstractVerb.getValues().stream().map(o -> o).map(Conjugation::getSubtense)
                              .filter(t -> t.getTense() == tense).findFirst().get();
     }
 

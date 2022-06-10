@@ -15,8 +15,8 @@ public class PossessiveWord extends GenderedWord {
 
   private Possession possession;
 
-  public PossessiveWord(List<Translation> translation, Gender gender, boolean singular, Possession possession) {
-    super(translation, gender, singular);
+  public PossessiveWord(List<Translation> translation, Gender gender, boolean singular, Possession possession, int index) {
+    super(translation, gender, singular, index);
     this.possession = possession;
   }
 

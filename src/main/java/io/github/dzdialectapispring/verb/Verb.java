@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.Possession;
 import io.github.dzdialectapispring.other.concrets.PossessiveWord;
@@ -12,6 +13,9 @@ import io.github.dzdialectapispring.other.enumerations.Lang;
 import io.github.dzdialectapispring.other.enumerations.Subtense;
 import io.github.dzdialectapispring.other.enumerations.Tense;
 import io.github.dzdialectapispring.verb.conjugation.Conjugation;
+import io.github.dzdialectapispring.verb.conjugation.ConjugationListDeserializer;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +28,10 @@ import lombok.Setter;
 // @todo reflexive verbs (ça me plaît, il me faut, etc.)
 public class Verb extends AbstractWord {
 
+  @JsonInclude(Include.NON_EMPTY)
+  @JsonDeserialize(using = ConjugationListDeserializer.class)
+  private final List<Conjugation> values = new ArrayList<>();
+
   @JsonIgnore
   @JsonProperty("verb_type")
   private VerbType verbType;
@@ -32,7 +40,7 @@ public class Verb extends AbstractWord {
                                                                                 boolean isSingular,
                                                                                 Possession possession,
                                                                                 Tense tense) {
-    return getValues().stream().map(o -> (Conjugation) o)
+    return getValues().stream()
                       .filter(o -> o.getSubtense().getTense() == tense)
                       .filter(o -> o.isSingular() == isSingular)
                       .filter(o -> o.getPossession() == possession)

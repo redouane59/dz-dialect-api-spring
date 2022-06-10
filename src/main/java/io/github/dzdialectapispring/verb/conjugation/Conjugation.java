@@ -20,12 +20,10 @@ import lombok.Setter;
 public class Conjugation extends PossessiveWord {
 
   private Subtense subtense;
-  private int      index;
 
   public Conjugation(List<Translation> translations, Gender gender, boolean singular, Possession possession, Subtense subtense, int index) {
-    super(translations, gender, singular, possession);
+    super(translations, gender, singular, possession, index);
     this.subtense = subtense;
-    this.index    = index;
   }
 
 }

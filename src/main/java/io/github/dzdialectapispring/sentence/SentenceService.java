@@ -12,22 +12,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SentenceService {
 
-  private final SentenceRepository sentenceRepository;
-  private       SentenceBuilder    sentenceBuilder;
+  private SentenceBuilder sentenceBuilder;
   @Autowired
-  private       VerbService        verbService;
+  private VerbService     verbService;
   @Autowired
-  private       PronounService     pronounService;
-
-  public SentenceService(SentenceRepository sentenceRepository) {
-    this.sentenceRepository = sentenceRepository;
-  }
+  private PronounService  pronounService;
 
   public List<SentenceDTO> generateRandomSentences(Integer count,
                                                    String pronounId,
@@ -38,7 +34,7 @@ public class SentenceService {
                                                    String questionId,
                                                    String adverbId,
                                                    boolean positive,
-                                                   boolean negative) {
+                                                   boolean negative) throws ExecutionException, InterruptedException {
     if (count == null) {
       count = 1;
     } else if (count <= 0) {
@@ -62,24 +58,14 @@ public class SentenceService {
                                              String questionId,
                                              String adverbId,
                                              boolean excludePositive,
-                                             boolean excludeNegative) {
+                                             boolean excludeNegative) throws ExecutionException, InterruptedException {
     Verb verb = null;
     if (verbId != null) {
-      Optional<Verb> verbOptional = verbService.getVerbRepository().findById(verbId);
-      if (verbOptional.isEmpty()) {
-        throw new IllegalStateException("no verb found with id " + verbId);
-      } else {
-        verb = verbOptional.get();
-      }
+      verb = verbService.getVerbById(verbId);
     }
     AbstractPronoun pronoun = null;
     if (pronounId != null) {
-      Optional<AbstractPronoun> pronounOptional = pronounService.getPronounRepository().findById(pronounId);
-      if (pronounOptional.isEmpty()) {
-        throw new IllegalStateException("no pronoun found with id " + pronounId);
-      } else {
-        pronoun = pronounOptional.get();
-      }
+      pronoun = pronounService.getPronounById(pronounId);
     }
     Tense tense = null;
     if (tenseId != null) {
@@ -113,10 +99,12 @@ public class SentenceService {
   }
 
   public SentenceDTO getSentenceById(final String id) {
-    Optional<Sentence> sentenceOpt = sentenceRepository.findById(id);
+    return null;
+  }
+/*    Optional<Sentence> sentenceOpt = sentenceRepository.findById(id);
     if (sentenceOpt.isEmpty()) {
       throw new IllegalArgumentException("No sentence found with id " + id);
     }
     return new SentenceDTO(sentenceOpt.get());
-  }
+  }*/
 }

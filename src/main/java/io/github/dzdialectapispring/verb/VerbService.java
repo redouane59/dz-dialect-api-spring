@@ -2,6 +2,15 @@ package io.github.dzdialectapispring.verb;
 
 import static io.github.dzdialectapispring.other.Config.RANDOM;
 
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.CollectionReference;
+import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.DocumentSnapshot;
+import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.QueryDocumentSnapshot;
+import com.google.cloud.firestore.QuerySnapshot;
+import com.google.firebase.cloud.FirestoreClient;
+import io.github.dzdialectapispring.other.Config;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
@@ -16,10 +25,10 @@ import io.github.dzdialectapispring.sentence.SentenceSchema;
 import io.github.dzdialectapispring.verb.conjugation.Conjugation;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,38 +40,42 @@ import org.springframework.stereotype.Service;
 @Data
 public class VerbService {
 
-  private final VerbRepository verbRepository;
+  private final String              path                = "verbs";
+  private final CollectionReference collectionReference = FirestoreClient.getFirestore().collection(path);
 
   @Autowired
   private PronounService pronounService;
 
-  public Set<String> getAllVerbIds() {
-    return verbRepository.findAll().stream().map(AbstractWord::getId).collect(Collectors.toSet());
+  public Set<String> getAllVerbIds() throws ExecutionException, InterruptedException {
+    QuerySnapshot               query            = collectionReference.get().get();
+    List<QueryDocumentSnapshot> documentSnapshot = query.getDocuments();
+    return documentSnapshot.stream().map(d -> d.toObject(Verb.class)).map(AbstractWord::getId).collect(Collectors.toSet());
   }
 
-  public Set<String> getAvailableTenses(String verbId) {
-    Optional<Verb> verbOptional = verbRepository.findById(verbId);
-    if (verbOptional.isEmpty()) {
-      throw new IllegalArgumentException("No verb found with id " + verbId);
-    }
-    return verbOptional.get()
-                       .getValues()
-                       .stream()
-                       .map(v -> (Conjugation) v)
-                       .map(c -> c.getSubtense().getTense().getId())
-                       .collect(Collectors.toSet());
+  public Set<String> getAvailableTenses(String verbId) throws ExecutionException, InterruptedException {
+    Verb verb = getVerbById(verbId);
+    return verb
+        .getValues()
+        .stream()
+        .map(c -> c.getSubtense().getTense().getId())
+        .collect(Collectors.toSet());
   }
 
   public Set<Verb> getAllVerbs() {
-    return new HashSet<>(verbRepository.findAll());
+    QuerySnapshot query = null;
+    try {
+      query = collectionReference.get().get();
+    } catch (Exception e) {
+      e.printStackTrace();
+      return Set.of();
+    }
+    List<QueryDocumentSnapshot> documentSnapshot = query.getDocuments();
+    return documentSnapshot.stream().map(d -> d.toObject(Verb.class)).collect(Collectors.toSet());
   }
 
-  public List<SentenceDTO> getVerbConjugationsById(final String verbId, String tenseId) {
-    Optional<Verb> verbOptional = verbRepository.findById(verbId);
-    if (verbOptional.isEmpty()) {
-      throw new IllegalArgumentException("No verb found with id " + verbId);
-    }
-    List<Conjugation> conjugations = verbOptional.get().getValues().stream().map(v -> (Conjugation) v).collect(Collectors.toList());
+  public List<SentenceDTO> getVerbConjugationsById(final String verbId, String tenseId) throws ExecutionException, InterruptedException {
+    Verb              verb         = getVerbById(verbId);
+    List<Conjugation> conjugations = verb.getValues();
     if (tenseId != null) {
       Optional<Tense> tenseOptional = Arrays.stream(Tense.values()).filter(t -> t.getId().equals(tenseId)).findFirst();
       if (tenseOptional.isEmpty()) {
@@ -75,7 +88,7 @@ public class VerbService {
       AbstractPronoun
           abstractPronoun =
           pronounService.getAbstractPronoun(conjugation.getGender(), conjugation.isSingular(), conjugation.getPossession());
-      PossessiveWord pronoun   = (PossessiveWord) abstractPronoun.getValues().get(0);
+      PossessiveWord pronoun   = abstractPronoun.getValues().get(0);
       String         frValue   = "";
       String         dzValue   = "";
       String         dzValueAr = "";
@@ -91,7 +104,7 @@ public class VerbService {
       sentence.setContent(SentenceContent.builder()
                                          .subtense(conjugation.getSubtense())
                                          .abstractPronoun(abstractPronoun)
-                                         .abstractVerb(verbOptional.get())
+                                         .abstractVerb(verb)
                                          .build());
       result.add(new SentenceDTO(sentence));
     }
@@ -104,7 +117,6 @@ public class VerbService {
       verbs = verbs.stream()
                    .filter(v -> v.getValues()
                                  .stream()
-                                 .map(o -> (Conjugation) o)
                                  .map(Conjugation::getSubtense)
                                  .anyMatch(c -> schema.getTenses().contains(c.getTense()))).collect(
               Collectors.toSet());
@@ -147,8 +159,26 @@ public class VerbService {
       return Optional.empty();
     }
     return verbs.stream().skip(RANDOM.nextInt(verbs.size())).findFirst();
-
   }
 
+  public void insert(final Verb verb) throws ExecutionException, InterruptedException {
+    Firestore           dbFirestore = FirestoreClient.getFirestore();
+    CollectionReference ref         = dbFirestore.collection(path);
+    if (!ref.document(verb.getId()).get().get().exists() || Config.FORCE_OVERRIDE) {
+      System.out.println("inserting verb " + verb.getId() + "...");
+      dbFirestore.collection(path).document(verb.getId()).set(verb);
+    }
+  }
 
+  public Verb getVerbById(final String verbId) throws ExecutionException, InterruptedException {
+    DocumentReference           documentReference = collectionReference.document(verbId);
+    ApiFuture<DocumentSnapshot> future            = documentReference.get();
+    DocumentSnapshot            documentSnapshot  = future.get();
+    Verb                        verb;
+    if (documentSnapshot.exists()) {
+      verb = documentSnapshot.toObject(Verb.class);
+      return verb;
+    }
+    return null;
+  }
 }

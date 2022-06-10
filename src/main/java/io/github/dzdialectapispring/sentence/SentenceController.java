@@ -1,9 +1,9 @@
 package io.github.dzdialectapispring.sentence;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +26,7 @@ public class SentenceController {
                                                   @RequestParam(required = false, name = "adverb") String adverb,
                                                   @RequestParam(required = false, name = "exclude_positive") boolean excludePositive,
                                                   @RequestParam(required = false, name = "exclude_negative") boolean excludeNegative
-  ) {
+  ) throws ExecutionException, InterruptedException {
     return sentenceService.generateRandomSentences(count,
                                                    pronounId,
                                                    verbId,
@@ -39,9 +39,9 @@ public class SentenceController {
                                                    excludeNegative);
   }
 
-  @GetMapping("/{id}")
+/*  @GetMapping("/{id}")
   public SentenceDTO getSentenceById(@PathVariable String id) {
     return sentenceService.getSentenceById(id);
-  }
+  }*/
 
 }

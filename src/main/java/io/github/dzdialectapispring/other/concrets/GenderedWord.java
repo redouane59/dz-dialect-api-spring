@@ -17,8 +17,8 @@ public class GenderedWord extends Word {
   private Gender  gender; // to split between pronouns and noun which can change depending on the lang
   private boolean singular;
 
-  public GenderedWord(List<Translation> translations, Gender gender, boolean singular) {
-    super(translations);
+  public GenderedWord(List<Translation> translations, Gender gender, boolean singular, int index) {
+    super(translations, index);
     this.gender   = gender;
     this.singular = singular;
   }

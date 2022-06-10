@@ -3,7 +3,6 @@ package io.github.dzdialectapispring.sentence;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.concrets.Word;
@@ -23,7 +22,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Schema(name = "DifferentModel", description = "Sample model for the documentation")
 public class Sentence extends Word {
 
   @JsonProperty("additional_information")
@@ -31,7 +29,6 @@ public class Sentence extends Word {
   private SentenceContent         content;
   @JsonProperty("word_propositions")
   @JsonInclude(Include.NON_EMPTY)
-  @JsonSerialize(using = RandomWordsSerializer.class)
   private Map<Lang, List<String>> randomWords = new HashMap<>();
 
   public Sentence(List<Translation> translations) {
@@ -40,7 +37,6 @@ public class Sentence extends Word {
 
   @Data
   @Builder
-  @JsonSerialize(using = SentenceContentSerializer.class)
   public static class SentenceContent {
 
     private Verb            abstractVerb;

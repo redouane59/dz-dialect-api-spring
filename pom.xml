@@ -21,10 +21,6 @@
   </build>
   <dependencies>
     <dependency>
-      <artifactId>spring-boot-starter-data-mongodb</artifactId>
-      <groupId>org.springframework.boot</groupId>
-    </dependency>
-    <dependency>
       <artifactId>spring-boot-starter-web</artifactId>
       <groupId>org.springframework.boot</groupId>
     </dependency>
@@ -45,9 +41,14 @@
       <version>1.6.4</version>
     </dependency>
     <dependency>
-      <groupId>junit</groupId>
       <artifactId>junit</artifactId>
+      <groupId>junit</groupId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <artifactId>firebase-admin</artifactId>
+      <groupId>com.google.firebase</groupId>
+      <version>8.2.0</version>
     </dependency>
   </dependencies>
   <description>Algerian dialect api</description>
