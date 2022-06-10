@@ -17,6 +17,15 @@
         </configuration>
         <groupId>org.springframework.boot</groupId>
       </plugin>
+      <plugin>
+        <artifactId>appengine-maven-plugin</artifactId>
+        <configuration>
+          <deploy.projectId>dz-dialect-api</deploy.projectId>
+          <deploy.version>1</deploy.version>
+        </configuration>
+        <groupId>com.google.cloud.tools</groupId>
+        <version>2.4.2</version>
+      </plugin>
     </plugins>
   </build>
   <dependencies>
@@ -24,7 +33,6 @@
       <artifactId>spring-boot-starter-web</artifactId>
       <groupId>org.springframework.boot</groupId>
     </dependency>
-
     <dependency>
       <artifactId>lombok</artifactId>
       <groupId>org.projectlombok</groupId>
@@ -49,6 +57,16 @@
       <artifactId>firebase-admin</artifactId>
       <groupId>com.google.firebase</groupId>
       <version>8.2.0</version>
+    </dependency>
+    <dependency>
+      <artifactId>slf4j-simple</artifactId>
+      <groupId>org.slf4j</groupId>
+      <version>1.7.36</version>
+    </dependency>
+    <dependency>
+      <artifactId>spring-cloud-gcp-starter</artifactId>
+      <groupId>org.springframework.cloud</groupId>
+      <version>1.0.0.RELEASE</version>
     </dependency>
   </dependencies>
   <description>Algerian dialect api</description>

@@ -49,9 +49,9 @@ public class SentenceDTO {
     private List<String> fr   = new ArrayList<>();
 
     public WordPropositionsDTO(final Map<Lang, List<String>> randomWords) {
-      this.dz   = randomWords.get("dz");
-      this.dzAr = randomWords.get("dz_Ar");
-      this.fr   = randomWords.get("fr");
+      this.dz   = randomWords.get(Lang.DZ);
+      this.dzAr = randomWords.get(Lang.DZ + "_ar");
+      this.fr   = randomWords.get(Lang.FR);
     }
 
     // to manage empty serialization
@@ -61,12 +61,8 @@ public class SentenceDTO {
         return false;
       }
       WordPropositionsDTO prop2 = (WordPropositionsDTO) other;
-      for (String s : this.dz) {
-        if (!prop2.getDz().contains(s)) {
-          return false;
-        }
-      }
-      return true;
+      return (this.dz.equals(prop2.getDz()) && this.fr.equals(prop2.getFr())
+              || (this.dz.size() == 0 && prop2.getDz() == null && this.fr.size() == 0 && prop2.getFr() == null));
     }
   }
 

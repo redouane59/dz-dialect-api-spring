@@ -6,26 +6,27 @@ import com.google.firebase.FirebaseOptions;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URISyntaxException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@Slf4j
 public class DzDialectApiSpringApplication {
 
-  public static void main(String[] args) throws IOException, URISyntaxException {
-    ClassLoader classLoader = DzDialectApiSpringApplication.class.getClassLoader();
-
-    File            file           = new File(classLoader.getResource("dz-dialect-api-firebase-adminsdk-gcmh0-0bc72f2007.json").toURI());
+  public static void main(String[] args) throws IOException {
+    LOGGER.debug("main()");
+    File            file           = new File("./src/main/resources/dz-dialect-api-firebase-adminsdk-gcmh0-0bc72f2007.json");
     FileInputStream serviceAccount = new FileInputStream(file.getAbsolutePath());
-
+    LOGGER.debug("service account OK");
     FirebaseOptions options = new FirebaseOptions.Builder()
         .setCredentials(GoogleCredentials.fromStream(serviceAccount))
         .build();
-
+    LOGGER.debug("firebase options OK");
     FirebaseApp.initializeApp(options);
-
+    LOGGER.debug("app init OK");
     SpringApplication.run(DzDialectApiSpringApplication.class, args);
+    LOGGER.debug("app run OK");
   }
 
 /*  @Bean
