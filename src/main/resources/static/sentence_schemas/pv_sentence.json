@@ -13,5 +13,6 @@
     "PRESENT",
     "FUTURE"
   ],
-  "possible_negation": true
+  "possible_negation": true,
+  "enabled": true
 }

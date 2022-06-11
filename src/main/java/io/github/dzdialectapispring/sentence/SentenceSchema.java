@@ -32,5 +32,6 @@ public class SentenceSchema {
   private boolean        possibleNegation;
   @JsonProperty("definitive_adjective")
   private boolean        definitiveAdjective; // when pronoun replace verb, ex: ana kbir
+  private boolean        enabled;
 
 }

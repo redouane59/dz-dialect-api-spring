@@ -219,18 +219,12 @@ public class SentenceBuilder {
       wordListFr.add(new WordTypeWordTuple(WordType.VERB, abstractVerb.getVerbConjugation(abstractVerb, subject, subtense, Lang.FR), index));
       wordListAr.add(new WordTypeWordTuple(WordType.VERB, abstractVerb.getVerbConjugation(abstractVerb, subject, subtense, Lang.DZ), index));
     } else {
-/*      PossessiveWord randomPronoun = AbstractWord.getRandomImperativePersonalPronoun();
-      Optional<Conjugation> frConjugation = helper.getImperativeVerbConjugation(abstractVerb,
-                                                                                randomPronoun,
-                                                                                Lang.FR,
-                                                                                sentenceContent.isNegation());
+      PossessiveWord        randomPronoun = pronounService.getRandomImperativePersonalPronoun();
+      Optional<Conjugation> frConjugation = abstractVerb.getImperativeVerbConjugation(randomPronoun, Lang.FR, sentenceContent.isNegation());
       wordListFr.add(new WordTypeWordTuple(WordType.VERB, frConjugation.get(), index));
-      Optional<Conjugation> arConjugation = helper.getImperativeVerbConjugation(abstractVerb,
-                                                                                randomPronoun,
-                                                                                Lang.DZ,
-                                                                                sentenceContent.isNegation());
+      Optional<Conjugation> arConjugation = abstractVerb.getImperativeVerbConjugation(randomPronoun, Lang.DZ, sentenceContent.isNegation());
       wordListAr.add(new WordTypeWordTuple(WordType.VERB, arConjugation.get(), index));
-    */
+
     }
 /*    if (schema.getFrSequence().contains(WordType.SUFFIX)) {
       Optional<PossessiveWord> suffixOpt;

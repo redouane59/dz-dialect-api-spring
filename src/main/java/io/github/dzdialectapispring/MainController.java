@@ -1,14 +1,14 @@
 package io.github.dzdialectapispring;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MainController {
 
-  @RequestMapping("/")
+  @GetMapping("/")
   public String home() {
-    return "Hello World!";
+    return "Hello World! See https://github.com/redouane59/dz-dialect-api-spring";
   }
 
 }

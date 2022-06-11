@@ -1,7 +1,7 @@
 package io.github.dzdialectapispring.sentence;
 
-import static io.github.dzdialectapispring.other.Config.OBJECT_MAPPER;
-
+import io.github.dzdialectapispring.generic.ResourceList;
+import io.github.dzdialectapispring.other.Config;
 import io.github.dzdialectapispring.other.enumerations.Tense;
 import io.github.dzdialectapispring.pronoun.AbstractPronoun;
 import io.github.dzdialectapispring.pronoun.PronounService;
@@ -10,9 +10,14 @@ import io.github.dzdialectapispring.verb.VerbService;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.ExecutionException;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -85,17 +90,27 @@ public class SentenceService {
                               .build();
   }
 
-  // @todo to implement
   public Sentence generateRandomSentence(GeneratorParameters generatorParameters) {
-    SentenceSchema sentenceSchema = null;
-    try {
-      sentenceSchema  = OBJECT_MAPPER.readValue(new File("./src/main/resources/static/sentence_schemas/pv_sentence.json"), SentenceSchema.class);
-      sentenceBuilder = new SentenceBuilder(sentenceSchema, pronounService, verbService);
-      return sentenceBuilder.generate(generatorParameters).get();
-    } catch (IOException e) {
-      e.printStackTrace();
+    Optional<SentenceSchema> sentenceSchema = getRandomSentenceSchema(generatorParameters);
+    sentenceBuilder = new SentenceBuilder(sentenceSchema.get(), pronounService, verbService);
+    return sentenceBuilder.generate(generatorParameters).get();
+  }
+
+  // @todo to implement
+  public Optional<SentenceSchema> getRandomSentenceSchema(GeneratorParameters generatorParameters) {
+    Set<SentenceSchema> sentenceSchemas = new HashSet<>();
+    Set<String>         files           = new HashSet<>(ResourceList.getResources(Pattern.compile(".*sentence_schemas.*json")));
+    for (String fileName : files) {
+      try {
+        sentenceSchemas.add(Config.OBJECT_MAPPER.readValue(new File(fileName), SentenceSchema.class));
+      } catch (IOException e) {
+        System.err.println("could not load file " + fileName);
+      }
     }
-    return null;
+    List<SentenceSchema> matchingSentenceSchema = sentenceSchemas.stream()
+                                                                 .filter(SentenceSchema::isEnabled)
+                                                                 .collect(Collectors.toList());
+    return Optional.of(matchingSentenceSchema.get(new Random().nextInt(matchingSentenceSchema.size())));
   }
 
   public SentenceDTO getSentenceById(final String id) {

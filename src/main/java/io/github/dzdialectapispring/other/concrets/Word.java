@@ -1,6 +1,5 @@
 package io.github.dzdialectapispring.other.concrets;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import io.github.dzdialectapispring.other.enumerations.Lang;
@@ -32,21 +31,21 @@ public class Word implements Comparable {
     return translations.stream().filter(t -> t.getLang() == lang).findAny();
   }
 
-  @JsonIgnore
+  // @todo to fix
+  @com.google.cloud.firestore.annotation.Exclude
   public String getDzTranslation() {
     return getTranslationByLang(Lang.DZ).orElse(new Translation(Lang.DZ, "")).getValue();
   }
 
-  @JsonIgnore
+  @com.google.cloud.firestore.annotation.Exclude
   public String getDzTranslationAr() {
     return (getTranslationByLang(Lang.DZ).orElse(new Translation(Lang.DZ, "", ""))).getArValue();
   }
 
-  @JsonIgnore
+  @com.google.cloud.firestore.annotation.Exclude
   public String getFrTranslation() {
     return getTranslationByLang(Lang.FR).orElse(new Translation(Lang.FR, "")).getValue();
   }
-
 
   @Override
   public int compareTo(final Object o) {

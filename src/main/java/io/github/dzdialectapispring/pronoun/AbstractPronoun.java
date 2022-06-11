@@ -17,4 +17,5 @@ public class AbstractPronoun extends AbstractWord {
   @JsonDeserialize(using = ConjugationListDeserializer.class)
   private final List<PossessiveWord> values = new ArrayList<>();
 
+
 }

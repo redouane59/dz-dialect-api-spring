@@ -39,6 +39,7 @@ public class PronounService {
   private final String              path                = "pronouns";
   private final CollectionReference collectionReference = FirestoreClient.getFirestore().collection(path);
 
+
   public AbstractPronoun getAbstractPronoun(final Gender gender, final boolean isSingular, final Possession possession)
   throws ExecutionException, InterruptedException {
     Optional<AbstractPronoun> abstractPronounOptional = getAllPronounsObjects().stream()
@@ -147,4 +148,13 @@ public class PronounService {
     }
     return null;
   }
+
+  public PossessiveWord getRandomImperativePersonalPronoun() {
+    List<PossessiveWord> compatiblePronouns = getAllPronounsObjects().stream()
+                                                                     .map(o -> o.getValues().get(0))
+                                                                     .filter(o -> o.getPossession() == Possession.YOU).collect(Collectors.toList());
+    return compatiblePronouns.stream().skip(RANDOM.nextInt(compatiblePronouns.size()))
+                             .findAny().get();
+  }
+
 }
