@@ -1,14 +1,29 @@
 package io.github.dzdialectapispring;
 
+import static io.github.dzdialectapispring.other.Config.OBJECT_MAPPER;
+
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import io.github.dzdialectapispring.generic.ResourceList;
+import io.github.dzdialectapispring.pronoun.AbstractPronoun;
+import io.github.dzdialectapispring.pronoun.PronounService;
+import io.github.dzdialectapispring.verb.Verb;
+import io.github.dzdialectapispring.verb.VerbService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.servers.Server;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -32,7 +47,7 @@ public class DzDialectApiSpringApplication {
     LOGGER.debug("app run OK");
   }
 
- /* @Bean
+  // @Bean
   CommandLineRunner verbsInit(VerbService verbService) {
     System.out.println("verbs initialization...");
     return args -> {
@@ -57,10 +72,10 @@ public class DzDialectApiSpringApplication {
         verbService.insert(verb);
       }
     };
-  }*/
+  }
 
 
-/*  @Bean
+  // @Bean
   CommandLineRunner pronounsInit(PronounService pronounService) {
     System.out.println("pronouns initialization...");
     return args -> {
@@ -68,6 +83,6 @@ public class DzDialectApiSpringApplication {
                                                                        AbstractPronoun[].class));
       pronounService.insert(pronouns);
     };
-  }*/
+  }
 
 }

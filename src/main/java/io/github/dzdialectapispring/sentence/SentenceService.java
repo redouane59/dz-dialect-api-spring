@@ -3,6 +3,7 @@ package io.github.dzdialectapispring.sentence;
 import io.github.dzdialectapispring.generic.ResourceList;
 import io.github.dzdialectapispring.other.Config;
 import io.github.dzdialectapispring.other.enumerations.Tense;
+import io.github.dzdialectapispring.other.enumerations.WordType;
 import io.github.dzdialectapispring.pronoun.AbstractPronoun;
 import io.github.dzdialectapispring.pronoun.PronounService;
 import io.github.dzdialectapispring.verb.Verb;
@@ -18,10 +19,12 @@ import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class SentenceService {
 
   private SentenceBuilder sentenceBuilder;
@@ -104,12 +107,28 @@ public class SentenceService {
       try {
         sentenceSchemas.add(Config.OBJECT_MAPPER.readValue(new File(fileName), SentenceSchema.class));
       } catch (IOException e) {
-        System.err.println("could not load file " + fileName);
+        System.err.println("could not load file " + fileName + " -> " + e.getMessage());
       }
     }
     List<SentenceSchema> matchingSentenceSchema = sentenceSchemas.stream()
                                                                  .filter(SentenceSchema::isEnabled)
                                                                  .collect(Collectors.toList());
+    if (generatorParameters.getAbstractVerb() != null) {
+      matchingSentenceSchema = matchingSentenceSchema.stream()
+                                                     .filter(s -> s.getFrSequence().contains(WordType.VERB))
+                                                     .filter(s -> s.getVerbType() == generatorParameters.getAbstractVerb().getVerbType()
+                                                                  || s.getVerbType() == null)
+                                                     .collect(Collectors.toList());
+    }
+    if (generatorParameters.getTense() != null) {
+      matchingSentenceSchema = matchingSentenceSchema.stream()
+                                                     .filter(s -> s.getFrSequence().contains(WordType.VERB))
+                                                     .filter(s -> s.getTenses().contains(generatorParameters.getTense()))
+                                                     .collect(Collectors.toList());
+    }
+    if (matchingSentenceSchema.isEmpty()) {
+      LOGGER.debug("matching sentence schema list is empty");
+    }
     return Optional.of(matchingSentenceSchema.get(new Random().nextInt(matchingSentenceSchema.size())));
   }
 

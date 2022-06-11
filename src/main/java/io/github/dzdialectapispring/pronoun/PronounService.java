@@ -29,11 +29,13 @@ import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
 @Service
 @Data
+@Slf4j
 public class PronounService {
 
   private final String              path                = "pronouns";
@@ -83,6 +85,9 @@ public class PronounService {
     }
     List<QueryDocumentSnapshot> documentSnapshot = query.getDocuments();
     List<AbstractPronoun>       abstractPronouns = documentSnapshot.stream().map(d -> d.toObject(AbstractPronoun.class)).collect(Collectors.toList());
+    if (abstractPronouns.size() == 0) {
+      LOGGER.error("no pronouns loaded");
+    }
     Collections.sort(abstractPronouns, new Comparator<AbstractPronoun>() {
       public int compare(AbstractPronoun o1, AbstractPronoun o2) {
         if (o1.getValues().get(0).getIndex() == o2.getValues().get(0).getIndex()) {
@@ -98,8 +103,8 @@ public class PronounService {
     List<SentenceDTO> result = new ArrayList<>();
     for (AbstractPronoun abstractPronoun : getAllPronounsObjects()) {
       for (Word word : abstractPronoun.getValues()) {
-        Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, word.getFrTranslation()),
-                                                 new Translation(Lang.DZ, word.getDzTranslation(), word.getDzTranslationAr())));
+        Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, word.getFr()),
+                                                 new Translation(Lang.DZ, word.getDz(), word.getDzAr())));
         sentence.setContent(SentenceContent.builder().abstractPronoun(abstractPronoun).build());
         result.add(new SentenceDTO(sentence));
       }

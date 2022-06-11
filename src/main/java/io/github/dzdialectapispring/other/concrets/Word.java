@@ -13,13 +13,15 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 public class Word implements Comparable {
 
   // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  @Setter
+  @Getter
   private List<Translation> translations = new ArrayList<>();
   @JsonInclude(Include.NON_DEFAULT)
+  @Setter
+  @Getter
   private int               index;
 
 
@@ -31,19 +33,18 @@ public class Word implements Comparable {
     return translations.stream().filter(t -> t.getLang() == lang).findAny();
   }
 
-  // @todo to fix
   @com.google.cloud.firestore.annotation.Exclude
-  public String getDzTranslation() {
+  public String getDz() {
     return getTranslationByLang(Lang.DZ).orElse(new Translation(Lang.DZ, "")).getValue();
   }
 
   @com.google.cloud.firestore.annotation.Exclude
-  public String getDzTranslationAr() {
+  public String getDzAr() {
     return (getTranslationByLang(Lang.DZ).orElse(new Translation(Lang.DZ, "", ""))).getArValue();
   }
 
   @com.google.cloud.firestore.annotation.Exclude
-  public String getFrTranslation() {
+  public String getFr() {
     return getTranslationByLang(Lang.FR).orElse(new Translation(Lang.FR, "")).getValue();
   }
 

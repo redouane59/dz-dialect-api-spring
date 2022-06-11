@@ -1,6 +1,7 @@
 package io.github.dzdialectapispring.sentence;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.dzdialectapispring.other.NounType;
 import io.github.dzdialectapispring.other.enumerations.Tense;
 import io.github.dzdialectapispring.other.enumerations.WordType;
 import io.github.dzdialectapispring.verb.VerbType;
@@ -26,8 +27,8 @@ public class SentenceSchema {
   private int            subjectPosition;
   @JsonProperty("verb_type")
   private VerbType       verbType;
-  /*   @JsonProperty("noun_types")
-    private List<NounType>  nounTypes  = new ArrayList<>();*/
+  @JsonProperty("noun_types")
+  private List<NounType> nounTypes  = new ArrayList<>();
   @JsonProperty("possible_negation")
   private boolean        possibleNegation;
   @JsonProperty("definitive_adjective")
