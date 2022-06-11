@@ -18,4 +18,12 @@ public enum Tense {
   public static Optional<Tense> findById(String id) {
     return Arrays.stream(values()).filter(t -> t.getId().equals(id)).findFirst();
   }
+
+  @Override
+  public String toString() {
+    return "Tense{" +
+           "id='" + id + '\'' +
+           ", descriptionFr='" + descriptionFr + '\'' +
+           '}';
+  }
 }

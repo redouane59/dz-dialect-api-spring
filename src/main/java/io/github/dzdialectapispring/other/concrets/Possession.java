@@ -16,9 +16,11 @@ public enum Possession {
     return Arrays.stream(values()).skip(RANDOM.nextInt(values().length)).findFirst().get();
   }
 
-  public static Possession getRandomPosession(Possession otherPossession, boolean objectOnly) {
+  public static Possession getRandomPosession(Possession otherPossession, boolean objectOnly, boolean isImperative) {
     Set<Possession> matchingPossession = Set.of(values());
-    if (!objectOnly) {
+    if (isImperative) {
+      matchingPossession = Set.of(Possession.I, Possession.OTHER);
+    } else if (!objectOnly) {
       matchingPossession =
           matchingPossession.stream().filter(o -> o != otherPossession || otherPossession == Possession.OTHER).collect(Collectors.toSet());
     } else {

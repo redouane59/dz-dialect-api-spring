@@ -33,4 +33,11 @@ public abstract class AbstractWord implements IWord {
     return result;
   }*/
 
+  @Override
+  public String toString() {
+    return "AbstractWord{" +
+           "id='" + id + '\'' +
+           ", wordType=" + wordType +
+           '}';
+  }
 }

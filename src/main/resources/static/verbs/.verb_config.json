@@ -2,7 +2,7 @@
   {
     "id": "accélérer",
     "possible_questions": [
-      "WHY"
+      "why"
     ],
     "possible_complements": [],
     "verb_type": "ACTION"
@@ -14,9 +14,9 @@
       "OBJECT"
     ],
     "possible_questions": [
-      "HOW_MANY",
-      "WHAT",
-      "WHEN"
+      "how many",
+      "what",
+      "when"
     ],
     "verb_type": "ACTION",
     "indirect_complement": true,
@@ -29,8 +29,8 @@
       "PERSON"
     ],
     "possible_questions": [
-      "WHO",
-      "WHEN"
+      "who",
+      "when"
     ],
     "direct_complement": true
   },
@@ -43,7 +43,7 @@
       "VERB"
     ],
     "possible_questions": [
-      "WHAT"
+      "what"
     ],
     "verb_type": "ACTION",
     "semi_auxiliar": true,
@@ -57,9 +57,9 @@
       "PERSON"
     ],
     "possible_questions": [
-      "WHERE",
-      "WHEN",
-      "WITH_WHO"
+      "where",
+      "when",
+      "with who"
     ],
     "semi_auxiliar": true,
     "verb_type": "DEPLACEMENT"
@@ -70,9 +70,9 @@
       "PERSON"
     ],
     "possible_questions": [
-      "WHO",
-      "WHEN",
-      "WHY"
+      "who",
+      "when",
+      "why"
     ],
     "verb_type": "ACTION",
     "direct_complement": true,
@@ -81,7 +81,7 @@
   {
     "id": "apporter",
     "possible_questions": [
-      "WHAT"
+      "what"
     ],
     "possible_complements": [
       "FOOD",
@@ -94,7 +94,7 @@
   {
     "id": "arriver",
     "possible_questions": [
-      "WHEN"
+      "when"
     ],
     "possible_complements": [],
     "verb_type": "ACTION"
@@ -102,8 +102,8 @@
   {
     "id": "attendre",
     "possible_questions": [
-      "WHAT",
-      "WHO"
+      "what",
+      "who"
     ],
     "possible_complements": [
       "PERSON",
@@ -119,15 +119,15 @@
       "OBJECT"
     ],
     "possible_questions": [
-      "HOW_MANY"
+      "how many"
     ],
     "verb_type": "POSSESSION"
   },
   {
     "id": "boire",
     "possible_questions": [
-      "WHAT",
-      "WHY"
+      "what",
+      "why"
     ],
     "possible_complements": [
       "ADVERB"
@@ -137,10 +137,10 @@
   {
     "id": "changer",
     "possible_questions": [
-      "WHAT",
-      "WHY",
-      "HOW",
-      "WHO"
+      "what",
+      "why",
+      "how",
+      "who"
     ],
     "possible_complements": [],
     "verb_type": "ACTION",
@@ -150,9 +150,9 @@
   {
     "id": "chanter",
     "possible_questions": [
-      "WHAT",
-      "WHY",
-      "WITH_WHO"
+      "what",
+      "why",
+      "with who"
     ],
     "possible_complements": [
       "ADVERB"
@@ -163,10 +163,10 @@
   {
     "id": "chercher",
     "possible_questions": [
-      "WHAT",
-      "WHO",
-      "WHERE",
-      "HOW"
+      "what",
+      "who",
+      "where",
+      "how"
     ],
     "possible_complements": [
       "PERSON",
@@ -183,17 +183,17 @@
       "PERSON"
     ],
     "possible_questions": [
-      "WHO",
-      "WHERE",
-      "WITH_WHO"
+      "who",
+      "where",
+      "with who"
     ],
     "verb_type": "STATE"
   },
   {
     "id": "commencer",
     "possible_questions": [
-      "WHEN",
-      "WHERE"
+      "when",
+      "where"
     ],
     "verb_type": "ACTION"
   },
@@ -205,7 +205,7 @@
       "VERB"
     ],
     "possible_questions": [
-      "WHEN"
+      "when"
     ],
     "verb_type": "DEPLACEMENT"
   },
@@ -215,7 +215,7 @@
       "PERSON"
     ],
     "possible_questions": [
-      "WHAT"
+      "what"
     ],
     "verb_type": "ACTION"
   },
@@ -225,9 +225,9 @@
       "PERSON"
     ],
     "possible_questions": [
-      "WHO",
-      "HOW",
-      "WHY"
+      "who",
+      "how",
+      "why"
     ],
     "verb_type": "ACTION",
     "direct_complement": true
@@ -235,7 +235,7 @@
   {
     "id": "crier",
     "possible_questions": [
-      "WHY"
+      "why"
     ],
     "verb_type": "ACTION"
   },
@@ -245,8 +245,8 @@
       "PERSON"
     ],
     "possible_questions": [
-      "WHO",
-      "HOW"
+      "who",
+      "how"
     ],
     "verb_type": "ACTION",
     "direct_complement": true
@@ -254,9 +254,9 @@
   {
     "id": "cuisiner",
     "possible_questions": [
-      "WHAT",
-      "WHEN",
-      "WHY"
+      "what",
+      "when",
+      "why"
     ],
     "possible_complements": [
       "FOOD",
@@ -269,7 +269,7 @@
   {
     "id": "dire",
     "possible_questions": [
-      "WHAT"
+      "what"
     ],
     "verb_type": "ACTION",
     "indirect_complement": true
@@ -277,10 +277,10 @@
   {
     "id": "descendre",
     "possible_questions": [
-      "WHY",
-      "HOW",
-      "WITH_WHO",
-      "WHERE"
+      "why",
+      "how",
+      "with who",
+      "where"
     ],
     "possible_complements": [
       "PLACE"
@@ -290,8 +290,8 @@
   {
     "id": "demander",
     "possible_questions": [
-      "WHAT",
-      "WHY"
+      "what",
+      "why"
     ],
     "verb_type": "ACTION",
     "indirect_complement": true
@@ -299,10 +299,10 @@
   {
     "id": "dormir",
     "possible_questions": [
-      "WHY",
-      "WHERE",
-      "WHEN",
-      "WITH_WHO"
+      "why",
+      "where",
+      "when",
+      "with who"
     ],
     "possible_complements": [
       "ADVERB"
@@ -312,7 +312,7 @@
   {
     "id": "danser",
     "possible_questions": [
-      "WHY"
+      "why"
     ],
     "possible_complements": [
       "ADVERB"
@@ -323,14 +323,14 @@
   {
     "id": "douter",
     "possible_questions": [
-      "WHY"
+      "why"
     ]
   },
   {
     "id": "écrire",
     "possible_questions": [
-      "WHAT",
-      "WHY"
+      "what",
+      "why"
     ],
     "verb_type": "ACTION",
     "indirect_complement": true
@@ -338,8 +338,8 @@
   {
     "id": "essayer",
     "possible_questions": [
-      "WHY",
-      "WHAT"
+      "why",
+      "what"
     ],
     "possible_complements": [],
     "verb_type": "ACTION",
@@ -352,7 +352,7 @@
       "OBJECT"
     ],
     "possible_questions": [
-      "WHAT"
+      "what"
     ],
     "verb_type": "ACTION",
     "indirect_complement": true,
@@ -361,9 +361,9 @@
   {
     "id": "entrer",
     "possible_questions": [
-      "WHY",
-      "WHEN",
-      "WITH_WHO"
+      "why",
+      "when",
+      "with who"
     ],
     "possible_complements": [
       "PLACE"
@@ -373,16 +373,16 @@
   {
     "id": "marcher",
     "possible_questions": [
-      "WHERE",
-      "WHEN"
+      "where",
+      "when"
     ],
     "verb_type": "ACTION"
   },
   {
     "id": "essayer2",
     "possible_questions": [
-      "WHY",
-      "WHAT"
+      "why",
+      "what"
     ],
     "direct_complement": true,
     "object_only": true
@@ -390,8 +390,8 @@
   {
     "id": "expliquer",
     "possible_questions": [
-      "WHEN",
-      "WHY"
+      "when",
+      "why"
     ],
     "possible_complements": [],
     "verb_type": "ACTION",
@@ -400,8 +400,8 @@
   {
     "id": "faire",
     "possible_questions": [
-      "WHAT",
-      "HOW"
+      "what",
+      "how"
     ],
     "possible_complements": [
       "FOOD"
@@ -412,8 +412,8 @@
   {
     "id": "fermer",
     "possible_questions": [
-      "WHEN",
-      "WHY"
+      "when",
+      "why"
     ],
     "possible_complements": [
       "OBJECT"
@@ -425,7 +425,7 @@
   {
     "id": "finir",
     "possible_questions": [
-      "WHEN"
+      "when"
     ],
     "verb_type": "ACTION",
     "direct_complement": true,
@@ -434,8 +434,8 @@
   {
     "id": "habiter",
     "possible_questions": [
-      "WHERE",
-      "WITH_WHO"
+      "where",
+      "with who"
     ],
     "possible_complements": [
       "PLACE",
@@ -446,7 +446,7 @@
   {
     "id": "laisser",
     "possible_questions": [
-      "WHAT"
+      "what"
     ],
     "possible_complements": [
       "OBJECT"
@@ -458,19 +458,19 @@
   {
     "id": "lire",
     "possible_questions": [
-      "WHAT",
-      "WHY"
+      "what",
+      "why"
     ],
     "verb_type": "ACTION"
   },
   {
     "id": "lire",
     "possible_questions": [
-      "WHAT",
-      "WHEN",
-      "WHERE",
-      "WITH_WHO",
-      "WHY"
+      "what",
+      "when",
+      "where",
+      "with who",
+      "why"
     ],
     "possible_complements": [
       "FOOD",
@@ -483,25 +483,25 @@
   {
     "id": "marcher",
     "possible_questions": [
-      "WHERE",
-      "WHEN"
+      "where",
+      "when"
     ],
     "verb_type": "ACTION"
   },
   {
     "id": "monter",
     "possible_questions": [
-      "WHERE",
-      "WHY",
-      "WHEN"
+      "where",
+      "why",
+      "when"
     ],
     "verb_type": "ACTION"
   },
   {
     "id": "montrer",
     "possible_questions": [
-      "WHAT",
-      "WHO"
+      "what",
+      "who"
     ],
     "possible_complements": [
       "OBJECT",
@@ -515,8 +515,8 @@
   {
     "id": "ouvrir",
     "possible_questions": [
-      "HOW",
-      "WHY"
+      "how",
+      "why"
     ],
     "possible_complements": [
       "OBJECT"
@@ -528,8 +528,8 @@
   {
     "id": "ouvrir2",
     "possible_questions": [
-      "HOW",
-      "WHY"
+      "how",
+      "why"
     ],
     "possible_complements": [
       "OBJECT"
@@ -541,7 +541,7 @@
   {
     "id": "parler",
     "possible_questions": [
-      "WITH_WHO"
+      "with who"
     ],
     "verb_type": "ACTION",
     "indirect_complement": true
@@ -555,9 +555,9 @@
   {
     "id": "payer",
     "possible_questions": [
-      "WHAT",
-      "WHY",
-      "HOW"
+      "what",
+      "why",
+      "how"
     ],
     "verb_type": "ACTION",
     "direct_complement": true,
@@ -566,15 +566,15 @@
   {
     "id": "penser",
     "possible_questions": [
-      "WHAT"
+      "what"
     ],
     "verb_type": "ACTION"
   },
   {
     "id": "plaire",
     "possible_questions": [
-      "WHO",
-      "WHY"
+      "who",
+      "why"
     ],
     "verb_type": "ACTION",
     "indirect_complement": true

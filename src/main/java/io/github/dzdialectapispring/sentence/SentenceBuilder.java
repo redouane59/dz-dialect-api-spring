@@ -11,10 +11,13 @@ import io.github.dzdialectapispring.other.enumerations.Tense;
 import io.github.dzdialectapispring.other.enumerations.WordType;
 import io.github.dzdialectapispring.pronoun.AbstractPronoun;
 import io.github.dzdialectapispring.pronoun.PronounService;
+import io.github.dzdialectapispring.question.AbstractQuestion;
+import io.github.dzdialectapispring.question.QuestionService;
 import io.github.dzdialectapispring.sentence.Sentence.SentenceContent;
 import io.github.dzdialectapispring.verb.Verb;
 import io.github.dzdialectapispring.verb.VerbService;
 import io.github.dzdialectapispring.verb.conjugation.Conjugation;
+import io.github.dzdialectapispring.verb.suffix.Suffix;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -26,33 +29,39 @@ import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Getter
+@Slf4j
 public class SentenceBuilder {
 
-  public static Random         RANDOM = new Random();
-  private final SentenceSchema schema;
-  private final PronounService pronounService;
-  private final VerbService    verbService;
+  public static Random          RANDOM = new Random();
+  private final SentenceSchema  schema;
+  private final PronounService  pronounService;
+  private final VerbService     verbService;
+  private final QuestionService questionService;
   List<WordTypeWordTuple> wordListFr;
   List<WordTypeWordTuple> wordListAr;
-  PossessiveWord          subject         = null;
-  AbstractWord            abstractSubject = null;
+  PossessiveWord          subject          = null;
+  AbstractWord            abstractSubject  = null;
+  AbstractQuestion        abstractQuestion = null;
+  private PossessiveWord  suffix;
   private SentenceContent sentenceContent;
 
   @Autowired
-  public SentenceBuilder(SentenceSchema sentenceSchema, PronounService pronounService, VerbService verbService) {
-    this.schema         = sentenceSchema;
-    this.pronounService = pronounService;
-    this.verbService    = verbService;
+  public SentenceBuilder(SentenceSchema sentenceSchema, PronounService pronounService, VerbService verbService, QuestionService questionService) {
+    this.schema          = sentenceSchema;
+    this.pronounService  = pronounService;
+    this.verbService     = verbService;
+    this.questionService = questionService;
   }
 
   public Optional<Sentence> generate(GeneratorParameters generatorParameters) {
     sentenceContent = SentenceContent.builder().build();
     boolean resultOk = fillWordListFromSchema(generatorParameters);
     if (!resultOk) {
-      System.err.println("no sentence generated");
+      System.err.println("no sentence generated with parameters : " + generatorParameters);
       return Optional.empty();
     }
     Sentence sentence = new Sentence();
@@ -83,13 +92,13 @@ public class SentenceBuilder {
 
   private void resetAttributes(GeneratorParameters generatorParameters) {
 /*
-    nounSubject      = null;
-    abstractQuestion = null;*/
-    subject         = null;
-    abstractSubject = null;
-    wordListFr      = new ArrayList<>();
-    wordListAr      = new ArrayList<>();
-    sentenceContent = SentenceContent.builder().build();
+    nounSubject      = null;*/
+    abstractQuestion = null;
+    subject          = null;
+    abstractSubject  = null;
+    wordListFr       = new ArrayList<>();
+    wordListAr       = new ArrayList<>();
+    sentenceContent  = SentenceContent.builder().build();
     sentenceContent.setSentenceSchema(schema);
     if (schema.isPossibleNegation()) {
       if (generatorParameters.isExcludeNegative() == generatorParameters.isExcludePositive()) {
@@ -129,10 +138,13 @@ public class SentenceBuilder {
           }
           break;
         case ADVERB:
-          builAdverb(index);
+          success = builAdverb(index);
           break;
         case QUESTION:
-          buildQuestion(index);
+          success = buildQuestion(index, generatorParameters.getAbstractVerb());
+          if (!success) {
+            return false;
+          }
           break;
       }
     }
@@ -188,7 +200,7 @@ public class SentenceBuilder {
 
   private boolean buildVerb(int index, Verb abstractVerb, Tense tense) {
     if (abstractVerb == null) {
-      Optional<Verb> abstractVerbOpt = verbService.getRandomAbstractVerb(schema);
+      Optional<Verb> abstractVerbOpt = verbService.getRandomAbstractVerb(schema, abstractQuestion);
       if (abstractVerbOpt.isEmpty()) {
         return false;
       }
@@ -204,11 +216,21 @@ public class SentenceBuilder {
                                                     .filter(t -> schema.getTenses().contains(t.getTense()))
                                                     .filter(t -> t != Subtense.IMPERATIVE)
                                                     .collect(Collectors.toSet());
-        subtense = availableTenses.stream().skip(RANDOM.nextInt(availableTenses.size())).findFirst().get();
+        Optional<Subtense> subtenseOptional = availableTenses.stream().skip(RANDOM.nextInt(availableTenses.size())).findFirst();
+        if (subtenseOptional.isEmpty()) {
+          LOGGER.debug("tense " + tense + " not found for verb " + abstractVerb.getId());
+          return false;
+        }
+        subtense = subtenseOptional.get();
       }
     } else {
-      subtense = abstractVerb.getValues().stream().map(o -> o).map(Conjugation::getSubtense)
-                             .filter(t -> t.getTense() == tense).findFirst().get();
+      Optional<Subtense> subtenseOptional = abstractVerb.getValues().stream().map(Conjugation::getSubtense)
+                                                        .filter(t -> t.getTense() == tense).findFirst();
+      if (subtenseOptional.isEmpty()) {
+        LOGGER.debug("tense " + tense + " not found for verb " + abstractVerb.getId());
+        return false;
+      }
+      subtense = subtenseOptional.get();
     }
 
     sentenceContent.setSubtense(subtense);
@@ -221,17 +243,24 @@ public class SentenceBuilder {
     } else {
       PossessiveWord        randomPronoun = pronounService.getRandomImperativePersonalPronoun();
       Optional<Conjugation> frConjugation = abstractVerb.getImperativeVerbConjugation(randomPronoun, Lang.FR, sentenceContent.isNegation());
+      if (frConjugation.isEmpty()) {
+        LOGGER.debug("no imperative verb conjugation FR found");
+        return false;
+      }
       wordListFr.add(new WordTypeWordTuple(WordType.VERB, frConjugation.get(), index));
       Optional<Conjugation> arConjugation = abstractVerb.getImperativeVerbConjugation(randomPronoun, Lang.DZ, sentenceContent.isNegation());
+      if (arConjugation.isEmpty()) {
+        LOGGER.debug("no imperative verb conjugation AR found");
+        return false;
+      }
       wordListAr.add(new WordTypeWordTuple(WordType.VERB, arConjugation.get(), index));
-
     }
-/*    if (schema.getFrSequence().contains(WordType.SUFFIX)) {
+    if (schema.getFrSequence().contains(WordType.SUFFIX)) {
       Optional<PossessiveWord> suffixOpt;
-      if (sentenceContent.getTense() == Tense.IMPERATIVE) {
-        suffixOpt = helper.getImperativeSuffix(abstractVerb.isObjectOnly());
+      if (sentenceContent.getSubtense().getTense() == Tense.IMPERATIVE) {
+        suffixOpt = Suffix.getSuffix(schema, null, abstractVerb.isObjectOnly(), true);
       } else {
-        suffixOpt = helper.getSuffix(subject.getPossession(), abstractVerb.isObjectOnly());
+        suffixOpt = Suffix.getSuffix(schema, subject.getPossession(), abstractVerb.isObjectOnly(), false);
       }
       if (suffixOpt.isEmpty()) {
         return false;
@@ -239,7 +268,7 @@ public class SentenceBuilder {
       suffix = suffixOpt.get();
       wordListFr.add(new WordTypeWordTuple(WordType.SUFFIX, suffix, index));
       wordListAr.add(new WordTypeWordTuple(WordType.SUFFIX, suffix, index));
-    }*/
+    }
     return true;
   }
 
@@ -264,13 +293,16 @@ public class SentenceBuilder {
     return true;
   }
 
-  private boolean buildQuestion(int index) {
-/*    abstractQuestion = helper.getQuestion();
+  private boolean buildQuestion(int index, Verb abstractVerb) {
+    Optional<AbstractQuestion> abstractQuestionOpt = questionService.getRandomAbstractQuestion(abstractVerb);
+    if (abstractQuestionOpt.isEmpty()) {
+      return false;
+    }
+    this.abstractQuestion = abstractQuestionOpt.get();
     sentenceContent.setAbstractQuestion(abstractQuestion);
-    Word question = (Word) abstractQuestion.getValues().get(0);
+    Word question = abstractQuestion.getValues().get(0);
     wordListFr.add(new WordTypeWordTuple(WordType.QUESTION, question, index));
     wordListAr.add(new WordTypeWordTuple(WordType.QUESTION, question, index));
-    */
     return true;
   }
 
@@ -310,19 +342,19 @@ public class SentenceBuilder {
     for (int i = 0; i < schema.getArSequence().size(); i++) {
       WordType wordType = schema.getArSequence().get(i);
       if (wordType == WordType.SUFFIX) {
-    /*    String suffixDzValue;
+        String suffixDzValue;
         sentenceValue.deleteCharAt(sentenceValue.length() - 1);
         sentenceValueAr.deleteCharAt(sentenceValueAr.length() - 1);
-        if (getSentenceContent().getAbstractAdverb().isDzOppositeComplement()) {
+/*        if (getSentenceContent().getAbstractAdverb().isDzOppositeComplement()) {
           suffixDzValue = AbstractWord.getOppositeSuffix(suffix).getTranslationValue(lang);
           sentenceValueAr.append(AbstractWord.getOppositeSuffix(suffix).getTranslationByLang(Lang.DZ).get().getArValue());
-        } else {
-          suffixDzValue = getFirstWordFromWordTypeFr(wordType, i).getTranslationValue(lang);
-          sentenceValueAr.append(getFirstWordFromWordTypeFr(wordType, i).getTranslationByLang(lang).get().getArValue());
-        }
+        } else {*/
+        suffixDzValue = getFirstWordFromWordTypeFr(wordType, i).getTranslationByLang(lang).get().getValue();
+        sentenceValueAr.append(getFirstWordFromWordTypeFr(wordType, i).getTranslationByLang(lang).get().getArValue());
+        //     }
         sentenceValue.append(suffixDzValue);
         // manage transformation here iou -> ih, ouou->ou, etc.
-        for (Entry<String, String> m : DB.RULE_MAP.entrySet()) {
+/*        for (Entry<String, String> m : DB.RULE_MAP.entrySet()) {
           sentenceValue = new StringBuilder(sentenceValue.toString().replace(m.getKey(), m.getValue()));
         }*/
       } else {

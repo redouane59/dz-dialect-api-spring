@@ -42,8 +42,7 @@ public class PronounService {
   private final CollectionReference collectionReference = FirestoreClient.getFirestore().collection(path);
 
 
-  public AbstractPronoun getAbstractPronoun(final Gender gender, final boolean isSingular, final Possession possession)
-  throws ExecutionException, InterruptedException {
+  public AbstractPronoun getAbstractPronoun(final Gender gender, final boolean isSingular, final Possession possession) {
     Optional<AbstractPronoun> abstractPronounOptional = getAllPronounsObjects().stream()
                                                                                .filter(p -> (p.getValues().get(0)).getPossession()
                                                                                             == possession)
@@ -60,8 +59,7 @@ public class PronounService {
     return abstractPronounOptional.get();
   }
 
-  public PossessiveWord getPronoun(final Gender gender, final boolean isSingular, final Possession possession)
-  throws ExecutionException, InterruptedException {
+  public PossessiveWord getPronoun(final Gender gender, final boolean isSingular, final Possession possession) {
     Optional<PossessiveWord> result = getAllPronounsObjects().stream()
                                                              .map(o -> o.getValues().get(0))//@todo dirty ?
                                                              .map(o -> o)
@@ -99,7 +97,7 @@ public class PronounService {
     return abstractPronouns;
   }
 
-  public List<SentenceDTO> getAllPronouns() throws ExecutionException, InterruptedException {
+  public List<SentenceDTO> getAllPronouns() {
     List<SentenceDTO> result = new ArrayList<>();
     for (AbstractPronoun abstractPronoun : getAllPronounsObjects()) {
       for (Word word : abstractPronoun.getValues()) {
@@ -112,7 +110,7 @@ public class PronounService {
     return result;
   }
 
-  public PossessiveWord getRandomPronoun() throws ExecutionException, InterruptedException {
+  public PossessiveWord getRandomPronoun() {
     List<AbstractPronoun> pronouns        = getAllPronounsObjects();
     AbstractPronoun       abstractPronoun = pronouns.stream().skip(RANDOM.nextInt(pronouns.size())).findFirst().get();
     return abstractPronoun.getValues().get(0);
@@ -133,10 +131,10 @@ public class PronounService {
   public void insert(final List<AbstractPronoun> pronouns) throws ExecutionException, InterruptedException {
     Firestore dbFirestore = FirestoreClient.getFirestore();
     for (AbstractPronoun pronoun : pronouns) {
-      CollectionReference ref = dbFirestore.collection("pronouns");
+      CollectionReference ref = dbFirestore.collection(path);
       if (!ref.document(pronoun.getId()).get().get().exists() || Config.FORCE_OVERRIDE) {
         System.out.println("inserting pronoun " + pronoun.getId() + "...");
-        dbFirestore.collection("pronouns").document(pronoun.getId()).set(pronoun);
+        dbFirestore.collection(path).document(pronoun.getId()).set(pronoun);
       }
     }
     System.out.println("insert finished");

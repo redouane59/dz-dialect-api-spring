@@ -1,4 +1,4 @@
-package io.github.dzdialectapispring.pronoun;
+package io.github.dzdialectapispring.question;
 
 import io.github.dzdialectapispring.sentence.SentenceDTO;
 import java.util.List;
@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/v1/pronouns")
+@RequestMapping("api/v1/questions")
 @AllArgsConstructor
-public class PronounsController {
+public class QuestionsController {
 
-  private final PronounService pronounService;
+  private final QuestionService questionService;
 
   @GetMapping
-  public List<SentenceDTO> getAllPronouns() {
-    return pronounService.getAllPronouns();
+  public List<SentenceDTO> getAllQuestions() {
+    return questionService.getAllQuestions();
   }
 }

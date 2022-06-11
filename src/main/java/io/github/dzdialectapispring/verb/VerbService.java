@@ -16,8 +16,10 @@ import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.enumerations.Lang;
 import io.github.dzdialectapispring.other.enumerations.Tense;
+import io.github.dzdialectapispring.other.enumerations.WordType;
 import io.github.dzdialectapispring.pronoun.AbstractPronoun;
 import io.github.dzdialectapispring.pronoun.PronounService;
+import io.github.dzdialectapispring.question.AbstractQuestion;
 import io.github.dzdialectapispring.sentence.Sentence;
 import io.github.dzdialectapispring.sentence.Sentence.SentenceContent;
 import io.github.dzdialectapispring.sentence.SentenceDTO;
@@ -32,12 +34,14 @@ import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
 @Service
 @Data
+@Slf4j
 public class VerbService {
 
   private final String              path                = "verbs";
@@ -46,13 +50,18 @@ public class VerbService {
   @Autowired
   private PronounService pronounService;
 
-  public Set<String> getAllVerbIds() throws ExecutionException, InterruptedException {
-    QuerySnapshot               query            = collectionReference.get().get();
+  public Set<String> getAllVerbIds() {
+    QuerySnapshot query = null;
+    try {
+      query = collectionReference.get().get();
+    } catch (Exception e) {
+      LOGGER.error("enable to get all verbs " + e.getMessage());
+    }
     List<QueryDocumentSnapshot> documentSnapshot = query.getDocuments();
     return documentSnapshot.stream().map(d -> d.toObject(Verb.class)).map(AbstractWord::getId).collect(Collectors.toSet());
   }
 
-  public Set<String> getAvailableTenses(String verbId) throws ExecutionException, InterruptedException {
+  public Set<String> getAvailableTenses(String verbId) {
     Verb verb = getVerbById(verbId);
     return verb
         .getValues()
@@ -73,7 +82,7 @@ public class VerbService {
     return documentSnapshot.stream().map(d -> d.toObject(Verb.class)).collect(Collectors.toSet());
   }
 
-  public List<SentenceDTO> getVerbConjugationsById(final String verbId, String tenseId) throws ExecutionException, InterruptedException {
+  public List<SentenceDTO> getVerbConjugationsById(final String verbId, String tenseId) {
     Verb              verb         = getVerbById(verbId);
     List<Conjugation> conjugations = verb.getValues();
     if (tenseId != null) {
@@ -111,7 +120,7 @@ public class VerbService {
     return result;
   }
 
-  public Optional<Verb> getRandomAbstractVerb(SentenceSchema schema) {
+  public Optional<Verb> getRandomAbstractVerb(SentenceSchema schema, AbstractQuestion question) {
     Set<Verb> verbs = getAllVerbs();
     if (schema.getTenses() != null) {
       verbs = verbs.stream()
@@ -130,13 +139,13 @@ public class VerbService {
         System.out.println("no verb found based on type (" + schema.getVerbType() + " expected)");
       }
     }
-/*    if (schema.getFrSequence().contains(WordType.QUESTION)) {
+    if (schema.getFrSequence().contains(WordType.QUESTION)) {
       verbs = verbs.stream().filter(v -> v.getPossibleQuestionIds().contains(question.getId())).collect(Collectors.toSet());
       if (verbs.size() == 0) {
         System.out.println("no verb found based on question");
       }
-    }*/
-/*    if (schema.getFrSequence().contains(WordType.SUFFIX)) {
+    }
+    if (schema.getFrSequence().contains(WordType.SUFFIX)) {
       if (schema.getFrSequence().contains(WordType.NOUN)) {
         verbs = verbs.stream().filter(Verb::isIndirectComplement)
                      .collect(Collectors.toSet());
@@ -146,7 +155,7 @@ public class VerbService {
       if (verbs.size() == 0) {
         System.out.println("no verb found based on suffix");
       }
-    }*/
+    }
 /*    if (schema.getFrSequence().contains(WordType.NOUN)) {
       verbs = verbs.stream().filter(v -> !v.getPossibleComplements().isEmpty())
                    .filter(v -> v.getPossibleComplements().size() > 1 || !v.getPossibleComplements().contains(NounType.ADVERB)) // @todo dirty
@@ -170,11 +179,16 @@ public class VerbService {
     }
   }
 
-  public Verb getVerbById(final String verbId) throws ExecutionException, InterruptedException {
+  public Verb getVerbById(final String verbId) {
     DocumentReference           documentReference = collectionReference.document(verbId);
     ApiFuture<DocumentSnapshot> future            = documentReference.get();
-    DocumentSnapshot            documentSnapshot  = future.get();
-    Verb                        verb;
+    DocumentSnapshot            documentSnapshot  = null;
+    try {
+      documentSnapshot = future.get();
+    } catch (Exception e) {
+      LOGGER.error("enable to find verb " + verbId + " " + e.getMessage());
+    }
+    Verb verb;
     if (documentSnapshot.exists()) {
       verb = documentSnapshot.toObject(Verb.class);
       return verb;

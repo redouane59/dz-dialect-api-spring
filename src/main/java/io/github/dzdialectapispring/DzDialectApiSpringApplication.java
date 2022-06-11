@@ -8,6 +8,8 @@ import com.google.firebase.FirebaseOptions;
 import io.github.dzdialectapispring.generic.ResourceList;
 import io.github.dzdialectapispring.pronoun.AbstractPronoun;
 import io.github.dzdialectapispring.pronoun.PronounService;
+import io.github.dzdialectapispring.question.AbstractQuestion;
+import io.github.dzdialectapispring.question.QuestionService;
 import io.github.dzdialectapispring.verb.Verb;
 import io.github.dzdialectapispring.verb.VerbService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -82,6 +84,17 @@ public class DzDialectApiSpringApplication {
       List<AbstractPronoun> pronouns = List.of(OBJECT_MAPPER.readValue(new File("./src/main/resources/static/other/personal_pronouns.json"),
                                                                        AbstractPronoun[].class));
       pronounService.insert(pronouns);
+    };
+  }
+
+  //@Bean
+  CommandLineRunner questionsInit(QuestionService questionService) {
+    System.out.println("questions initialization...");
+    return args -> {
+      List<AbstractQuestion>
+          questions =
+          (List.of(OBJECT_MAPPER.readValue(new File("./src/main/resources/static/other/questions.json"), AbstractQuestion[].class)));
+      questionService.insert(questions);
     };
   }
 

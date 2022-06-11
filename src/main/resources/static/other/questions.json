@@ -1,0 +1,164 @@
+[
+  {
+    "id": "who",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "qui"
+          },
+          {
+            "lang": "DZ",
+            "value": "chkoun",
+            "ar_value": "شكون"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "when",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "quand est-ce que"
+          },
+          {
+            "lang": "DZ",
+            "value": "wo9tach",
+            "ar_value": "وقتاش"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "where",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "où"
+          },
+          {
+            "lang": "DZ",
+            "value": "win",
+            "ar_value": "وين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "how",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "comment"
+          },
+          {
+            "lang": "DZ",
+            "value": "kiffech",
+            "ar_value": "كيفاش"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "why",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "pourquoi"
+          },
+          {
+            "lang": "DZ",
+            "value": "wa3lech",
+            "ar_value": "وعلاش"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "how many",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "combien"
+          },
+          {
+            "lang": "DZ",
+            "value": "ch7al",
+            "ar_value": "شحال"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "what",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "qu'est-ce que"
+          },
+          {
+            "lang": "DZ",
+            "value": "wesh",
+            "ar_value": "واش"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "with who",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "avec qui"
+          },
+          {
+            "lang": "DZ",
+            "value": "m3a men",
+            "ar_value": "معا من"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "from where",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "d'où"
+          },
+          {
+            "lang": "DZ",
+            "value": "m'win",
+            "ar_value": "وينْ"
+          }
+        ]
+      }
+    ]
+  }
+]

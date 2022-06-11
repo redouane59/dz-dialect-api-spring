@@ -17,4 +17,16 @@ public class GeneratorParameters {
   private Tense           tense;
   private boolean         excludePositive;
   private boolean         excludeNegative;
+
+  @Override
+  public String toString() {
+    return "GeneratorParameters{" +
+           "count=" + count +
+           ", abstractPronoun=" + abstractPronoun +
+           ", abstractVerb=" + abstractVerb +
+           ", tense=" + tense +
+           ", excludePositive=" + excludePositive +
+           ", excludeNegative=" + excludeNegative +
+           '}';
+  }
 }

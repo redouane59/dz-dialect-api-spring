@@ -6,6 +6,7 @@ import io.github.dzdialectapispring.other.enumerations.Tense;
 import io.github.dzdialectapispring.other.enumerations.WordType;
 import io.github.dzdialectapispring.pronoun.AbstractPronoun;
 import io.github.dzdialectapispring.pronoun.PronounService;
+import io.github.dzdialectapispring.question.QuestionService;
 import io.github.dzdialectapispring.verb.Verb;
 import io.github.dzdialectapispring.verb.VerbService;
 import java.io.File;
@@ -32,6 +33,8 @@ public class SentenceService {
   private VerbService     verbService;
   @Autowired
   private PronounService  pronounService;
+  @Autowired
+  private QuestionService questionService;
 
   public List<SentenceDTO> generateRandomSentences(Integer count,
                                                    String pronounId,
@@ -55,8 +58,11 @@ public class SentenceService {
         generatorParameters =
         buildParameters(pronounId, verbId, tenseId, nounId, adjectiveId, questionId, adverbId, positive, negative);
     List<SentenceDTO> result = new ArrayList<>();
-    for (int i = 0; i < count; i++) {
-      result.add(new SentenceDTO(generateRandomSentence(generatorParameters)));
+    int               i      = 0;
+    while (result.size() < count && i < count * 5) { // in case no sentence is generated
+      Optional<Sentence> sentence = generateRandomSentence(generatorParameters);
+      sentence.ifPresent(value -> result.add(new SentenceDTO(value)));
+      i++;
     }
     return result;
   }
@@ -93,10 +99,10 @@ public class SentenceService {
                               .build();
   }
 
-  public Sentence generateRandomSentence(GeneratorParameters generatorParameters) {
+  public Optional<Sentence> generateRandomSentence(GeneratorParameters generatorParameters) {
     Optional<SentenceSchema> sentenceSchema = getRandomSentenceSchema(generatorParameters);
-    sentenceBuilder = new SentenceBuilder(sentenceSchema.get(), pronounService, verbService);
-    return sentenceBuilder.generate(generatorParameters).get();
+    sentenceBuilder = new SentenceBuilder(sentenceSchema.get(), pronounService, verbService, questionService);
+    return sentenceBuilder.generate(generatorParameters);
   }
 
   // @todo to implement
@@ -127,7 +133,7 @@ public class SentenceService {
                                                      .collect(Collectors.toList());
     }
     if (matchingSentenceSchema.isEmpty()) {
-      LOGGER.debug("matching sentence schema list is empty");
+      throw new IllegalArgumentException("no matching sentence schema found from arguments");
     }
     return Optional.of(matchingSentenceSchema.get(new Random().nextInt(matchingSentenceSchema.size())));
   }
