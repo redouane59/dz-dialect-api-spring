@@ -5,6 +5,10 @@ import static io.github.dzdialectapispring.other.Config.OBJECT_MAPPER;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import io.github.dzdialectapispring.adjective.Adjective;
+import io.github.dzdialectapispring.adjective.AdjectiveService;
+import io.github.dzdialectapispring.adverb.adjective.Adverb;
+import io.github.dzdialectapispring.adverb.adjective.AdverbService;
 import io.github.dzdialectapispring.generic.ResourceList;
 import io.github.dzdialectapispring.pronoun.AbstractPronoun;
 import io.github.dzdialectapispring.pronoun.PronounService;
@@ -28,6 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @OpenAPIDefinition(servers = {@Server(url = "/", description = "Default Server URL")})
 @SpringBootApplication
@@ -76,7 +81,6 @@ public class DzDialectApiSpringApplication {
     };
   }
 
-
   // @Bean
   CommandLineRunner pronounsInit(PronounService pronounService) {
     System.out.println("pronouns initialization...");
@@ -95,6 +99,42 @@ public class DzDialectApiSpringApplication {
           questions =
           (List.of(OBJECT_MAPPER.readValue(new File("./src/main/resources/static/other/questions.json"), AbstractQuestion[].class)));
       questionService.insert(questions);
+    };
+  }
+
+  //@Bean
+  CommandLineRunner adjectivesInit(AdjectiveService adjectiveService) {
+    System.out.println("adjective initialization...");
+    return args -> {
+      Set<String>
+          files =
+          new HashSet<>(ResourceList.getResources(Pattern.compile(".*adjectives.*json")));
+      for (String fileName : files) {
+        try {
+          Adjective adjective = OBJECT_MAPPER.readValue(new File(fileName), Adjective.class);
+          adjectiveService.insert(adjective);
+        } catch (IOException e) {
+          System.err.println("could not load adjective file " + fileName);
+        }
+      }
+    };
+  }
+
+  @Bean
+  CommandLineRunner adverbInit(AdverbService adverbService) {
+    System.out.println("adverb initialization...");
+    return args -> {
+      Set<String>
+          files =
+          new HashSet<>(ResourceList.getResources(Pattern.compile(".*adv.*json")));
+      for (String fileName : files) {
+        try {
+          Adverb adverb = OBJECT_MAPPER.readValue(new File(fileName), Adverb.class);
+          adverbService.insert(adverb);
+        } catch (IOException e) {
+          System.err.println("could not load adverb file " + fileName);
+        }
+      }
     };
   }
 

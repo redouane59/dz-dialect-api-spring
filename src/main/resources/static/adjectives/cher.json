@@ -1,0 +1,71 @@
+{
+  "id": "cher",
+  "possible_nouns": [
+    "PLACE",
+    "OBJECT",
+    "FOOD"
+  ],
+  "values": [
+    {
+      "gender": "M",
+      "singular": true,
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "cher"
+        },
+        {
+          "lang": "DZ",
+          "value": "ghali",
+          "ar_value": "غالي"
+        }
+      ]
+    },
+    {
+      "gender": "F",
+      "singular": true,
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "chère"
+        },
+        {
+          "lang": "DZ",
+          "value": "ghalia",
+          "ar_value": "غاليا"
+        }
+      ]
+    },
+    {
+      "gender": "M",
+      "singular": false,
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "chers"
+        },
+        {
+          "lang": "DZ",
+          "value": "ghaliyin",
+          "ar_value": "غاليين"
+        }
+      ]
+    },
+    {
+      "gender": "F",
+      "singular": false,
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "chères"
+        },
+        {
+          "lang": "DZ",
+          "value": "ghaliyin",
+          "ar_value": "غاليين"
+        }
+      ]
+    }
+  ],
+  "temporal": true
+}

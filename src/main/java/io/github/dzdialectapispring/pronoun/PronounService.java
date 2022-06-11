@@ -101,8 +101,8 @@ public class PronounService {
     List<SentenceDTO> result = new ArrayList<>();
     for (AbstractPronoun abstractPronoun : getAllPronounsObjects()) {
       for (Word word : abstractPronoun.getValues()) {
-        Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, word.getFr()),
-                                                 new Translation(Lang.DZ, word.getDz(), word.getDzAr())));
+        Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, word.getFrTranslationValue()),
+                                                 new Translation(Lang.DZ, word.getDzTranslationValue(), word.getDzTranslationValueAr())));
         sentence.setContent(SentenceContent.builder().abstractPronoun(abstractPronoun).build());
         result.add(new SentenceDTO(sentence));
       }

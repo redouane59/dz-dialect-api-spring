@@ -3,6 +3,7 @@ package io.github.dzdialectapispring.sentence;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.dzdialectapispring.adjective.Adjective;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.concrets.Word;
@@ -43,7 +44,7 @@ public class Sentence extends Word {
     private AbstractPronoun abstractPronoun;
     private AbstractWord    abstractAdverb;
     private AbstractWord    abstractQuestion;
-    private AbstractWord    abstractAdjective;
+    private Adjective       abstractAdjective;
     private AbstractWord    abstractNoun;
     private Subtense        subtense;
     private SentenceSchema  sentenceSchema;

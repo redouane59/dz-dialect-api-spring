@@ -15,5 +15,6 @@
   ],
   "verb_type": "STATE",
   "definitive_adjective": true,
-  "possible_negation": true
+  "possible_negation": true,
+  "enabled": true
 }

@@ -1,0 +1,18 @@
+{
+  "id": "la bas",
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "là-bas"
+        },
+        {
+          "lang": "DZ",
+          "value": "el hih",
+          "ar_value": "الهيهْ"
+        }
+      ]
+    }
+  ]
+}

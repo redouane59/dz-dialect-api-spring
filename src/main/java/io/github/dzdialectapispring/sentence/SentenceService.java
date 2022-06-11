@@ -1,5 +1,7 @@
 package io.github.dzdialectapispring.sentence;
 
+import io.github.dzdialectapispring.adjective.AdjectiveService;
+import io.github.dzdialectapispring.adverb.adjective.AdverbService;
 import io.github.dzdialectapispring.generic.ResourceList;
 import io.github.dzdialectapispring.other.Config;
 import io.github.dzdialectapispring.other.enumerations.Tense;
@@ -28,13 +30,17 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class SentenceService {
 
-  private SentenceBuilder sentenceBuilder;
+  private SentenceBuilder  sentenceBuilder;
   @Autowired
-  private VerbService     verbService;
+  private VerbService      verbService;
   @Autowired
-  private PronounService  pronounService;
+  private PronounService   pronounService;
   @Autowired
-  private QuestionService questionService;
+  private QuestionService  questionService;
+  @Autowired
+  private AdjectiveService adjectiveService;
+  @Autowired
+  private AdverbService    adverbService;
 
   public List<SentenceDTO> generateRandomSentences(Integer count,
                                                    String pronounId,
@@ -45,7 +51,8 @@ public class SentenceService {
                                                    String questionId,
                                                    String adverbId,
                                                    boolean positive,
-                                                   boolean negative) throws ExecutionException, InterruptedException {
+                                                   boolean negative,
+                                                   String sentenceSchemaId) throws ExecutionException, InterruptedException {
     if (count == null) {
       count = 1;
     } else if (count <= 0) {
@@ -56,7 +63,7 @@ public class SentenceService {
 
     GeneratorParameters
         generatorParameters =
-        buildParameters(pronounId, verbId, tenseId, nounId, adjectiveId, questionId, adverbId, positive, negative);
+        buildParameters(pronounId, verbId, tenseId, nounId, adjectiveId, questionId, adverbId, positive, negative, sentenceSchemaId);
     List<SentenceDTO> result = new ArrayList<>();
     int               i      = 0;
     while (result.size() < count && i < count * 5) { // in case no sentence is generated
@@ -72,7 +79,8 @@ public class SentenceService {
                                              String questionId,
                                              String adverbId,
                                              boolean excludePositive,
-                                             boolean excludeNegative) throws ExecutionException, InterruptedException {
+                                             boolean excludeNegative,
+                                             String sentenceSchemaId) throws ExecutionException, InterruptedException {
     Verb verb = null;
     if (verbId != null) {
       verb = verbService.getVerbById(verbId);
@@ -85,10 +93,17 @@ public class SentenceService {
     if (tenseId != null) {
       Optional<Tense> tenseOptional = Tense.findById(tenseId);
       if (tenseOptional.isEmpty()) {
-        throw new IllegalStateException("no tense found with id " + tenseId);
-      } else {
-        tense = tenseOptional.get();
+        throw new IllegalArgumentException("no tense found with id " + tenseId);
       }
+      tense = tenseOptional.get();
+    }
+    SentenceSchema schema = null;
+    if (sentenceSchemaId != null) {
+      Optional<SentenceSchema> sentenceSchemaOptional = getSentenceSchemaById(sentenceSchemaId);
+      if (sentenceSchemaOptional.isEmpty()) {
+        throw new IllegalArgumentException("no sentence schema found with id " + sentenceSchemaId);
+      }
+      schema = sentenceSchemaOptional.get();
     }
     return GeneratorParameters.builder()
                               .abstractPronoun(pronoun)
@@ -96,17 +111,30 @@ public class SentenceService {
                               .tense(tense)
                               .excludePositive(excludePositive)
                               .excludeNegative(excludeNegative)
+                              .sentenceSchema(schema)
                               .build();
   }
 
   public Optional<Sentence> generateRandomSentence(GeneratorParameters generatorParameters) {
-    Optional<SentenceSchema> sentenceSchema = getRandomSentenceSchema(generatorParameters);
-    sentenceBuilder = new SentenceBuilder(sentenceSchema.get(), pronounService, verbService, questionService);
+    SentenceSchema sentenceSchema;
+    if (generatorParameters.getSentenceSchema() == null) {
+      Optional<SentenceSchema> sentenceSchemaOpt = getRandomSentenceSchema(generatorParameters);
+      if (sentenceSchemaOpt.isEmpty()) {
+        return Optional.empty();
+      }
+      sentenceSchema = sentenceSchemaOpt.get();
+    } else {
+      sentenceSchema = generatorParameters.getSentenceSchema();
+    }
+    sentenceBuilder = new SentenceBuilder(sentenceSchema, pronounService, verbService, questionService, adjectiveService, adverbService);
     return sentenceBuilder.generate(generatorParameters);
   }
 
-  // @todo to implement
-  public Optional<SentenceSchema> getRandomSentenceSchema(GeneratorParameters generatorParameters) {
+  public Optional<SentenceSchema> getSentenceSchemaById(String sentenceSchemaId) {
+    return getSentenceSchemas().stream().filter(s -> s.getId().equals(sentenceSchemaId)).findFirst();
+  }
+
+  public Set<SentenceSchema> getSentenceSchemas() {
     Set<SentenceSchema> sentenceSchemas = new HashSet<>();
     Set<String>         files           = new HashSet<>(ResourceList.getResources(Pattern.compile(".*sentence_schemas.*json")));
     for (String fileName : files) {
@@ -116,9 +144,15 @@ public class SentenceService {
         System.err.println("could not load file " + fileName + " -> " + e.getMessage());
       }
     }
-    List<SentenceSchema> matchingSentenceSchema = sentenceSchemas.stream()
-                                                                 .filter(SentenceSchema::isEnabled)
-                                                                 .collect(Collectors.toList());
+    return sentenceSchemas;
+  }
+
+  // @todo to implement
+  public Optional<SentenceSchema> getRandomSentenceSchema(GeneratorParameters generatorParameters) {
+
+    List<SentenceSchema> matchingSentenceSchema = getSentenceSchemas().stream()
+                                                                      .filter(SentenceSchema::isEnabled)
+                                                                      .collect(Collectors.toList());
     if (generatorParameters.getAbstractVerb() != null) {
       matchingSentenceSchema = matchingSentenceSchema.stream()
                                                      .filter(s -> s.getFrSequence().contains(WordType.VERB))

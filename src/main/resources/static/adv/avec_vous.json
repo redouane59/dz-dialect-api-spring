@@ -1,0 +1,18 @@
+{
+  "id": "avec vous",
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "avec vous"
+        },
+        {
+          "lang": "DZ",
+          "value": "m3akoum",
+          "ar_value": "مْعاكم"
+        }
+      ]
+    }
+  ]
+}

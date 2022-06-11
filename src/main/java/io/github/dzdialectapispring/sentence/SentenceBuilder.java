@@ -1,6 +1,9 @@
 package io.github.dzdialectapispring.sentence;
 
 
+import io.github.dzdialectapispring.adjective.Adjective;
+import io.github.dzdialectapispring.adjective.AdjectiveService;
+import io.github.dzdialectapispring.adverb.adjective.AdverbService;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
@@ -36,11 +39,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Slf4j
 public class SentenceBuilder {
 
-  public static Random          RANDOM = new Random();
-  private final SentenceSchema  schema;
-  private final PronounService  pronounService;
-  private final VerbService     verbService;
-  private final QuestionService questionService;
+  public static Random           RANDOM = new Random();
+  private final SentenceSchema   schema;
+  private final PronounService   pronounService;
+  private final VerbService      verbService;
+  private final QuestionService  questionService;
+  private final AdjectiveService adjectiveService;
+  private final AdverbService    adverbService;
   List<WordTypeWordTuple> wordListFr;
   List<WordTypeWordTuple> wordListAr;
   PossessiveWord          subject          = null;
@@ -50,11 +55,14 @@ public class SentenceBuilder {
   private SentenceContent sentenceContent;
 
   @Autowired
-  public SentenceBuilder(SentenceSchema sentenceSchema, PronounService pronounService, VerbService verbService, QuestionService questionService) {
-    this.schema          = sentenceSchema;
-    this.pronounService  = pronounService;
-    this.verbService     = verbService;
-    this.questionService = questionService;
+  public SentenceBuilder(SentenceSchema sentenceSchema, PronounService pronounService, VerbService verbService, QuestionService questionService,
+                         AdjectiveService adjectiveService, AdverbService adverbService) {
+    this.schema           = sentenceSchema;
+    this.pronounService   = pronounService;
+    this.verbService      = verbService;
+    this.questionService  = questionService;
+    this.adjectiveService = adjectiveService;
+    this.adverbService    = adverbService;
   }
 
   public Optional<Sentence> generate(GeneratorParameters generatorParameters) {
@@ -273,23 +281,22 @@ public class SentenceBuilder {
   }
 
   private boolean buildAdjective(int index) {
-/*    Optional<Adjective> adjective = helper.getAbstractAdjective(abstractSubject, nounSubject);
+    Optional<Adjective> adjective = adjectiveService.getAbstractAdjective(schema, abstractSubject/*, nounSubject*/);
     if (adjective.isEmpty()) {
       return false;
     }
     sentenceContent.setAbstractAdjective(adjective.get());
-    wordListFr.add(new WordTypeWordTuple(WordType.ADJECTIVE, helper.getAdjective(adjective.get(), subject, Lang.FR).get(), index));
-    wordListAr.add(new WordTypeWordTuple(WordType.ADJECTIVE, helper.getAdjective(adjective.get(), subject, Lang.DZ).get(), index));
-    */
+    wordListFr.add(new WordTypeWordTuple(WordType.ADJECTIVE, adjective.get().getAdjective(adjective.get(), subject, Lang.FR).get(), index));
+    wordListAr.add(new WordTypeWordTuple(WordType.ADJECTIVE, adjective.get().getAdjective(adjective.get(), subject, Lang.DZ).get(), index));
+
     return true;
   }
 
   private boolean builAdverb(int index) {
-/*    AbstractWord adverb = helper.getAdverb();
+    AbstractWord adverb = adverbService.getAdverb(); // @todo add parameter
     sentenceContent.setAbstractAdverb(adverb);
-    wordListFr.add(new WordTypeWordTuple(WordType.ADVERB, (Word) adverb.getValues().get(0), index));
-    wordListAr.add(new WordTypeWordTuple(WordType.ADVERB, (Word) adverb.getValues().get(0), index));
-    */
+    wordListFr.add(new WordTypeWordTuple(WordType.ADVERB, adverb.getValues().get(0), index));
+    wordListAr.add(new WordTypeWordTuple(WordType.ADVERB, adverb.getValues().get(0), index));
     return true;
   }
 
@@ -322,7 +329,7 @@ public class SentenceBuilder {
       }
       Word w = getFirstWordFromWordTypeFr(wordType, i);
       if (w != null) {
-        sentenceValue.append(w.getFr());
+        sentenceValue.append(w.getFrTranslationValue());
       }
       if (wordType == WordType.VERB
           && sentenceContent.isNegation()
@@ -363,7 +370,7 @@ public class SentenceBuilder {
             sentenceValue.append("ma ");
             sentenceValueAr.append("ما ");
           } else if (wordType == WordType.ADJECTIVE
-            //  && sentenceContent.getAbstractAdjective() != null && sentenceContent.getAbstractAdjective().isDefinitive()
+                     && sentenceContent.getAbstractAdjective() != null && sentenceContent.getAbstractAdjective().isDefinitive()
           ) {
             sentenceValue.append("machi ");
             sentenceValueAr.append("ماشي ");
@@ -377,10 +384,10 @@ public class SentenceBuilder {
         }
         sentenceValueAr.append(Objects.requireNonNullElse(arValue, " ٠٠٠ "));
         if (wordType == WordType.VERB && sentenceContent.isNegation() && sentenceContent.getSubtense().getTense() != Tense.PAST) {
-//          if (sentenceContent.getAbstractAdjective() == null || sentenceContent.getAbstractAdjective().isTemporal()) {
-          sentenceValue.append("ch ");
-          sentenceValueAr.append("ش");
-//          }
+          if (sentenceContent.getAbstractAdjective() == null || sentenceContent.getAbstractAdjective().isTemporal()) {
+            sentenceValue.append("ch ");
+            sentenceValueAr.append("ش");
+          }
         }
       }
       sentenceValue.append(" ");

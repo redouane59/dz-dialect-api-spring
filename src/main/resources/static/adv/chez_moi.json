@@ -1,0 +1,18 @@
+{
+  "id": "chez moi",
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "chez moi"
+        },
+        {
+          "lang": "DZ",
+          "value": "3andi",
+          "ar_value": "عندي"
+        }
+      ]
+    }
+  ]
+}

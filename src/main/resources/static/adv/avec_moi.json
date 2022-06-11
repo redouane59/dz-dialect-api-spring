@@ -1,0 +1,18 @@
+{
+  "id": "avec moi",
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "avec moi"
+        },
+        {
+          "lang": "DZ",
+          "value": "m3aya",
+          "ar_value": "مْعايا"
+        }
+      ]
+    }
+  ]
+}

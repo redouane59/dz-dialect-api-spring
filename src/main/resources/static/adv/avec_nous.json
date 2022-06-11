@@ -1,0 +1,18 @@
+{
+  "id": "avec nous",
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "avec nous"
+        },
+        {
+          "lang": "DZ",
+          "value": "m3ana",
+          "ar_value": "معانا"
+        }
+      ]
+    }
+  ]
+}

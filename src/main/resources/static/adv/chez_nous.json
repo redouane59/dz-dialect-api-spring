@@ -1,0 +1,18 @@
+{
+  "id": "chez nous",
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "chez nous"
+        },
+        {
+          "lang": "DZ",
+          "value": "3andna",
+          "ar_value": "عندنا"
+        }
+      ]
+    }
+  ]
+}

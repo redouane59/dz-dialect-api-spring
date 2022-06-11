@@ -34,17 +34,17 @@ public class Word implements Comparable {
   }
 
   @com.google.cloud.firestore.annotation.Exclude
-  public String getDz() {
+  public String getDzTranslationValue() {
     return getTranslationByLang(Lang.DZ).orElse(new Translation(Lang.DZ, "")).getValue();
   }
 
   @com.google.cloud.firestore.annotation.Exclude
-  public String getDzAr() {
+  public String getDzTranslationValueAr() {
     return (getTranslationByLang(Lang.DZ).orElse(new Translation(Lang.DZ, "", ""))).getArValue();
   }
 
   @com.google.cloud.firestore.annotation.Exclude
-  public String getFr() {
+  public String getFrTranslationValue() {
     return getTranslationByLang(Lang.FR).orElse(new Translation(Lang.FR, "")).getValue();
   }
 

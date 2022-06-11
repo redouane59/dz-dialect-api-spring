@@ -1,0 +1,18 @@
+{
+  "id": "chez redouane",
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "chez Redouane"
+        },
+        {
+          "lang": "DZ",
+          "value": "3and Redouane",
+          "ar_value": "عند ردوان"
+        }
+      ]
+    }
+  ]
+}

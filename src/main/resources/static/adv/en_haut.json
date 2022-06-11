@@ -1,0 +1,18 @@
+{
+  "id": "en haut",
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "en haut"
+        },
+        {
+          "lang": "DZ",
+          "value": "el fou9",
+          "ar_value": "الفوق"
+        }
+      ]
+    }
+  ]
+}

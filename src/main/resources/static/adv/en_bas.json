@@ -1,0 +1,18 @@
+{
+  "id": "en bas",
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "en bas"
+        },
+        {
+          "lang": "DZ",
+          "value": "el ta7t",
+          "ar_value": "التحت"
+        }
+      ]
+    }
+  ]
+}

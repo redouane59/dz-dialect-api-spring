@@ -1,0 +1,18 @@
+{
+  "id": "chez eux",
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "chez eux"
+        },
+        {
+          "lang": "DZ",
+          "value": "3andhoum",
+          "ar_value": "عندهم"
+        }
+      ]
+    }
+  ]
+}

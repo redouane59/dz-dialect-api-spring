@@ -1,0 +1,54 @@
+{
+  "id": "malade",
+  "possible_nouns": [
+    "PERSON"
+  ],
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "malade"
+        },
+        {
+          "lang": "DZ",
+          "value": "mrid",
+          "ar_value": "مْريدْ"
+        }
+      ],
+      "gender": "M",
+      "singular": true
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "malade"
+        },
+        {
+          "lang": "DZ",
+          "value": "mrida",
+          "ar_value": "مريدا"
+        }
+      ],
+      "gender": "F",
+      "singular": true
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "malades"
+        },
+        {
+          "lang": "DZ",
+          "value": "mrad",
+          "ar_value": "مراد"
+        }
+      ],
+      "gender": "X",
+      "singular": false
+    }
+  ],
+  "temporal": true
+}

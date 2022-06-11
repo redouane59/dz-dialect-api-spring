@@ -1,0 +1,18 @@
+{
+  "id": "ici",
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "ici"
+        },
+        {
+          "lang": "DZ",
+          "value": "hna",
+          "ar_value": "هْنا"
+        }
+      ]
+    }
+  ]
+}

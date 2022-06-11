@@ -2,6 +2,7 @@ package io.github.dzdialectapispring.sentence;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,8 @@ public class SentenceController {
                                                   @RequestParam(required = false, name = "question") String questionId,
                                                   @RequestParam(required = false, name = "adverb") String adverb,
                                                   @RequestParam(required = false, name = "exclude_positive") boolean excludePositive,
-                                                  @RequestParam(required = false, name = "exclude_negative") boolean excludeNegative
+                                                  @RequestParam(required = false, name = "exclude_negative") boolean excludeNegative,
+                                                  @RequestParam(required = false, name = "sentence_schema") String sentenceSchemaId
   ) throws ExecutionException, InterruptedException {
     return sentenceService.generateRandomSentences(count,
                                                    pronounId,
@@ -36,9 +38,13 @@ public class SentenceController {
                                                    questionId,
                                                    adverb,
                                                    excludePositive,
-                                                   excludeNegative);
+                                                   excludeNegative, sentenceSchemaId);
   }
 
+  @GetMapping("/schemas")
+  public List<String> getSentenceSchemas() {
+    return sentenceService.getSentenceSchemas().stream().map(SentenceSchema::getId).collect(Collectors.toList());
+  }
 /*  @GetMapping("/{id}")
   public SentenceDTO getSentenceById(@PathVariable String id) {
     return sentenceService.getSentenceById(id);

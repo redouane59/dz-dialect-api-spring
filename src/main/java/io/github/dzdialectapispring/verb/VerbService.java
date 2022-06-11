@@ -51,11 +51,12 @@ public class VerbService {
   private PronounService pronounService;
 
   public Set<String> getAllVerbIds() {
-    QuerySnapshot query = null;
+    QuerySnapshot query;
     try {
       query = collectionReference.get().get();
     } catch (Exception e) {
       LOGGER.error("enable to get all verbs " + e.getMessage());
+      return Set.of();
     }
     List<QueryDocumentSnapshot> documentSnapshot = query.getDocuments();
     return documentSnapshot.stream().map(d -> d.toObject(Verb.class)).map(AbstractWord::getId).collect(Collectors.toSet());
@@ -102,13 +103,13 @@ public class VerbService {
       String         dzValue   = "";
       String         dzValueAr = "";
       if (conjugation.getSubtense().getTense() != Tense.IMPERATIVE) {
-        frValue += pronoun.getFr() + " ";
-        dzValue += pronoun.getDz() + " ";
-        dzValueAr += pronoun.getDzAr() + " ";
+        frValue += pronoun.getFrTranslationValue() + " ";
+        dzValue += pronoun.getDzTranslationValue() + " ";
+        dzValueAr += pronoun.getDzTranslationValueAr() + " ";
       }
-      frValue += conjugation.getFr();
-      dzValue += conjugation.getDz();
-      dzValueAr += conjugation.getDzAr();
+      frValue += conjugation.getFrTranslationValue();
+      dzValue += conjugation.getDzTranslationValue();
+      dzValueAr += conjugation.getDzTranslationValueAr();
       Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, frValue), new Translation(Lang.DZ, dzValue, dzValueAr)));
       sentence.setContent(SentenceContent.builder()
                                          .subtense(conjugation.getSubtense())

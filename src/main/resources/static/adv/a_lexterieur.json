@@ -1,0 +1,18 @@
+{
+  "id": "a l'exterieur",
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "à l'exterieur"
+        },
+        {
+          "lang": "DZ",
+          "value": "barra",
+          "ar_value": "بَرا"
+        }
+      ]
+    }
+  ]
+}

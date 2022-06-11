@@ -13,5 +13,6 @@
   "tenses": [
     "PRESENT"
   ],
-  "verb_type": "STATE"
+  "verb_type": "STATE",
+  "enabled": true
 }

@@ -27,9 +27,9 @@ public class SentenceDTO {
   private final WordPropositionsDTO wordPropositions;
 
   public SentenceDTO(Sentence sentence) {
-    this.dz              = sentence.getDz();
-    this.dzAr            = sentence.getDzAr();
-    this.fr              = sentence.getFr();
+    this.dz              = sentence.getDzTranslationValue();
+    this.dzAr            = sentence.getDzTranslationValueAr();
+    this.fr              = sentence.getFrTranslationValue();
     this.sentenceContent = new SentenceContentDTO(sentence.getContent());
     wordPropositions     = new WordPropositionsDTO(sentence.getRandomWords());
   }

@@ -1,0 +1,18 @@
+{
+  "id": "a l'interieur",
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "à l'intérieur"
+        },
+        {
+          "lang": "DZ",
+          "value": "el dekhel",
+          "ar_value": "الداخل"
+        }
+      ]
+    }
+  ]
+}

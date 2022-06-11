@@ -103,8 +103,8 @@ public class QuestionService {
     List<SentenceDTO> result = new ArrayList<>();
     for (AbstractQuestion abstractQuestion : getAllQuestionObjects()) {
       for (Word word : abstractQuestion.getValues()) {
-        Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, word.getFr()),
-                                                 new Translation(Lang.DZ, word.getDz(), word.getDzAr())));
+        Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, word.getFrTranslationValue()),
+                                                 new Translation(Lang.DZ, word.getDzTranslationValue(), word.getDzTranslationValueAr())));
         sentence.setContent(SentenceContent.builder().abstractQuestion(abstractQuestion).build());
         result.add(new SentenceDTO(sentence));
       }
