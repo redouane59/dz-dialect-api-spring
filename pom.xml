@@ -68,6 +68,11 @@
       <groupId>org.springframework.cloud</groupId>
       <version>1.0.0.RELEASE</version>
     </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-security</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <version>2.6.1</version>
+    </dependency>
   </dependencies>
   <description>Algerian dialect api</description>
   <groupId>io.github</groupId>
