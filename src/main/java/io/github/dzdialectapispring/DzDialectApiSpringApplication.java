@@ -17,6 +17,7 @@ import io.github.dzdialectapispring.question.QuestionService;
 import io.github.dzdialectapispring.verb.Verb;
 import io.github.dzdialectapispring.verb.VerbService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.servers.Server;
 import java.io.File;
 import java.io.FileInputStream;
@@ -34,7 +35,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-@OpenAPIDefinition(servers = {@Server(url = "/", description = "Default Server URL")})
+@OpenAPIDefinition(servers = {@Server(url = "/", description = "Default Server URL")}, info =
+@Info(title = "DZDialect API", version = "1.0.0", description = "DZDialect API v1.0"))
 @SpringBootApplication
 @Slf4j
 public class DzDialectApiSpringApplication {
