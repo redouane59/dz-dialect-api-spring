@@ -1,5 +1,4 @@
 runtime: java11
-instance_class: F1
 env_variables:
   SPRING_PROFILES_ACTIVE: "gcp"
 handlers:
@@ -7,3 +6,4 @@ handlers:
     script: this field is required, but ignored
 manual_scaling:
   instances: 1
+instance_class: B1
