@@ -33,12 +33,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @OpenAPIDefinition(servers = {@Server(url = "/", description = "Default Server URL")}, info =
 @Info(title = "DZDialect API", version = "1.0.0", description = "DZDialect API v1.0"))
 @SpringBootApplication
 @Slf4j
+@Controller
 public class DzDialectApiSpringApplication {
 
   public static void main(String[] args) throws IOException {
@@ -54,6 +57,12 @@ public class DzDialectApiSpringApplication {
     LOGGER.debug("app init OK");
     SpringApplication.run(DzDialectApiSpringApplication.class, args);
     LOGGER.debug("app run OK");
+  }
+
+  @RequestMapping("/")
+  @ResponseBody
+  String home() {
+    return "Hello World!";
   }
 
   // @Bean
@@ -122,7 +131,7 @@ public class DzDialectApiSpringApplication {
     };
   }
 
-  @Bean
+  // @Bean
   CommandLineRunner adverbInit(AdverbService adverbService) {
     System.out.println("adverb initialization...");
     return args -> {

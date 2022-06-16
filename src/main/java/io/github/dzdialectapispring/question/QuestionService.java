@@ -38,7 +38,7 @@ public class QuestionService {
   private final CollectionReference collectionReference = FirestoreClient.getFirestore().collection(path);
 
   public List<AbstractQuestion> getAllQuestionObjects() {
-    QuerySnapshot query = null;
+    QuerySnapshot query;
     try {
       query = collectionReference.get().get();
     } catch (Exception e) {

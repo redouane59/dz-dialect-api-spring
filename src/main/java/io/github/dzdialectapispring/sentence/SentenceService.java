@@ -1,9 +1,16 @@
 package io.github.dzdialectapispring.sentence;
 
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.CollectionReference;
+import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.DocumentSnapshot;
+import com.google.cloud.firestore.WriteResult;
+import com.google.firebase.cloud.FirestoreClient;
 import io.github.dzdialectapispring.adjective.AdjectiveService;
 import io.github.dzdialectapispring.adverb.adjective.AdverbService;
 import io.github.dzdialectapispring.generic.ResourceList;
 import io.github.dzdialectapispring.other.Config;
+import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.enumerations.Tense;
 import io.github.dzdialectapispring.other.enumerations.WordType;
 import io.github.dzdialectapispring.pronoun.AbstractPronoun;
@@ -30,17 +37,19 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class SentenceService {
 
-  private SentenceBuilder  sentenceBuilder;
+  private final String              path                = "sentences";
+  private final CollectionReference collectionReference = FirestoreClient.getFirestore().collection(path);
+  private       SentenceBuilder     sentenceBuilder;
   @Autowired
-  private VerbService      verbService;
+  private       VerbService         verbService;
   @Autowired
-  private PronounService   pronounService;
+  private       PronounService      pronounService;
   @Autowired
-  private QuestionService  questionService;
+  private       QuestionService     questionService;
   @Autowired
-  private AdjectiveService adjectiveService;
+  private       AdjectiveService    adjectiveService;
   @Autowired
-  private AdverbService    adverbService;
+  private       AdverbService       adverbService;
 
   public List<SentenceDTO> generateRandomSentences(Integer count,
                                                    String pronounId,
@@ -172,13 +181,40 @@ public class SentenceService {
     return Optional.of(matchingSentenceSchema.get(new Random().nextInt(matchingSentenceSchema.size())));
   }
 
-  public SentenceDTO getSentenceById(final String id) {
+  public SentenceDTO getSentenceById(final String sentenceId) {
+    DocumentReference           documentReference = collectionReference.document(sentenceId);
+    ApiFuture<DocumentSnapshot> future            = documentReference.get();
+    DocumentSnapshot            documentSnapshot  = null;
+    try {
+      documentSnapshot = future.get();
+    } catch (Exception e) {
+      LOGGER.error("enable to find sentence " + sentenceId + " " + e.getMessage());
+    }
+    Sentence sentence;
+    if (documentSnapshot.exists()) {
+      sentence = documentSnapshot.toObject(Sentence.class);
+      return new SentenceDTO(sentence);
+    }
     return null;
   }
-/*    Optional<Sentence> sentenceOpt = sentenceRepository.findById(id);
-    if (sentenceOpt.isEmpty()) {
-      throw new IllegalArgumentException("No sentence found with id " + id);
+
+  public String insertSentence(List<Translation> translations) {
+    if (translations.size() > 1) {
+      ContributionSentence sentence    = new ContributionSentence(translations);
+      DocumentReference    addedDocRef = collectionReference.document();
+      sentence.setId(addedDocRef.getId());
+      ApiFuture<WriteResult> future = addedDocRef.set(sentence);
+      try {
+        String response = "sentence added at : " + future.get().getUpdateTime() + " with id " + sentence.getId();
+        LOGGER.debug(response);
+        return response;
+      } catch (Exception e) {
+        e.printStackTrace();
+        LOGGER.error(e.getMessage());
+        return "Error " + e.getMessage();
+      }
     }
-    return new SentenceDTO(sentenceOpt.get());
-  }*/
+    return null;
+  }
+
 }
