@@ -3,7 +3,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-
+src/main/resources/dz-dialect-api-firebase-adminsdk-gcmh0-0bc72f2007.json
+./src/main/resources/dz-dialect-api-firebase-adminsdk-gcmh0-0bc72f2007.json
 
 ### STS ###
 .apt_generated
