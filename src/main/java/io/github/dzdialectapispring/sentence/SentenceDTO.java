@@ -12,14 +12,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-public class SentenceDTO {
+public class SentenceDTO extends WordDTO {
 
-  @JsonProperty("dz")
-  private final String              dz;
-  @JsonProperty("dz_ar")
-  private final String              dzAr;
-  @JsonProperty("fr")
-  private final String              fr;
   @JsonProperty("additionnal_information")
   private final SentenceContentDTO  sentenceContent;
   @JsonProperty("word_propositions")
@@ -27,11 +21,15 @@ public class SentenceDTO {
   private final WordPropositionsDTO wordPropositions;
 
   public SentenceDTO(Sentence sentence) {
-    this.dz              = sentence.getDzTranslationValue();
-    this.dzAr            = sentence.getDzTranslationValueAr();
-    this.fr              = sentence.getFrTranslationValue();
+    super(sentence);
     this.sentenceContent = new SentenceContentDTO(sentence.getContent());
     wordPropositions     = new WordPropositionsDTO(sentence.getRandomWords());
+  }
+
+  public SentenceDTO(ContributionSentence sentence) {
+    super(sentence);
+    this.sentenceContent = null;
+    wordPropositions     = null;
   }
 
   @NoArgsConstructor

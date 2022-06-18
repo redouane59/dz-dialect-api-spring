@@ -1,6 +1,5 @@
 package io.github.dzdialectapispring.sentence;
 
-import io.github.dzdialectapispring.other.concrets.Translation;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
@@ -59,9 +58,9 @@ public class SentenceController {
 
   @PostMapping
   @ResponseBody
-  public String addSentence(@NonNull @RequestBody List<Translation> translations, @RequestHeader("x-authorization-id") String header) {
+  public String addSentence(@NonNull @RequestBody ContributionSentence sentence, @RequestHeader("x-authorization-id") String header) {
     if (header.equals("123VivaLalgerie")) {
-      return sentenceService.insertSentence(translations);
+      return sentenceService.insertSentence(sentence);
     } else {
       LOGGER.debug("invalid header " + header);
       return null;
@@ -69,7 +68,7 @@ public class SentenceController {
   }
 
   @GetMapping("/{id}")
-  public SentenceDTO getSentenceById(@PathVariable String id) {
+  public ContributionSentenceDTO getSentenceById(@PathVariable String id) {
     return sentenceService.getSentenceById(id);
   }
 
