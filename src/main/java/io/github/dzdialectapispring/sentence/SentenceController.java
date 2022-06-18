@@ -58,7 +58,8 @@ public class SentenceController {
 
   @PostMapping
   @ResponseBody
-  public String addSentence(@NonNull @RequestBody ContributionSentence sentence, @RequestHeader("x-authorization-id") String header) {
+  public ContributionSentenceDTO addSentence(@NonNull @RequestBody ContributionSentence sentence,
+                                             @RequestHeader("x-authorization-id") String header) {
     if (header.equals("123VivaLalgerie")) {
       return sentenceService.insertSentence(sentence);
     } else {
