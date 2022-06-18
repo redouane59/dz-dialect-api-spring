@@ -48,10 +48,10 @@ public class ConjugationListDeserializer extends JsonDeserializer {
               result.add(new PossessiveWord(translations, gender, singular, possession, index));
             }
           } else {
-            result.add(new GenderedWord(translations, gender, singular, 0));
+            result.add(new GenderedWord(translations, gender, singular));
           }
         } else {
-          result.add(new Word(translations, 0));
+          result.add(new Word(translations));
         }
       }
     }

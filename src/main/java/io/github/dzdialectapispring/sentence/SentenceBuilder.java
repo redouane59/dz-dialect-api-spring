@@ -329,7 +329,7 @@ public class SentenceBuilder {
       }
       Word w = getFirstWordFromWordTypeFr(wordType, i);
       if (w != null) {
-        sentenceValue.append(w.getFrTranslationValue());
+        sentenceValue.append(w.getTranslationValue(Lang.FR));
       }
       if (wordType == WordType.VERB
           && sentenceContent.isNegation()

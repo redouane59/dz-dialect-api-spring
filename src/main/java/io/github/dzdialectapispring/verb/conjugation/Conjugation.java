@@ -26,4 +26,5 @@ public class Conjugation extends PossessiveWord {
     this.subtense = subtense;
   }
 
+
 }

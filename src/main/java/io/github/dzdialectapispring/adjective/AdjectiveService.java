@@ -82,8 +82,8 @@ public class AdjectiveService {
     Adjective         adjective = getAdjectiveById(adjectiveId);
     List<SentenceDTO> result    = new ArrayList<>();
     for (GenderedWord word : adjective.getValues()) {
-      Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, word.getFrTranslationValue()),
-                                               new Translation(Lang.DZ, word.getDzTranslationValue(), word.getDzTranslationValueAr())));
+      Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, word.getTranslationValue(Lang.FR)),
+                                               new Translation(Lang.DZ, word.getTranslationValue(Lang.DZ), word.getTranslationValueAr(Lang.DZ))));
       result.add(new SentenceDTO(sentence));
     }
     return result;

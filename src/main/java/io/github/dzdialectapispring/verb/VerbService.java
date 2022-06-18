@@ -103,13 +103,13 @@ public class VerbService {
       String         dzValue   = "";
       String         dzValueAr = "";
       if (conjugation.getSubtense().getTense() != Tense.IMPERATIVE) {
-        frValue += pronoun.getFrTranslationValue() + " ";
-        dzValue += pronoun.getDzTranslationValue() + " ";
-        dzValueAr += pronoun.getDzTranslationValueAr() + " ";
+        frValue += pronoun.getTranslationValue(Lang.FR) + " ";
+        dzValue += pronoun.getTranslationValue(Lang.DZ) + " ";
+        dzValueAr += pronoun.getTranslationValueAr(Lang.DZ) + " ";
       }
-      frValue += conjugation.getFrTranslationValue();
-      dzValue += conjugation.getDzTranslationValue();
-      dzValueAr += conjugation.getDzTranslationValueAr();
+      frValue += conjugation.getTranslationValue(Lang.FR);
+      dzValue += conjugation.getTranslationValue(Lang.DZ);
+      dzValueAr += conjugation.getTranslationValueAr(Lang.DZ);
       Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, frValue), new Translation(Lang.DZ, dzValue, dzValueAr)));
       sentence.setContent(SentenceContent.builder()
                                          .subtense(conjugation.getSubtense())

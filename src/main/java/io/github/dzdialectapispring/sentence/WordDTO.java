@@ -19,9 +19,9 @@ public class WordDTO {
   private String fr;
 
   public WordDTO(Word word) {
-    this.dz   = word.getDzTranslationValue();
-    this.dzAr = word.getDzTranslationValueAr();
-    this.fr   = word.getFrTranslationValue();
+    this.dz   = word.getTranslationValue(Lang.DZ);
+    this.dzAr = word.getTranslationValueAr(Lang.DZ);
+    this.fr   = word.getTranslationValue(Lang.FR);
   }
 
   public WordDTO(List<Translation> translations) {
