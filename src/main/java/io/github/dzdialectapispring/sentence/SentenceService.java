@@ -198,18 +198,18 @@ public class SentenceService {
     return null;
   }
 
-  public String insertSentence(ContributionSentence sentence) {
+  public ContributionSentenceDTO insertSentence(ContributionSentence sentence) {
     DocumentReference addedDocRef = collectionReference.document();
     sentence.setId(addedDocRef.getId());
     ApiFuture<WriteResult> future = addedDocRef.set(sentence);
     try {
       String response = "sentence added at : " + future.get().getUpdateTime() + " with id " + sentence.getId();
       LOGGER.debug(response);
-      return response;
+      return new ContributionSentenceDTO(sentence);
     } catch (Exception e) {
       e.printStackTrace();
       LOGGER.error(e.getMessage());
-      return "Error " + e.getMessage();
+      throw new IllegalArgumentException("Error " + e.getMessage());
     }
   }
 
