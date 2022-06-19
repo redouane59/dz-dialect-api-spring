@@ -180,7 +180,7 @@ public class SentenceService {
     return Optional.of(matchingSentenceSchema.get(new Random().nextInt(matchingSentenceSchema.size())));
   }
 
-  // @todo manage contribution sentence DTO
+  // @todo manage contribution sentence DTO .
   public ContributionSentenceDTO getSentenceById(final String sentenceId) {
     DocumentReference           documentReference = collectionReference.document(sentenceId);
     ApiFuture<DocumentSnapshot> future            = documentReference.get();
