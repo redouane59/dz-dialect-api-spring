@@ -46,7 +46,7 @@ public class DzDialectApiSpringApplication {
 
   public static void main(String[] args) throws IOException {
     LOGGER.debug("main()");
-    File            file           = new File("./src/main/resources/dz-dialect-api-dbedf228eb5b.json");
+    File            file           = new File("./src/main/resources/dz-dialect-api-69f61d0e3dce.json");
     FileInputStream serviceAccount = new FileInputStream(file.getAbsolutePath());
     LOGGER.debug("service account OK");
     FirebaseOptions options = new FirebaseOptions.Builder()
