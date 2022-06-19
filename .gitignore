@@ -3,7 +3,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-
+src/main/resources/dz-dialect-api-892bf41bacd5.json
+./src/main/resources/dz-dialect-api-892bf41bacd5.json
 
 ### STS ###
 .apt_generated
