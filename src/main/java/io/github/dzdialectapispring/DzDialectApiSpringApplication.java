@@ -46,18 +46,23 @@ public class DzDialectApiSpringApplication {
 
   public static void main(String[] args) throws IOException {
     LOGGER.debug("main()");
-    File            file           = new File("./src/main/resources/dz-dialect-api-69f61d0e3dce.json");
+    System.out.println("var1 : " + System.getenv("GOOGLE_APPLICATION_CREDENTIALS"));
+    System.out.println("var2 : " + System.getenv("GOOGLE_CREDENTIALS"));
+    File file = new File("./src/main/resources/dz-dialect-api-69f61d0e3dce.json");
+
     FileInputStream serviceAccount = new FileInputStream(file.getAbsolutePath());
     LOGGER.debug("service account OK");
     FirebaseOptions options = new FirebaseOptions.Builder()
         .setCredentials(GoogleCredentials.fromStream(serviceAccount))
         .build();
+
     LOGGER.debug("firebase options OK");
     FirebaseApp.initializeApp(options);
     LOGGER.debug("app init OK");
     SpringApplication.run(DzDialectApiSpringApplication.class, args);
     LOGGER.debug("app run OK");
   }
+
 
   @RequestMapping("/")
   @ResponseBody
