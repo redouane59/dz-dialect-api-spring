@@ -56,7 +56,7 @@ public class DzDialectApiSpringApplication {
       serviceAccount = new ByteArrayInputStream(credentialString.getBytes(StandardCharsets.UTF_8));
     } else {
       LOGGER.debug("loading credentials from local file");
-      File file = new File("../dz-dialect-api-69f61d0e3dce.json");
+      File file = new File("../dz-dialect-api-443aafbaf7a9.json");
       serviceAccount = new FileInputStream(file.getAbsolutePath());
     }
     FirebaseOptions options = new FirebaseOptions.Builder()
