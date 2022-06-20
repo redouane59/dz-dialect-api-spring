@@ -19,9 +19,12 @@ import io.github.dzdialectapispring.verb.VerbService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.servers.Server;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -46,12 +49,16 @@ public class DzDialectApiSpringApplication {
 
   public static void main(String[] args) throws IOException {
     LOGGER.debug("main()");
-    System.out.println("var1 : " + System.getenv("GOOGLE_APPLICATION_CREDENTIALS"));
-    System.out.println("var2 : " + System.getenv("GOOGLE_CREDENTIALS"));
-    File file = new File("./src/main/resources/dz-dialect-api-69f61d0e3dce.json");
-
-    FileInputStream serviceAccount = new FileInputStream(file.getAbsolutePath());
-    LOGGER.debug("service account OK");
+    String      credentialString = System.getenv("GOOGLE_CREDENTIALS");
+    InputStream serviceAccount;
+    if (credentialString != null) {
+      LOGGER.debug("loading credentials from variable environment");
+      serviceAccount = new ByteArrayInputStream(credentialString.getBytes(StandardCharsets.UTF_8));
+    } else {
+      LOGGER.debug("loading credentials from local file");
+      File file = new File("../dz-dialect-api-69f61d0e3dce.json");
+      serviceAccount = new FileInputStream(file.getAbsolutePath());
+    }
     FirebaseOptions options = new FirebaseOptions.Builder()
         .setCredentials(GoogleCredentials.fromStream(serviceAccount))
         .build();
