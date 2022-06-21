@@ -14,11 +14,8 @@ import io.github.dzdialectapispring.other.Config;
 import io.github.dzdialectapispring.other.NounType;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.GenderedWord;
-import io.github.dzdialectapispring.other.concrets.Translation;
-import io.github.dzdialectapispring.other.enumerations.Lang;
-import io.github.dzdialectapispring.sentence.Sentence;
-import io.github.dzdialectapispring.sentence.SentenceDTO;
 import io.github.dzdialectapispring.sentence.SentenceSchema;
+import io.github.dzdialectapispring.sentence.WordDTO;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -78,13 +75,11 @@ public class AdjectiveService {
     return null;
   }
 
-  public List<SentenceDTO> getAdjectiveValuesById(final String adjectiveId) {
-    Adjective         adjective = getAdjectiveById(adjectiveId);
-    List<SentenceDTO> result    = new ArrayList<>();
+  public List<WordDTO> getAdjectiveValuesById(final String adjectiveId) {
+    Adjective     adjective = getAdjectiveById(adjectiveId);
+    List<WordDTO> result    = new ArrayList<>();
     for (GenderedWord word : adjective.getValues()) {
-      Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, word.getTranslationValue(Lang.FR)),
-                                               new Translation(Lang.DZ, word.getTranslationValue(Lang.DZ), word.getTranslationValueAr(Lang.DZ))));
-      result.add(new SentenceDTO(sentence));
+      result.add(new WordDTO(word));
     }
     return result;
   }

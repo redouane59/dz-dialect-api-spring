@@ -1,0 +1,36 @@
+{
+  "id": "homme",
+  "type": "PERSON",
+  "values": [
+    {
+      "singular": true,
+      "gender": "M",
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "homme"
+        },
+        {
+          "lang": "DZ",
+          "value": "radjel",
+          "ar_value": "رجل"
+        }
+      ]
+    },
+    {
+      "singular": false,
+      "gender": "M",
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "hommes"
+        },
+        {
+          "lang": "DZ",
+          "value": "rdjal",
+          "ar_value": "رجال"
+        }
+      ]
+    }
+  ]
+}

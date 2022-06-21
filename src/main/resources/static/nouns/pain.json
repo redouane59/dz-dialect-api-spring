@@ -1,0 +1,21 @@
+{
+  "id": "pain",
+  "type": "FOOD",
+  "values": [
+    {
+      "singular": true,
+      "gender": "M",
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "pain"
+        },
+        {
+          "lang": "DZ",
+          "value": "khoubz",
+          "ar_value": "خبز"
+        }
+      ]
+    }
+  ]
+}

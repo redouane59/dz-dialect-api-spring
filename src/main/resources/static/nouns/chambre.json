@@ -1,0 +1,36 @@
+{
+  "id": "chambre",
+  "type": "PLACE",
+  "values": [
+    {
+      "singular": true,
+      "gender": "F",
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "chambre"
+        },
+        {
+          "lang": "DZ",
+          "value": "bit",
+          "ar_value": "بيت"
+        }
+      ]
+    },
+    {
+      "singular": false,
+      "gender": "F",
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "chambres"
+        },
+        {
+          "lang": "DZ",
+          "value": "biout",
+          "ar_value": "بْيوت"
+        }
+      ]
+    }
+  ]
+}

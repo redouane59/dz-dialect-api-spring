@@ -1,0 +1,22 @@
+{
+  "id": "plage",
+  "type": "PLACE",
+  "values": [
+    {
+      "singular": true,
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "plage",
+          "gender": "F"
+        },
+        {
+          "lang": "DZ",
+          "value": "b7ar",
+          "ar_value": "بْحَرْ",
+          "gender": "M"
+        }
+      ]
+    }
+  ]
+}

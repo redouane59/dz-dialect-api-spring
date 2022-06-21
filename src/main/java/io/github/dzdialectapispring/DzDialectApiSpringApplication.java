@@ -10,6 +10,8 @@ import io.github.dzdialectapispring.adjective.AdjectiveService;
 import io.github.dzdialectapispring.adverb.adjective.Adverb;
 import io.github.dzdialectapispring.adverb.adjective.AdverbService;
 import io.github.dzdialectapispring.generic.ResourceList;
+import io.github.dzdialectapispring.noun.Noun;
+import io.github.dzdialectapispring.noun.NounService;
 import io.github.dzdialectapispring.pronoun.AbstractPronoun;
 import io.github.dzdialectapispring.pronoun.PronounService;
 import io.github.dzdialectapispring.question.AbstractQuestion;
@@ -156,6 +158,24 @@ public class DzDialectApiSpringApplication {
           adverbService.insert(adverb);
         } catch (IOException e) {
           System.err.println("could not load adverb file " + fileName);
+        }
+      }
+    };
+  }
+
+  // @Bean
+  CommandLineRunner nounsInit(NounService nounService) {
+    System.out.println("adjective initialization...");
+    return args -> {
+      Set<String>
+          files =
+          new HashSet<>(ResourceList.getResources(Pattern.compile(".*nouns.*json")));
+      for (String fileName : files) {
+        try {
+          Noun noun = OBJECT_MAPPER.readValue(new File(fileName), Noun.class);
+          nounService.insert(noun);
+        } catch (IOException e) {
+          System.err.println("could not load noun file " + fileName);
         }
       }
     };

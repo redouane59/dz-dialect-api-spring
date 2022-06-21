@@ -1,0 +1,37 @@
+{
+  "id": "assiette",
+  "type": "OBJECT",
+  "values": [
+    {
+      "singular": true,
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "assiette",
+          "gender": "F"
+        },
+        {
+          "lang": "DZ",
+          "value": "tabssi",
+          "ar_value": "طبسي",
+          "gender": "M"
+        }
+      ]
+    },
+    {
+      "singular": false,
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "assiettes",
+          "gender": "F"
+        },
+        {
+          "lang": "DZ",
+          "value": "tabassa",
+          "gender": "M"
+        }
+      ]
+    }
+  ]
+}

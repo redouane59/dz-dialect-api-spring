@@ -1,4 +1,4 @@
-package io.github.dzdialectapispring.adjective;
+package io.github.dzdialectapispring.noun;
 
 import io.github.dzdialectapispring.sentence.WordDTO;
 import java.util.List;
@@ -11,21 +11,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/v1/adjectives")
+@RequestMapping("api/v1/nouns")
 @AllArgsConstructor
 @CrossOrigin(origins = "https://dz-dialect-app.herokuapp.com/", allowedHeaders = "*")
-public class AdjectiveController {
+public class NounController {
 
-  private final AdjectiveService adjectiveService;
+  private final NounService nounService;
 
   @GetMapping
-  public Set<String> getAllAdjectivesIds() {
-    return adjectiveService.getAllAdjectivesIds();
+  public Set<String> getAllNounsIds() {
+    return nounService.getAllNounsIds();
   }
 
   @GetMapping("/{id}/values")
-  public List<WordDTO> getAdjectiveValues(@PathVariable String id) {
-    return adjectiveService.getAdjectiveValuesById(id);
+  public List<WordDTO> getNounValues(@PathVariable String id) {
+    return nounService.getNounValuesById(id);
   }
 
 }

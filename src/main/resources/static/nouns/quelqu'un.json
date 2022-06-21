@@ -1,0 +1,22 @@
+{
+  "id": "quelqu'un",
+  "type": "PERSON",
+  "values": [
+    {
+      "singular": true,
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "quelqu'un",
+          "gender": "X"
+        },
+        {
+          "lang": "DZ",
+          "value": "kech wa7ad",
+          "ar_value": "",
+          "gender": "X"
+        }
+      ]
+    }
+  ]
+}

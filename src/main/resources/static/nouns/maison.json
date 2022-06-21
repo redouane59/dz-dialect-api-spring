@@ -1,0 +1,36 @@
+{
+  "id": "maison",
+  "type": "PLACE",
+  "values": [
+    {
+      "singular": true,
+      "gender": "F",
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "maison"
+        },
+        {
+          "lang": "DZ",
+          "value": "dar",
+          "ar_value": "دار"
+        }
+      ]
+    },
+    {
+      "singular": false,
+      "gender": "F",
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "maisons"
+        },
+        {
+          "lang": "DZ",
+          "value": "diar",
+          "ar_value": "دْيار"
+        }
+      ]
+    }
+  ]
+}

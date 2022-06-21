@@ -1,0 +1,36 @@
+{
+  "id": "rue",
+  "type": "PLACE",
+  "values": [
+    {
+      "singular": true,
+      "gender": "F",
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "rue"
+        },
+        {
+          "lang": "DZ",
+          "value": "zon9a",
+          "ar_value": "زنقا"
+        }
+      ]
+    },
+    {
+      "singular": false,
+      "gender": "F",
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "rues"
+        },
+        {
+          "lang": "DZ",
+          "value": "zna9",
+          "ar_value": "زْنق"
+        }
+      ]
+    }
+  ]
+}

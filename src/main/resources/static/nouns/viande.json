@@ -1,0 +1,22 @@
+{
+  "id": "viande",
+  "type": "FOOD",
+  "values": [
+    {
+      "singular": true,
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "viande",
+          "gender": "F"
+        },
+        {
+          "lang": "DZ",
+          "value": "7em",
+          "ar_value": "لْحم",
+          "gender": "M"
+        }
+      ]
+    }
+  ]
+}

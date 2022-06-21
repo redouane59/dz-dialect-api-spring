@@ -1,0 +1,22 @@
+{
+  "id": "quelque part",
+  "type": "PLACE",
+  "values": [
+    {
+      "singular": true,
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "quelque part",
+          "gender": "X"
+        },
+        {
+          "lang": "DZ",
+          "value": "kech madrab",
+          "ar_value": "",
+          "gender": "X"
+        }
+      ]
+    }
+  ]
+}

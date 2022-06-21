@@ -1,0 +1,36 @@
+{
+  "id": "femme",
+  "type": "PERSON",
+  "values": [
+    {
+      "singular": true,
+      "gender": "F",
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "femme"
+        },
+        {
+          "lang": "DZ",
+          "value": "mra",
+          "ar_value": "مر"
+        }
+      ]
+    },
+    {
+      "singular": false,
+      "gender": "F",
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "femmes"
+        },
+        {
+          "lang": "DZ",
+          "value": "nsa",
+          "ar_value": "نسا"
+        }
+      ]
+    }
+  ]
+}

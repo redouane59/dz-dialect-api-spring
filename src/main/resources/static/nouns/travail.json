@@ -1,0 +1,22 @@
+{
+  "id": "travail",
+  "type": "TASK",
+  "values": [
+    {
+      "singular": true,
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "travail",
+          "gender": "M"
+        },
+        {
+          "lang": "DZ",
+          "value": "khedma",
+          "ar_value": "خدما",
+          "gender": "F"
+        }
+      ]
+    }
+  ]
+}

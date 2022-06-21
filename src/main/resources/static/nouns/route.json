@@ -1,0 +1,36 @@
+{
+  "id": "route",
+  "type": "PLACE",
+  "values": [
+    {
+      "singular": true,
+      "gender": "F",
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "route"
+        },
+        {
+          "lang": "DZ",
+          "value": "tri9",
+          "ar_value": "طْريق"
+        }
+      ]
+    },
+    {
+      "singular": false,
+      "gender": "F",
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "routes"
+        },
+        {
+          "lang": "DZ",
+          "value": "tor9an",
+          "ar_value": "طرقان"
+        }
+      ]
+    }
+  ]
+}
