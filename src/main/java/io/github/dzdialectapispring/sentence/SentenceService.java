@@ -28,6 +28,7 @@ import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -180,8 +181,7 @@ public class SentenceService {
     return Optional.of(matchingSentenceSchema.get(new Random().nextInt(matchingSentenceSchema.size())));
   }
 
-  // @todo manage contribution sentence DTO .
-  public ContributionSentenceDTO getSentenceById(final String sentenceId) {
+  public Optional<ContributionSentence> getContributionSentenceObjectById(final String sentenceId) {
     DocumentReference           documentReference = collectionReference.document(sentenceId);
     ApiFuture<DocumentSnapshot> future            = documentReference.get();
     DocumentSnapshot            documentSnapshot  = null;
@@ -193,9 +193,15 @@ public class SentenceService {
     ContributionSentence sentence;
     if (documentSnapshot.exists()) {
       sentence = documentSnapshot.toObject(ContributionSentence.class);
-      return new ContributionSentenceDTO(sentence);
+      return Optional.of(sentence);
     }
-    return null;
+    return Optional.empty();
+  }
+
+  // @todo manage contribution sentence DTO .
+  public ContributionSentenceDTO getContributionSentenceById(final String sentenceId) {
+    Optional<ContributionSentence> contributionSentenceOpt = getContributionSentenceObjectById(sentenceId);
+    return contributionSentenceOpt.map(ContributionSentenceDTO::new).orElse(null);
   }
 
   public ContributionSentenceDTO insertSentence(ContributionSentence sentence) {
@@ -213,4 +219,16 @@ public class SentenceService {
     }
   }
 
+  @SneakyThrows
+  public ContributionSentenceDTO incrementThumb(final String sentenceId, final boolean up) {
+    Optional<ContributionSentence> sentenceOpt = getContributionSentenceObjectById(sentenceId);
+    if (sentenceOpt.isEmpty()) {
+      throw new IllegalArgumentException("sentence with id " + sentenceId + " not found");
+    }
+    ContributionSentence newSentence = sentenceOpt.get();
+    newSentence.incrementThumb(up);
+    ApiFuture<WriteResult> collectionsApiFuture = collectionReference.document(sentenceId).set(newSentence);
+    LOGGER.debug("thumb update at " + collectionsApiFuture.get().getUpdateTime());
+    return new ContributionSentenceDTO(newSentence);
+  }
 }

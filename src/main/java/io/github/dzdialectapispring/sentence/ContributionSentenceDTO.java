@@ -11,10 +11,16 @@ public class ContributionSentenceDTO extends WordDTO {
   private String id;
   @JsonProperty("author_id")
   private String authorId;
+  @JsonProperty("thumb_up_count")
+  private int    thumbUpCount;
+  @JsonProperty("thumb_down_count")
+  private int    thumbDownCount;
 
   public ContributionSentenceDTO(final ContributionSentence sentence) {
     super(sentence);
-    this.id       = sentence.getId();
-    this.authorId = sentence.getAuthorId();
+    this.id             = sentence.getId();
+    this.authorId       = sentence.getAuthorId();
+    this.thumbUpCount   = sentence.getThumbUpCount();
+    this.thumbDownCount = sentence.getThumbDownCount();
   }
 }

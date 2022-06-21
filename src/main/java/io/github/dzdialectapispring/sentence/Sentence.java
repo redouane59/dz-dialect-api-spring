@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.dzdialectapispring.adjective.Adjective;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
-import io.github.dzdialectapispring.other.concrets.Word;
 import io.github.dzdialectapispring.other.enumerations.Lang;
 import io.github.dzdialectapispring.other.enumerations.Subtense;
 import io.github.dzdialectapispring.pronoun.AbstractPronoun;
@@ -23,7 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Sentence extends Word {
+public class Sentence extends AbstractSentence {
 
   @JsonProperty("additional_information")
   @Schema(name = "additional_information")

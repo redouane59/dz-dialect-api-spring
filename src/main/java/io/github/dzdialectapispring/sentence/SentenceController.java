@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SentenceController {
 
   private final SentenceService sentenceService;
+  private final String          headerId = "123VivaLalgerie";
 
   @GetMapping("/generate")
   public List<SentenceDTO> generateRandomSentence(@RequestParam(required = false) Integer count,
@@ -60,7 +62,7 @@ public class SentenceController {
   @ResponseBody
   public ContributionSentenceDTO addSentence(@NonNull @RequestBody ContributionSentence sentence,
                                              @RequestHeader("x-authorization-id") String header) {
-    if (header.equals("123VivaLalgerie")) {
+    if (header.equals(headerId)) {
       return sentenceService.insertSentence(sentence);
     } else {
       LOGGER.debug("invalid header " + header);
@@ -70,7 +72,17 @@ public class SentenceController {
 
   @GetMapping("/{id}")
   public ContributionSentenceDTO getSentenceById(@PathVariable String id) {
-    return sentenceService.getSentenceById(id);
+    return sentenceService.getContributionSentenceById(id);
+  }
+
+  @PutMapping("/{id}")
+  public ContributionSentenceDTO incrementThumb(@PathVariable String id, boolean up, @RequestHeader("x-authorization-id") String header) {
+    if (header.equals(headerId)) {
+      return sentenceService.incrementThumb(id, up);
+    } else {
+      LOGGER.debug("invalid header " + header);
+      return null;
+    }
   }
 
 }
