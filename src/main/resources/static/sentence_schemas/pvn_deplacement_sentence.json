@@ -4,11 +4,13 @@
     "PRONOUN",
     "VERB",
     "PREPOSITION",
+    "ARTICLE",
     "NOUN"
   ],
   "ar_sequence": [
     "VERB",
     "PREPOSITION",
+    "ARTICLE",
     "NOUN"
   ],
   "subject_position": 0,
@@ -21,5 +23,6 @@
   "noun_types": [
     "PLACE"
   ],
-  "possible_negation": true
+  "possible_negation": true,
+  "enabled": true
 }
