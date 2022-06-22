@@ -18,5 +18,7 @@
         }
       ]
     }
-  ]
+  ],
+  "state_preposition": "a_state",
+  "deplacement_preposition": "a_dep"
 }

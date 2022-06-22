@@ -17,5 +17,6 @@
     "PRESENT"
   ],
   "verb_type": "STATE",
-  "possible_negation": true
+  "possible_negation": true,
+  "enabled": true
 }

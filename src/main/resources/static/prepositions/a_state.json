@@ -1,0 +1,20 @@
+{
+  "id": "a_state",
+  "values": [
+    {
+      "gender": "X",
+      "singular": true,
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "à"
+        },
+        {
+          "lang": "DZ",
+          "value": "f",
+          "ar_value": "*"
+        }
+      ]
+    }
+  ]
+}

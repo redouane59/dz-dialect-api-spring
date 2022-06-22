@@ -173,6 +173,7 @@ public class DzDialectApiSpringApplication {
       for (String fileName : files) {
         try {
           Noun noun = OBJECT_MAPPER.readValue(new File(fileName), Noun.class);
+          System.out.println(noun);
           nounService.insert(noun);
         } catch (IOException e) {
           System.err.println("could not load noun file " + fileName);

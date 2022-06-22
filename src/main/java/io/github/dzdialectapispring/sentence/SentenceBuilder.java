@@ -4,7 +4,14 @@ package io.github.dzdialectapispring.sentence;
 import io.github.dzdialectapispring.adjective.Adjective;
 import io.github.dzdialectapispring.adjective.AdjectiveService;
 import io.github.dzdialectapispring.adverb.adjective.AdverbService;
+import io.github.dzdialectapispring.noun.Noun;
+import io.github.dzdialectapispring.noun.NounService;
+import io.github.dzdialectapispring.other.Config;
+import io.github.dzdialectapispring.other.Preposition;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
+import io.github.dzdialectapispring.other.abstracts.DefinedArticles;
+import io.github.dzdialectapispring.other.concrets.GenderedWord;
+import io.github.dzdialectapispring.other.concrets.Possession;
 import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.concrets.Word;
@@ -19,8 +26,11 @@ import io.github.dzdialectapispring.question.QuestionService;
 import io.github.dzdialectapispring.sentence.Sentence.SentenceContent;
 import io.github.dzdialectapispring.verb.Verb;
 import io.github.dzdialectapispring.verb.VerbService;
+import io.github.dzdialectapispring.verb.VerbType;
 import io.github.dzdialectapispring.verb.conjugation.Conjugation;
 import io.github.dzdialectapispring.verb.suffix.Suffix;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -46,9 +56,11 @@ public class SentenceBuilder {
   private final QuestionService  questionService;
   private final AdjectiveService adjectiveService;
   private final AdverbService    adverbService;
+  private final NounService      nounService;
   List<WordTypeWordTuple> wordListFr;
   List<WordTypeWordTuple> wordListAr;
   PossessiveWord          subject          = null;
+  Noun                    nounSubject      = null;
   AbstractWord            abstractSubject  = null;
   AbstractQuestion        abstractQuestion = null;
   private PossessiveWord  suffix;
@@ -56,13 +68,14 @@ public class SentenceBuilder {
 
   @Autowired
   public SentenceBuilder(SentenceSchema sentenceSchema, PronounService pronounService, VerbService verbService, QuestionService questionService,
-                         AdjectiveService adjectiveService, AdverbService adverbService) {
+                         AdjectiveService adjectiveService, AdverbService adverbService, NounService nounService) {
     this.schema           = sentenceSchema;
     this.pronounService   = pronounService;
     this.verbService      = verbService;
     this.questionService  = questionService;
     this.adjectiveService = adjectiveService;
     this.adverbService    = adverbService;
+    this.nounService      = nounService;
   }
 
   public Optional<Sentence> generate(GeneratorParameters generatorParameters) {
@@ -99,8 +112,8 @@ public class SentenceBuilder {
   }
 
   private void resetAttributes(GeneratorParameters generatorParameters) {
-/*
-    nounSubject      = null;*/
+
+    nounSubject      = null;
     abstractQuestion = null;
     subject          = null;
     abstractSubject  = null;
@@ -174,26 +187,48 @@ public class SentenceBuilder {
   }
 
   private boolean buildNoun(int index) {
-  /*  Optional<Noun> abstractNoun = helper.getAbstractNoun(abstractVerb);
-    if (abstractNoun.isEmpty()) {
-      return false;
-    }
-    this.nounSubject = abstractNoun.get();
-    PossessiveWord         noun      = new PossessiveWord(abstractNoun.get().getWordBySingular(true));
-    Optional<GenderedWord> frArticle = helper.getArticle(noun, Lang.FR);
-    Optional<GenderedWord> dzArticle = helper.getArticle(noun, Lang.DZ);
-    if (abstractVerb != null && schema.getFrSequence().contains(WordType.PREPOSITION)) {
-      if (abstractVerb.getVerbType() == VerbType.DEPLACEMENT) {
-        wordListFr.add(new WordTypeWordTuple(WordType.PREPOSITION, abstractNoun.get().getDeplacementPreposition(), index));
-        wordListAr.add(new WordTypeWordTuple(WordType.PREPOSITION, abstractNoun.get().getDeplacementPreposition(), index));
-      } else if (abstractVerb.getVerbType() == VerbType.STATE) {
-        wordListFr.add(new WordTypeWordTuple(WordType.PREPOSITION, abstractNoun.get().getStatePreposition(), index));
-        wordListAr.add(new WordTypeWordTuple(WordType.PREPOSITION, abstractNoun.get().getStatePreposition(), index));
+    this.nounSubject = nounService.getRandomNoun(sentenceContent.getAbstractVerb()); // @todo manage prepositions ?
+    PossessiveWord noun        = new PossessiveWord();
+    GenderedWord   concretNoun = nounSubject.getValues().stream().filter(n -> n.isSingular()).findFirst().get(); // @todo dirty
+    noun.setTranslations(concretNoun.getTranslations());
+    noun.setSingular(concretNoun.isSingular());
+    noun.setGender(concretNoun.getGender());
+    noun.setPossession(Possession.OTHER);
+    Optional<GenderedWord> frArticle = DefinedArticles.getArticle(noun, Lang.FR);
+    Optional<GenderedWord> dzArticle = DefinedArticles.getArticle(noun, Lang.DZ);
+    frArticle.ifPresent(genderedWord -> wordListFr.add(new WordTypeWordTuple(WordType.ARTICLE, genderedWord, index)));
+    dzArticle.ifPresent(genderedWord -> wordListAr.add(new WordTypeWordTuple(WordType.ARTICLE, genderedWord, index)));
+
+    if (sentenceContent.getAbstractVerb() != null && schema.getFrSequence().contains(WordType.PREPOSITION)) {
+      Preposition preposition;
+      File prepositionFile = new File("./src/main/resources/static/prepositions/"
+                                      + nounSubject.getDeplacementPrepositionId()
+                                      + ".json");
+      try { // @todo dirty
+        preposition =
+            Config.OBJECT_MAPPER.readValue(prepositionFile,
+                                           Preposition.class);
+      } catch (IOException e) {
+        LOGGER.error(e.getMessage());
+        return false;
       }
-    } // @todo dirty
-    if (getFirstWordFromWordTypeFr(WordType.PREPOSITION, index) == null) {
-      frArticle.ifPresent(genderedWord -> wordListFr.add(new WordTypeWordTuple(WordType.ARTICLE, genderedWord, index)));
-      dzArticle.ifPresent(genderedWord -> wordListAr.add(new WordTypeWordTuple(WordType.ARTICLE, genderedWord, index)));
+      if (prepositionFile.exists()) {
+        if (sentenceContent.getAbstractVerb().getVerbType() == VerbType.DEPLACEMENT) {
+          wordListFr.add(new WordTypeWordTuple(WordType.PREPOSITION,
+                                               preposition.getWordByGenderAndSingular(noun.getGender(Lang.FR), Lang.FR, true).get(),
+                                               index));
+          wordListAr.add(new WordTypeWordTuple(WordType.PREPOSITION,
+                                               preposition.getWordByGenderAndSingular(noun.getGender(Lang.DZ), Lang.DZ, true).get(),
+                                               index));
+        } else if (sentenceContent.getAbstractVerb().getVerbType() == VerbType.STATE) {
+          wordListFr.add(new WordTypeWordTuple(WordType.PREPOSITION,
+                                               preposition.getWordByGenderAndSingular(noun.getGender(Lang.FR), Lang.FR, true).get(),
+                                               index));
+          wordListAr.add(new WordTypeWordTuple(WordType.PREPOSITION,
+                                               preposition.getWordByGenderAndSingular(noun.getGender(Lang.DZ), Lang.DZ, true).get(),
+                                               index));
+        }
+      }
     }
 
     sentenceContent.setAbstractNoun(nounSubject);
@@ -202,7 +237,7 @@ public class SentenceBuilder {
     if (schema.getSubjectPosition() == index) {
       subject         = noun;
       abstractSubject = nounSubject;
-    }*/
+    }
     return true;
   }
 
@@ -212,7 +247,7 @@ public class SentenceBuilder {
       if (abstractVerbOpt.isEmpty()) {
         return false;
       }
-      abstractVerb = abstractVerbOpt.get();
+      abstractVerb = abstractVerbOpt.get(); // if given verb is null, set a random verb
     }
     sentenceContent.setAbstractVerb(abstractVerb);
     Subtense subtense;
@@ -281,7 +316,7 @@ public class SentenceBuilder {
   }
 
   private boolean buildAdjective(int index) {
-    Optional<Adjective> adjective = adjectiveService.getAbstractAdjective(schema, abstractSubject/*, nounSubject*/);
+    Optional<Adjective> adjective = adjectiveService.getAbstractAdjective(schema, abstractSubject, nounSubject);
     if (adjective.isEmpty()) {
       return false;
     }
@@ -293,7 +328,7 @@ public class SentenceBuilder {
   }
 
   private boolean builAdverb(int index) {
-    AbstractWord adverb = adverbService.getAdverb(); // @todo add parameter
+    AbstractWord adverb = adverbService.getRandomAdverb(); // @todo add parameter
     sentenceContent.setAbstractAdverb(adverb);
     wordListFr.add(new WordTypeWordTuple(WordType.ADVERB, adverb.getValues().get(0), index));
     wordListAr.add(new WordTypeWordTuple(WordType.ADVERB, adverb.getValues().get(0), index));

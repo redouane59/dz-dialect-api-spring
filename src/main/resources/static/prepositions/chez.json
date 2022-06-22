@@ -1,0 +1,20 @@
+{
+  "id": "chez",
+  "values": [
+    {
+      "singular": true,
+      "gender": "X",
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "chez"
+        },
+        {
+          "lang": "DZ",
+          "value": "3and",
+          "ar_value": "*"
+        }
+      ]
+    }
+  ]
+}

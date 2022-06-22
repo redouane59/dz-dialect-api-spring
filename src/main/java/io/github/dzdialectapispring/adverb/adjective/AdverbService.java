@@ -85,7 +85,7 @@ public class AdverbService {
     return result;
   }
 
-  public AbstractWord getAdverb() {
+  public AbstractWord getRandomAdverb() {
     Set<Adverb> adverbs = getAllAdverbObjects();
     return adverbs.stream().skip(RANDOM.nextInt(adverbs.size())).findFirst().get();
   }

@@ -9,6 +9,7 @@ import com.google.firebase.cloud.FirestoreClient;
 import io.github.dzdialectapispring.adjective.AdjectiveService;
 import io.github.dzdialectapispring.adverb.adjective.AdverbService;
 import io.github.dzdialectapispring.generic.ResourceList;
+import io.github.dzdialectapispring.noun.NounService;
 import io.github.dzdialectapispring.other.Config;
 import io.github.dzdialectapispring.other.enumerations.Tense;
 import io.github.dzdialectapispring.other.enumerations.WordType;
@@ -50,6 +51,8 @@ public class SentenceService {
   private       AdjectiveService    adjectiveService;
   @Autowired
   private       AdverbService       adverbService;
+  @Autowired
+  private       NounService         nounService;
 
   public List<SentenceDTO> generateRandomSentences(Integer count,
                                                    String pronounId,
@@ -135,7 +138,7 @@ public class SentenceService {
     } else {
       sentenceSchema = generatorParameters.getSentenceSchema();
     }
-    sentenceBuilder = new SentenceBuilder(sentenceSchema, pronounService, verbService, questionService, adjectiveService, adverbService);
+    sentenceBuilder = new SentenceBuilder(sentenceSchema, pronounService, verbService, questionService, adjectiveService, adverbService, nounService);
     return sentenceBuilder.generate(generatorParameters);
   }
 

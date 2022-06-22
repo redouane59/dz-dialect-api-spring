@@ -1,0 +1,20 @@
+{
+  "id": "dans_dep",
+  "values": [
+    {
+      "singular": true,
+      "gender": "X",
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "dans"
+        },
+        {
+          "lang": "DZ",
+          "value": "f",
+          "ar_value": "*ال"
+        }
+      ]
+    }
+  ]
+}

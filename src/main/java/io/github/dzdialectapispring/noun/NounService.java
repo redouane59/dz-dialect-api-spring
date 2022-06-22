@@ -1,5 +1,7 @@
 package io.github.dzdialectapispring.noun;
 
+import static io.github.dzdialectapispring.other.Config.RANDOM;
+
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
@@ -12,6 +14,7 @@ import io.github.dzdialectapispring.other.Config;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.GenderedWord;
 import io.github.dzdialectapispring.sentence.WordDTO;
+import io.github.dzdialectapispring.verb.Verb;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -76,5 +79,14 @@ public class NounService {
       System.out.println("inserting adjective " + noun.getId() + "...");
       dbFirestore.collection(path).document(noun.getId()).set(noun);
     }
+  }
+
+  public Noun getRandomNoun(Verb abstractVerb) {
+    Set<Noun> nouns = getAllNounObjects();
+    // case where the noun is the complement
+    if (abstractVerb != null) {
+      nouns = nouns.stream().filter(n -> abstractVerb.getPossibleComplements().contains(n.getType())).collect(Collectors.toSet());
+    }
+    return nouns.stream().skip(RANDOM.nextInt(nouns.size())).findFirst().get();
   }
 }

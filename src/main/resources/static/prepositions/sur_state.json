@@ -1,0 +1,20 @@
+{
+  "id": "sur_state",
+  "values": [
+    {
+      "singular": true,
+      "gender": "X",
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "sur"
+        },
+        {
+          "lang": "DZ",
+          "value": "l",
+          "ar_value": "*ال"
+        }
+      ]
+    }
+  ]
+}

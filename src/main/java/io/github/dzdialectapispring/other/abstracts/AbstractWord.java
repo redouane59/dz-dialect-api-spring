@@ -32,6 +32,7 @@ public abstract class AbstractWord implements IWord {
                                                .filter(o -> o.getGender(lang) == gender
                                                             || o.getGender(lang) == Gender.X
                                                             || gender == Gender.X)
+
                                                .filter(o -> o.isSingular() == isSingular)
                                                .findAny();
     if (result.isEmpty()) {

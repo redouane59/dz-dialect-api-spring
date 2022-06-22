@@ -32,5 +32,7 @@
         }
       ]
     }
-  ]
+  ],
+  "state_preposition": "sur_state",
+  "deplacement_preposition": "sur_dep"
 }

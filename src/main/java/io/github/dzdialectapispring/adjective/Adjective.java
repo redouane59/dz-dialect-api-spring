@@ -25,7 +25,7 @@ public class Adjective extends AbstractWord {
   @JsonDeserialize(using = ConjugationListDeserializer.class)
   private final List<GenderedWord> values = new ArrayList<>();
   @JsonProperty("possible_nouns")
-  List<NounType> possibleNouns;
+  List<NounType> possibleNouns = new ArrayList<>();
   private boolean temporal;
   private boolean definitive;
 
