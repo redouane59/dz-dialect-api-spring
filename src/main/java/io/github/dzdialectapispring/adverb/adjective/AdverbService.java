@@ -17,6 +17,8 @@ import io.github.dzdialectapispring.other.concrets.Word;
 import io.github.dzdialectapispring.other.enumerations.Lang;
 import io.github.dzdialectapispring.sentence.Sentence;
 import io.github.dzdialectapispring.sentence.SentenceDTO;
+import io.github.dzdialectapispring.verb.Verb;
+import io.github.dzdialectapispring.verb.VerbType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -85,8 +87,12 @@ public class AdverbService {
     return result;
   }
 
-  public AbstractWord getRandomAdverb() {
+  public AbstractWord getRandomAdverb(Verb verb) {
     Set<Adverb> adverbs = getAllAdverbObjects();
+    if (verb != null) {
+      adverbs = adverbs.stream().filter(a -> !a.isExcludeStateVerbs() || verb.getVerbType() == VerbType.STATE
+      ).collect(Collectors.toSet());
+    }
     return adverbs.stream().skip(RANDOM.nextInt(adverbs.size())).findFirst().get();
   }
 }

@@ -15,7 +15,8 @@ public class ContributionSentence extends AbstractSentence {
   private String id;
   @JsonProperty("author_id")
   private String authorId;
-  
+  private String category;
+
   public ContributionSentence(List<Translation> translations) {
     super(translations);
   }

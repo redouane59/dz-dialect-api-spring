@@ -328,7 +328,7 @@ public class SentenceBuilder {
   }
 
   private boolean builAdverb(int index) {
-    AbstractWord adverb = adverbService.getRandomAdverb(); // @todo add parameter
+    AbstractWord adverb = adverbService.getRandomAdverb(this.getSentenceContent().getAbstractVerb());
     sentenceContent.setAbstractAdverb(adverb);
     wordListFr.add(new WordTypeWordTuple(WordType.ADVERB, adverb.getValues().get(0), index));
     wordListAr.add(new WordTypeWordTuple(WordType.ADVERB, adverb.getValues().get(0), index));
