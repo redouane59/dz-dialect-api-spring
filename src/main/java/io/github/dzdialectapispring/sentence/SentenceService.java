@@ -55,6 +55,7 @@ public class SentenceService {
   private       NounService         nounService;
 
   public List<SentenceDTO> generateRandomSentences(Integer count,
+                                                   Integer alternativeCount,
                                                    String pronounId,
                                                    String verbId,
                                                    String tenseId,
@@ -65,17 +66,30 @@ public class SentenceService {
                                                    boolean positive,
                                                    boolean negative,
                                                    String sentenceSchemaId) throws ExecutionException, InterruptedException {
-    if (count == null) {
-      count = 1;
-    } else if (count <= 0) {
+    if (count <= 0) {
       throw new IllegalArgumentException("count argument should be positive");
     } else if (count > 30) {
       throw new IllegalArgumentException("count argument should be less than 30");
     }
+    if (alternativeCount <= 0) {
+      throw new IllegalArgumentException("alternativeCount argument should be positive");
+    } else if (alternativeCount > 4) {
+      throw new IllegalArgumentException("alternativeCount argument should be less than 5");
+    }
 
     GeneratorParameters
         generatorParameters =
-        buildParameters(pronounId, verbId, tenseId, nounId, adjectiveId, questionId, adverbId, positive, negative, sentenceSchemaId);
+        buildParameters(pronounId,
+                        verbId,
+                        tenseId,
+                        nounId,
+                        adjectiveId,
+                        questionId,
+                        adverbId,
+                        positive,
+                        negative,
+                        sentenceSchemaId,
+                        alternativeCount);
     List<SentenceDTO> result = new ArrayList<>();
     int               i      = 0;
     while (result.size() < count && i < count * 5) { // in case no sentence is generated
@@ -92,7 +106,8 @@ public class SentenceService {
                                              String adverbId,
                                              boolean excludePositive,
                                              boolean excludeNegative,
-                                             String sentenceSchemaId) throws ExecutionException, InterruptedException {
+                                             String sentenceSchemaId,
+                                             Integer alternativeCount) throws ExecutionException, InterruptedException {
     Verb verb = null;
     if (verbId != null) {
       verb = verbService.getVerbById(verbId);
@@ -124,6 +139,7 @@ public class SentenceService {
                               .excludePositive(excludePositive)
                               .excludeNegative(excludeNegative)
                               .sentenceSchema(schema)
+                              .alternativeCount(alternativeCount)
                               .build();
   }
 

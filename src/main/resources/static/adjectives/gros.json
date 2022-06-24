@@ -7,62 +7,50 @@
     {
       "translations": [
         {
-          "lang": "FR",
-          "value": "gros"
-        },
-        {
           "lang": "DZ",
           "value": "smin",
           "ar_value": "سمين"
+        },
+        {
+          "lang": "FR",
+          "value": "gros"
         }
       ],
       "gender": "M",
-      "singular": true
+      "singular": true,
+      "tense": null
     },
     {
       "translations": [
-        {
-          "lang": "FR",
-          "value": "grosse"
-        },
         {
           "lang": "DZ",
           "value": "smina",
           "ar_value": "سمينا"
+        },
+        {
+          "lang": "FR",
+          "value": "grosse"
         }
       ],
       "gender": "F",
-      "singular": true
+      "singular": true,
+      "tense": null
     },
     {
       "translations": [
         {
-          "lang": "FR",
-          "value": "gros"
-        },
-        {
           "lang": "DZ",
           "value": "smen",
           "ar_value": "سمان"
-        }
-      ],
-      "gender": "M",
-      "singular": false
-    },
-    {
-      "translations": [
-        {
-          "lang": "FR",
-          "value": "grosses"
         },
         {
-          "lang": "DZ",
-          "value": "smen",
-          "ar_value": "سمان"
+          "lang": "FR",
+          "value": "gros(ses)"
         }
       ],
-      "gender": "F",
-      "singular": false
+      "gender": "X",
+      "singular": false,
+      "tense": null
     }
   ],
   "definitive": true

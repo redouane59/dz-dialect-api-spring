@@ -13,6 +13,7 @@ public enum WordType {
   ADVERB("adverb"),
   QUESTION("question"),
   PRONOUN("pronoun"),
+  IMP_PRONOUN("impersonal pronoun"), // il : il me faut / il me manque
   ARTICLE("article"),
   SUFFIX("suffix"),
   PREPOSITION("preposition"); // à la / au

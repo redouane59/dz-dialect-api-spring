@@ -8,62 +8,50 @@
     {
       "translations": [
         {
-          "lang": "FR",
-          "value": "vide"
-        },
-        {
           "lang": "DZ",
           "value": "faregh",
           "ar_value": "فارغ"
-        }
-      ],
-      "gender": "M",
-      "singular": true
-    },
-    {
-      "translations": [
+        },
         {
           "lang": "FR",
           "value": "vide"
-        },
+        }
+      ],
+      "gender": "M",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
         {
           "lang": "DZ",
           "value": "fergha",
           "ar_value": "فارغا"
+        },
+        {
+          "lang": "FR",
+          "value": "vide"
         }
       ],
       "gender": "F",
-      "singular": true
+      "singular": true,
+      "tense": null
     },
     {
       "translations": [
         {
-          "lang": "FR",
-          "value": "vides"
-        },
-        {
           "lang": "DZ",
           "value": "ferghin",
           "ar_value": "فراغين"
-        }
-      ],
-      "gender": "M",
-      "singular": false
-    },
-    {
-      "translations": [
+        },
         {
           "lang": "FR",
           "value": "vides"
-        },
-        {
-          "lang": "DZ",
-          "value": "ferghin",
-          "ar_value": "فراغين"
         }
       ],
-      "gender": "F",
-      "singular": false
+      "gender": "X",
+      "singular": false,
+      "tense": null
     }
   ],
   "temporal": true

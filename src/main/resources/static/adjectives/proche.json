@@ -9,47 +9,50 @@
     {
       "translations": [
         {
-          "lang": "FR",
-          "value": "proche"
-        },
-        {
           "lang": "DZ",
           "value": "9rib",
           "ar_value": "قْريب"
-        }
-      ],
-      "gender": "M",
-      "singular": true
-    },
-    {
-      "translations": [
+        },
         {
           "lang": "FR",
           "value": "proche"
-        },
+        }
+      ],
+      "gender": "M",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
         {
           "lang": "DZ",
           "value": "9riba",
           "ar_value": "قريبا"
+        },
+        {
+          "lang": "FR",
+          "value": "proche"
         }
       ],
       "gender": "F",
-      "singular": true
+      "singular": true,
+      "tense": null
     },
     {
       "translations": [
         {
-          "lang": "FR",
-          "value": "proches"
-        },
-        {
           "lang": "DZ",
           "value": "9rab",
           "ar_value": "قراب"
+        },
+        {
+          "lang": "FR",
+          "value": "proches"
         }
       ],
       "gender": "X",
-      "singular": false
+      "singular": false,
+      "tense": null
     }
   ],
   "temporal": true

@@ -38,6 +38,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -106,7 +107,7 @@ public class DzDialectApiSpringApplication {
     };
   }
 
-  // @Bean
+  //@Bean
   CommandLineRunner pronounsInit(PronounService pronounService) {
     System.out.println("pronouns initialization...");
     return args -> {
@@ -127,7 +128,7 @@ public class DzDialectApiSpringApplication {
     };
   }
 
-  //@Bean
+  @Bean
   CommandLineRunner adjectivesInit(AdjectiveService adjectiveService) {
     System.out.println("adjective initialization...");
     return args -> {

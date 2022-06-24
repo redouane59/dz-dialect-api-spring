@@ -88,7 +88,7 @@
     ]
   },
   {
-    "id": "3fs",
+    "id": "3sf",
     "values": [
       {
         "possession": "OTHER",
@@ -154,39 +154,17 @@
     ]
   },
   {
-    "id": "3pm",
+    "id": "3px",
     "values": [
       {
         "possession": "OTHER",
         "singular": false,
-        "gender": "M",
+        "gender": "X",
         "index": 12,
         "translations": [
           {
             "lang": "FR",
-            "value": "ils"
-          },
-          {
-            "lang": "DZ",
-            "value": "houma",
-            "ar_value": "هُمَا"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "3pf",
-    "values": [
-      {
-        "possession": "OTHER",
-        "singular": false,
-        "gender": "F",
-        "index": 13,
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "elles"
+            "value": "ils/elles"
           },
           {
             "lang": "DZ",

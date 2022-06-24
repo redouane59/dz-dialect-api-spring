@@ -29,7 +29,9 @@ public class SentenceController {
   private final String          headerId = "123VivaLalgerie";
 
   @GetMapping("/generate")
-  public List<SentenceDTO> generateRandomSentence(@RequestParam(required = false) Integer count,
+  public List<SentenceDTO> generateRandomSentence(@RequestParam(required = false, defaultValue = "1") Integer count,
+                                                  @RequestParam(required = false, name = "alternative_count", defaultValue = "1")
+                                                      Integer alternativeCount,
                                                   @RequestParam(required = false, name = "pronoun") String pronounId,
                                                   @RequestParam(required = false, name = "verb") String verbId,
                                                   @RequestParam(required = false, name = "tense") String tenseId,
@@ -42,6 +44,7 @@ public class SentenceController {
                                                   @RequestParam(required = false, name = "sentence_schema") String sentenceSchemaId
   ) throws ExecutionException, InterruptedException {
     return sentenceService.generateRandomSentences(count,
+                                                   alternativeCount,
                                                    pronounId,
                                                    verbId,
                                                    tenseId,

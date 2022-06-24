@@ -1,0 +1,328 @@
+{
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "حَطيت"
+        },
+        {
+          "lang": "DZ",
+          "value": "7at",
+          "ar_value": "حَطْ"
+        }
+      ],
+      "gender": "M",
+      "possession": "YOU",
+      "singular": true,
+      "tense": "IMPERATIVE"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "pose"
+        },
+        {
+          "lang": "DZ",
+          "value": "7ati",
+          "ar_value": "حطي"
+        }
+      ],
+      "gender": "F",
+      "possession": "YOU",
+      "singular": true,
+      "tense": "IMPERATIVE"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "posez"
+        },
+        {
+          "lang": "DZ",
+          "value": "7atou",
+          "ar_value": "حطو"
+        }
+      ],
+      "gender": "X",
+      "possession": "YOU",
+      "singular": false,
+      "tense": "IMPERATIVE"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "a posé"
+        },
+        {
+          "lang": "DZ",
+          "value": "7etit",
+          "ar_value": "حَطيت"
+        }
+      ],
+      "gender": "X",
+      "possession": "I",
+      "singular": true,
+      "tense": "PAST_AVOIR"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "as posé"
+        },
+        {
+          "lang": "DZ",
+          "value": "7etit",
+          "ar_value": "حَطيت"
+        }
+      ],
+      "gender": "M",
+      "possession": "YOU",
+      "singular": true,
+      "tense": "PAST_AVOIR"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "as posé"
+        },
+        {
+          "lang": "DZ",
+          "value": "7etiti",
+          "ar_value": "حَطيتي"
+        }
+      ],
+      "gender": "F",
+      "possession": "YOU",
+      "singular": true,
+      "tense": "PAST_AVOIR"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "a posé"
+        },
+        {
+          "lang": "DZ",
+          "value": "7et",
+          "ar_value": "حَطْ"
+        }
+      ],
+      "gender": "M",
+      "possession": "OTHER",
+      "singular": true,
+      "tense": "PAST_AVOIR"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "a posé"
+        },
+        {
+          "lang": "DZ",
+          "value": "7etet",
+          "ar_value": "حَطتْ"
+        }
+      ],
+      "gender": "F",
+      "possession": "OTHER",
+      "singular": true,
+      "tense": "PAST_AVOIR"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "a posé"
+        },
+        {
+          "lang": "DZ",
+          "value": "7etina",
+          "ar_value": "حطينا"
+        }
+      ],
+      "gender": "X",
+      "possession": "I",
+      "singular": false,
+      "tense": "PAST_AVOIR"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "avez posé"
+        },
+        {
+          "lang": "DZ",
+          "value": "7etitou",
+          "ar_value": "حطيتو"
+        }
+      ],
+      "gender": "X",
+      "possession": "YOU",
+      "singular": false,
+      "tense": "PAST_AVOIR"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "ont posé"
+        },
+        {
+          "lang": "DZ",
+          "value": "7etou",
+          "ar_value": "حَطو"
+        }
+      ],
+      "gender": "X",
+      "possession": "OTHER",
+      "singular": false,
+      "tense": "PAST_AVOIR"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "pose"
+        },
+        {
+          "lang": "DZ",
+          "value": "n7et",
+          "ar_value": "نْحَطْ"
+        }
+      ],
+      "gender": "X",
+      "possession": "I",
+      "singular": true,
+      "tense": "PRESENT"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "poses"
+        },
+        {
+          "lang": "DZ",
+          "value": "t7et",
+          "ar_value": "تْحطْ"
+        }
+      ],
+      "gender": "M",
+      "possession": "YOU",
+      "singular": true,
+      "tense": "PRESENT"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "poses"
+        },
+        {
+          "lang": "DZ",
+          "value": "t7oti",
+          "ar_value": "تْحَطي"
+        }
+      ],
+      "gender": "F",
+      "possession": "YOU",
+      "singular": true,
+      "tense": "PRESENT"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "pose"
+        },
+        {
+          "lang": "DZ",
+          "value": "y7et",
+          "ar_value": "إيحَطْ"
+        }
+      ],
+      "gender": "M",
+      "possession": "OTHER",
+      "singular": true,
+      "tense": "PRESENT"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "pose"
+        },
+        {
+          "lang": "DZ",
+          "value": "t7et",
+          "ar_value": "تْحطْ"
+        }
+      ],
+      "gender": "F",
+      "possession": "OTHER",
+      "singular": true,
+      "tense": "PRESENT"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "pose"
+        },
+        {
+          "lang": "DZ",
+          "value": "n7etou",
+          "ar_value": "نْحَطو"
+        }
+      ],
+      "gender": "X",
+      "possession": "I",
+      "singular": false,
+      "tense": "PRESENT"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "posez"
+        },
+        {
+          "lang": "DZ",
+          "value": "t7etou",
+          "ar_value": "تْحطو"
+        }
+      ],
+      "gender": "X",
+      "possession": "YOU",
+      "singular": false,
+      "tense": "PRESENT"
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "posent"
+        },
+        {
+          "lang": "DZ",
+          "value": "y7etou",
+          "ar_value": "إيحطو"
+        }
+      ],
+      "gender": "X",
+      "possession": "OTHER",
+      "singular": false,
+      "tense": "PRESENT"
+    }
+  ],
+  "id": "poser"
+}

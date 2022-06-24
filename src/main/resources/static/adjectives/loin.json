@@ -9,47 +9,50 @@
     {
       "translations": [
         {
-          "lang": "FR",
-          "value": "loin"
-        },
-        {
           "lang": "DZ",
           "value": "b3id",
           "ar_value": "بعيد"
-        }
-      ],
-      "gender": "M",
-      "singular": true
-    },
-    {
-      "translations": [
+        },
         {
           "lang": "FR",
           "value": "loin"
-        },
+        }
+      ],
+      "gender": "M",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
         {
           "lang": "DZ",
           "value": "b3ida",
           "ar_value": "بعيدا"
+        },
+        {
+          "lang": "FR",
+          "value": "loin"
         }
       ],
       "gender": "F",
-      "singular": true
+      "singular": true,
+      "tense": null
     },
     {
       "translations": [
         {
-          "lang": "FR",
-          "value": "loin"
-        },
-        {
           "lang": "DZ",
           "value": "b3ad",
           "ar_value": "بعاد"
+        },
+        {
+          "lang": "FR",
+          "value": "loin"
         }
       ],
       "gender": "X",
-      "singular": false
+      "singular": false,
+      "tense": null
     }
   ],
   "temporal": true

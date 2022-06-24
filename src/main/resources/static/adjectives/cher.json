@@ -7,64 +7,52 @@
   ],
   "values": [
     {
-      "gender": "M",
-      "singular": true,
       "translations": [
-        {
-          "lang": "FR",
-          "value": "cher"
-        },
         {
           "lang": "DZ",
           "value": "ghali",
           "ar_value": "غالي"
-        }
-      ]
-    },
-    {
-      "gender": "F",
-      "singular": true,
-      "translations": [
+        },
         {
           "lang": "FR",
-          "value": "chère"
-        },
+          "value": "cher"
+        }
+      ],
+      "gender": "M",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
         {
           "lang": "DZ",
           "value": "ghalia",
           "ar_value": "غاليا"
-        }
-      ]
-    },
-    {
-      "gender": "M",
-      "singular": false,
-      "translations": [
-        {
-          "lang": "FR",
-          "value": "chers"
         },
         {
-          "lang": "DZ",
-          "value": "ghaliyin",
-          "ar_value": "غاليين"
+          "lang": "FR",
+          "value": "chère"
         }
-      ]
-    },
-    {
+      ],
       "gender": "F",
-      "singular": false,
+      "singular": true,
+      "tense": null
+    },
+    {
       "translations": [
-        {
-          "lang": "FR",
-          "value": "chères"
-        },
         {
           "lang": "DZ",
           "value": "ghaliyin",
           "ar_value": "غاليين"
+        },
+        {
+          "lang": "FR",
+          "value": "cher(e)s"
         }
-      ]
+      ],
+      "gender": "X",
+      "singular": false,
+      "tense": null
     }
   ],
   "temporal": true

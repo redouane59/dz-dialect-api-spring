@@ -102,13 +102,16 @@ public class SentenceBuilder {
   }
 
   private void addRandomWordPropositions(Sentence sentence, GeneratorParameters generatorParameters) {
-    if (sentence.getContent().getAbstractPronoun() != null) {
+    if (sentence.getContent().getAbstractPronoun() != null
+        && !sentence.getContent().getSentenceSchema().getId().equals("P")) { // to avoid having bad choices for P sentences
       PossessiveWord pronoun = sentence.getContent().getAbstractPronoun().getValues().get(0);
       generatorParameters.setAbstractPronoun(pronounService.getRandomAbstractPronoun(pronoun.getPossession()));
     }
-    fillWordListFromSchema(generatorParameters);
-    sentence.getRandomWords().get(Lang.FR).addAll(SentenceBuilderHelper.splitSentenceInWords(generateFrTranslation(), true));
-    sentence.getRandomWords().get(Lang.DZ).addAll(SentenceBuilderHelper.splitSentenceInWords(generateArTranslation(Lang.DZ), true));
+    for (int i = 0; i < generatorParameters.getAlternativeCount(); i++) {
+      fillWordListFromSchema(generatorParameters);
+      sentence.getRandomWords().get(Lang.FR).addAll(SentenceBuilderHelper.splitSentenceInWords(generateFrTranslation(), true));
+      sentence.getRandomWords().get(Lang.DZ).addAll(SentenceBuilderHelper.splitSentenceInWords(generateArTranslation(Lang.DZ), true));
+    }
   }
 
   private void resetAttributes(GeneratorParameters generatorParameters) {
@@ -176,6 +179,9 @@ public class SentenceBuilder {
     if (abstractPronoun == null) {
       abstractPronoun = pronounService.getRandomAbstractPronoun();
     }
+    if (abstractPronoun != null) {
+      abstractSubject = abstractPronoun;
+    }
     PossessiveWord pronoun = abstractPronoun.getValues().get(0);
     sentenceContent.setAbstractPronoun(abstractPronoun);
     wordListFr.add(new WordTypeWordTuple(WordType.PRONOUN, pronoun, index));
@@ -187,7 +193,11 @@ public class SentenceBuilder {
   }
 
   private boolean buildNoun(int index) {
-    this.nounSubject = nounService.getRandomNoun(sentenceContent.getAbstractVerb()); // @todo manage prepositions ?
+    Optional<Noun> nounOpt = nounService.getRandomNoun(sentenceContent.getAbstractVerb());
+    if (nounOpt.isEmpty()) {
+      return false;
+    }
+    this.nounSubject = nounOpt.get();
     PossessiveWord noun        = new PossessiveWord();
     GenderedWord   concretNoun = nounSubject.getValues().stream().filter(n -> n.isSingular()).findFirst().get(); // @todo dirty
     noun.setTranslations(concretNoun.getTranslations());

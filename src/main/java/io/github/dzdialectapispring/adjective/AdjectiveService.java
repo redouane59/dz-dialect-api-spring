@@ -19,6 +19,7 @@ import io.github.dzdialectapispring.other.enumerations.WordType;
 import io.github.dzdialectapispring.sentence.SentenceSchema;
 import io.github.dzdialectapispring.sentence.WordDTO;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -55,8 +56,16 @@ public class AdjectiveService {
     return documentSnapshot.stream().map(d -> d.toObject(Adjective.class)).collect(Collectors.toSet());
   }
 
-  public Set<String> getAllAdjectivesIds() {
-    return getAllAdjectivesObjects().stream().map(AbstractWord::getId).collect(Collectors.toSet());
+  public Set<String> getAllAdjectivesIds(boolean includeTemporal, boolean includeDefinitive) {
+    Set<Adjective> adjectives = getAllAdjectivesObjects();
+    Set<Adjective> result     = new HashSet<>();
+    if (includeTemporal) {
+      result.addAll(adjectives.stream().filter(Adjective::isTemporal).collect(Collectors.toSet()));
+    }
+    if (includeDefinitive) {
+      result.addAll(adjectives.stream().filter(Adjective::isDefinitive).collect(Collectors.toSet()));
+    }
+    return result.stream().map(AbstractWord::getId).collect(Collectors.toSet());
   }
 
   public Adjective getAdjectiveById(final String adjectiveId) {

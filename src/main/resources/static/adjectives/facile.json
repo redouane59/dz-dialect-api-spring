@@ -6,46 +6,52 @@
   ],
   "values": [
     {
+      "translations": [
+        {
+          "lang": "DZ",
+          "value": "sehel",
+          "ar_value": "ساهل"
+        },
+        {
+          "lang": "FR",
+          "value": "facile"
+        }
+      ],
       "gender": "M",
       "singular": true,
+      "tense": null
+    },
+    {
       "translations": [
+        {
+          "lang": "DZ",
+          "value": "sehla",
+          "ar_value": "ساهلا"
+        },
         {
           "lang": "FR",
           "value": "facile"
-        },
-        {
-          "lang": "DZ",
-          "value": "sehel"
         }
-      ]
-    },
-    {
+      ],
       "gender": "F",
       "singular": true,
-      "translations": [
-        {
-          "lang": "FR",
-          "value": "facile"
-        },
-        {
-          "lang": "DZ",
-          "value": "sehla"
-        }
-      ]
+      "tense": null
     },
     {
-      "gender": "X",
-      "singular": false,
       "translations": [
+        {
+          "lang": "DZ",
+          "value": "sehlin",
+          "ar_value": "ساهلين"
+        },
         {
           "lang": "FR",
           "value": "faciles"
-        },
-        {
-          "lang": "DZ",
-          "value": "sehlin"
         }
-      ]
+      ],
+      "gender": "X",
+      "singular": false,
+      "tense": null
     }
   ],
   "temporal": true

@@ -4,70 +4,6 @@
       "translations": [
         {
           "lang": "DZ",
-          "value": "ghali",
-          "ar_value": "غالي"
-        },
-        {
-          "lang": "FR",
-          "value": "cher"
-        }
-      ],
-      "gender": "M",
-      "singular": true,
-      "tense": null
-    },
-    {
-      "translations": [
-        {
-          "lang": "DZ",
-          "value": "ghalia",
-          "ar_value": "غاليا"
-        },
-        {
-          "lang": "FR",
-          "value": "chère"
-        }
-      ],
-      "gender": "F",
-      "singular": true,
-      "tense": null
-    },
-    {
-      "translations": [
-        {
-          "lang": "DZ",
-          "value": "ghaliyin",
-          "ar_value": "غاليين"
-        },
-        {
-          "lang": "FR",
-          "value": "chers"
-        }
-      ],
-      "gender": "M",
-      "singular": false,
-      "tense": null
-    },
-    {
-      "translations": [
-        {
-          "lang": "DZ",
-          "value": "ghaliyin",
-          "ar_value": "غاليين"
-        },
-        {
-          "lang": "FR",
-          "value": "chères"
-        }
-      ],
-      "gender": "F",
-      "singular": false,
-      "tense": null
-    },
-    {
-      "translations": [
-        {
-          "lang": "DZ",
           "value": "skhoun",
           "ar_value": "سْخون"
         },
@@ -105,26 +41,10 @@
         },
         {
           "lang": "FR",
-          "value": "chauds"
+          "value": "chaud(e)s"
         }
       ],
-      "gender": "M",
-      "singular": false,
-      "tense": null
-    },
-    {
-      "translations": [
-        {
-          "lang": "DZ",
-          "value": "skhounin",
-          "ar_value": "سْخونين"
-        },
-        {
-          "lang": "FR",
-          "value": "chaudes"
-        }
-      ],
-      "gender": "F",
+      "gender": "X",
       "singular": false,
       "tense": null
     }

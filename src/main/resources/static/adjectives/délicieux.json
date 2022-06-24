@@ -7,62 +7,50 @@
     {
       "translations": [
         {
-          "lang": "FR",
-          "value": "délicieux"
-        },
-        {
           "lang": "DZ",
           "value": "bnin",
           "ar_value": "بْنين"
+        },
+        {
+          "lang": "FR",
+          "value": "délicieux"
         }
       ],
       "gender": "M",
-      "singular": true
+      "singular": true,
+      "tense": null
     },
     {
       "translations": [
-        {
-          "lang": "FR",
-          "value": "délicieuse"
-        },
         {
           "lang": "DZ",
           "value": "bnina",
           "ar_value": "بنينا"
+        },
+        {
+          "lang": "FR",
+          "value": "délicieuse"
         }
       ],
       "gender": "F",
-      "singular": true
+      "singular": true,
+      "tense": null
     },
     {
       "translations": [
         {
-          "lang": "FR",
-          "value": "délicieux"
-        },
-        {
           "lang": "DZ",
           "value": "bnaan",
           "ar_value": "بنان"
-        }
-      ],
-      "gender": "M",
-      "singular": false
-    },
-    {
-      "translations": [
-        {
-          "lang": "FR",
-          "value": "délicieuses"
         },
         {
-          "lang": "DZ",
-          "value": "bnaan",
-          "ar_value": "بنان"
+          "lang": "FR",
+          "value": "délicieux(ses)"
         }
       ],
-      "gender": "F",
-      "singular": false
+      "gender": "X",
+      "singular": false,
+      "tense": null
     }
   ],
   "temporal": true

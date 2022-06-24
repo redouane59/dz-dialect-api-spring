@@ -17,6 +17,7 @@ import io.github.dzdialectapispring.sentence.WordDTO;
 import io.github.dzdialectapispring.verb.Verb;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
@@ -81,12 +82,15 @@ public class NounService {
     }
   }
 
-  public Noun getRandomNoun(Verb abstractVerb) {
+  public Optional<Noun> getRandomNoun(Verb abstractVerb) {
     Set<Noun> nouns = getAllNounObjects();
     // case where the noun is the complement
     if (abstractVerb != null) {
       nouns = nouns.stream().filter(n -> abstractVerb.getPossibleComplements().contains(n.getType())).collect(Collectors.toSet());
     }
-    return nouns.stream().skip(RANDOM.nextInt(nouns.size())).findFirst().get();
+    if (nouns.isEmpty()) {
+      return Optional.empty();
+    }
+    return nouns.stream().skip(RANDOM.nextInt(nouns.size())).findFirst();
   }
 }

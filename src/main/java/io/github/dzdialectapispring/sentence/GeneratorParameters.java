@@ -11,7 +11,7 @@ import lombok.Data;
 public class GeneratorParameters {
 
   @Builder.Default
-  private int             count = 1;
+  private int             alternativeCount = 1;
   private AbstractPronoun abstractPronoun;
   private Verb            abstractVerb;
   private Tense           tense;
@@ -22,7 +22,7 @@ public class GeneratorParameters {
   @Override
   public String toString() {
     return "GeneratorParameters{" +
-           "count=" + count +
+           "alternativeCount=" + alternativeCount +
            ", abstractPronoun=" + abstractPronoun +
            ", abstractVerb=" + abstractVerb +
            ", tense=" + tense +

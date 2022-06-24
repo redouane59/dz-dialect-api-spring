@@ -7,62 +7,50 @@
     {
       "translations": [
         {
-          "lang": "FR",
-          "value": "fatigué"
-        },
-        {
           "lang": "DZ",
           "value": "3ayan",
           "ar_value": "عيان"
+        },
+        {
+          "lang": "FR",
+          "value": "fatigué"
         }
       ],
       "gender": "M",
-      "singular": true
+      "singular": true,
+      "tense": null
     },
     {
       "translations": [
-        {
-          "lang": "FR",
-          "value": "fatiguée"
-        },
         {
           "lang": "DZ",
           "value": "3ayana",
           "ar_value": "عيانا"
+        },
+        {
+          "lang": "FR",
+          "value": "fatiguée"
         }
       ],
       "gender": "F",
-      "singular": true
+      "singular": true,
+      "tense": null
     },
     {
       "translations": [
         {
-          "lang": "FR",
-          "value": "fatigués"
-        },
-        {
           "lang": "DZ",
           "value": "3ayanine",
           "ar_value": "عيانين"
-        }
-      ],
-      "gender": "M",
-      "singular": false
-    },
-    {
-      "translations": [
-        {
-          "lang": "FR",
-          "value": "fatiguées"
         },
         {
-          "lang": "DZ",
-          "value": "3ayanine",
-          "ar_value": "عيانين"
+          "lang": "FR",
+          "value": "fatigué(e)s"
         }
       ],
-      "gender": "F",
-      "singular": false
+      "gender": "X",
+      "singular": false,
+      "tense": null
     }
   ],
   "temporal": true

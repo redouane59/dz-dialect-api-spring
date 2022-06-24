@@ -10,62 +10,50 @@
     {
       "translations": [
         {
-          "lang": "FR",
-          "value": "long"
-        },
-        {
           "lang": "DZ",
           "value": "touil",
           "ar_value": "طْويل"
+        },
+        {
+          "lang": "FR",
+          "value": "long"
         }
       ],
       "gender": "M",
-      "singular": true
+      "singular": true,
+      "tense": null
     },
     {
       "translations": [
-        {
-          "lang": "FR",
-          "value": "longue"
-        },
         {
           "lang": "DZ",
           "value": "touila",
           "ar_value": "طويلا"
+        },
+        {
+          "lang": "FR",
+          "value": "longue"
         }
       ],
       "gender": "F",
-      "singular": true
+      "singular": true,
+      "tense": null
     },
     {
       "translations": [
         {
-          "lang": "FR",
-          "value": "longs"
-        },
-        {
           "lang": "DZ",
           "value": "toual",
           "ar_value": "طْوال"
-        }
-      ],
-      "gender": "M",
-      "singular": false
-    },
-    {
-      "translations": [
-        {
-          "lang": "FR",
-          "value": "longues"
         },
         {
-          "lang": "DZ",
-          "value": "toual",
-          "ar_value": "طْوال"
+          "lang": "FR",
+          "value": "long(ue)s"
         }
       ],
-      "gender": "F",
-      "singular": false
+      "gender": "X",
+      "singular": false,
+      "tense": null
     }
   ],
   "temporal": true

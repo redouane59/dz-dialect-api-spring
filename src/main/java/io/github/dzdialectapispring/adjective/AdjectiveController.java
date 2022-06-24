@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,8 +20,9 @@ public class AdjectiveController {
   private final AdjectiveService adjectiveService;
 
   @GetMapping
-  public Set<String> getAllAdjectivesIds() {
-    return adjectiveService.getAllAdjectivesIds();
+  public Set<String> getAllAdjectivesIds(@RequestParam(name = "include_temporal", required = false, defaultValue = "true") boolean temporal,
+                                         @RequestParam(name = "include_definitive", required = false, defaultValue = "true") boolean definitive) {
+    return adjectiveService.getAllAdjectivesIds(temporal, definitive);
   }
 
   @GetMapping("/{id}/values")
