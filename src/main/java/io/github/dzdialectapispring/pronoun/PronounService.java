@@ -2,16 +2,7 @@ package io.github.dzdialectapispring.pronoun;
 
 import static io.github.dzdialectapispring.sentence.SentenceBuilder.RANDOM;
 
-import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.CollectionReference;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.QueryDocumentSnapshot;
-import com.google.cloud.firestore.QuerySnapshot;
-import com.google.firebase.cloud.FirestoreClient;
 import io.github.dzdialectapispring.DB;
-import io.github.dzdialectapispring.other.Config;
 import io.github.dzdialectapispring.other.concrets.Possession;
 import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
@@ -22,11 +13,8 @@ import io.github.dzdialectapispring.sentence.Sentence;
 import io.github.dzdialectapispring.sentence.Sentence.SentenceContent;
 import io.github.dzdialectapispring.sentence.SentenceDTO;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,10 +26,6 @@ import org.springframework.stereotype.Service;
 @Data
 @Slf4j
 public class PronounService {
-
-  private final String              path                = "pronouns";
-  @Deprecated
-  private final CollectionReference collectionReference = FirestoreClient.getFirestore().collection(path);
 
 
   public AbstractPronoun getAbstractPronoun(final Gender gender, final boolean isSingular, final Possession possession) {
@@ -74,30 +58,14 @@ public class PronounService {
     return result.get();
   }
 
-  @Deprecated
-  public List<AbstractPronoun> getAllPronounsObjects() {
-    QuerySnapshot query = null;
-    try {
-      query = collectionReference.get().get();
-    } catch (Exception e) {
-      e.printStackTrace();
-      return new ArrayList<>();
-    }
-    List<QueryDocumentSnapshot> documentSnapshot = query.getDocuments();
-    List<AbstractPronoun>       abstractPronouns = documentSnapshot.stream().map(d -> d.toObject(AbstractPronoun.class)).collect(Collectors.toList());
-    if (abstractPronouns.size() == 0) {
-      LOGGER.error("no pronouns loaded");
-    }
-    Collections.sort(abstractPronouns, new Comparator<AbstractPronoun>() {
-      public int compare(AbstractPronoun o1, AbstractPronoun o2) {
-        if (o1.getValues().get(0).getIndex() == o2.getValues().get(0).getIndex()) {
-          return 0;
-        }
-        return o1.getValues().get(0).getIndex() < o2.getValues().get(0).getIndex() ? -1 : 1;
+/*      Collections.sort(abstractPronouns, new Comparator<AbstractPronoun>() {
+    public int compare(AbstractPronoun o1, AbstractPronoun o2) {
+      if (o1.getValues().get(0).getIndex() == o2.getValues().get(0).getIndex()) {
+        return 0;
       }
-    });
-    return abstractPronouns;
-  }
+      return o1.getValues().get(0).getIndex() < o2.getValues().get(0).getIndex() ? -1 : 1;
+    }
+  });*/
 
   public List<SentenceDTO> getAllPronouns() {
     List<SentenceDTO> result = new ArrayList<>();
@@ -130,28 +98,10 @@ public class PronounService {
     return pronouns.stream().skip(RANDOM.nextInt(pronouns.size())).findFirst().get();
   }
 
-  public void insert(final List<AbstractPronoun> pronouns) throws ExecutionException, InterruptedException {
-    Firestore dbFirestore = FirestoreClient.getFirestore();
-    for (AbstractPronoun pronoun : pronouns) {
-      CollectionReference ref = dbFirestore.collection(path);
-      if (!ref.document(pronoun.getId()).get().get().exists() || Config.FORCE_OVERRIDE) {
-        System.out.println("inserting pronoun " + pronoun.getId() + "...");
-        dbFirestore.collection(path).document(pronoun.getId()).set(pronoun);
-      }
-    }
-    System.out.println("insert finished");
-  }
 
-  public AbstractPronoun getPronounById(final String pronounId) throws ExecutionException, InterruptedException {
-    DocumentReference           documentReference = collectionReference.document(pronounId);
-    ApiFuture<DocumentSnapshot> future            = documentReference.get();
-    DocumentSnapshot            documentSnapshot  = future.get();
-    AbstractPronoun             abstractPronoun;
-    if (documentSnapshot.exists()) {
-      abstractPronoun = documentSnapshot.toObject(AbstractPronoun.class);
-      return abstractPronoun;
-    }
-    return null;
+  public AbstractPronoun getPronounById(final String pronounId) {
+    Optional<AbstractPronoun> pronounOpt = DB.PERSONAL_PRONOUNS.stream().filter(p -> p.getId().equals(pronounId)).findFirst();
+    return pronounOpt.orElseThrow(() -> new IllegalArgumentException("No pronoun found with id " + pronounId));
   }
 
   public PossessiveWord getRandomImperativePersonalPronoun() {

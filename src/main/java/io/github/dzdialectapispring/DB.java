@@ -31,7 +31,7 @@ public class DB {
   public final static Set<Verb>              VERBS             = new HashSet<>();
   public final static Set<Adjective>         ADJECTIVES        = new HashSet<>();
   public final static Set<Noun>              NOUNS             = new HashSet<>();
-  public final static Set<AbstractWord>      ADVERBS           = new HashSet<>();
+  public final static Set<Adverb>            ADVERBS           = new HashSet<>();
   public final static Set<SentenceSchema>    SENTENCE_SCHEMAS  = new HashSet<>();
   public final static List<AbstractQuestion> QUESTIONS         = new ArrayList<>();
   public final static List<AbstractPronoun>  PERSONAL_PRONOUNS = new ArrayList<>();

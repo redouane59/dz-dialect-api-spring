@@ -2,16 +2,7 @@ package io.github.dzdialectapispring.verb;
 
 import static io.github.dzdialectapispring.other.Config.RANDOM;
 
-import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.CollectionReference;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.QueryDocumentSnapshot;
-import com.google.cloud.firestore.QuerySnapshot;
-import com.google.firebase.cloud.FirestoreClient;
 import io.github.dzdialectapispring.DB;
-import io.github.dzdialectapispring.other.Config;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
@@ -31,7 +22,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -45,23 +35,11 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class VerbService {
 
-  private final String              path                = "verbs";
-  @Deprecated
-  private final CollectionReference collectionReference = FirestoreClient.getFirestore().collection(path);
-
   @Autowired
   private PronounService pronounService;
 
   public Set<String> getAllVerbIds() {
-    QuerySnapshot query;
-    try {
-      query = collectionReference.get().get();
-    } catch (Exception e) {
-      LOGGER.error("enable to get all verbs " + e.getMessage());
-      return Set.of();
-    }
-    List<QueryDocumentSnapshot> documentSnapshot = query.getDocuments();
-    return documentSnapshot.stream().map(d -> d.toObject(Verb.class)).map(AbstractWord::getId).collect(Collectors.toSet());
+    return DB.VERBS.stream().map(AbstractWord::getId).collect(Collectors.toSet());
   }
 
   public Set<String> getAvailableTenses(String verbId) {
@@ -71,19 +49,6 @@ public class VerbService {
         .stream()
         .map(c -> c.getSubtense().getTense().getId())
         .collect(Collectors.toSet());
-  }
-
-  @Deprecated
-  public Set<Verb> getAllVerbs() {
-    QuerySnapshot query = null;
-    try {
-      query = collectionReference.get().get();
-    } catch (Exception e) {
-      e.printStackTrace();
-      return Set.of();
-    }
-    List<QueryDocumentSnapshot> documentSnapshot = query.getDocuments();
-    return documentSnapshot.stream().map(d -> d.toObject(Verb.class)).collect(Collectors.toSet());
   }
 
   public List<SentenceDTO> getVerbConjugationsById(final String verbId, String tenseId) {
@@ -174,30 +139,9 @@ public class VerbService {
     return verbs.stream().skip(RANDOM.nextInt(verbs.size())).findFirst();
   }
 
-  public void insert(final Verb verb) throws ExecutionException, InterruptedException {
-    Firestore           dbFirestore = FirestoreClient.getFirestore();
-    CollectionReference ref         = dbFirestore.collection(path);
-    if (!ref.document(verb.getId()).get().get().exists() || Config.FORCE_OVERRIDE) {
-      System.out.println("inserting verb " + verb.getId() + "...");
-      dbFirestore.collection(path).document(verb.getId()).set(verb);
-    }
-  }
-
   public Verb getVerbById(final String verbId) {
-    DocumentReference           documentReference = collectionReference.document(verbId);
-    ApiFuture<DocumentSnapshot> future            = documentReference.get();
-    DocumentSnapshot            documentSnapshot  = null;
-    try {
-      documentSnapshot = future.get();
-    } catch (Exception e) {
-      LOGGER.error("enable to find verb " + verbId + " " + e.getMessage());
-    }
-    Verb verb;
-    if (documentSnapshot.exists()) {
-      verb = documentSnapshot.toObject(Verb.class);
-      return verb;
-    }
-    return null;
+    Optional<Verb> verbOpt = DB.VERBS.stream().filter(v -> v.getId().equals(verbId)).findFirst();
+    return verbOpt.orElseThrow(() -> new IllegalArgumentException("no verb found with id " + verbId));
   }
 
 
