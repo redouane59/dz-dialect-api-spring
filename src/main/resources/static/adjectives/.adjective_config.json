@@ -1,0 +1,216 @@
+[
+  {
+    "id": "beau",
+    "possible_nouns": [
+      "PLACE",
+      "PERSON",
+      "OBJECT",
+      "FOOD"
+    ],
+    "temporal": true,
+    "definitive": true
+  },
+  {
+    "id": "bien",
+    "possible_nouns": [
+      "PERSON",
+      "PLACE",
+      "OBJECT"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "chaud",
+    "possible_nouns": [
+      "OBJECT"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "cher",
+    "possible_nouns": [
+      "PLACE",
+      "OBJECT",
+      "FOOD"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "difficile",
+    "possible_nouns": [
+      "PERSON",
+      "TASK"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "difficile2",
+    "possible_nouns": [
+      "PERSON",
+      "TASK"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "délicieux",
+    "possible_nouns": [
+      "FOOD"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "facile",
+    "possible_nouns": [
+      "PERSON",
+      "TASK"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "fatigué",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "fermé",
+    "possible_nouns": [
+      "PLACE",
+      "OBJECT"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "froid",
+    "possible_nouns": [
+      "PERSON",
+      "FOOD"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "gentil",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "grand",
+    "possible_nouns": [
+      "PLACE",
+      "PERSON",
+      "OBJECT",
+      "FOOD"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "gros",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "impatient",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "lent",
+    "possible_nouns": [
+      "PERSON",
+      "OBJECT"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "loin",
+    "possible_nouns": [
+      "PLACE",
+      "PERSON",
+      "OBJECT"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "long",
+    "possible_nouns": [
+      "PLACE",
+      "PERSON",
+      "OBJECT",
+      "FOOD"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "léger",
+    "possible_nouns": [
+      "PERSON",
+      "OBJECT",
+      "FOOD"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "malade",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "neuf",
+    "possible_nouns": [
+      "PLACE",
+      "OBJECT"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "ouvert",
+    "possible_nouns": [
+      "PLACE",
+      "OBJECT"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "petit",
+    "possible_nouns": [
+      "PLACE",
+      "PERSON",
+      "OBJECT",
+      "FOOD"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "proche",
+    "possible_nouns": [
+      "PLACE",
+      "PERSON",
+      "OBJECT"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "prêt",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "vide",
+    "possible_nouns": [
+      "PLACE",
+      "OBJECT"
+    ],
+    "temporal": true
+  }
+]

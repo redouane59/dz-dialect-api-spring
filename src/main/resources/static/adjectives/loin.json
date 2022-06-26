@@ -1,10 +1,5 @@
 {
   "id": "loin",
-  "possible_nouns": [
-    "PLACE",
-    "PERSON",
-    "OBJECT"
-  ],
   "values": [
     {
       "translations": [
@@ -54,6 +49,5 @@
       "singular": false,
       "tense": null
     }
-  ],
-  "temporal": true
+  ]
 }

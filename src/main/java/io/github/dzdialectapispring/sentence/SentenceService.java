@@ -175,7 +175,6 @@ public class SentenceService {
     return sentenceSchemas;
   }
 
-  // @todo to implement
   public Optional<SentenceSchema> getRandomSentenceSchema(GeneratorParameters generatorParameters) {
 
     List<SentenceSchema> matchingSentenceSchema = getSentenceSchemas().stream()
@@ -217,7 +216,6 @@ public class SentenceService {
     return Optional.empty();
   }
 
-  // @todo manage contribution sentence DTO .
   public ContributionSentenceDTO getContributionSentenceById(final String sentenceId) {
     Optional<ContributionSentence> contributionSentenceOpt = getContributionSentenceObjectById(sentenceId);
     return contributionSentenceOpt.map(ContributionSentenceDTO::new).orElse(null);

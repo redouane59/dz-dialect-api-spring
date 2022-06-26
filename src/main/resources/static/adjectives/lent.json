@@ -1,9 +1,5 @@
 {
   "id": "lent",
-  "possible_nouns": [
-    "PERSON",
-    "OBJECT"
-  ],
   "values": [
     {
       "translations": [
@@ -53,6 +49,5 @@
       "singular": false,
       "tense": null
     }
-  ],
-  "temporal": true
+  ]
 }

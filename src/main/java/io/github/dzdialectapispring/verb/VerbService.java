@@ -10,6 +10,7 @@ import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.firebase.cloud.FirestoreClient;
+import io.github.dzdialectapispring.DB;
 import io.github.dzdialectapispring.other.Config;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.PossessiveWord;
@@ -45,6 +46,7 @@ import org.springframework.stereotype.Service;
 public class VerbService {
 
   private final String              path                = "verbs";
+  @Deprecated
   private final CollectionReference collectionReference = FirestoreClient.getFirestore().collection(path);
 
   @Autowired
@@ -71,6 +73,7 @@ public class VerbService {
         .collect(Collectors.toSet());
   }
 
+  @Deprecated
   public Set<Verb> getAllVerbs() {
     QuerySnapshot query = null;
     try {
@@ -122,7 +125,7 @@ public class VerbService {
   }
 
   public Optional<Verb> getRandomAbstractVerb(SentenceSchema schema, AbstractQuestion question) {
-    Set<Verb> verbs = getAllVerbs();
+    Set<Verb> verbs = DB.VERBS;
     if (schema.getTenses() != null) {
       verbs = verbs.stream()
                    .filter(v -> v.getValues()

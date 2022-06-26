@@ -10,6 +10,7 @@ import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.firebase.cloud.FirestoreClient;
+import io.github.dzdialectapispring.DB;
 import io.github.dzdialectapispring.noun.Noun;
 import io.github.dzdialectapispring.other.Config;
 import io.github.dzdialectapispring.other.NounType;
@@ -33,6 +34,7 @@ import org.springframework.stereotype.Service;
 public class AdjectiveService {
 
   private final String              path                = "adjectives";
+  @Deprecated
   private final CollectionReference collectionReference = FirestoreClient.getFirestore().collection(path);
 
   public void insert(final Adjective adjective) throws ExecutionException, InterruptedException {
@@ -44,6 +46,7 @@ public class AdjectiveService {
     }
   }
 
+  @Deprecated
   public Set<Adjective> getAllAdjectivesObjects() {
     QuerySnapshot query;
     try {
@@ -57,7 +60,7 @@ public class AdjectiveService {
   }
 
   public Set<String> getAllAdjectivesIds(boolean includeTemporal, boolean includeDefinitive) {
-    Set<Adjective> adjectives = getAllAdjectivesObjects();
+    Set<Adjective> adjectives = DB.ADJECTIVES;
     Set<Adjective> result     = new HashSet<>();
     if (includeTemporal) {
       result.addAll(adjectives.stream().filter(Adjective::isTemporal).collect(Collectors.toSet()));
@@ -104,7 +107,7 @@ public class AdjectiveService {
 
     final NounType finalNounType = type;
 
-    Set<Adjective> adjectives = getAllAdjectivesObjects();
+    Set<Adjective> adjectives = DB.ADJECTIVES;
 
     if (type != null) {
       adjectives = adjectives.stream()

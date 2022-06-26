@@ -578,5 +578,14 @@
     ],
     "verb_type": "ACTION",
     "indirect_complement": true
+  },
+  {
+    "id": "poser",
+    "possible_questions": [
+      "what",
+      "why"
+    ],
+    "verb_type": "ACTION",
+    "direct_complement": true
   }
 ]

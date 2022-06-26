@@ -41,4 +41,10 @@ public class Adjective extends AbstractWord {
     }
     return adjective.getWordByGenderAndSingular(subject.getGender(lang), lang, subject.isSingular());
   }
+
+  public void importConfig(final Adjective adjective) {
+    this.possibleNouns = adjective.getPossibleNouns();
+    this.temporal      = adjective.isTemporal();
+    this.definitive    = adjective.isDefinitive();
+  }
 }

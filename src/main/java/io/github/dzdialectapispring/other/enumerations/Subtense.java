@@ -5,7 +5,6 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-// @todo add root tense
 public enum Subtense {
   PAST_AVOIR(Tense.PAST),
   PAST_ETRE(Tense.PAST), // @todo dev verbs

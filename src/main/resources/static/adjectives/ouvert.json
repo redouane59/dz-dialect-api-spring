@@ -1,9 +1,5 @@
 {
   "id": "ouvert",
-  "possible_nouns": [
-    "PLACE",
-    "OBJECT"
-  ],
   "values": [
     {
       "translations": [
@@ -53,6 +49,5 @@
       "singular": false,
       "tense": null
     }
-  ],
-  "temporal": true
+  ]
 }

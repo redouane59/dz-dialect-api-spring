@@ -1,9 +1,5 @@
 {
   "id": "froid",
-  "possible_nouns": [
-    "PERSON",
-    "FOOD"
-  ],
   "values": [
     {
       "translations": [
@@ -53,6 +49,5 @@
       "singular": false,
       "tense": null
     }
-  ],
-  "temporal": true
+  ]
 }

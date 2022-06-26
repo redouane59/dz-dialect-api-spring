@@ -10,6 +10,7 @@ import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.firebase.cloud.FirestoreClient;
+import io.github.dzdialectapispring.DB;
 import io.github.dzdialectapispring.other.Config;
 import io.github.dzdialectapispring.other.concrets.Possession;
 import io.github.dzdialectapispring.other.concrets.PossessiveWord;
@@ -39,20 +40,21 @@ import org.springframework.stereotype.Service;
 public class PronounService {
 
   private final String              path                = "pronouns";
+  @Deprecated
   private final CollectionReference collectionReference = FirestoreClient.getFirestore().collection(path);
 
 
   public AbstractPronoun getAbstractPronoun(final Gender gender, final boolean isSingular, final Possession possession) {
-    Optional<AbstractPronoun> abstractPronounOptional = getAllPronounsObjects().stream()
-                                                                               .filter(p -> (p.getValues().get(0)).getPossession()
-                                                                                            == possession)
-                                                                               .filter(p -> (p.getValues().get(0)).isSingular()
-                                                                                            == isSingular)
-                                                                               .filter(p -> (p.getValues().get(0)).getGender() == gender
-                                                                                            || (p.getValues().get(0)).getGender()
-                                                                                               == Gender.X
-                                                                                            || gender == Gender.X)
-                                                                               .findFirst();
+    Optional<AbstractPronoun> abstractPronounOptional = DB.PERSONAL_PRONOUNS.stream()
+                                                                            .filter(p -> (p.getValues().get(0)).getPossession()
+                                                                                         == possession)
+                                                                            .filter(p -> (p.getValues().get(0)).isSingular()
+                                                                                         == isSingular)
+                                                                            .filter(p -> (p.getValues().get(0)).getGender() == gender
+                                                                                         || (p.getValues().get(0)).getGender()
+                                                                                            == Gender.X
+                                                                                         || gender == Gender.X)
+                                                                            .findFirst();
     if (abstractPronounOptional.isEmpty()) {
       throw new IllegalStateException("no abstract pronoun found");
     }
@@ -60,19 +62,19 @@ public class PronounService {
   }
 
   public PossessiveWord getPronoun(final Gender gender, final boolean isSingular, final Possession possession) {
-    Optional<PossessiveWord> result = getAllPronounsObjects().stream()
-                                                             .map(o -> o.getValues().get(0))//@todo dirty ?
-                                                             .map(o -> o)
-                                                             .filter(o -> o.isSingular() == isSingular)
-                                                             .filter(o -> o.getPossession() == possession)
-                                                             .filter(o -> o.getGender() == gender || gender == Gender.X || o.getGender() == Gender.X)
-                                                             .findAny();
+    Optional<PossessiveWord> result = DB.PERSONAL_PRONOUNS.stream()
+                                                          .map(o -> o.getValues().get(0))//@todo dirty ?
+                                                          .filter(o -> o.isSingular() == isSingular)
+                                                          .filter(o -> o.getPossession() == possession)
+                                                          .filter(o -> o.getGender() == gender || gender == Gender.X || o.getGender() == Gender.X)
+                                                          .findAny();
     if (result.isEmpty()) {
       throw new IllegalStateException("no pronoun found");
     }
     return result.get();
   }
 
+  @Deprecated
   public List<AbstractPronoun> getAllPronounsObjects() {
     QuerySnapshot query = null;
     try {
@@ -99,7 +101,7 @@ public class PronounService {
 
   public List<SentenceDTO> getAllPronouns() {
     List<SentenceDTO> result = new ArrayList<>();
-    for (AbstractPronoun abstractPronoun : getAllPronounsObjects()) {
+    for (AbstractPronoun abstractPronoun : DB.PERSONAL_PRONOUNS) {
       for (Word word : abstractPronoun.getValues()) {
         Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, word.getTranslationValue(Lang.FR)),
                                                  new Translation(Lang.DZ, word.getTranslationValue(Lang.DZ), word.getTranslationValueAr(Lang.DZ))));
@@ -111,20 +113,20 @@ public class PronounService {
   }
 
   public PossessiveWord getRandomPronoun() {
-    List<AbstractPronoun> pronouns        = getAllPronounsObjects();
+    List<AbstractPronoun> pronouns        = DB.PERSONAL_PRONOUNS;
     AbstractPronoun       abstractPronoun = pronouns.stream().skip(RANDOM.nextInt(pronouns.size())).findFirst().get();
     return abstractPronoun.getValues().get(0);
   }
 
   public AbstractPronoun getRandomAbstractPronoun(Possession possession) {
-    List<AbstractPronoun> pronouns = getAllPronounsObjects().stream()
-                                                            .filter(p -> (p.getValues().get(0)).getPossession() == possession)
-                                                            .collect(Collectors.toList());
+    List<AbstractPronoun> pronouns = DB.PERSONAL_PRONOUNS.stream()
+                                                         .filter(p -> (p.getValues().get(0)).getPossession() == possession)
+                                                         .collect(Collectors.toList());
     return pronouns.stream().skip(RANDOM.nextInt(pronouns.size())).findFirst().get();
   }
 
   public AbstractPronoun getRandomAbstractPronoun() {
-    List<AbstractPronoun> pronouns = getAllPronounsObjects();
+    List<AbstractPronoun> pronouns = DB.PERSONAL_PRONOUNS;
     return pronouns.stream().skip(RANDOM.nextInt(pronouns.size())).findFirst().get();
   }
 
@@ -153,9 +155,9 @@ public class PronounService {
   }
 
   public PossessiveWord getRandomImperativePersonalPronoun() {
-    List<PossessiveWord> compatiblePronouns = getAllPronounsObjects().stream()
-                                                                     .map(o -> o.getValues().get(0))
-                                                                     .filter(o -> o.getPossession() == Possession.YOU).collect(Collectors.toList());
+    List<PossessiveWord> compatiblePronouns = DB.PERSONAL_PRONOUNS.stream()
+                                                                  .map(o -> o.getValues().get(0))
+                                                                  .filter(o -> o.getPossession() == Possession.YOU).collect(Collectors.toList());
     return compatiblePronouns.stream().skip(RANDOM.nextInt(compatiblePronouns.size()))
                              .findAny().get();
   }

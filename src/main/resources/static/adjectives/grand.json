@@ -1,11 +1,5 @@
 {
   "id": "grand",
-  "possible_nouns": [
-    "PLACE",
-    "PERSON",
-    "OBJECT",
-    "FOOD"
-  ],
   "values": [
     {
       "translations": [
@@ -55,6 +49,5 @@
       "singular": false,
       "tense": null
     }
-  ],
-  "definitive": true
+  ]
 }

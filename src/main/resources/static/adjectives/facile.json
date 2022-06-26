@@ -1,9 +1,5 @@
 {
   "id": "facile",
-  "possible_nouns": [
-    "PERSON",
-    "TASK"
-  ],
   "values": [
     {
       "translations": [
@@ -53,6 +49,5 @@
       "singular": false,
       "tense": null
     }
-  ],
-  "temporal": true
+  ]
 }

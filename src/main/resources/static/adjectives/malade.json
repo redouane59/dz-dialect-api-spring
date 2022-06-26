@@ -1,8 +1,5 @@
 {
   "id": "malade",
-  "possible_nouns": [
-    "PERSON"
-  ],
   "values": [
     {
       "translations": [
@@ -52,6 +49,5 @@
       "singular": false,
       "tense": null
     }
-  ],
-  "temporal": true
+  ]
 }

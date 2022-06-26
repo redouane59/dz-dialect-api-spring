@@ -10,6 +10,7 @@ import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.firebase.cloud.FirestoreClient;
+import io.github.dzdialectapispring.DB;
 import io.github.dzdialectapispring.other.Config;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.GenderedWord;
@@ -29,12 +30,14 @@ import org.springframework.stereotype.Service;
 public class NounService {
 
   private final String              path                = "nouns";
+  @Deprecated
   private final CollectionReference collectionReference = FirestoreClient.getFirestore().collection(path);
 
   public Set<String> getAllNounsIds() {
-    return getAllNounObjects().stream().map(AbstractWord::getId).collect(Collectors.toSet());
+    return DB.NOUNS.stream().map(AbstractWord::getId).collect(Collectors.toSet());
   }
 
+  @Deprecated
   private Set<Noun> getAllNounObjects() {
     QuerySnapshot query;
     try {
@@ -83,7 +86,7 @@ public class NounService {
   }
 
   public Optional<Noun> getRandomNoun(Verb abstractVerb) {
-    Set<Noun> nouns = getAllNounObjects();
+    Set<Noun> nouns = DB.NOUNS;
     // case where the noun is the complement
     if (abstractVerb != null) {
       nouns = nouns.stream().filter(n -> abstractVerb.getPossibleComplements().contains(n.getType())).collect(Collectors.toSet());
