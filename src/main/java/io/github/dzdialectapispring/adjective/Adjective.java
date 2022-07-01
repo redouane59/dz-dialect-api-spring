@@ -36,7 +36,7 @@ public class Adjective extends AbstractWord {
 
   public Optional<GenderedWord> getAdjective(Adjective adjective, PossessiveWord subject, Lang lang) {
     if (subject == null) {
-      LOGGER.debug("null subject");
+      System.out.println("null subject");
       return Optional.empty();
     }
     return adjective.getWordByGenderAndSingular(subject.getGender(lang), lang, subject.isSingular());

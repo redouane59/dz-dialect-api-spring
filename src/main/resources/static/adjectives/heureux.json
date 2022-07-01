@@ -1,0 +1,53 @@
+{
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "heureux"
+        },
+        {
+          "lang": "DZ",
+          "value": "far7an",
+          "ar_value": "فرحان"
+        }
+      ],
+      "gender": "M",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "heureuse"
+        },
+        {
+          "lang": "DZ",
+          "value": "far7ana",
+          "ar_value": "فرحانة"
+        }
+      ],
+      "gender": "F",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "heureux(ses)"
+        },
+        {
+          "lang": "DZ",
+          "value": "far7anin",
+          "ar_value": "فرحانيين"
+        }
+      ],
+      "gender": "X",
+      "singular": false,
+      "tense": null
+    }
+  ],
+  "id": "heureux"
+}

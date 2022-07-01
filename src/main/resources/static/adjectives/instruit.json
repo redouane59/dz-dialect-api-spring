@@ -1,0 +1,53 @@
+{
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "instruit"
+        },
+        {
+          "lang": "DZ",
+          "value": "9ari",
+          "ar_value": "قارى"
+        }
+      ],
+      "gender": "M",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "instruite"
+        },
+        {
+          "lang": "DZ",
+          "value": "9aria",
+          "ar_value": "قاريه"
+        }
+      ],
+      "gender": "F",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "instruits"
+        },
+        {
+          "lang": "DZ",
+          "value": "9aryine",
+          "ar_value": "قاريين"
+        }
+      ],
+      "gender": "X",
+      "singular": false,
+      "tense": null
+    }
+  ],
+  "id": "instruit"
+}

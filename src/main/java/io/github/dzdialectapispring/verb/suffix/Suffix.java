@@ -2,14 +2,13 @@ package io.github.dzdialectapispring.verb.suffix;
 
 import static io.github.dzdialectapispring.sentence.SentenceBuilder.RANDOM;
 
-import io.github.dzdialectapispring.other.Config;
+import io.github.dzdialectapispring.DB;
 import io.github.dzdialectapispring.other.concrets.Possession;
 import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.enumerations.Gender;
 import io.github.dzdialectapispring.other.enumerations.WordType;
 import io.github.dzdialectapispring.sentence.SentenceSchema;
-import java.io.File;
-import java.io.IOException;
+import io.github.dzdialectapispring.verb.Verb;
 import java.util.Optional;
 
 public class Suffix extends PossessiveWord {
@@ -21,37 +20,29 @@ public class Suffix extends PossessiveWord {
     Possession randomPossession = Possession.getRandomPosession(other, objectOnly, isImperative);
 
     AbstractSuffix baseSuffix;
-
-    // @todo dirty
     if (isDirect) {
-      try {
-        baseSuffix =
-            Config.OBJECT_MAPPER.readValue(new File("./src/main/resources/static/suffixes/direct_pronoun_suffixes.json"),
-                                           AbstractSuffix.class);
-      } catch (IOException e) {
-        e.printStackTrace();
-        return Optional.empty();
-      }
+      baseSuffix = DB.DIRECT_SUFFIXES;
     } else {
-      try {
-        baseSuffix =
-            Config.OBJECT_MAPPER.readValue(new File("./src/main/resources/static/suffixes/indirect_pronoun_suffixes.json"),
-                                           AbstractSuffix.class);
-      } catch (IOException e) {
-        e.printStackTrace();
-        return Optional.empty();
-      }
+      baseSuffix = DB.INDIRECT_SUFFIXES;
     }
 
-    return baseSuffix.getValues().stream().map(o -> o)
+    return baseSuffix.getValues().stream()
                      .filter(s -> s.isSingular() == randomSingular)
                      .filter(s -> s.getPossession() == randomPossession)
                      .filter(s -> s.getGender() == randomGender || s.getGender() == Gender.X || randomGender == Gender.X)
                      .findFirst();
   }
 
-  public static Optional<PossessiveWord> getSuffix(SentenceSchema schema, Possession possession, boolean isObjectOnly, boolean isImperative) {
+  public static Optional<PossessiveWord> getSuffix(Verb asbtractVerb,
+                                                   SentenceSchema schema,
+                                                   Possession possession,
+                                                   boolean isObjectOnly,
+                                                   boolean isImperative) {
     boolean isDirect = !schema.getFrSequence().contains(WordType.NOUN);
+    // check if the verb manages the direct/undirect suffix
+    if ((isDirect && !asbtractVerb.isDirectComplement()) || (!isDirect && !asbtractVerb.isIndirectComplement())) {
+      return Optional.empty();
+    }
     return getRandomSuffix(possession, isDirect, isObjectOnly, isImperative);
   }
 

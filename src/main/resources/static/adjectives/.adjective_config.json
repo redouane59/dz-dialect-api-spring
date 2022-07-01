@@ -212,5 +212,99 @@
       "OBJECT"
     ],
     "temporal": true
+  },
+  {
+    "id": "assis",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "bon",
+    "possible_nouns": [
+      "PERSON",
+      "FOOD"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "bon",
+    "possible_nouns": [
+      "PERSON",
+      "FOOD"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "courageux",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "debout",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "fou",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "gratuit",
+    "possible_nouns": [
+      "OBJECT"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "heureux",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "inquiet",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "instruit",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "méchant",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "propre",
+    "possible_nouns": [
+      "OBJECT",
+      "FOOD"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "timide",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
   }
 ]

@@ -586,6 +586,28 @@
       "why"
     ],
     "verb_type": "ACTION",
+    "object_only": true,
+    "direct_complement": true
+  },
+  {
+    "id": "manger",
+    "possible_questions": [
+      "what"
+    ],
+    "possible_complements": [
+      "FOOD"
+    ],
+    "object_only": true,
+    "verb_type": "ACTION",
+    "direct_complement": true
+  },
+  {
+    "id": "dechirer",
+    "possible_questions": [
+      "what"
+    ],
+    "object_only": true,
+    "verb_type": "ACTION",
     "direct_complement": true
   }
 ]

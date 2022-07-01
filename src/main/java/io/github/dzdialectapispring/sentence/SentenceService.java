@@ -206,7 +206,7 @@ public class SentenceService {
     try {
       documentSnapshot = future.get();
     } catch (Exception e) {
-      LOGGER.error("enable to find sentence " + sentenceId + " " + e.getMessage());
+      System.err.println("enable to find sentence " + sentenceId + " " + e.getMessage());
     }
     ContributionSentence sentence;
     if (documentSnapshot.exists()) {
@@ -227,11 +227,11 @@ public class SentenceService {
     ApiFuture<WriteResult> future = addedDocRef.set(sentence);
     try {
       String response = "sentence added at : " + future.get().getUpdateTime() + " with id " + sentence.getId();
-      LOGGER.debug(response);
+      System.out.println(response);
       return new ContributionSentenceDTO(sentence);
     } catch (Exception e) {
       e.printStackTrace();
-      LOGGER.error(e.getMessage());
+      System.err.println(e.getMessage());
       throw new IllegalArgumentException("Error " + e.getMessage());
     }
   }
@@ -245,7 +245,7 @@ public class SentenceService {
     ContributionSentence newSentence = sentenceOpt.get();
     newSentence.incrementThumb(up);
     ApiFuture<WriteResult> collectionsApiFuture = collectionReference.document(sentenceId).set(newSentence);
-    LOGGER.debug("thumb update at " + collectionsApiFuture.get().getUpdateTime());
+    System.out.println("thumb update at " + collectionsApiFuture.get().getUpdateTime());
     return new ContributionSentenceDTO(newSentence);
   }
 }

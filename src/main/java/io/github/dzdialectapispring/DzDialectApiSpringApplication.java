@@ -27,14 +27,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class DzDialectApiSpringApplication {
 
   public static void main(String[] args) throws IOException {
-    LOGGER.debug("main()");
+    System.out.println("main()");
     String      credentialString = System.getenv("GOOGLE_CREDENTIALS");
     InputStream serviceAccount;
     if (credentialString != null) {
-      LOGGER.debug("loading credentials from variable environment");
+      System.out.println("loading credentials from variable environment");
       serviceAccount = new ByteArrayInputStream(credentialString.getBytes(StandardCharsets.UTF_8));
     } else {
-      LOGGER.debug("loading credentials from local file");
+      System.out.println("loading credentials from local file");
       File file = new File("../dz-dialect-api-443aafbaf7a9.json");
       serviceAccount = new FileInputStream(file.getAbsolutePath());
     }
@@ -42,12 +42,12 @@ public class DzDialectApiSpringApplication {
         .setCredentials(GoogleCredentials.fromStream(serviceAccount))
         .build();
 
-    LOGGER.debug("firebase options OK");
+    System.out.println("firebase options OK");
     FirebaseApp.initializeApp(options);
     DB.init();
-    LOGGER.debug("app init OK");
+    System.out.println("app init OK");
     SpringApplication.run(DzDialectApiSpringApplication.class, args);
-    LOGGER.debug("app run OK");
+    System.out.println("app run OK");
   }
 
 
@@ -56,5 +56,5 @@ public class DzDialectApiSpringApplication {
   String home() {
     return "Hello World!";
   }
-  
+
 }

@@ -1,0 +1,53 @@
+{
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "timide"
+        },
+        {
+          "lang": "DZ",
+          "value": "7achman",
+          "ar_value": "يحشم"
+        }
+      ],
+      "gender": "M",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "timide"
+        },
+        {
+          "lang": "DZ",
+          "value": "7achmana",
+          "ar_value": "تحشم"
+        }
+      ],
+      "gender": "F",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "timides"
+        },
+        {
+          "lang": "DZ",
+          "value": "7achmanin",
+          "ar_value": "يحشمو"
+        }
+      ],
+      "gender": "X",
+      "singular": false,
+      "tense": null
+    }
+  ],
+  "id": "timide"
+}

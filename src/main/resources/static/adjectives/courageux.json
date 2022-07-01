@@ -1,0 +1,53 @@
+{
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "courageux"
+        },
+        {
+          "lang": "DZ",
+          "value": "f7el",
+          "ar_value": "فحل"
+        }
+      ],
+      "gender": "M",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "courageuse"
+        },
+        {
+          "lang": "DZ",
+          "value": "fa7la",
+          "ar_value": "فحلة"
+        }
+      ],
+      "gender": "F",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "courageux(ses)"
+        },
+        {
+          "lang": "DZ",
+          "value": "f7oula",
+          "ar_value": "فحولة"
+        }
+      ],
+      "gender": "X",
+      "singular": false,
+      "tense": null
+    }
+  ],
+  "id": "courageux"
+}

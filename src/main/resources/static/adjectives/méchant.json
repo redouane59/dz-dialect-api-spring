@@ -1,0 +1,53 @@
+{
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "méchant"
+        },
+        {
+          "lang": "DZ",
+          "value": "9bih",
+          "ar_value": "قبيح"
+        }
+      ],
+      "gender": "M",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "méchante"
+        },
+        {
+          "lang": "DZ",
+          "value": "9biha",
+          "ar_value": "قبيحة"
+        }
+      ],
+      "gender": "F",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "méchant(e)s"
+        },
+        {
+          "lang": "DZ",
+          "value": "9bah",
+          "ar_value": "قباح"
+        }
+      ],
+      "gender": "X",
+      "singular": false,
+      "tense": null
+    }
+  ],
+  "id": "méchant"
+}

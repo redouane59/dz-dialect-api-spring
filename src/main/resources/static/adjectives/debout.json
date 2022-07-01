@@ -1,0 +1,53 @@
+{
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "debout"
+        },
+        {
+          "lang": "DZ",
+          "value": "wa9af",
+          "ar_value": "واقف"
+        }
+      ],
+      "gender": "M",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "debout"
+        },
+        {
+          "lang": "DZ",
+          "value": "wa9fa",
+          "ar_value": "واقفه"
+        }
+      ],
+      "gender": "F",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "debout"
+        },
+        {
+          "lang": "DZ",
+          "value": "wa9fine",
+          "ar_value": "واقفين"
+        }
+      ],
+      "gender": "X",
+      "singular": false,
+      "tense": null
+    }
+  ],
+  "id": "debout"
+}

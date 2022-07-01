@@ -1,0 +1,53 @@
+{
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "propre"
+        },
+        {
+          "lang": "DZ",
+          "value": "ndif",
+          "ar_value": "نضيف"
+        }
+      ],
+      "gender": "M",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "propre"
+        },
+        {
+          "lang": "DZ",
+          "value": "ndifa",
+          "ar_value": "نضيفة"
+        }
+      ],
+      "gender": "F",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "propres"
+        },
+        {
+          "lang": "DZ",
+          "value": "ndaf",
+          "ar_value": "نضاف"
+        }
+      ],
+      "gender": "X",
+      "singular": false,
+      "tense": null
+    }
+  ],
+  "id": "propre"
+}

@@ -219,7 +219,7 @@ public class SentenceBuilder {
             Config.OBJECT_MAPPER.readValue(prepositionFile,
                                            Preposition.class);
       } catch (IOException e) {
-        LOGGER.error(e.getMessage());
+        System.err.println(e.getMessage());
         return false;
       }
       if (prepositionFile.exists()) {
@@ -271,7 +271,7 @@ public class SentenceBuilder {
                                                     .collect(Collectors.toSet());
         Optional<Subtense> subtenseOptional = availableTenses.stream().skip(RANDOM.nextInt(availableTenses.size())).findFirst();
         if (subtenseOptional.isEmpty()) {
-          LOGGER.debug("tense " + tense + " not found for verb " + abstractVerb.getId());
+          System.out.println("tense " + tense + " not found for verb " + abstractVerb.getId());
           return false;
         }
         subtense = subtenseOptional.get();
@@ -280,7 +280,7 @@ public class SentenceBuilder {
       Optional<Subtense> subtenseOptional = abstractVerb.getValues().stream().map(Conjugation::getSubtense)
                                                         .filter(t -> t.getTense() == tense).findFirst();
       if (subtenseOptional.isEmpty()) {
-        LOGGER.debug("tense " + tense + " not found for verb " + abstractVerb.getId());
+        System.out.println("tense " + tense + " not found for verb " + abstractVerb.getId());
         return false;
       }
       subtense = subtenseOptional.get();
@@ -297,13 +297,13 @@ public class SentenceBuilder {
       PossessiveWord        randomPronoun = pronounService.getRandomImperativePersonalPronoun();
       Optional<Conjugation> frConjugation = abstractVerb.getImperativeVerbConjugation(randomPronoun, Lang.FR, sentenceContent.isNegation());
       if (frConjugation.isEmpty()) {
-        LOGGER.debug("no imperative verb conjugation FR found");
+        System.out.println("no imperative verb conjugation FR found");
         return false;
       }
       wordListFr.add(new WordTypeWordTuple(WordType.VERB, frConjugation.get(), index));
       Optional<Conjugation> arConjugation = abstractVerb.getImperativeVerbConjugation(randomPronoun, Lang.DZ, sentenceContent.isNegation());
       if (arConjugation.isEmpty()) {
-        LOGGER.debug("no imperative verb conjugation AR found");
+        System.out.println("no imperative verb conjugation AR found");
         return false;
       }
       wordListAr.add(new WordTypeWordTuple(WordType.VERB, arConjugation.get(), index));
@@ -311,9 +311,9 @@ public class SentenceBuilder {
     if (schema.getFrSequence().contains(WordType.SUFFIX)) {
       Optional<PossessiveWord> suffixOpt;
       if (sentenceContent.getSubtense().getTense() == Tense.IMPERATIVE) {
-        suffixOpt = Suffix.getSuffix(schema, null, abstractVerb.isObjectOnly(), true);
+        suffixOpt = Suffix.getSuffix(abstractVerb, schema, null, abstractVerb.isObjectOnly(), true);
       } else {
-        suffixOpt = Suffix.getSuffix(schema, subject.getPossession(), abstractVerb.isObjectOnly(), false);
+        suffixOpt = Suffix.getSuffix(abstractVerb, schema, subject.getPossession(), abstractVerb.isObjectOnly(), false);
       }
       if (suffixOpt.isEmpty()) {
         return false;
@@ -452,7 +452,7 @@ public class SentenceBuilder {
         result += "?";
       }
     }
-    if (schema.getFrSequence().size() == 1 && schema.getFrSequence().get(0) == WordType.VERB) {
+    if (sentenceContent.getSubtense() == Subtense.IMPERATIVE) {
       if (arabValue) {
         result += "!\u200F";
       } else {

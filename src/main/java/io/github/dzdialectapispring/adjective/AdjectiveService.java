@@ -79,13 +79,13 @@ public class AdjectiveService {
       adjectives = adjectives.stream().filter(Adjective::isTemporal).collect(Collectors.toSet());
     }
     if (adjectives.isEmpty()) {
-      LOGGER.debug("adjectives empty after is definitive");
+      System.out.println("adjectives empty after is definitive");
       return Optional.empty();
     }
 
     Optional<Adjective> adjectiveOpt = adjectives.stream().skip(RANDOM.nextInt(adjectives.size())).findFirst();
     if (adjectiveOpt.isEmpty()) {
-      LOGGER.debug("adjective empty");
+      System.out.println("adjective empty");
       return Optional.empty();
     }
     return adjectiveOpt;

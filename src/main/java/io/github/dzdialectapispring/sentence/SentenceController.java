@@ -68,7 +68,7 @@ public class SentenceController {
     if (header.equals(headerId)) {
       return sentenceService.insertSentence(sentence);
     } else {
-      LOGGER.debug("invalid header " + header);
+      System.out.println("invalid header " + header);
       return null;
     }
   }
@@ -83,7 +83,7 @@ public class SentenceController {
     if (header.equals(headerId)) {
       return sentenceService.incrementThumb(id, up);
     } else {
-      LOGGER.debug("invalid header " + header);
+      System.out.println("invalid header " + header);
       return null;
     }
   }

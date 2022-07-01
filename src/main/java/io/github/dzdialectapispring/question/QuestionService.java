@@ -33,7 +33,7 @@ public class QuestionService {
       String       questionId  = questionIds.stream().skip(RANDOM.nextInt(questionIds.size())).findFirst().get();
       return DB.QUESTIONS.stream().findFirst().filter(q -> q.getId().equals(questionId));
     } else {
-      LOGGER.debug("no question found");
+      System.out.println("no question found");
       return Optional.empty();
     }
   }

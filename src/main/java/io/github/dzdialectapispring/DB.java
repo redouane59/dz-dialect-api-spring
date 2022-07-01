@@ -13,6 +13,7 @@ import io.github.dzdialectapispring.pronoun.AbstractPronoun;
 import io.github.dzdialectapispring.question.AbstractQuestion;
 import io.github.dzdialectapispring.sentence.SentenceSchema;
 import io.github.dzdialectapispring.verb.Verb;
+import io.github.dzdialectapispring.verb.suffix.AbstractSuffix;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,16 +39,16 @@ public class DB {
   public static       DefinedArticles        DEFINED_ARTICLES;
   public static       AbstractWord           UNDEFINED_ARTICLES;
   public static       AbstractWord           POSSESSIVE_ARTICLES;
-  public static       AbstractWord           DIRECT_SUFFIXES;
-  public static       AbstractWord           INDIRECT_SUFFIXES;
+  public static       AbstractSuffix         DIRECT_SUFFIXES;
+  public static       AbstractSuffix         INDIRECT_SUFFIXES;
 
   public static void init() {
     initAdjectives();
     initAdverbs();
     initNouns();
     initDefinedArticles();
-    // initDirectSuffixes(); @todo
-    //  initIndirectSuffixes(); @todo
+    initDirectSuffixes();
+    initIndirectSuffixes();
     initPersonalPronouns();
     initQuestions();
     initSentenceSchemas();
@@ -56,20 +57,24 @@ public class DB {
 
   public static void initDirectSuffixes() {
     try {
-      DIRECT_SUFFIXES =
-          Config.OBJECT_MAPPER.readValue(new File("./src/main/resources/static/suffixes/direct_pronoun_suffixes.json"), AbstractWord.class);
+      DIRECT_SUFFIXES = Config.OBJECT_MAPPER.readValue(new File("./src/main/resources/static/suffixes/direct_pronoun_suffixes.json"),
+                                                       AbstractSuffix.class);
     } catch (IOException e) {
       e.printStackTrace();
     }
+    System.out.println("direct suffixes loaded");
+
   }
 
   public static void initIndirectSuffixes() {
     try {
       INDIRECT_SUFFIXES =
-          Config.OBJECT_MAPPER.readValue(new File("./src/main/resources/suffixes/indirect_pronoun_suffixes.json"), AbstractWord.class);
+          Config.OBJECT_MAPPER.readValue(new File("./src/main/resources/static/suffixes/indirect_pronoun_suffixes.json"),
+                                         AbstractSuffix.class);
     } catch (IOException e) {
       e.printStackTrace();
     }
+    System.out.println("indirect suffixes loaded");
   }
 
   public static void initDefinedArticles() {
@@ -89,6 +94,7 @@ public class DB {
     } catch (IOException e) {
       e.printStackTrace();
     }
+    System.out.println(POSSESSIVE_ARTICLES + " possessive articles loaded");
   }
 
   public static void initUndefinedArticles() {
@@ -98,6 +104,7 @@ public class DB {
     } catch (IOException e) {
       e.printStackTrace();
     }
+    System.out.println(UNDEFINED_ARTICLES + " undefined articles loaded");
   }
 
   public static void initVerbs() {
@@ -106,7 +113,7 @@ public class DB {
       verbConfigurations =
           OBJECT_MAPPER.readValue(new File("./src/main/resources/static/verbs/.verb_config.json"), Verb[].class);
     } catch (Exception e) {
-      LOGGER.error("could not load verb configurations " + e.getMessage());
+      System.err.println("could not load verb configurations " + e.getMessage());
       e.printStackTrace();
     }
     Set<String> files = new HashSet<>(ResourceList.getResources(Pattern.compile(".*verbs.*json")))
@@ -119,14 +126,15 @@ public class DB {
         if (verbConfiguration.isPresent()) {
           verb.importConfig(verbConfiguration.get());
         } else {
-          LOGGER.debug("no configuration found for verb " + verb.getId());
+          System.out.println("no configuration found for verb " + verb.getId());
         }
         VERBS.add(verb);
       } catch (IOException e) {
-        LOGGER.error("could not load verb  " + e.getMessage());
+        System.err.println("could not load verb  " + e.getMessage());
         e.printStackTrace();
       }
     }
+    System.out.println(VERBS + " verbs loaded");
   }
 
   public static void initAdjectives() {
@@ -135,7 +143,7 @@ public class DB {
       adjectiveConfigurations =
           OBJECT_MAPPER.readValue(new File("./src/main/resources/static/adjectives/.adjective_config.json"), Adjective[].class);
     } catch (Exception e) {
-      LOGGER.error("could not load adjective configurations " + e.getMessage());
+      System.err.println("could not load adjective configurations " + e.getMessage());
       e.printStackTrace();
     }
     Set<String>
@@ -151,14 +159,15 @@ public class DB {
         if (adjectiveConfiguration.isPresent()) {
           adjective.importConfig(adjectiveConfiguration.get());
         } else {
-          LOGGER.debug("no configuration found for adjective " + adjective.getId());
+          System.out.println("no configuration found for adjective " + adjective.getId());
         }
         ADJECTIVES.add(adjective);
       } catch (IOException e) {
-        LOGGER.error("could not load adjective file " + fileName);
+        System.err.println("could not load adjective file " + fileName);
         e.printStackTrace();
       }
     }
+    System.out.println(ADJECTIVES.size() + " adjectives loaded");
   }
 
   public static void initNouns() {
@@ -172,10 +181,11 @@ public class DB {
           NOUNS.add(noun);
         }
       } catch (IOException e) {
-        LOGGER.error("could not load noun file " + fileName);
+        System.err.println("could not load noun file " + fileName);
         e.printStackTrace();
       }
     }
+    System.out.println(NOUNS.size() + " nouns loaded");
   }
 
   public static void initAdverbs() {
@@ -187,19 +197,20 @@ public class DB {
         Adverb adverb = OBJECT_MAPPER.readValue(new File(fileName), Adverb.class);
         ADVERBS.add(adverb);
       } catch (IOException e) {
-        LOGGER.error("could not load adverb file " + fileName);
+        System.err.println("could not load adverb file " + fileName);
         e.printStackTrace();
       }
     }
+    System.out.println(ADVERBS.size() + " adverbs loaded");
   }
 
   public static void initSentenceSchemas() {
-    Set<String> files = new HashSet<>(ResourceList.getResources(Pattern.compile(".*sentences.*json")));
+    Set<String> files = new HashSet<>(ResourceList.getResources(Pattern.compile(".*sentence_schemas.*json")));
     for (String fileName : files) {
       try {
         SENTENCE_SCHEMAS.add(Config.OBJECT_MAPPER.readValue(new File(fileName), SentenceSchema.class));
       } catch (IOException e) {
-        LOGGER.error("could not load sentence schema file " + fileName);
+        System.err.println("could not load sentence schema file " + fileName);
         e.printStackTrace();
       }
     }
@@ -210,9 +221,10 @@ public class DB {
     try {
       QUESTIONS.addAll(List.of(OBJECT_MAPPER.readValue(new File("./src/main/resources/static/other/questions.json"), AbstractQuestion[].class)));
     } catch (IOException e) {
-      LOGGER.error("questions not loaded " + e.getMessage());
+      System.err.println("questions not loaded " + e.getMessage());
       e.printStackTrace();
     }
+    System.out.println(QUESTIONS.size() + " questions loaded");
   }
 
   public static void initPersonalPronouns() {
@@ -220,9 +232,10 @@ public class DB {
       PERSONAL_PRONOUNS.addAll(List.of(OBJECT_MAPPER.readValue(new File("./src/main/resources/static/other/personal_pronouns.json"),
                                                                AbstractPronoun[].class)));
     } catch (IOException e) {
-      LOGGER.error("cannot load personal pronouns " + e.getMessage());
+      System.err.println("cannot load personal pronouns " + e.getMessage());
       e.printStackTrace();
     }
+    System.out.println(PERSONAL_PRONOUNS.size() + " personal pronouns loaded");
   }
 
 
