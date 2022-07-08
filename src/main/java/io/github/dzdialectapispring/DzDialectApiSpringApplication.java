@@ -12,7 +12,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
@@ -22,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @OpenAPIDefinition(servers = {@Server(url = "/", description = "Default Server URL")}, info =
 @Info(title = "DZDialect API", version = "1.0.0", description = "DZDialect API v1.0"))
 @SpringBootApplication
-@Slf4j
+
 @Controller
 public class DzDialectApiSpringApplication {
 
@@ -44,6 +43,7 @@ public class DzDialectApiSpringApplication {
 
     System.out.println("firebase options OK");
     FirebaseApp.initializeApp(options);
+
     DB.init();
     System.out.println("app init OK");
     SpringApplication.run(DzDialectApiSpringApplication.class, args);

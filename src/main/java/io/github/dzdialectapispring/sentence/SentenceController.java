@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1/sentences")
 @AllArgsConstructor
 @CrossOrigin(origins = "https://dz-dialect-app.herokuapp.com/", allowedHeaders = "*")
-@Slf4j
 public class SentenceController {
 
   private final SentenceService sentenceService;

@@ -17,7 +17,8 @@
       "PLACE",
       "OBJECT"
     ],
-    "temporal": true
+    "temporal": true,
+    "definitive": true
   },
   {
     "id": "chaud",
@@ -64,7 +65,8 @@
       "PERSON",
       "TASK"
     ],
-    "temporal": true
+    "temporal": true,
+    "definitive": true
   },
   {
     "id": "fatigué",
@@ -306,5 +308,26 @@
       "PERSON"
     ],
     "temporal": true
+  },
+  {
+    "id": "riche",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "forte",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "calme",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
   }
 ]

@@ -1,0 +1,10 @@
+adjective,singular,gender,frValue,dzValue,dzArValue
+riche,TRUE,M,riche,mrafah,مرفه
+riche,TRUE,F,riche,mrafha,مرفهه
+riche,FALSE,X,riches,mrafhin,مرفهيين
+calme,TRUE,M,calme,rzin,رزين
+calme,TRUE,F,calme,rzina,رزينة
+calme,FALSE,X,calmes,rzan,رزان
+fort,TRUE,M,fort,9awi,قاوي
+fort,TRUE,F,forte,9awiya,قاوية
+fort,FALSE,X,fort(e)s,9awyin,قاويين

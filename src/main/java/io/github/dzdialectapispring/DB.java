@@ -24,9 +24,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class DB {
 
   public final static Set<Verb>              VERBS             = new HashSet<>();

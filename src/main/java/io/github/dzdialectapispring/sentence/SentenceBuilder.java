@@ -42,11 +42,10 @@ import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Getter
-@Slf4j
+
 public class SentenceBuilder {
 
   public static Random           RANDOM = new Random();

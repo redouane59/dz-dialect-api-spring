@@ -12,11 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
 
 @Getter
 @Setter
-@Slf4j
+
 public class Adverb extends AbstractWord {
 
   @JsonInclude(Include.NON_EMPTY)

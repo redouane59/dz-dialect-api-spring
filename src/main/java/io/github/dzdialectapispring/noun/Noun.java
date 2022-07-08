@@ -10,10 +10,9 @@ import io.github.dzdialectapispring.other.enumerations.WordType;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 
 @Getter
-@Slf4j
+
 public class Noun extends AbstractWord {
 
   private final List<GenderedWord> values = new ArrayList<>();

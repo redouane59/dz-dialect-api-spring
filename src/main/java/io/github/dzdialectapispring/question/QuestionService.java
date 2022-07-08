@@ -15,13 +15,12 @@ import java.util.List;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
 @Service
 @Data
-@Slf4j
+
 public class QuestionService {
 
   public Optional<AbstractQuestion> getRandomAbstractQuestion(Verb verb) {
