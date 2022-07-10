@@ -1,0 +1,22 @@
+{
+  "id": "NVA_DEF",
+  "fr_sequence": [
+    "ARTICLE",
+    "NOUN",
+    "VERB",
+    "ADJECTIVE"
+  ],
+  "ar_sequence": [
+    "ARTICLE",
+    "NOUN",
+    "ADJECTIVE"
+  ],
+  "subject_position": 1,
+  "tenses": [
+    "PRESENT"
+  ],
+  "verb_type": "STATE",
+  "definitive_adjective": true,
+  "possible_negation": true,
+  "enabled": true
+}

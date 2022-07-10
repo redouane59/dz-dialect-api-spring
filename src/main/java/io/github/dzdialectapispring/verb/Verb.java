@@ -69,10 +69,11 @@ public class Verb extends AbstractWord {
 
   public Conjugation getVerbConjugation(Verb verb, PossessiveWord subject, Subtense tense, Lang lang) {
 
-/*    if (subject == null) {
-      subject = pronounService.getRandomPronoun();
-      tense   = Tense.IMPERATIVE;
-    }*/
+    if (subject == null) {
+      System.err.println("subject is null");
+//      subject = pronounService.getRandomPronoun();
+//      tense   = Tense.IMPERATIVE;
+    }
     Optional<Conjugation>
         conjugation =
         verb.getConjugationByGenderSingularPossessionAndTense(subject.getGender(lang),

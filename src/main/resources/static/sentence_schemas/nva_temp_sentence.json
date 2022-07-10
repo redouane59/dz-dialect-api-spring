@@ -1,0 +1,22 @@
+{
+  "id": "NVA_TEMP",
+  "fr_sequence": [
+    "ARTICLE",
+    "PRONOUN",
+    "VERB",
+    "ADJECTIVE"
+  ],
+  "ar_sequence": [
+    "ARTICLE",
+    "VERB",
+    "ADJECTIVE"
+  ],
+  "subject_position": 1,
+  "tenses": [
+    "PAST",
+    "PRESENT"
+  ],
+  "verb_type": "STATE",
+  "possible_negation": true,
+  "enabled": true
+}
