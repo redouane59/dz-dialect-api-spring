@@ -329,5 +329,194 @@
       "PERSON"
     ],
     "definitive": true
+  },
+  {
+    "id": "juif",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "allongé",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "énervé",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "musulman",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "intelligent",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "riche",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "marocain",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "chrétien",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "moche",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "pauvre",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "français",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "egyptien",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "triste",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "noir",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "seul",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "arabe",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "européen",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "propre",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "fort",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "algérien",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "tunisien",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
+  },
+  {
+    "id": "salé",
+    "possible_nouns": [
+      "FOOD"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "sale",
+    "possible_nouns": [
+      "OBJECT"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "épicé",
+    "possible_nouns": [
+      "FOOD"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "sucré",
+    "possible_nouns": [
+      "FOOD"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "mauvais",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true
+  },
+  {
+    "id": "athée",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "definitive": true
   }
 ]

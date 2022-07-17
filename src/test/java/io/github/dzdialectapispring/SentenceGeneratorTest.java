@@ -3,6 +3,7 @@ package io.github.dzdialectapispring;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import io.github.dzdialectapispring.other.enumerations.Tense;
 import io.github.dzdialectapispring.sentence.GeneratorParameters;
 import io.github.dzdialectapispring.sentence.SentenceDTO;
 import io.github.dzdialectapispring.sentence.SentenceSchema;
@@ -71,12 +72,12 @@ class SentenceGeneratorTest {
                                                                             1,
                                                                             null,
                                                                             verb.getId(),
+                                                                            Tense.PRESENT.getId(),
                                                                             null,
                                                                             null,
                                                                             null,
                                                                             null,
-                                                                            null,
-                                                                            true,
+                                                                            false,
                                                                             true,
                                                                             "PV");
       if (sentences.isEmpty()) {
@@ -87,6 +88,34 @@ class SentenceGeneratorTest {
       assertNotNull(sentences.get(0).getDz());
       assertNotNull(sentences.get(0).getDzAr());
       System.out.println(verb.getId() + " : " + sentences.get(0).getFr() + " -> " + sentences.get(0).getDz());
+    }
+  }
+
+  @ParameterizedTest
+  @CsvSource({"PVA_TEMP,true", "PVA_DEF,true", "PVA_TEMP,false", "PVA_DEF,false"})
+  public void testAllAdjectivesPVA_TEMP(String sentenceSchemaId, Boolean excludeNegative) throws ExecutionException, InterruptedException {
+    GeneratorParameters generatorParameters = GeneratorParameters.builder().build(); // todo no generator param for adj
+    for (int i = 0; i < DB.ADJECTIVES.size() / 4; i++) {
+      List<SentenceDTO> sentences = sentenceService.generateRandomSentences(1,
+                                                                            1,
+                                                                            null,
+                                                                            null,
+                                                                            Tense.PRESENT.getId(),
+                                                                            null,
+                                                                            null,
+                                                                            null,
+                                                                            null,
+                                                                            false,
+                                                                            excludeNegative,
+                                                                            sentenceSchemaId);
+      if (sentences.isEmpty()) {
+        System.err.println("Empty sentences with sentenceSchemaId " + sentenceSchemaId);
+      }
+      assertTrue(sentences.size() > 0);
+      assertNotNull(sentences.get(0).getFr());
+      assertNotNull(sentences.get(0).getDz());
+      assertNotNull(sentences.get(0).getDzAr());
+      System.out.println(sentenceSchemaId + " : " + sentences.get(0).getFr() + " -> " + sentences.get(0).getDz());
     }
   }
 

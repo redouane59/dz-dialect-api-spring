@@ -61,8 +61,8 @@ public class SentenceService {
                                                    String adjectiveId,
                                                    String questionId,
                                                    String adverbId,
-                                                   boolean positive,
-                                                   boolean negative,
+                                                   boolean excludePositive,
+                                                   boolean excludeNegative,
                                                    String sentenceSchemaId) throws ExecutionException, InterruptedException {
     if (count <= 0) {
       throw new IllegalArgumentException("count argument should be positive");
@@ -84,8 +84,8 @@ public class SentenceService {
                         adjectiveId,
                         questionId,
                         adverbId,
-                        positive,
-                        negative,
+                        excludePositive,
+                        excludeNegative,
                         sentenceSchemaId,
                         alternativeCount);
     List<SentenceDTO> result = new ArrayList<>();
