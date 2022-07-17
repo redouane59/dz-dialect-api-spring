@@ -42,17 +42,23 @@ public class VerbService {
   }
 
   public Set<String> getAvailableTenses(String verbId) {
-    Verb verb = getVerbById(verbId);
-    return verb
-        .getValues()
-        .stream()
-        .map(c -> c.getSubtense().getTense().getId())
-        .collect(Collectors.toSet());
+    Optional<Verb> verb = getVerbById(verbId);
+    if (verb.isEmpty()) {
+      throw new IllegalArgumentException("no verb found with id " + verbId);
+    }
+    return verb.get()
+               .getValues()
+               .stream()
+               .map(c -> c.getSubtense().getTense().getId())
+               .collect(Collectors.toSet());
   }
 
   public List<SentenceDTO> getVerbConjugationsById(final String verbId, String tenseId) {
-    Verb              verb         = getVerbById(verbId);
-    List<Conjugation> conjugations = verb.getValues();
+    Optional<Verb> verb = getVerbById(verbId);
+    if (verb.isEmpty()) {
+      throw new IllegalArgumentException("no verb found with id " + verbId);
+    }
+    List<Conjugation> conjugations = verb.get().getValues();
     if (tenseId != null) {
       Optional<Tense> tenseOptional = Arrays.stream(Tense.values()).filter(t -> t.getId().equals(tenseId)).findFirst();
       if (tenseOptional.isEmpty()) {
@@ -81,7 +87,7 @@ public class VerbService {
       sentence.setContent(SentenceContent.builder()
                                          .subtense(conjugation.getSubtense())
                                          .abstractPronoun(abstractPronoun)
-                                         .abstractVerb(verb)
+                                         .abstractVerb(verb.get())
                                          .build());
       result.add(new SentenceDTO(sentence));
     }
@@ -138,9 +144,9 @@ public class VerbService {
     return verbs.stream().skip(RANDOM.nextInt(verbs.size())).findFirst();
   }
 
-  public Verb getVerbById(final String verbId) {
-    Optional<Verb> verbOpt = DB.VERBS.stream().filter(v -> v.getId().equals(verbId)).findFirst();
-    return verbOpt.orElseThrow(() -> new IllegalArgumentException("no verb found with id " + verbId));
+  public Optional<Verb> getVerbById(final String verbId) {
+    return DB.VERBS.stream().filter(v -> v.getId().equals(verbId)).findFirst();
+    // return verbOpt.orElseThrow(() -> new IllegalArgumentException("no verb found with id " + verbId));
   }
 
 

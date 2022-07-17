@@ -17,7 +17,7 @@ public class GeneratorParameters {
   private Tense           tense;
   private boolean         excludePositive;
   private boolean         excludeNegative;
-  private SentenceSchema  sentenceSchema;
+  private SentenceSchema  sentenceSchema; // @todo two times ?
 
   @Override
   public String toString() {

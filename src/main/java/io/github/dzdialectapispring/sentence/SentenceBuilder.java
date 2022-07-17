@@ -45,11 +45,9 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Getter
-
 public class SentenceBuilder {
 
   public static Random           RANDOM = new Random();
-  private final SentenceSchema   schema;
   private final PronounService   pronounService;
   private final VerbService      verbService;
   private final QuestionService  questionService;
@@ -63,12 +61,11 @@ public class SentenceBuilder {
   AbstractWord            abstractSubject  = null;
   AbstractQuestion        abstractQuestion = null;
   private PossessiveWord  suffix;
-  private SentenceContent sentenceContent;
+  private SentenceContent sentenceContent = SentenceContent.builder().build();
 
   @Autowired
-  public SentenceBuilder(SentenceSchema sentenceSchema, PronounService pronounService, VerbService verbService, QuestionService questionService,
+  public SentenceBuilder(PronounService pronounService, VerbService verbService, QuestionService questionService,
                          AdjectiveService adjectiveService, AdverbService adverbService, NounService nounService) {
-    this.schema           = sentenceSchema;
     this.pronounService   = pronounService;
     this.verbService      = verbService;
     this.questionService  = questionService;
@@ -122,8 +119,8 @@ public class SentenceBuilder {
     wordListFr       = new ArrayList<>();
     wordListAr       = new ArrayList<>();
     sentenceContent  = SentenceContent.builder().build();
-    sentenceContent.setSentenceSchema(schema);
-    if (schema.isPossibleNegation()) {
+    sentenceContent.setSentenceSchema(generatorParameters.getSentenceSchema());
+    if (sentenceContent.getSentenceSchema().isPossibleNegation()) {
       if (generatorParameters.isExcludeNegative() == generatorParameters.isExcludePositive()) {
         sentenceContent.setNegation(RANDOM.nextBoolean());
       } else {
@@ -135,8 +132,8 @@ public class SentenceBuilder {
   // @todo split FR & DZ
   private boolean fillWordListFromSchema(GeneratorParameters generatorParameters) {
     resetAttributes(generatorParameters);
-    for (int index = 0; index < schema.getFrSequence().size(); index++) {
-      WordType wordType = schema.getFrSequence().get(index);
+    for (int index = 0; index < sentenceContent.getSentenceSchema().getFrSequence().size(); index++) {
+      WordType wordType = sentenceContent.getSentenceSchema().getFrSequence().get(index);
       boolean  success;
       switch (wordType) {
         case PRONOUN:
@@ -185,7 +182,7 @@ public class SentenceBuilder {
     sentenceContent.setAbstractPronoun(abstractPronoun);
     wordListFr.add(new WordTypeWordTuple(WordType.PRONOUN, pronoun, index));
     wordListAr.add(new WordTypeWordTuple(WordType.PRONOUN, pronoun, index));
-    if (schema.getSubjectPosition() == index) {
+    if (sentenceContent.getSentenceSchema().getSubjectPosition() == index) {
       subject = pronoun;
     }
     return true;
@@ -208,7 +205,7 @@ public class SentenceBuilder {
     frArticle.ifPresent(genderedWord -> wordListFr.add(new WordTypeWordTuple(WordType.ARTICLE, genderedWord, index)));
     dzArticle.ifPresent(genderedWord -> wordListAr.add(new WordTypeWordTuple(WordType.ARTICLE, genderedWord, index)));
 
-    if (sentenceContent.getAbstractVerb() != null && schema.getFrSequence().contains(WordType.PREPOSITION)) {
+    if (sentenceContent.getAbstractVerb() != null && sentenceContent.getSentenceSchema().getFrSequence().contains(WordType.PREPOSITION)) {
       Preposition preposition;
       File prepositionFile = new File("./src/main/resources/static/prepositions/"
                                       + nounSubject.getDeplacementPrepositionId()
@@ -243,7 +240,7 @@ public class SentenceBuilder {
     sentenceContent.setAbstractNoun(nounSubject);
     wordListFr.add(new WordTypeWordTuple(WordType.NOUN, noun, index));
     wordListAr.add(new WordTypeWordTuple(WordType.NOUN, noun, index));
-    if (schema.getSubjectPosition() == index) {
+    if (sentenceContent.getSentenceSchema().getSubjectPosition() == index) {
       subject         = noun;
       abstractSubject = nounSubject;
     }
@@ -252,7 +249,7 @@ public class SentenceBuilder {
 
   private boolean buildVerb(int index, Verb abstractVerb, Tense tense) {
     if (abstractVerb == null) {
-      Optional<Verb> abstractVerbOpt = verbService.getRandomAbstractVerb(schema, abstractQuestion);
+      Optional<Verb> abstractVerbOpt = verbService.getRandomAbstractVerb(sentenceContent.getSentenceSchema(), abstractQuestion);
       if (abstractVerbOpt.isEmpty()) {
         return false;
       }
@@ -261,11 +258,11 @@ public class SentenceBuilder {
     sentenceContent.setAbstractVerb(abstractVerb);
     Subtense subtense;
     if (tense == null) {
-      if (!schema.getTenses().isEmpty() && schema.getTenses().contains(Tense.IMPERATIVE)) {
+      if (!sentenceContent.getSentenceSchema().getTenses().isEmpty() && sentenceContent.getSentenceSchema().getTenses().contains(Tense.IMPERATIVE)) {
         subtense = Subtense.IMPERATIVE;
       } else {
-        Set<Subtense> availableTenses = abstractVerb.getValues().stream().map(o -> o).map(Conjugation::getSubtense)
-                                                    .filter(t -> schema.getTenses().contains(t.getTense()))
+        Set<Subtense> availableTenses = abstractVerb.getValues().stream().map(Conjugation::getSubtense)
+                                                    .filter(t -> sentenceContent.getSentenceSchema().getTenses().contains(t.getTense()))
                                                     .filter(t -> t != Subtense.IMPERATIVE)
                                                     .collect(Collectors.toSet());
         Optional<Subtense> subtenseOptional = availableTenses.stream().skip(RANDOM.nextInt(availableTenses.size())).findFirst();
@@ -307,12 +304,12 @@ public class SentenceBuilder {
       }
       wordListAr.add(new WordTypeWordTuple(WordType.VERB, arConjugation.get(), index));
     }
-    if (schema.getFrSequence().contains(WordType.SUFFIX)) {
+    if (sentenceContent.getSentenceSchema().getFrSequence().contains(WordType.SUFFIX)) {
       Optional<PossessiveWord> suffixOpt;
       if (sentenceContent.getSubtense().getTense() == Tense.IMPERATIVE) {
-        suffixOpt = Suffix.getSuffix(abstractVerb, schema, null, abstractVerb.isObjectOnly(), true);
+        suffixOpt = Suffix.getSuffix(abstractVerb, sentenceContent.getSentenceSchema(), null, abstractVerb.isObjectOnly(), true);
       } else {
-        suffixOpt = Suffix.getSuffix(abstractVerb, schema, subject.getPossession(), abstractVerb.isObjectOnly(), false);
+        suffixOpt = Suffix.getSuffix(abstractVerb, sentenceContent.getSentenceSchema(), subject.getPossession(), abstractVerb.isObjectOnly(), false);
       }
       if (suffixOpt.isEmpty()) {
         return false;
@@ -325,7 +322,7 @@ public class SentenceBuilder {
   }
 
   private boolean buildAdjective(int index) {
-    Optional<Adjective> adjective = adjectiveService.getAbstractAdjective(schema, abstractSubject, nounSubject);
+    Optional<Adjective> adjective = adjectiveService.getAbstractAdjective(sentenceContent.getSentenceSchema(), abstractSubject, nounSubject);
     if (adjective.isEmpty()) {
       return false;
     }
@@ -360,8 +357,8 @@ public class SentenceBuilder {
 
   private Translation generateFrTranslation() {
     StringBuilder sentenceValue = new StringBuilder();
-    for (int i = 0; i < schema.getFrSequence().size(); i++) {
-      WordType wordType = schema.getFrSequence().get(i);
+    for (int i = 0; i < sentenceContent.getSentenceSchema().getFrSequence().size(); i++) {
+      WordType wordType = sentenceContent.getSentenceSchema().getFrSequence().get(i);
       if (wordType == WordType.SUFFIX && sentenceContent.getSubtense() == Subtense.IMPERATIVE) { // add imperative condition
         sentenceValue.deleteCharAt(sentenceValue.length() - 1);
         sentenceValue.append("-");
@@ -390,8 +387,8 @@ public class SentenceBuilder {
   private Translation generateArTranslation(Lang lang) {
     StringBuilder sentenceValue   = new StringBuilder();
     StringBuilder sentenceValueAr = new StringBuilder();
-    for (int i = 0; i < schema.getArSequence().size(); i++) {
-      WordType wordType = schema.getArSequence().get(i);
+    for (int i = 0; i < sentenceContent.getSentenceSchema().getArSequence().size(); i++) {
+      WordType wordType = sentenceContent.getSentenceSchema().getArSequence().get(i);
       if (wordType == WordType.SUFFIX) {
         String suffixDzValue;
         sentenceValue.deleteCharAt(sentenceValue.length() - 1);
@@ -444,7 +441,7 @@ public class SentenceBuilder {
 
   private String completeSentence(boolean arabValue) {
     String result = "";
-    if (schema.getFrSequence().contains(WordType.QUESTION)) {
+    if (sentenceContent.getSentenceSchema().getFrSequence().contains(WordType.QUESTION)) {
       if (arabValue) {
         result += "؟";
       } else {

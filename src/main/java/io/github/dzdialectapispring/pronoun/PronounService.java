@@ -98,9 +98,9 @@ public class PronounService {
   }
 
 
-  public AbstractPronoun getPronounById(final String pronounId) {
-    Optional<AbstractPronoun> pronounOpt = DB.PERSONAL_PRONOUNS.stream().filter(p -> p.getId().equals(pronounId)).findFirst();
-    return pronounOpt.orElseThrow(() -> new IllegalArgumentException("No pronoun found with id " + pronounId));
+  public Optional<AbstractPronoun> getPronounById(final String pronounId) {
+    return DB.PERSONAL_PRONOUNS.stream().filter(p -> p.getId().equals(pronounId)).findFirst();
+    //return pronounOpt.orElseThrow(() -> new IllegalArgumentException("No pronoun found with id " + pronounId));
   }
 
   public PossessiveWord getRandomImperativePersonalPronoun() {

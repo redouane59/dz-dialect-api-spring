@@ -108,11 +108,16 @@ public class SentenceService {
                                              Integer alternativeCount) throws ExecutionException, InterruptedException {
     Verb verb = null;
     if (verbId != null) {
-      verb = verbService.getVerbById(verbId);
+      Optional<Verb> verbOpt = verbService.getVerbById(verbId);
+      if (verbOpt.isPresent()) {
+        verb = verbOpt.get();
+      } else {
+        throw new IllegalArgumentException("no verb found with id " + verbId);
+      }
     }
     AbstractPronoun pronoun = null;
     if (pronounId != null) {
-      pronoun = pronounService.getPronounById(pronounId);
+      pronoun = pronounService.getPronounById(pronounId).get();
     }
     Tense tense = null;
     if (tenseId != null) {
@@ -152,7 +157,8 @@ public class SentenceService {
     } else {
       sentenceSchema = generatorParameters.getSentenceSchema();
     }
-    sentenceBuilder = new SentenceBuilder(sentenceSchema, pronounService, verbService, questionService, adjectiveService, adverbService, nounService);
+    generatorParameters.setSentenceSchema(sentenceSchema);
+    sentenceBuilder = new SentenceBuilder(pronounService, verbService, questionService, adjectiveService, adverbService, nounService);
     return sentenceBuilder.generate(generatorParameters);
   }
 
