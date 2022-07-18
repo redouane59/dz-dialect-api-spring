@@ -62,10 +62,10 @@ class SentenceGeneratorTest {
     }
   }
 
-  @Test
-  public void testAllVerbsPV() throws ExecutionException, InterruptedException {
+  @ParameterizedTest
+  @CsvSource({"PV,false"})
+  public void testAllVerbsPV(String sentenceSchemaId, Boolean excludeNegative) throws ExecutionException, InterruptedException {
     GeneratorParameters generatorParameters = GeneratorParameters.builder().build();
-    //  List<SentenceSchema> compatibleSchemas   = DB.SENTENCE_SCHEMAS.stream().filter(s -> s.getId().contains("V")).collect(Collectors.toList());
     for (Verb verb : DB.VERBS) {
       generatorParameters.setAbstractVerb(verb);
       List<SentenceDTO> sentences = sentenceService.generateRandomSentences(1,
@@ -78,8 +78,8 @@ class SentenceGeneratorTest {
                                                                             null,
                                                                             null,
                                                                             false,
-                                                                            true,
-                                                                            "PV");
+                                                                            excludeNegative,
+                                                                            sentenceSchemaId);
       if (sentences.isEmpty()) {
         System.err.println("Empty sentences for verb : " + verb.getId());
       }
@@ -119,44 +119,4 @@ class SentenceGeneratorTest {
     }
   }
 
-  @ParameterizedTest
-  @CsvSource({
-      "PV,,,,,,1",
-      "NV,,,,,,1",
-      "PVA_TEMP,,,,,,1",
-      "PVA_DEF,,,,,,1",
-      "NVA_TEMP,,,,,,1",
-      "NVA_DEF,,,,,,1",
-  })
-  void testGenerateSentence(String sentenceSchemaId, String abstractPronounId, String abstractVerbId, String tenseId,
-                            Boolean excludeNegative, Boolean excludePositive, Integer alternativeCount) {
-/*    sentenceBuilder = new SentenceBuilder(pronounService, verbService, questionService,
-                                          adjectiveService, adverbService, nounService);
-
-    GeneratorParameters generatorParameters = GeneratorParameters.builder().build();
-
-    Optional<SentenceSchema> sentenceSchemaOpt = sentenceService.getSentenceSchemaById(sentenceSchemaId);
-    generatorParameters.setSentenceSchema(sentenceSchemaOpt.get());
-
-    Optional<AbstractPronoun> abstractPronounOpt = pronounService.getPronounById(abstractPronounId);
-    abstractPronounOpt.ifPresent(generatorParameters::setAbstractPronoun);
-
-    Optional<Verb> abstractVerbOpt = verbService.getVerbById(abstractVerbId);
-    abstractVerbOpt.ifPresent(generatorParameters::setAbstractVerb);
-
-    if (tenseId != null && !tenseId.isEmpty()) {
-      generatorParameters.setTense(Tense.valueOf(tenseId));
-    }
-
-    if (excludeNegative != null) {
-      generatorParameters.setExcludeNegative(excludeNegative);
-    }
-    if (excludePositive != null) {
-      generatorParameters.setExcludePositive(excludePositive);
-    }
-    generatorParameters.setAlternativeCount(alternativeCount);
-    Optional<Sentence> sentence = sentenceBuilder.generate(generatorParameters);
-    assertTrue(sentence.isPresent());
-    System.out.println(sentence.get().getTranslationValue(Lang.FR) + " -> " + sentence.get().getTranslationValue(Lang.DZ));*/
-  }
 }
