@@ -30,7 +30,7 @@ public class QuestionService {
     } else if (!verb.getPossibleQuestionIds().isEmpty()) {
       List<String> questionIds = verb.getPossibleQuestionIds();
       String       questionId  = questionIds.stream().skip(RANDOM.nextInt(questionIds.size())).findFirst().get();
-      return DB.QUESTIONS.stream().findFirst().filter(q -> q.getId().equals(questionId));
+      return DB.QUESTIONS.stream().filter(q -> q.getId().equals(questionId)).findFirst();
     } else {
       System.out.println("no question found");
       return Optional.empty();

@@ -1,5 +1,6 @@
 package io.github.dzdialectapispring;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -68,7 +69,8 @@ class SentenceGeneratorTest {
     GeneratorParameters generatorParameters = GeneratorParameters.builder().build();
     for (Verb verb : DB.VERBS) {
       generatorParameters.setAbstractVerb(verb);
-      List<SentenceDTO> sentences = sentenceService.generateRandomSentences(1,
+      int count = 1;
+      List<SentenceDTO> sentences = sentenceService.generateRandomSentences(count,
                                                                             1,
                                                                             null,
                                                                             verb.getId(),
@@ -83,7 +85,7 @@ class SentenceGeneratorTest {
       if (sentences.isEmpty()) {
         System.err.println("Empty sentences for verb : " + verb.getId());
       }
-      assertTrue(sentences.size() > 0);
+      assertEquals(count, sentences.size());
       assertNotNull(sentences.get(0).getFr());
       assertNotNull(sentences.get(0).getDz());
       assertNotNull(sentences.get(0).getDzAr());
