@@ -75,22 +75,11 @@ public class SentenceService {
       throw new IllegalArgumentException("alternativeCount argument should be less than 5");
     }
 
-    GeneratorParameters
-        generatorParameters =
-        buildParameters(pronounId,
-                        verbId,
-                        tenseId,
-                        nounId,
-                        adjectiveId,
-                        questionId,
-                        adverbId,
-                        excludePositive,
-                        excludeNegative,
-                        sentenceSchemaId,
-                        alternativeCount);
     List<SentenceDTO> result = new ArrayList<>();
     int               i      = 0;
     while (result.size() < count && i < count * 5) { // in case no sentence is generated
+      GeneratorParameters generatorParameters = buildParameters(pronounId, verbId, tenseId, nounId, adjectiveId, questionId, adverbId,
+                                                                excludePositive, excludeNegative, sentenceSchemaId, alternativeCount);
       Optional<Sentence> sentence = generateRandomSentence(generatorParameters);
       sentence.ifPresent(value -> result.add(new SentenceDTO(value)));
       i++;
