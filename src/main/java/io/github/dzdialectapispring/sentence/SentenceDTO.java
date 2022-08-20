@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class SentenceDTO extends WordDTO {
 
   @JsonProperty("additionnal_information")
-  // @todo ignore when empty in the response
+  @JsonInclude(value = JsonInclude.Include.CUSTOM, valueFilter = SentenceContentDTO.class)
   private final SentenceContentDTO  sentenceContent;
   @JsonProperty("word_propositions")
   @JsonInclude(value = JsonInclude.Include.CUSTOM, valueFilter = WordPropositionsDTO.class)
@@ -65,34 +65,35 @@ public class SentenceDTO extends WordDTO {
     }
   }
 
-  @JsonInclude(Include.NON_EMPTY)
+  @NoArgsConstructor
   public static class SentenceContentDTO {
 
     @JsonProperty("verb")
     @JsonInclude(Include.NON_NULL)
-    private final String  abstractVerb;
+    private String  abstractVerb;
     @JsonProperty("adverb")
     @JsonInclude(Include.NON_NULL)
-    private final String  abstractAdverb;
+    private String  abstractAdverb;
     @JsonProperty("question")
     @JsonInclude(Include.NON_NULL)
-    private final String  abstractQuestion;
+    private String  abstractQuestion;
     @JsonProperty("adjective")
     @JsonInclude(Include.NON_NULL)
-    private final String  abstractAdjective;
+    private String  abstractAdjective;
     @JsonProperty("noun")
     @JsonInclude(Include.NON_NULL)
-    private final String  abstractNoun;
+    private String  abstractNoun;
     @JsonProperty("tense")
     @JsonInclude(Include.NON_NULL)
-    private final String  subtense;
+    private String  subtense;
     @JsonProperty("schema")
     @JsonInclude(Include.NON_NULL)
-    private final String  sentenceSchema;
-    private final boolean negation;
+    private String  sentenceSchema;
+    @JsonInclude(Include.NON_DEFAULT)
+    private boolean negation;
     @JsonProperty("pronoun")
     @JsonInclude(Include.NON_NULL)
-    private final String  abstractPronoun;
+    private String  abstractPronoun;
 
     public SentenceContentDTO(final SentenceContent content) {
       this.abstractVerb      = (content != null && content.getAbstractVerb() != null) ? content.getAbstractVerb().getId() : null;

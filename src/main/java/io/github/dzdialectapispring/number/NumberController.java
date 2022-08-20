@@ -32,7 +32,7 @@ public class NumberController {
   @GetMapping("/random")
   public List<SentenceDTO> getRandomNumbers(@RequestParam(required = false, defaultValue = "1") Integer count,
                                             @RequestParam(required = false, defaultValue = "0") Integer min,
-                                            @RequestParam(required = false, defaultValue = "9999999999") Integer max) {
+                                            @RequestParam(required = false, defaultValue = "999999999") Integer max) {
     return numberService.getRandomNumbers(count, min, max);
   }
 
