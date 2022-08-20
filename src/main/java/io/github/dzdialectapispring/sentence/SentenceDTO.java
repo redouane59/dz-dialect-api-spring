@@ -12,19 +12,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
+@JsonInclude(Include.NON_DEFAULT)
 public class SentenceDTO extends WordDTO {
 
-  @JsonProperty("additionnal_information")
-  @JsonInclude(value = JsonInclude.Include.CUSTOM, valueFilter = SentenceContentDTO.class)
-  private final SentenceContentDTO  sentenceContent;
   @JsonProperty("word_propositions")
   @JsonInclude(value = JsonInclude.Include.CUSTOM, valueFilter = WordPropositionsDTO.class)
   private final WordPropositionsDTO wordPropositions;
+  @JsonProperty("additionnal_information")
+  //@JsonInclude(value = JsonInclude.Include.CUSTOM, valueFilter = SentenceContentDTO.class)
+  private       SentenceContentDTO  sentenceContent;
 
   public SentenceDTO(Sentence sentence) {
     super(sentence);
-    this.sentenceContent = new SentenceContentDTO(sentence.getContent());
-    wordPropositions     = new WordPropositionsDTO(sentence.getRandomWords());
+    if (sentence.getContent() != null) {
+      this.sentenceContent = new SentenceContentDTO(sentence.getContent());
+    }
+    wordPropositions = new WordPropositionsDTO(sentence.getRandomWords());
   }
 
   public SentenceDTO(ContributionSentence sentence) {
