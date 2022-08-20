@@ -27,7 +27,7 @@ public class NumberTest {
 
   @Test
   public void testDBNumbers() {
-    assertTrue(DB.NUMBERS.size() > 0);
+    assertTrue(DB.NUMBERS.size() > 50);
     assertTrue(DB.NUMBERS.stream().skip(RANDOM.nextInt(DB.NUMBERS.size())).findFirst().get().getValue() > 0);
   }
 
@@ -44,7 +44,7 @@ public class NumberTest {
     AbstractWord number = numberService.getNumberById("1");
     assertNotNull(number);
     assertEquals("1", number.getValues().get(0).getTranslationByLang(Lang.FR).get().getValue());
-    assertEquals("wa7ad", number.getValues().get(0).getTranslationByLang(Lang.DZ).get().getValue());
+    assertEquals("wa7ed", number.getValues().get(0).getTranslationByLang(Lang.DZ).get().getValue());
   }
 
   @Test

@@ -48,17 +48,15 @@ class DzDialectApiSpringApplicationTests {
     String      fileName = "numbers.csv";
     Set<Number> numbers  = Number.deserializeFromCSV(fileName, true);
 
-    numbers.forEach(o -> {
-      ObjectMapper mapper = new ObjectMapper();
-      SimpleModule module = new SimpleModule();
-      module.addSerializer(Word.class, new WordFromCSVSerializer());
-      mapper.registerModule(module);
-      try {
-        System.out.println(Config.OBJECT_MAPPER.writeValueAsString(o));
-        mapper.writeValue(Paths.get("./src/test/resources/numbers.json").toFile(), o);
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-    });
+    ObjectMapper mapper = new ObjectMapper();
+    SimpleModule module = new SimpleModule();
+    module.addSerializer(Word.class, new WordFromCSVSerializer());
+    mapper.registerModule(module);
+    try {
+      System.out.println(Config.OBJECT_MAPPER.writeValueAsString(numbers));
+      mapper.writeValue(Paths.get("./src/test/resources/numbers.json").toFile(), numbers);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }

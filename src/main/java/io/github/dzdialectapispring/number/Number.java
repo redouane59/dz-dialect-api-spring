@@ -1,5 +1,6 @@
 package io.github.dzdialectapispring.number;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.github.dzdialectapispring.adjective.Adjective;
 import io.github.dzdialectapispring.helper.FileHelper;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
@@ -13,8 +14,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class Number extends AbstractWord {
 
   private final List<Word> values = new ArrayList<>();
@@ -63,6 +66,7 @@ public class Number extends AbstractWord {
     return numbers;
   }
 
+  @JsonIgnore
   public int getValue() {
     int result = -1;
     try {

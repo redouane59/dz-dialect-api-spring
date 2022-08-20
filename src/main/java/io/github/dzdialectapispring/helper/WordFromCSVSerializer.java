@@ -23,14 +23,19 @@ public class WordFromCSVSerializer extends StdSerializer<Word> {
   public void serialize(final Word word, final JsonGenerator jsonGenerator, final SerializerProvider serializerProvider) throws IOException {
     jsonGenerator.writeStartObject();
     jsonGenerator.writeObjectField("translations", word.getTranslations());
-    jsonGenerator.writeObjectField("gender", ((GenderedWord) word).getGender());
-    if (((PossessiveWord) word).getPossession() != null) {
-      jsonGenerator.writeObjectField("possession", ((PossessiveWord) word).getPossession());
+    if (word instanceof GenderedWord) {
+      jsonGenerator.writeObjectField("gender", ((GenderedWord) word).getGender());
     }
-    jsonGenerator.writeObjectField("singular", ((PossessiveWord) word).isSingular());
+    if (word instanceof PossessiveWord) {
+      if (((PossessiveWord) word).getPossession() != null) {
+        jsonGenerator.writeObjectField("possession", ((PossessiveWord) word).getPossession());
+      }
+      jsonGenerator.writeObjectField("singular", ((PossessiveWord) word).isSingular());
+    }
     if (word instanceof Conjugation) {
       jsonGenerator.writeObjectField("tense", ((Conjugation) word).getSubtense());
     }
+
     jsonGenerator.writeEndObject();
   }
 }
