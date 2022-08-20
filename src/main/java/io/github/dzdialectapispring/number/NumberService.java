@@ -43,4 +43,18 @@ public class NumberService {
   public AbstractWord getRandomNumber() {
     return DB.NUMBERS.stream().skip(RANDOM.nextInt(DB.NUMBERS.size())).findFirst().get();
   }
+
+  public List<SentenceDTO> getRandomNumbers(final Integer count, final Integer min, final Integer max) {
+    List<SentenceDTO> result          = new ArrayList<>();
+    List<Number>      matchingNumbers = DB.NUMBERS.stream().filter(n -> n.getValue() >= min && n.getValue() <= max).collect(Collectors.toList());
+    if (matchingNumbers.isEmpty()) {
+      System.out.println("no random numbers matching");
+      return new ArrayList<>();
+    }
+    for (int i = 0; i < count; i++) {
+      Number number = matchingNumbers.stream().skip(RANDOM.nextInt(matchingNumbers.size())).findFirst().get();
+      result.add(new SentenceDTO(new Sentence(number.getValues().get(0).getTranslations())));
+    }
+    return result;
+  }
 }

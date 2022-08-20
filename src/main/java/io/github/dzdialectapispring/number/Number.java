@@ -11,9 +11,20 @@ import lombok.Getter;
 public class Number extends AbstractWord {
 
   private final List<Word> values = new ArrayList<>();
-  
+
   public Number() {
+    super();
     this.setWordType(WordType.NUMBER);
+  }
+
+  public int getValue() {
+    int result = -1;
+    try {
+      result = Integer.parseInt(getId());
+    } catch (Exception e) {
+      System.out.println("impossible to parse number id " + e.getMessage());
+    }
+    return result;
   }
 
 }
