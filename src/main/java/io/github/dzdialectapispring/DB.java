@@ -3,9 +3,10 @@ package io.github.dzdialectapispring;
 import static io.github.dzdialectapispring.other.Config.OBJECT_MAPPER;
 
 import io.github.dzdialectapispring.adjective.Adjective;
-import io.github.dzdialectapispring.adverb.adjective.Adverb;
+import io.github.dzdialectapispring.adverb.Adverb;
 import io.github.dzdialectapispring.generic.ResourceList;
 import io.github.dzdialectapispring.noun.Noun;
+import io.github.dzdialectapispring.number.Number;
 import io.github.dzdialectapispring.other.Config;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.abstracts.DefinedArticles;
@@ -31,6 +32,7 @@ public class DB {
   public final static Set<Adjective>         ADJECTIVES        = new HashSet<>();
   public final static Set<Noun>              NOUNS             = new HashSet<>();
   public final static Set<Adverb>            ADVERBS           = new HashSet<>();
+  public final static Set<Number>            NUMBERS           = new HashSet<>();
   public final static Set<SentenceSchema>    SENTENCE_SCHEMAS  = new HashSet<>();
   public final static List<AbstractQuestion> QUESTIONS         = new ArrayList<>();
   public final static List<AbstractPronoun>  PERSONAL_PRONOUNS = new ArrayList<>();
@@ -43,6 +45,7 @@ public class DB {
   public static void init() {
     initAdjectives();
     initAdverbs();
+    initNumbers();
     initNouns();
     initDefinedArticles();
     initDirectSuffixes();
@@ -200,6 +203,16 @@ public class DB {
       }
     }
     System.out.println(ADVERBS.size() + " adverbs loaded");
+  }
+
+  public static void initNumbers() {
+    try {
+      NUMBERS.addAll(List.of(OBJECT_MAPPER.readValue(new File("./src/main/resources/static/other/numbers.json"), Number[].class)));
+    } catch (IOException e) {
+      System.err.println("number not loaded " + e.getMessage());
+      e.printStackTrace();
+    }
+    System.out.println(NUMBERS.size() + " numbers loaded");
   }
 
   public static void initSentenceSchemas() {

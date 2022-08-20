@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class SentenceDTO extends WordDTO {
 
   @JsonProperty("additionnal_information")
+  // @todo ignore when empty in the response
   private final SentenceContentDTO  sentenceContent;
   @JsonProperty("word_propositions")
   @JsonInclude(value = JsonInclude.Include.CUSTOM, valueFilter = WordPropositionsDTO.class)
@@ -64,6 +65,7 @@ public class SentenceDTO extends WordDTO {
     }
   }
 
+  @JsonInclude(Include.NON_EMPTY)
   public static class SentenceContentDTO {
 
     @JsonProperty("verb")
@@ -93,15 +95,15 @@ public class SentenceDTO extends WordDTO {
     private final String  abstractPronoun;
 
     public SentenceContentDTO(final SentenceContent content) {
-      this.abstractVerb      = content.getAbstractVerb() != null ? content.getAbstractVerb().getId() : null;
-      this.abstractAdjective = content.getAbstractAdjective() != null ? content.getAbstractAdjective().getId() : null;
-      this.abstractAdverb    = content.getAbstractAdverb() != null ? content.getAbstractAdverb().getId() : null;
-      this.abstractQuestion  = content.getAbstractQuestion() != null ? content.getAbstractQuestion().getId() : null;
-      this.abstractNoun      = content.getAbstractNoun() != null ? content.getAbstractNoun().getId() : null;
-      this.subtense          = content.getSubtense() != null ? content.getSubtense().getTense().getId() : null;
-      this.sentenceSchema    = content.getSentenceSchema() != null ? content.getSentenceSchema().getId() : null;
-      this.abstractPronoun   = content.getAbstractPronoun() != null ? content.getAbstractPronoun().getId() : null;
-      this.negation          = content.isNegation();
+      this.abstractVerb      = (content != null && content.getAbstractVerb() != null) ? content.getAbstractVerb().getId() : null;
+      this.abstractAdjective = (content != null && content.getAbstractAdjective() != null) ? content.getAbstractAdjective().getId() : null;
+      this.abstractAdverb    = (content != null && content.getAbstractAdverb() != null) ? content.getAbstractAdverb().getId() : null;
+      this.abstractQuestion  = (content != null && content.getAbstractQuestion() != null) ? content.getAbstractQuestion().getId() : null;
+      this.abstractNoun      = (content != null && content.getAbstractNoun() != null) ? content.getAbstractNoun().getId() : null;
+      this.subtense          = (content != null && content.getSubtense() != null) ? content.getSubtense().getTense().getId() : null;
+      this.sentenceSchema    = (content != null && content.getSentenceSchema() != null) ? content.getSentenceSchema().getId() : null;
+      this.abstractPronoun   = (content != null && content.getAbstractPronoun() != null) ? content.getAbstractPronoun().getId() : null;
+      this.negation          = content != null && content.isNegation();
     }
   }
 }

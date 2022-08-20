@@ -1,4 +1,4 @@
-package io.github.dzdialectapispring.adverb.adjective;
+package io.github.dzdialectapispring.adverb;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;

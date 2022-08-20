@@ -1,4 +1,4 @@
-package io.github.dzdialectapispring.adverb.adjective;
+package io.github.dzdialectapispring.adverb;
 
 import static io.github.dzdialectapispring.other.Config.RANDOM;
 
@@ -31,8 +31,8 @@ public class AdverbService {
     return adverbOpt.orElseThrow(() -> new IllegalArgumentException("no adverb found with id " + adverbId));
   }
 
-  public List<SentenceDTO> getAdjectiveValuesById(final String adjectiveId) {
-    Adverb            adverb = getAdverbById(adjectiveId);
+  public List<SentenceDTO> getAdverbValuesById(final String adverbId) {
+    Adverb            adverb = getAdverbById(adverbId);
     List<SentenceDTO> result = new ArrayList<>();
     for (Word word : adverb.getValues()) {
       Sentence sentence = new Sentence(List.of(new Translation(Lang.FR, word.getTranslationValue(Lang.FR)),

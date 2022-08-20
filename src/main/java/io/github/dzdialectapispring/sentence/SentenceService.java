@@ -7,7 +7,7 @@ import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 import io.github.dzdialectapispring.adjective.AdjectiveService;
-import io.github.dzdialectapispring.adverb.adjective.AdverbService;
+import io.github.dzdialectapispring.adverb.AdverbService;
 import io.github.dzdialectapispring.generic.ResourceList;
 import io.github.dzdialectapispring.noun.NounService;
 import io.github.dzdialectapispring.other.Config;

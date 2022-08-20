@@ -3,7 +3,7 @@ package io.github.dzdialectapispring.sentence;
 
 import io.github.dzdialectapispring.adjective.Adjective;
 import io.github.dzdialectapispring.adjective.AdjectiveService;
-import io.github.dzdialectapispring.adverb.adjective.AdverbService;
+import io.github.dzdialectapispring.adverb.AdverbService;
 import io.github.dzdialectapispring.noun.Noun;
 import io.github.dzdialectapispring.noun.NounService;
 import io.github.dzdialectapispring.other.Config;

@@ -1,4 +1,4 @@
-package io.github.dzdialectapispring.adverb.adjective;
+package io.github.dzdialectapispring.adverb;
 
 import io.github.dzdialectapispring.other.enumerations.Tense;
 import lombok.Getter;

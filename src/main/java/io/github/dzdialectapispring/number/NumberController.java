@@ -1,4 +1,4 @@
-package io.github.dzdialectapispring.adverb.adjective;
+package io.github.dzdialectapispring.number;
 
 import io.github.dzdialectapispring.sentence.SentenceDTO;
 import java.util.List;
@@ -11,21 +11,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/v1/adverbs")
+@RequestMapping("api/v1/numbers")
 @AllArgsConstructor
 @CrossOrigin(origins = "https://dz-dialect-app.herokuapp.com/", allowedHeaders = "*")
-public class AdverbController {
+public class NumberController {
 
-  private final AdverbService adverbService;
+  private final NumberService numberService;
 
   @GetMapping
-  public Set<String> getAllAdjectivesIds() {
-    return adverbService.getAllAdverbsIds();
+  public Set<String> getAllNumbers() {
+    return numberService.getAllNumbersIds();
   }
 
   @GetMapping("/{id}/values")
-  public List<SentenceDTO> getVerbById(@PathVariable String id) {
-    return adverbService.getAdjectiveValuesById(id);
+  public List<SentenceDTO> getNumberById(@PathVariable String id) {
+    return numberService.getNumberValuesById(id);
   }
 
 }

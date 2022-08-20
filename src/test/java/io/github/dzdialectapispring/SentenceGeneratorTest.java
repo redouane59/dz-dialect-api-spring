@@ -10,12 +10,10 @@ import io.github.dzdialectapispring.sentence.SentenceDTO;
 import io.github.dzdialectapispring.sentence.SentenceSchema;
 import io.github.dzdialectapispring.sentence.SentenceService;
 import io.github.dzdialectapispring.verb.Verb;
-import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -30,10 +28,10 @@ class SentenceGeneratorTest {
   @Autowired
   private       SentenceService sentenceService;
 
-  @BeforeAll
+/*  @BeforeAll
   public static void init() throws IOException {
     DzDialectApiSpringApplication.main(new String[]{});
-  }
+  }*/
 
   @Test
   public void testAllSentenceSchemas() throws ExecutionException, InterruptedException {

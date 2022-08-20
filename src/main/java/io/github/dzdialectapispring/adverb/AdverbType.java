@@ -1,4 +1,4 @@
-package io.github.dzdialectapispring.adverb.adjective;
+package io.github.dzdialectapispring.adverb;
 
 public enum AdverbType {
 

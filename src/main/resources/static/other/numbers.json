@@ -1,0 +1,53 @@
+[
+  {
+    "id": "1",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "1"
+          },
+          {
+            "lang": "DZ",
+            "value": "wa7ad"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "2"
+          },
+          {
+            "lang": "DZ",
+            "value": "zoudj"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "3"
+          },
+          {
+            "lang": "DZ",
+            "value": "tleta"
+          }
+        ]
+      }
+    ]
+  }
+]
