@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("api/v1/sentences")
 @AllArgsConstructor
-@CrossOrigin(origins = "https://dz-dialect-app.herokuapp.com/", allowedHeaders = "*")
+@CrossOrigin(origins = "https://dz-dialect.bdsapp.fr/", allowedHeaders = "*")
 public class SentenceController {
 
   private final SentenceService sentenceService;
