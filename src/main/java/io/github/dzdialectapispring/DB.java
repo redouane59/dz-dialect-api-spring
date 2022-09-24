@@ -36,6 +36,8 @@ public class DB {
   public final static Set<SentenceSchema>    SENTENCE_SCHEMAS  = new HashSet<>();
   public final static List<AbstractQuestion> QUESTIONS         = new ArrayList<>();
   public final static List<AbstractPronoun>  PERSONAL_PRONOUNS = new ArrayList<>();
+  public static       Verb                   AUX_ETRE;
+  public static       Verb                   AUX_AVOIR;
   public static       DefinedArticles        DEFINED_ARTICLES;
   public static       AbstractWord           UNDEFINED_ARTICLES;
   public static       AbstractWord           POSSESSIVE_ARTICLES;
@@ -54,6 +56,8 @@ public class DB {
     initQuestions();
     initSentenceSchemas();
     initVerbs();
+    AUX_ETRE  = DB.VERBS.stream().filter(v -> v.getId().equals("être")).findFirst().get();
+    AUX_AVOIR = DB.VERBS.stream().filter(v -> v.getId().equals("avoir")).findFirst().get();
   }
 
   public static void initDirectSuffixes() {

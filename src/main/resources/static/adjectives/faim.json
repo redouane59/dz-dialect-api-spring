@@ -1,0 +1,53 @@
+{
+  "values": [
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "faim"
+        },
+        {
+          "lang": "DZ",
+          "value": "dji3an",
+          "ar_value": "فرحان"
+        }
+      ],
+      "gender": "M",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "faim"
+        },
+        {
+          "lang": "DZ",
+          "value": "dji3ana",
+          "ar_value": ""
+        }
+      ],
+      "gender": "F",
+      "singular": true,
+      "tense": null
+    },
+    {
+      "translations": [
+        {
+          "lang": "FR",
+          "value": "faim"
+        },
+        {
+          "lang": "DZ",
+          "value": "dji3anin",
+          "ar_value": ""
+        }
+      ],
+      "gender": "X",
+      "singular": false,
+      "tense": null
+    }
+  ],
+  "id": "faim"
+}

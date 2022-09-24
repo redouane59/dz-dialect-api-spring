@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import io.github.dzdialectapispring.DB;
 import io.github.dzdialectapispring.helper.FileHelper;
 import io.github.dzdialectapispring.other.NounType;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
@@ -12,7 +13,9 @@ import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.enumerations.Gender;
 import io.github.dzdialectapispring.other.enumerations.Lang;
+import io.github.dzdialectapispring.other.enumerations.Tense;
 import io.github.dzdialectapispring.other.enumerations.WordType;
+import io.github.dzdialectapispring.verb.Verb;
 import io.github.dzdialectapispring.verb.conjugation.Conjugation;
 import io.github.dzdialectapispring.verb.conjugation.ConjugationListDeserializer;
 import java.util.ArrayList;
@@ -23,7 +26,6 @@ import java.util.Set;
 import lombok.Getter;
 
 @Getter
-
 public class Adjective extends AbstractWord {
 
   @JsonInclude(Include.NON_EMPTY)
@@ -102,9 +104,24 @@ public class Adjective extends AbstractWord {
     return adjective.getWordByGenderAndSingular(subject.getGender(lang), lang, subject.isSingular());
   }
 
+  public Verb getAuxiliarFromAdjective(Lang lang) {
+    if (lang == Lang.FR && isFrAuxiliarAvoir()) {
+      return DB.AUX_AVOIR;
+    }
+    return DB.AUX_ETRE;
+  }
+
+  public Conjugation getAuxiliarConjugationFromAdjective(PossessiveWord adjective, Lang lang, Tense tense) {
+    return getAuxiliarFromAdjective(lang).getConjugationByGenderSingularPossessionAndTense(adjective.getGender(lang),
+                                                                                           adjective.isSingular(),
+                                                                                           adjective.getPossession(),
+                                                                                           tense).get();
+  }
+
   public void importConfig(final Adjective adjective) {
-    this.possibleNouns = adjective.getPossibleNouns();
-    this.temporal      = adjective.isTemporal();
-    this.definitive    = adjective.isDefinitive();
+    this.possibleNouns   = adjective.getPossibleNouns();
+    this.temporal        = adjective.isTemporal();
+    this.definitive      = adjective.isDefinitive();
+    this.frAuxiliarAvoir = adjective.isFrAuxiliarAvoir();
   }
 }

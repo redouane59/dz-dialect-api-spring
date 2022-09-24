@@ -421,11 +421,10 @@ public class SentenceBuilder {
       if (wordType == WordType.VERB
           && sentenceContent.getSentenceSchema().getFrSequence().contains(WordType.ADJECTIVE)
           && sentenceContent.getAbstractAdjective().isFrAuxiliarAvoir()) {
-        Verb avoir = DB.VERBS.stream().filter(v -> v.getId().equals("avoir")).findFirst().get();
-        w = avoir.getConjugationByGenderSingularPossessionAndTense(subject.getGender(Lang.FR),
-                                                                   subject.isSingular(),
-                                                                   subject.getPossession(),
-                                                                   sentenceContent.getSubtense().getTense()).get();
+        w = DB.AUX_AVOIR.getConjugationByGenderSingularPossessionAndTense(subject.getGender(Lang.FR),
+                                                                          subject.isSingular(),
+                                                                          subject.getPossession(),
+                                                                          sentenceContent.getSubtense().getTense()).get();
       }
       if (w != null) {
         sentenceValue.append(w.getTranslationValue(Lang.FR));
