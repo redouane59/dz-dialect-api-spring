@@ -1,0 +1,45 @@
+{
+  "id" : "prêt",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "prêt"
+    }, {
+      "lang" : "DZ",
+      "value" : "wadjed",
+      "ar_value" : "واجد"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "prête"
+    }, {
+      "lang" : "DZ",
+      "value" : "wajda",
+      "ar_value" : "واجدا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "prêt(e)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "wajdin",
+      "ar_value" : "واجدين"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

@@ -1,1 +1,45 @@
-{"id":"européen","wordType":"ADJECTIVE","values":[{"translations":[{"lang":"FR","value":"européen"},{"lang":"DZ","value":"gawri","ar_value":"ڨاوري"}],"gender":"M","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"européenne"},{"lang":"DZ","value":"gawria","ar_value":"ڨاورية"}],"gender":"F","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"europén(ne)s"},{"lang":"DZ","value":"gwer","ar_value":"ڨْور"}],"gender":"X","singular":false,"tense":null}],"temporal":false,"definitive":false,"possible_nouns":[]}
+{
+  "id" : "européen",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "européen"
+    }, {
+      "lang" : "DZ",
+      "value" : "gawri",
+      "ar_value" : "ڨاوري"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "européenne"
+    }, {
+      "lang" : "DZ",
+      "value" : "gawria",
+      "ar_value" : "ڨاورية"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "europén(ne)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "gwer",
+      "ar_value" : "ڨْور"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

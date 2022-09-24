@@ -1,0 +1,45 @@
+{
+  "id" : "inquiet",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "inquiet"
+    }, {
+      "lang" : "DZ",
+      "value" : "m9ala9",
+      "ar_value" : "مْقلَق"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "inquiète"
+    }, {
+      "lang" : "DZ",
+      "value" : "m9al9a",
+      "ar_value" : "مْقَلْقا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "inquiet(e)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "m9al9in",
+      "ar_value" : "مْقَلْقين"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

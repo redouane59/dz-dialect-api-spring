@@ -1,1 +1,45 @@
-{"id":"pauvre","wordType":"ADJECTIVE","values":[{"translations":[{"lang":"FR","value":"pauvre"},{"lang":"DZ","value":"zawali","ar_value":"زوالي"}],"gender":"M","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"pauvre"},{"lang":"DZ","value":"zawalia","ar_value":"زوالية"}],"gender":"F","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"pauvres"},{"lang":"DZ","value":"zwawla","ar_value":"زواولة"}],"gender":"X","singular":false,"tense":null}],"temporal":false,"definitive":false,"possible_nouns":[]}
+{
+  "id" : "pauvre",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "pauvre"
+    }, {
+      "lang" : "DZ",
+      "value" : "zawali",
+      "ar_value" : "زوالي"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "pauvre"
+    }, {
+      "lang" : "DZ",
+      "value" : "zawalia",
+      "ar_value" : "زوالية"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "pauvres"
+    }, {
+      "lang" : "DZ",
+      "value" : "zwawla",
+      "ar_value" : "زواولة"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

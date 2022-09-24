@@ -1,0 +1,45 @@
+{
+  "id" : "gentil",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "gentil"
+    }, {
+      "lang" : "DZ",
+      "value" : "3a9al",
+      "ar_value" : "عاقل"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "gentille"
+    }, {
+      "lang" : "DZ",
+      "value" : "3a9la",
+      "ar_value" : "غافلا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "gentil(le)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "3a9lin",
+      "ar_value" : "عاقلين"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

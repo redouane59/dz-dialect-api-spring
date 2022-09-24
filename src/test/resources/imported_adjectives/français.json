@@ -1,1 +1,45 @@
-{"id":"français","wordType":"ADJECTIVE","values":[{"translations":[{"lang":"FR","value":"français"},{"lang":"DZ","value":"françaoui","ar_value":"فرنساوي"}],"gender":"M","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"française"},{"lang":"DZ","value":"françaouia","ar_value":"فرنساوية"}],"gender":"F","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"français(e)s"},{"lang":"DZ","value":"françis","ar_value":"فرنسيس"}],"gender":"X","singular":false,"tense":null}],"temporal":false,"definitive":false,"possible_nouns":[]}
+{
+  "id" : "français",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "français"
+    }, {
+      "lang" : "DZ",
+      "value" : "françaoui",
+      "ar_value" : "فرنساوي"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "française"
+    }, {
+      "lang" : "DZ",
+      "value" : "françaouia",
+      "ar_value" : "فرنساوية"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "français(e)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "françis",
+      "ar_value" : "فرنسيس"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

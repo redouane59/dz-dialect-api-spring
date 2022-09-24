@@ -10,17 +10,19 @@ import java.util.List;
 import java.util.Map;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
 @JsonInclude(Include.NON_DEFAULT)
 public class SentenceDTO extends WordDTO {
 
   @JsonProperty("word_propositions")
   @JsonInclude(value = JsonInclude.Include.CUSTOM, valueFilter = WordPropositionsDTO.class)
-  private final WordPropositionsDTO wordPropositions;
+  private WordPropositionsDTO wordPropositions;
   @JsonProperty("additionnal_information")
   //@JsonInclude(value = JsonInclude.Include.CUSTOM, valueFilter = SentenceContentDTO.class)
-  private       SentenceContentDTO  sentenceContent;
+  private SentenceContentDTO  sentenceContent;
 
   public SentenceDTO(Sentence sentence) {
     super(sentence);
@@ -71,43 +73,44 @@ public class SentenceDTO extends WordDTO {
   @NoArgsConstructor
   public static class SentenceContentDTO {
 
-    @JsonProperty("verb")
+    @JsonProperty("verbs")
     @JsonInclude(Include.NON_NULL)
-    private String  abstractVerb;
-    @JsonProperty("adverb")
+    private List<String> abstractVerbs;
+    @JsonProperty("adverbs")
     @JsonInclude(Include.NON_NULL)
-    private String  abstractAdverb;
-    @JsonProperty("question")
+    private List<String> abstractAdverbs;
+    @JsonProperty("questions")
     @JsonInclude(Include.NON_NULL)
-    private String  abstractQuestion;
-    @JsonProperty("adjective")
+    private List<String> abstractQuestions;
+    @JsonProperty("adjectives")
     @JsonInclude(Include.NON_NULL)
-    private String  abstractAdjective;
-    @JsonProperty("noun")
+    private List<String> abstractAdjectives;
+    @JsonProperty("nouns")
     @JsonInclude(Include.NON_NULL)
-    private String  abstractNoun;
+    private List<String> abstractNouns;
+    @JsonProperty("pronouns")
+    @JsonInclude(Include.NON_NULL)
+    private List<String> abstractPronouns;
     @JsonProperty("tense")
     @JsonInclude(Include.NON_NULL)
-    private String  subtense;
+    private String       subtense;
     @JsonProperty("schema")
     @JsonInclude(Include.NON_NULL)
-    private String  sentenceSchema;
+    private String       sentenceSchema;
     @JsonInclude(Include.NON_DEFAULT)
-    private boolean negation;
-    @JsonProperty("pronoun")
-    @JsonInclude(Include.NON_NULL)
-    private String  abstractPronoun;
+    private boolean      negation;
 
+    // @todo dirty
     public SentenceContentDTO(final SentenceContent content) {
-      this.abstractVerb      = (content != null && content.getAbstractVerb() != null) ? content.getAbstractVerb().getId() : null;
-      this.abstractAdjective = (content != null && content.getAbstractAdjective() != null) ? content.getAbstractAdjective().getId() : null;
-      this.abstractAdverb    = (content != null && content.getAbstractAdverb() != null) ? content.getAbstractAdverb().getId() : null;
-      this.abstractQuestion  = (content != null && content.getAbstractQuestion() != null) ? content.getAbstractQuestion().getId() : null;
-      this.abstractNoun      = (content != null && content.getAbstractNoun() != null) ? content.getAbstractNoun().getId() : null;
-      this.subtense          = (content != null && content.getSubtense() != null) ? content.getSubtense().getTense().getId() : null;
-      this.sentenceSchema    = (content != null && content.getSentenceSchema() != null) ? content.getSentenceSchema().getId() : null;
-      this.abstractPronoun   = (content != null && content.getAbstractPronoun() != null) ? content.getAbstractPronoun().getId() : null;
-      this.negation          = content != null && content.isNegation();
+      this.abstractVerbs      = (content != null && content.getAbstractVerb() != null) ? List.of(content.getAbstractVerb().getId()) : null;
+      this.abstractAdjectives = (content != null && content.getAbstractAdjective() != null) ? List.of(content.getAbstractAdjective().getId()) : null;
+      this.abstractAdverbs    = (content != null && content.getAbstractAdverb() != null) ? List.of(content.getAbstractAdverb().getId()) : null;
+      this.abstractQuestions  = (content != null && content.getAbstractQuestion() != null) ? List.of(content.getAbstractQuestion().getId()) : null;
+      this.abstractNouns      = (content != null && content.getAbstractNoun() != null) ? List.of(content.getAbstractNoun().getId()) : null;
+      this.abstractPronouns   = (content != null && content.getAbstractPronoun() != null) ? List.of(content.getAbstractPronoun().getId()) : null;
+      this.subtense           = (content != null && content.getSubtense() != null) ? content.getSubtense().getTense().getId() : null;
+      this.sentenceSchema     = (content != null && content.getSentenceSchema() != null) ? content.getSentenceSchema().getId() : null;
+      this.negation           = content != null && content.isNegation();
     }
   }
 }

@@ -1,0 +1,45 @@
+{
+  "id" : "long",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "long"
+    }, {
+      "lang" : "DZ",
+      "value" : "touil",
+      "ar_value" : "طْويل"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "longue"
+    }, {
+      "lang" : "DZ",
+      "value" : "touila",
+      "ar_value" : "طويلا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "long(ue)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "toual",
+      "ar_value" : "طْوال"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

@@ -1,1 +1,45 @@
-{"id":"chrétien","wordType":"ADJECTIVE","values":[{"translations":[{"lang":"FR","value":"chrétien"},{"lang":"DZ","value":"massihi","ar_value":"مسيحي"}],"gender":"M","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"chrétienne"},{"lang":"DZ","value":"massihia","ar_value":"مسيحية"}],"gender":"F","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"chrétien(ne)s"},{"lang":"DZ","value":"massihiyine","ar_value":"مسيحيين"}],"gender":"X","singular":false,"tense":null}],"temporal":false,"definitive":false,"possible_nouns":[]}
+{
+  "id" : "chrétien",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "chrétien"
+    }, {
+      "lang" : "DZ",
+      "value" : "massihi",
+      "ar_value" : "مسيحي"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "chrétienne"
+    }, {
+      "lang" : "DZ",
+      "value" : "massihia",
+      "ar_value" : "مسيحية"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "chrétien(ne)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "massihiyine",
+      "ar_value" : "مسيحيين"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

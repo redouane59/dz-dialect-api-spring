@@ -1,0 +1,45 @@
+{
+  "id" : "loin",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "loin"
+    }, {
+      "lang" : "DZ",
+      "value" : "b3id",
+      "ar_value" : "بعيد"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "loin"
+    }, {
+      "lang" : "DZ",
+      "value" : "b3ida",
+      "ar_value" : "بعيدا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "loin"
+    }, {
+      "lang" : "DZ",
+      "value" : "b3ad",
+      "ar_value" : "بعاد"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

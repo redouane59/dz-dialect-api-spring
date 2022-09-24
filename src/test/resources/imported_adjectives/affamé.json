@@ -1,0 +1,45 @@
+{
+  "id" : "affamé",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "affamé"
+    }, {
+      "lang" : "DZ",
+      "value" : "mayet jou3",
+      "ar_value" : "ميت جوع"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "affamée"
+    }, {
+      "lang" : "DZ",
+      "value" : "mayta jou3",
+      "ar_value" : "ميته جوع"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "affamé(e)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "maytin jou3",
+      "ar_value" : "ميتين جوع"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

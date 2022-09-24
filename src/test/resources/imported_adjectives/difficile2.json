@@ -1,0 +1,45 @@
+{
+  "id" : "difficile2",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "difficile"
+    }, {
+      "lang" : "DZ",
+      "value" : "s3ib",
+      "ar_value" : "صعيب"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "difficile"
+    }, {
+      "lang" : "DZ",
+      "value" : "s3iba",
+      "ar_value" : "صعيبا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "difficiles"
+    }, {
+      "lang" : "DZ",
+      "value" : "s3ab",
+      "ar_value" : "صْعاب"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

@@ -67,7 +67,7 @@ public class Verb extends AbstractWord {
 
   }
 
-  public Conjugation getVerbConjugation(Verb verb, PossessiveWord subject, Subtense tense, Lang lang) {
+  public Conjugation getVerbConjugation(/*Verb verb, */PossessiveWord subject, Subtense tense, Lang lang) {
 
     if (subject == null) {
       System.err.println("subject is null");
@@ -76,7 +76,7 @@ public class Verb extends AbstractWord {
     }
     Optional<Conjugation>
         conjugation =
-        verb.getConjugationByGenderSingularPossessionAndTense(subject.getGender(lang),
+        this.getConjugationByGenderSingularPossessionAndTense(subject.getGender(lang),
                                                               subject.isSingular(),
                                                               subject.getPossession(),
                                                               tense.getTense());

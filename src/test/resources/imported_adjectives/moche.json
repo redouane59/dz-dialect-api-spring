@@ -1,1 +1,45 @@
-{"id":"moche","wordType":"ADJECTIVE","values":[{"translations":[{"lang":"FR","value":"moche"},{"lang":"DZ","value":"mez3ou9","ar_value":"مزعوق"}],"gender":"M","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"moche"},{"lang":"DZ","value":"Mez3ou9a","ar_value":"مزعوقة"}],"gender":"F","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"moches"},{"lang":"DZ","value":"mez3ou9in","ar_value":"مزعوقين"}],"gender":"X","singular":false,"tense":null}],"temporal":false,"definitive":false,"possible_nouns":[]}
+{
+  "id" : "moche",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "moche"
+    }, {
+      "lang" : "DZ",
+      "value" : "mez3ou9",
+      "ar_value" : "مزعوق "
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "moche"
+    }, {
+      "lang" : "DZ",
+      "value" : "Mez3ou9a",
+      "ar_value" : "مزعوقة"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "moches"
+    }, {
+      "lang" : "DZ",
+      "value" : "mez3ou9in",
+      "ar_value" : "مزعوقين"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

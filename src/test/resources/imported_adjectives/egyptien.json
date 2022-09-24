@@ -1,1 +1,45 @@
-{"id":"egyptien","wordType":"ADJECTIVE","values":[{"translations":[{"lang":"FR","value":"egyptien"},{"lang":"DZ","value":"masri","ar_value":"مصري"}],"gender":"M","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"egyptienne"},{"lang":"DZ","value":"masria","ar_value":"مصرية"}],"gender":"F","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"egyptien(ne)s"},{"lang":"DZ","value":"msarwa","ar_value":"مصاروة"}],"gender":"X","singular":false,"tense":null}],"temporal":false,"definitive":false,"possible_nouns":[]}
+{
+  "id" : "egyptien",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "egyptien"
+    }, {
+      "lang" : "DZ",
+      "value" : "masri",
+      "ar_value" : "مصري"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "egyptienne"
+    }, {
+      "lang" : "DZ",
+      "value" : "masria",
+      "ar_value" : "مصرية"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "egyptien(ne)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "msarwa",
+      "ar_value" : "مصاروة"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

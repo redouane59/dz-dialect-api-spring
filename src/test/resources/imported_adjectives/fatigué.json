@@ -1,0 +1,45 @@
+{
+  "id" : "fatigué",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "fatigué"
+    }, {
+      "lang" : "DZ",
+      "value" : "3ayan",
+      "ar_value" : "عيان"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "fatiguée"
+    }, {
+      "lang" : "DZ",
+      "value" : "3ayana",
+      "ar_value" : "عيانا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "fatigué(e)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "3ayanine",
+      "ar_value" : "عيانين"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

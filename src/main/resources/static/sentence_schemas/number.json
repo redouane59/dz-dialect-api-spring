@@ -1,0 +1,11 @@
+{
+  "id": "number",
+  "fr_sequence": [
+    "NUMBER"
+  ],
+  "ar_sequence": [
+    "NUMBER"
+  ],
+  "subject_position": 0,
+  "enabled": false
+}

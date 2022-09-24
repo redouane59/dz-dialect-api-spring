@@ -5,6 +5,7 @@ target/
 !**/src/test/**/target/
 src/main/resources/dz-dialect-api-69f61d0e3dce.json
 ./src/main/resources/dz-dialect-api-69f61d0e3dce.json
+./src/main/resources/google-credentials.json
 
 ### STS ###
 .apt_generated

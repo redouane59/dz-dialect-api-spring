@@ -1,1 +1,45 @@
-{"id":"salé","wordType":"ADJECTIVE","values":[{"translations":[{"lang":"FR","value":"salé"},{"lang":"DZ","value":"mala7","ar_value":"مالح"}],"gender":"M","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"salée"},{"lang":"DZ","value":"mal7a","ar_value":"مالحة"}],"gender":"F","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"salés"},{"lang":"DZ","value":"mal7in","ar_value":"مالحين"}],"gender":"X","singular":false,"tense":null}],"temporal":false,"definitive":false,"possible_nouns":[]}
+{
+  "id" : "salé",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "salé"
+    }, {
+      "lang" : "DZ",
+      "value" : "mala7",
+      "ar_value" : "مالح"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "salée"
+    }, {
+      "lang" : "DZ",
+      "value" : "mal7a",
+      "ar_value" : "مالحة"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "salés"
+    }, {
+      "lang" : "DZ",
+      "value" : "mal7in",
+      "ar_value" : "مالحين"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

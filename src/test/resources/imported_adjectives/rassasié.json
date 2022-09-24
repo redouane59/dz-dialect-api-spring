@@ -1,0 +1,45 @@
+{
+  "id" : "rassasié",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "rassasié"
+    }, {
+      "lang" : "DZ",
+      "value" : "chab3an",
+      "ar_value" : "شبعان"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "rassasiée"
+    }, {
+      "lang" : "DZ",
+      "value" : "chab3ana",
+      "ar_value" : "شبعانه"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "rassasié(e)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "chab3anin",
+      "ar_value" : "شبعانين"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

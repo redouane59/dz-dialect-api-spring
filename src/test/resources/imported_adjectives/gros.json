@@ -1,0 +1,45 @@
+{
+  "id" : "gros",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "gros"
+    }, {
+      "lang" : "DZ",
+      "value" : "smin",
+      "ar_value" : "سمين"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "grosse"
+    }, {
+      "lang" : "DZ",
+      "value" : "smina",
+      "ar_value" : "سمينا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "gros(ses)"
+    }, {
+      "lang" : "DZ",
+      "value" : "smen",
+      "ar_value" : "سمان"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

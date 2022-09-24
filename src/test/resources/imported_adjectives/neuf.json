@@ -1,0 +1,45 @@
+{
+  "id" : "neuf",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "neuf"
+    }, {
+      "lang" : "DZ",
+      "value" : "jdid",
+      "ar_value" : "جديد"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "neuve"
+    }, {
+      "lang" : "DZ",
+      "value" : "jdida",
+      "ar_value" : "جديدا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "neuf(ve)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "jded",
+      "ar_value" : "جداد"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

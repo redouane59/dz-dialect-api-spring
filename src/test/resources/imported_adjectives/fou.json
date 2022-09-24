@@ -1,0 +1,45 @@
+{
+  "id" : "fou",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "fou"
+    }, {
+      "lang" : "DZ",
+      "value" : "mahboul",
+      "ar_value" : "مهبول"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "folle"
+    }, {
+      "lang" : "DZ",
+      "value" : "mahboula",
+      "ar_value" : "مهبولة"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "fous/folles"
+    }, {
+      "lang" : "DZ",
+      "value" : "mhabel",
+      "ar_value" : "مهابل"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

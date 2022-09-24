@@ -1,0 +1,45 @@
+{
+  "id" : "malade",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "malade"
+    }, {
+      "lang" : "DZ",
+      "value" : "mrid",
+      "ar_value" : "مْريدْ"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "malade"
+    }, {
+      "lang" : "DZ",
+      "value" : "mrida",
+      "ar_value" : "مريدا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "malades"
+    }, {
+      "lang" : "DZ",
+      "value" : "mrad",
+      "ar_value" : "مراد"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

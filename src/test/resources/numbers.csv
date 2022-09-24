@@ -1,69 +1,119 @@
 frValue,dzValue,dzValueAr
-0,sifr,?
-1,wa7ed,?
-2,zoudj,?
-3,tleta,?
-4,rab3a,?
-5,khamsa,?
-6,seta,?
-7,seb3a,?
-8,tmenya,?
-9,tes3a,?
-10,3achra,?
-11,7dech,?
-12,tnach,?
-13,tletach,?
-14,rba3tach,?
-15,khmestach,?
-16,settach,?
-17,sb3tach,?
-18,tmentach,?
-19,tsa3tach,?
-20,3echrin,?
-21,wa7ed o 3achrin,?
-22,tnin o 3achrin,?
-23,tleta o 3achrin,?
-24,rab3a o 3achrin,?
-25,khamsa o 3achrin,?
-26,seta o 3achrin,?
-27,seb3a o 3achrin,?
-28,tmenya o 3achrin,?
-29,tes3a o 3achrin,?
-30,tletin,?
-35,khamsa o tletin,?
-40,rab3in,?
-45,khamsa o rab3in,?
-50,khamsin,?
-55,khamsa o khamsin,?
-60,stin,?
-65,khamsa o stin,?
-70,seb3in,?
-75,khamsa o seb3in,?
-80,tmenin,?
-85,khamsa o tmenin,?
-90,tes3in,?
-95,khamsa o tes3in,?
-100,mia,?
-110,mia o 3achra,?
-120,mia o 3achrin,?
-121,mia o wa7ed o 3achrin,?
-130,mia o tletin,?
-140,mia o rab3in,?
-150,mia o khamsin,?
-200,mitin,?
-250,mitin o khamsin,?
-300,tletmia,?
-350,tletmia o khamsin,?
-400,rab3mia,?
-450,rab3mia o khamsin,?
-500,khamsmia,?
-550,khamsmia khamsin,?
-600,sitmia,?
-650,sit mia o khamsin,?
-700,seb3mia,?
-750,seb3mia o khamsin,?
-800,tmenmia ,?
-850,tmenmia o khamsin,?
-900,tes3mia,?
-950,tes3mia o khamsin,?
-1000,elf,?
+0,sifr,صفر
+1,wa7ed,واحد
+2,zoudj,زوج
+3,tleta,تلاتة
+4,rab3a,ربعة
+5,khamsa,خمسة
+6,seta,ستَة
+7,seb3a,سبعة
+8,tmenya,تمانية
+9,tes3a,تسعة
+10,3achra,عشرة
+11,7dech,حداش
+12,tnach,تناش
+13,tletach,تلاطاش
+14,rba3tach,ربعطاش
+15,khmestach,خمسطاش
+16,settach,سطاش
+17,sb3tach,سبعطاش
+18,tmentach,تمنطاش
+19,tsa3tach,تسعطاش
+20,3echrin,عشريت
+21,wa7ed o 3achrin,واحد وعشرين
+22,tnin o 3achrin,تنين وعشرين
+23,tleta o 3achrin,ثلاثة وعشرين
+24,rab3a o 3achrin,ربعة وعشرين
+25,khamsa o 3achrin,خمسة وعشرين
+26,seta o 3achrin,ستة وعشرين
+27,seb3a o 3achrin,سبعة وعشرين
+28,tmenya o 3achrin,تمانية وعشرين
+29,tes3a o 3achrin,تسعة وعشرين
+30,tletin,ثلاثين
+35,khamsa o tletin,خمسة وثلاثين
+40,rab3in,ربعين
+45,khamsa o rab3in,خمسة وربعين
+50,khamsin,خمسين
+55,khamsa o khamsin,خمسة وخمسين
+60,stin,ستين
+65,khamsa o stin,خمسة وستين
+70,seb3in,سبعين
+75,khamsa o seb3in,خمسة وسبعين
+80,tmenin,تمانين
+85,khamsa o tmenin,خمسة وتمانين
+90,tes3in,تسعين
+95,khamsa o tes3in,خمسة وتسعين
+100,mia,مية
+110,mia o 3achra,مية وعشرة
+120,mia o 3achrin,مية وعشرين
+121,mia o wa7ed o 3achrin,مية واحد وعشرين
+130,mia o tletin,مية وثلاثين
+140,mia o rab3in,مية وربعين
+150,mia o khamsin,مية وخمسين
+200,mitin,ميتين
+250,mitin o khamsin,ميتين وخمسين
+300,tletmia,تلاتمية
+350,tletmia o khamsin,تلاتمية وخمسين
+400,rab3mia,ربعمية
+450,rab3mia o khamsin,ربعمية وخمسين
+500,khamsmia,خمسمية
+550,khamsmia khamsin,خمسمية
+600,sitmia,ستمية
+650,sit mia o khamsin,ستمية  وخمسين
+700,seb3mia,سبعمية
+750,seb3mia o khamsin,سبعمية وخمسين
+800,tmenmia ,تمانمية
+850,tmenmia o khamsin,تمانمية وخمسين
+900,tes3mia,تسمعية
+950,tes3mia o khamsin,تسعمية وخمسين
+1000,elf,ألف
+1100,elf o mia,ألف ومية
+1200,elf o mitin,ألف وميتين
+1300,elf o tlatemia,ألف وتلاتمية
+1400,elf o rab3emia,ألف وربعمية
+1500,elf o khamsemia,ألف وخمسمية
+1600,elf o setemia,ألف وستمية
+1700,elf o seb3emia,ألف وسبعمية
+1800,elf o tmenemia,ألف وتمانمية
+1900,elf o tes3emia,ألف وتسمعية
+2000,elfin,ألفين
+2500,elfin o khamsemia,ألفين وخمسمية
+3000,tlet alef,تلات آلاف
+3500,tlet alef o khamsemia,تلات آلاف وخمسمية
+4000,rab3a alef,ربعة آلاف
+4500,Rab3a alfe o khamsemia,ربعة آلاف وخمسمية
+5000,khamsa elf,خمسة آلاف
+5500,khamsa elf o khamsemia,خمسة آلاف وخسمية
+6000,seta elf,ستة آلاف
+6500,seta elf o khamsemia,ستة آلاف وخمسمية
+7000,seb3a elf,سبعة آلاف
+7500,seb3a elf o khamsemia,سبعة آلاف وخمسمية
+8000,tmenia elf,تمانمية
+8500,tmenia elef o khamsemia,تمانمية وخمسمية
+9000,tes3a elf,تسعة آلاف
+9500,tes3a elf o khamsemia,تسع آلاف وخمسمية
+10000,3achra elf,عشرة آلاف
+11000,7dachn elf,حداشن ألف
+12000,tnachn elf,تناشن ألف
+13000,tlatachn elf,تلاطاشن ألف
+14000,rab3atachn elf,ربعطاشن ألف
+15000,khemstachn elf,خمسطاشن ألف
+16000,settachn elf,سطاشن ألف
+17000,seb3atachn elf,سبعاطاشن ألف
+18000,tamantachn elf,تمنطاشن ألف
+19000,tes3atachn elf,تسعطاشن ألف
+20000,3ichrin elf,عشرين ألف
+25000,Khamsa o 3ichrine elf,خمسة وعشرين ألف
+50000,khamsine elef,خمسين ألف
+100000,mia elf,مية ألف
+200000,mitin elf,ميتين ألف
+300000,tletmi elf,تلاتمية ألف
+400000,rab3mia elf,ربعمية ألف
+500000,khamsmia elf,خمسمية ألف
+600000,setemia elf,ستمية ألف
+700000,seb3mia elf,سبعمية ألف
+800000,tmenmia elf,تمنمية ألف
+900000,tes3mia elf,تسعمية ألف
+1000000,million,مليون
+2000000,zoudj mlayen,زوج ملاين
+10000000,3echra mlayen,عشرة ملاين

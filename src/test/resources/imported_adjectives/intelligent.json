@@ -1,1 +1,45 @@
-{"id":"intelligent","wordType":"ADJECTIVE","values":[{"translations":[{"lang":"FR","value":"intelligent"},{"lang":"DZ","value":"chater","ar_value":"شاطر"}],"gender":"M","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"intelligent(e)"},{"lang":"DZ","value":"chatra","ar_value":"شاطرة"}],"gender":"F","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"intelligent(e)s"},{"lang":"DZ","value":"chatrin/chatrat","ar_value":"شاطرين/شاطرات"}],"gender":"X","singular":false,"tense":null}],"temporal":false,"definitive":false,"possible_nouns":[]}
+{
+  "id" : "intelligent",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "intelligent"
+    }, {
+      "lang" : "DZ",
+      "value" : "chater",
+      "ar_value" : "شاطر"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "intelligente"
+    }, {
+      "lang" : "DZ",
+      "value" : "chatra",
+      "ar_value" : "شاطرة"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "intelligent(e)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "chatrin/chatrat",
+      "ar_value" : "شاطرين/شاطرات"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

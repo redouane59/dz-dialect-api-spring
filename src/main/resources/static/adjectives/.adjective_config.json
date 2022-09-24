@@ -518,5 +518,21 @@
       "PERSON"
     ],
     "definitive": true
+  },
+  {
+    "id": "faim",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true,
+    "fr_aux_avoir": true
+  },
+  {
+    "id": "soif",
+    "possible_nouns": [
+      "PERSON"
+    ],
+    "temporal": true,
+    "fr_aux_avoir": true
   }
 ]

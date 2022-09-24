@@ -1,0 +1,45 @@
+{
+  "id" : "assoifé",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "assoifé"
+    }, {
+      "lang" : "DZ",
+      "value" : "mayet 3tach",
+      "ar_value" : "ميت عطش"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "assoifée"
+    }, {
+      "lang" : "DZ",
+      "value" : "mayta 3tech",
+      "ar_value" : "ميته عطش"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "assoifé(e)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "maytin 3tech",
+      "ar_value" : "ميتين عطش"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

@@ -1,0 +1,45 @@
+{
+  "id" : "gratuit",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "gratuit"
+    }, {
+      "lang" : "DZ",
+      "value" : "batal",
+      "ar_value" : "باطل"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "gratuite"
+    }, {
+      "lang" : "DZ",
+      "value" : "batal",
+      "ar_value" : "باطل "
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "gratuit(e)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "batal",
+      "ar_value" : "باطل "
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

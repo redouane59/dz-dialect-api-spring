@@ -1,1031 +1,5 @@
 [
   {
-    "id": "18",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "18"
-          },
-          {
-            "lang": "DZ",
-            "value": "tmentach",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "2",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "2"
-          },
-          {
-            "lang": "DZ",
-            "value": "zoudj",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "27",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "27"
-          },
-          {
-            "lang": "DZ",
-            "value": "seb3a o 3achrin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "850",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "850"
-          },
-          {
-            "lang": "DZ",
-            "value": "tmenmia o khamsin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "12",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "12"
-          },
-          {
-            "lang": "DZ",
-            "value": "tnach",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "55",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "55"
-          },
-          {
-            "lang": "DZ",
-            "value": "khamsa o khamsin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "9",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "9"
-          },
-          {
-            "lang": "DZ",
-            "value": "tes3a",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "110",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "110"
-          },
-          {
-            "lang": "DZ",
-            "value": "mia o 3achra",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "45",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "45"
-          },
-          {
-            "lang": "DZ",
-            "value": "khamsa o rab3in",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "75",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "75"
-          },
-          {
-            "lang": "DZ",
-            "value": "khamsa o seb3in",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "35",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "35"
-          },
-          {
-            "lang": "DZ",
-            "value": "khamsa o tletin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "600",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "600"
-          },
-          {
-            "lang": "DZ",
-            "value": "sitmia",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "13",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "13"
-          },
-          {
-            "lang": "DZ",
-            "value": "tletach",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "11",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "11"
-          },
-          {
-            "lang": "DZ",
-            "value": "7dech",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "450",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "450"
-          },
-          {
-            "lang": "DZ",
-            "value": "rab3mia o khamsin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "10",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "10"
-          },
-          {
-            "lang": "DZ",
-            "value": "3achra",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "3",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "3"
-          },
-          {
-            "lang": "DZ",
-            "value": "tleta",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "6",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "6"
-          },
-          {
-            "lang": "DZ",
-            "value": "seta",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "250",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "250"
-          },
-          {
-            "lang": "DZ",
-            "value": "mitin o khamsin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "22",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "22"
-          },
-          {
-            "lang": "DZ",
-            "value": "tnin o 3achrin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "750",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "750"
-          },
-          {
-            "lang": "DZ",
-            "value": "seb3mia o khamsin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "1",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "1"
-          },
-          {
-            "lang": "DZ",
-            "value": "wa7ed",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "26",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "26"
-          },
-          {
-            "lang": "DZ",
-            "value": "seta o 3achrin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "80",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "80"
-          },
-          {
-            "lang": "DZ",
-            "value": "tmenin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "29",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "29"
-          },
-          {
-            "lang": "DZ",
-            "value": "tes3a o 3achrin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "120",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "120"
-          },
-          {
-            "lang": "DZ",
-            "value": "mia o 3achrin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "121",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "121"
-          },
-          {
-            "lang": "DZ",
-            "value": "mia o wa7ed o 3achrin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "500",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "500"
-          },
-          {
-            "lang": "DZ",
-            "value": "khamsmia",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "700",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "700"
-          },
-          {
-            "lang": "DZ",
-            "value": "seb3mia",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "24",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "24"
-          },
-          {
-            "lang": "DZ",
-            "value": "rab3a o 3achrin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "140",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "140"
-          },
-          {
-            "lang": "DZ",
-            "value": "mia o rab3in",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "20",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "20"
-          },
-          {
-            "lang": "DZ",
-            "value": "3echrin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "150",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "150"
-          },
-          {
-            "lang": "DZ",
-            "value": "mia o khamsin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "800",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "800"
-          },
-          {
-            "lang": "DZ",
-            "value": "tmenmia",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "50",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "50"
-          },
-          {
-            "lang": "DZ",
-            "value": "khamsin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "5",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "5"
-          },
-          {
-            "lang": "DZ",
-            "value": "khamsa",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "350",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "350"
-          },
-          {
-            "lang": "DZ",
-            "value": "tletmia o khamsin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "950",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "950"
-          },
-          {
-            "lang": "DZ",
-            "value": "tes3mia o khamsin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "7",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "7"
-          },
-          {
-            "lang": "DZ",
-            "value": "seb3a",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "16",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "16"
-          },
-          {
-            "lang": "DZ",
-            "value": "settach",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "25",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "25"
-          },
-          {
-            "lang": "DZ",
-            "value": "khamsa o 3achrin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "90",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "90"
-          },
-          {
-            "lang": "DZ",
-            "value": "tes3in",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "30",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "30"
-          },
-          {
-            "lang": "DZ",
-            "value": "tletin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "28",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "28"
-          },
-          {
-            "lang": "DZ",
-            "value": "tmenya o 3achrin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "550",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "550"
-          },
-          {
-            "lang": "DZ",
-            "value": "khamsmia khamsin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "85",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "85"
-          },
-          {
-            "lang": "DZ",
-            "value": "khamsa o tmenin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "400",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "400"
-          },
-          {
-            "lang": "DZ",
-            "value": "rab3mia",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "65",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "65"
-          },
-          {
-            "lang": "DZ",
-            "value": "khamsa o stin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "0",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "0"
-          },
-          {
-            "lang": "DZ",
-            "value": "sifr",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "95",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "95"
-          },
-          {
-            "lang": "DZ",
-            "value": "khamsa o tes3in",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "21",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "21"
-          },
-          {
-            "lang": "DZ",
-            "value": "wa7ed o 3achrin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "900",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "900"
-          },
-          {
-            "lang": "DZ",
-            "value": "tes3mia",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "15",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "15"
-          },
-          {
-            "lang": "DZ",
-            "value": "khmestach",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "1000",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "1000"
-          },
-          {
-            "lang": "DZ",
-            "value": "elf",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": "70",
     "wordType": "NUMBER",
     "values": [
@@ -1038,235 +12,7 @@
           {
             "lang": "DZ",
             "value": "seb3in",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "200",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "200"
-          },
-          {
-            "lang": "DZ",
-            "value": "mitin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "8",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "8"
-          },
-          {
-            "lang": "DZ",
-            "value": "tmenya",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "60",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "60"
-          },
-          {
-            "lang": "DZ",
-            "value": "stin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "300",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "300"
-          },
-          {
-            "lang": "DZ",
-            "value": "tletmia",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "14",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "14"
-          },
-          {
-            "lang": "DZ",
-            "value": "rba3tach",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "4",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "4"
-          },
-          {
-            "lang": "DZ",
-            "value": "rab3a",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "17",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "17"
-          },
-          {
-            "lang": "DZ",
-            "value": "sb3tach",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "19",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "19"
-          },
-          {
-            "lang": "DZ",
-            "value": "tsa3tach",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "23",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "23"
-          },
-          {
-            "lang": "DZ",
-            "value": "tleta o 3achrin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "130",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "130"
-          },
-          {
-            "lang": "DZ",
-            "value": "mia o tletin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "650",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "650"
-          },
-          {
-            "lang": "DZ",
-            "value": "sit mia o khamsin",
-            "ar_value": "?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "40",
-    "wordType": "NUMBER",
-    "values": [
-      {
-        "translations": [
-          {
-            "lang": "FR",
-            "value": "40"
-          },
-          {
-            "lang": "DZ",
-            "value": "rab3in",
-            "ar_value": "?"
+            "ar_value": "سبعين"
           }
         ]
       }
@@ -1285,7 +31,2211 @@
           {
             "lang": "DZ",
             "value": "mia",
-            "ar_value": "?"
+            "ar_value": "مية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "110",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "110"
+          },
+          {
+            "lang": "DZ",
+            "value": "mia o 3achra",
+            "ar_value": "مية وعشرة"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "140",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "140"
+          },
+          {
+            "lang": "DZ",
+            "value": "mia o rab3in",
+            "ar_value": "مية وربعين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "600",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "600"
+          },
+          {
+            "lang": "DZ",
+            "value": "sitmia",
+            "ar_value": "ستمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "95",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "95"
+          },
+          {
+            "lang": "DZ",
+            "value": "khamsa o tes3in",
+            "ar_value": "خمسة وتسعين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "50",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "50"
+          },
+          {
+            "lang": "DZ",
+            "value": "khamsin",
+            "ar_value": "خمسين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "5"
+          },
+          {
+            "lang": "DZ",
+            "value": "khamsa",
+            "ar_value": "خمسة"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1300",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "1300"
+          },
+          {
+            "lang": "DZ",
+            "value": "elf o tlatemia",
+            "ar_value": "ألف وتلاتمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "3"
+          },
+          {
+            "lang": "DZ",
+            "value": "tleta",
+            "ar_value": "تلاتة"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "9"
+          },
+          {
+            "lang": "DZ",
+            "value": "tes3a",
+            "ar_value": "تسعة"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "1"
+          },
+          {
+            "lang": "DZ",
+            "value": "wa7ed",
+            "ar_value": "واحد"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "80",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "80"
+          },
+          {
+            "lang": "DZ",
+            "value": "tmenin",
+            "ar_value": "تمانين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "650",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "650"
+          },
+          {
+            "lang": "DZ",
+            "value": "sit mia o khamsin",
+            "ar_value": "ستمية  وخمسين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "25000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "25000"
+          },
+          {
+            "lang": "DZ",
+            "value": "Khamsa o 3ichrine elf",
+            "ar_value": "خمسة وعشرين ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "4500",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "4500"
+          },
+          {
+            "lang": "DZ",
+            "value": "Rab3a alfe o khamsemia",
+            "ar_value": "ربعة آلاف وخمسمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "26",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "26"
+          },
+          {
+            "lang": "DZ",
+            "value": "seta o 3achrin",
+            "ar_value": "ستة وعشرين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "40",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "40"
+          },
+          {
+            "lang": "DZ",
+            "value": "rab3in",
+            "ar_value": "ربعين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "250",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "250"
+          },
+          {
+            "lang": "DZ",
+            "value": "mitin o khamsin",
+            "ar_value": "ميتين وخمسين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1400",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "1400"
+          },
+          {
+            "lang": "DZ",
+            "value": "elf o rab3emia",
+            "ar_value": "ألف وربعمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "10"
+          },
+          {
+            "lang": "DZ",
+            "value": "3achra",
+            "ar_value": "عشرة"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "11000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "11000"
+          },
+          {
+            "lang": "DZ",
+            "value": "7dachn elf",
+            "ar_value": "حداشن ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "16",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "16"
+          },
+          {
+            "lang": "DZ",
+            "value": "settach",
+            "ar_value": "سطاش"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "17",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "17"
+          },
+          {
+            "lang": "DZ",
+            "value": "sb3tach",
+            "ar_value": "سبعطاش"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "400000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "400000"
+          },
+          {
+            "lang": "DZ",
+            "value": "rab3mia elf",
+            "ar_value": "ربعمية ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "35",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "35"
+          },
+          {
+            "lang": "DZ",
+            "value": "khamsa o tletin",
+            "ar_value": "خمسة وثلاثين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "19",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "19"
+          },
+          {
+            "lang": "DZ",
+            "value": "tsa3tach",
+            "ar_value": "تسعطاش"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "50000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "50000"
+          },
+          {
+            "lang": "DZ",
+            "value": "khamsine elef",
+            "ar_value": "خمسين ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2000000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "2000000"
+          },
+          {
+            "lang": "DZ",
+            "value": "zoudj mlayen",
+            "ar_value": "زوج ملاين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "700000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "700000"
+          },
+          {
+            "lang": "DZ",
+            "value": "seb3mia elf",
+            "ar_value": "سبعمية ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "45",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "45"
+          },
+          {
+            "lang": "DZ",
+            "value": "khamsa o rab3in",
+            "ar_value": "خمسة وربعين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "200",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "200"
+          },
+          {
+            "lang": "DZ",
+            "value": "mitin",
+            "ar_value": "ميتين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "900000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "900000"
+          },
+          {
+            "lang": "DZ",
+            "value": "tes3mia elf",
+            "ar_value": "تسعمية ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "9000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "9000"
+          },
+          {
+            "lang": "DZ",
+            "value": "tes3a elf",
+            "ar_value": "تسعة آلاف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "120",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "120"
+          },
+          {
+            "lang": "DZ",
+            "value": "mia o 3achrin",
+            "ar_value": "مية وعشرين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1100",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "1100"
+          },
+          {
+            "lang": "DZ",
+            "value": "elf o mia",
+            "ar_value": "ألف ومية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "12",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "12"
+          },
+          {
+            "lang": "DZ",
+            "value": "tnach",
+            "ar_value": "تناش"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "8000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "8000"
+          },
+          {
+            "lang": "DZ",
+            "value": "tmenia elf",
+            "ar_value": "تمانمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "18000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "18000"
+          },
+          {
+            "lang": "DZ",
+            "value": "tamantachn elf",
+            "ar_value": "تمنطاشن ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "90",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "90"
+          },
+          {
+            "lang": "DZ",
+            "value": "tes3in",
+            "ar_value": "تسعين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "17000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "17000"
+          },
+          {
+            "lang": "DZ",
+            "value": "seb3atachn elf",
+            "ar_value": "سبعاطاشن ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "28",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "28"
+          },
+          {
+            "lang": "DZ",
+            "value": "tmenya o 3achrin",
+            "ar_value": "تمانية وعشرين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "11",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "11"
+          },
+          {
+            "lang": "DZ",
+            "value": "7dech",
+            "ar_value": "حداش"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "200000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "200000"
+          },
+          {
+            "lang": "DZ",
+            "value": "mitin elf",
+            "ar_value": "ميتين ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "7500",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "7500"
+          },
+          {
+            "lang": "DZ",
+            "value": "seb3a elf o khamsemia",
+            "ar_value": "سبعة آلاف وخمسمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "13",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "13"
+          },
+          {
+            "lang": "DZ",
+            "value": "tletach",
+            "ar_value": "تلاطاش"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "14000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "14000"
+          },
+          {
+            "lang": "DZ",
+            "value": "rab3atachn elf",
+            "ar_value": "ربعطاشن ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "0",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "0"
+          },
+          {
+            "lang": "DZ",
+            "value": "sifr",
+            "ar_value": "صفر"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "950",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "950"
+          },
+          {
+            "lang": "DZ",
+            "value": "tes3mia o khamsin",
+            "ar_value": "تسعمية وخمسين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "2000"
+          },
+          {
+            "lang": "DZ",
+            "value": "elfin",
+            "ar_value": "ألفين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "450",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "450"
+          },
+          {
+            "lang": "DZ",
+            "value": "rab3mia o khamsin",
+            "ar_value": "ربعمية وخمسين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "300",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "300"
+          },
+          {
+            "lang": "DZ",
+            "value": "tletmia",
+            "ar_value": "تلاتمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3500",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "3500"
+          },
+          {
+            "lang": "DZ",
+            "value": "tlet alef o khamsemia",
+            "ar_value": "تلات آلاف وخمسمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "21",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "21"
+          },
+          {
+            "lang": "DZ",
+            "value": "wa7ed o 3achrin",
+            "ar_value": "واحد وعشرين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "3000"
+          },
+          {
+            "lang": "DZ",
+            "value": "tlet alef",
+            "ar_value": "تلات آلاف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "400",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "400"
+          },
+          {
+            "lang": "DZ",
+            "value": "rab3mia",
+            "ar_value": "ربعمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "1000"
+          },
+          {
+            "lang": "DZ",
+            "value": "elf",
+            "ar_value": "ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "550",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "550"
+          },
+          {
+            "lang": "DZ",
+            "value": "khamsmia khamsin",
+            "ar_value": "خمسمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "18",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "18"
+          },
+          {
+            "lang": "DZ",
+            "value": "tmentach",
+            "ar_value": "تمنطاش"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "2"
+          },
+          {
+            "lang": "DZ",
+            "value": "zoudj",
+            "ar_value": "زوج"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "14",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "14"
+          },
+          {
+            "lang": "DZ",
+            "value": "rba3tach",
+            "ar_value": "ربعطاش"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "900",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "900"
+          },
+          {
+            "lang": "DZ",
+            "value": "tes3mia",
+            "ar_value": "تسمعية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "150",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "150"
+          },
+          {
+            "lang": "DZ",
+            "value": "mia o khamsin",
+            "ar_value": "مية وخمسين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "800",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "800"
+          },
+          {
+            "lang": "DZ",
+            "value": "tmenmia",
+            "ar_value": "تمانمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1800",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "1800"
+          },
+          {
+            "lang": "DZ",
+            "value": "elf o tmenemia",
+            "ar_value": "ألف وتمانمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1200",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "1200"
+          },
+          {
+            "lang": "DZ",
+            "value": "elf o mitin",
+            "ar_value": "ألف وميتين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1900",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "1900"
+          },
+          {
+            "lang": "DZ",
+            "value": "elf o tes3emia",
+            "ar_value": "ألف وتسمعية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "6000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "6000"
+          },
+          {
+            "lang": "DZ",
+            "value": "seta elf",
+            "ar_value": "ستة آلاف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "350",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "350"
+          },
+          {
+            "lang": "DZ",
+            "value": "tletmia o khamsin",
+            "ar_value": "تلاتمية وخمسين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "700",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "700"
+          },
+          {
+            "lang": "DZ",
+            "value": "seb3mia",
+            "ar_value": "سبعمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "75",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "75"
+          },
+          {
+            "lang": "DZ",
+            "value": "khamsa o seb3in",
+            "ar_value": "خمسة وسبعين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "6500",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "6500"
+          },
+          {
+            "lang": "DZ",
+            "value": "seta elf o khamsemia",
+            "ar_value": "ستة آلاف وخمسمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "15",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "15"
+          },
+          {
+            "lang": "DZ",
+            "value": "khmestach",
+            "ar_value": "خمسطاش"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "850",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "850"
+          },
+          {
+            "lang": "DZ",
+            "value": "tmenmia o khamsin",
+            "ar_value": "تمانمية وخمسين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "20000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "20000"
+          },
+          {
+            "lang": "DZ",
+            "value": "3ichrin elf",
+            "ar_value": "عشرين ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "29",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "29"
+          },
+          {
+            "lang": "DZ",
+            "value": "tes3a o 3achrin",
+            "ar_value": "تسعة وعشرين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "13000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "13000"
+          },
+          {
+            "lang": "DZ",
+            "value": "tlatachn elf",
+            "ar_value": "تلاطاشن ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "10000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "10000"
+          },
+          {
+            "lang": "DZ",
+            "value": "3achra elf",
+            "ar_value": "عشرة آلاف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "600000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "600000"
+          },
+          {
+            "lang": "DZ",
+            "value": "setemia elf",
+            "ar_value": "ستمية ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "22",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "22"
+          },
+          {
+            "lang": "DZ",
+            "value": "tnin o 3achrin",
+            "ar_value": "تنين وعشرين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "800000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "800000"
+          },
+          {
+            "lang": "DZ",
+            "value": "tmenmia elf",
+            "ar_value": "تمنمية ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "8500",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "8500"
+          },
+          {
+            "lang": "DZ",
+            "value": "tmenia elef o khamsemia",
+            "ar_value": "تمانمية وخمسمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "27",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "27"
+          },
+          {
+            "lang": "DZ",
+            "value": "seb3a o 3achrin",
+            "ar_value": "سبعة وعشرين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "7000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "7000"
+          },
+          {
+            "lang": "DZ",
+            "value": "seb3a elf",
+            "ar_value": "سبعة آلاف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "750",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "750"
+          },
+          {
+            "lang": "DZ",
+            "value": "seb3mia o khamsin",
+            "ar_value": "سبعمية وخمسين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "130",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "130"
+          },
+          {
+            "lang": "DZ",
+            "value": "mia o tletin",
+            "ar_value": "مية وثلاثين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "20",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "20"
+          },
+          {
+            "lang": "DZ",
+            "value": "3echrin",
+            "ar_value": "عشريت"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "5000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "5000"
+          },
+          {
+            "lang": "DZ",
+            "value": "khamsa elf",
+            "ar_value": "خمسة آلاف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "10000000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "10000000"
+          },
+          {
+            "lang": "DZ",
+            "value": "3echra mlayen",
+            "ar_value": "عشرة ملاين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "4"
+          },
+          {
+            "lang": "DZ",
+            "value": "rab3a",
+            "ar_value": "ربعة"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "24",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "24"
+          },
+          {
+            "lang": "DZ",
+            "value": "rab3a o 3achrin",
+            "ar_value": "ربعة وعشرين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "60",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "60"
+          },
+          {
+            "lang": "DZ",
+            "value": "stin",
+            "ar_value": "ستين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "9500",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "9500"
+          },
+          {
+            "lang": "DZ",
+            "value": "tes3a elf o khamsemia",
+            "ar_value": "تسع آلاف وخمسمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1000000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "1000000"
+          },
+          {
+            "lang": "DZ",
+            "value": "million",
+            "ar_value": "مليون"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2500",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "2500"
+          },
+          {
+            "lang": "DZ",
+            "value": "elfin o khamsemia",
+            "ar_value": "ألفين وخمسمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "5500",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "5500"
+          },
+          {
+            "lang": "DZ",
+            "value": "khamsa elf o khamsemia",
+            "ar_value": "خمسة آلاف وخسمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "100000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "100000"
+          },
+          {
+            "lang": "DZ",
+            "value": "mia elf",
+            "ar_value": "مية ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "25",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "25"
+          },
+          {
+            "lang": "DZ",
+            "value": "khamsa o 3achrin",
+            "ar_value": "خمسة وعشرين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "7"
+          },
+          {
+            "lang": "DZ",
+            "value": "seb3a",
+            "ar_value": "سبعة"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "300000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "300000"
+          },
+          {
+            "lang": "DZ",
+            "value": "tletmi elf",
+            "ar_value": "تلاتمية ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "19000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "19000"
+          },
+          {
+            "lang": "DZ",
+            "value": "tes3atachn elf",
+            "ar_value": "تسعطاشن ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "55",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "55"
+          },
+          {
+            "lang": "DZ",
+            "value": "khamsa o khamsin",
+            "ar_value": "خمسة وخمسين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1700",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "1700"
+          },
+          {
+            "lang": "DZ",
+            "value": "elf o seb3emia",
+            "ar_value": "ألف وسبعمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "65",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "65"
+          },
+          {
+            "lang": "DZ",
+            "value": "khamsa o stin",
+            "ar_value": "خمسة وستين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "8"
+          },
+          {
+            "lang": "DZ",
+            "value": "tmenya",
+            "ar_value": "تمانية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1500",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "1500"
+          },
+          {
+            "lang": "DZ",
+            "value": "elf o khamsemia",
+            "ar_value": "ألف وخمسمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "6"
+          },
+          {
+            "lang": "DZ",
+            "value": "seta",
+            "ar_value": "ستَة"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "23",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "23"
+          },
+          {
+            "lang": "DZ",
+            "value": "tleta o 3achrin",
+            "ar_value": "ثلاثة وعشرين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "12000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "12000"
+          },
+          {
+            "lang": "DZ",
+            "value": "tnachn elf",
+            "ar_value": "تناشن ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "16000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "16000"
+          },
+          {
+            "lang": "DZ",
+            "value": "settachn elf",
+            "ar_value": "سطاشن ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "30",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "30"
+          },
+          {
+            "lang": "DZ",
+            "value": "tletin",
+            "ar_value": "ثلاثين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "15000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "15000"
+          },
+          {
+            "lang": "DZ",
+            "value": "khemstachn elf",
+            "ar_value": "خمسطاشن ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "85",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "85"
+          },
+          {
+            "lang": "DZ",
+            "value": "khamsa o tmenin",
+            "ar_value": "خمسة وتمانين"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "500",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "500"
+          },
+          {
+            "lang": "DZ",
+            "value": "khamsmia",
+            "ar_value": "خمسمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1600",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "1600"
+          },
+          {
+            "lang": "DZ",
+            "value": "elf o setemia",
+            "ar_value": "ألف وستمية"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "4000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "4000"
+          },
+          {
+            "lang": "DZ",
+            "value": "rab3a alef",
+            "ar_value": "ربعة آلاف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "500000",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "500000"
+          },
+          {
+            "lang": "DZ",
+            "value": "khamsmia elf",
+            "ar_value": "خمسمية ألف"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "121",
+    "wordType": "NUMBER",
+    "values": [
+      {
+        "translations": [
+          {
+            "lang": "FR",
+            "value": "121"
+          },
+          {
+            "lang": "DZ",
+            "value": "mia o wa7ed o 3achrin",
+            "ar_value": "مية واحد وعشرين"
           }
         ]
       }

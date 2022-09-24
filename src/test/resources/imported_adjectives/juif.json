@@ -1,1 +1,45 @@
-{"id":"juif","wordType":"ADJECTIVE","values":[{"translations":[{"lang":"FR","value":"juif"},{"lang":"DZ","value":"yhoudi","ar_value":"يهودي"}],"gender":"M","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"juive"},{"lang":"DZ","value":"yhoudia","ar_value":"يهودية"}],"gender":"F","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"juif(ve)s"},{"lang":"DZ","value":"yhoud","ar_value":"يهود"}],"gender":"X","singular":false,"tense":null}],"temporal":false,"definitive":false,"possible_nouns":[]}
+{
+  "id" : "juif",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "juif"
+    }, {
+      "lang" : "DZ",
+      "value" : "yhoudi",
+      "ar_value" : "يهودي"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "juive"
+    }, {
+      "lang" : "DZ",
+      "value" : "yhoudia",
+      "ar_value" : "يهودية"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "juif(ve)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "yhoud",
+      "ar_value" : "يهود"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

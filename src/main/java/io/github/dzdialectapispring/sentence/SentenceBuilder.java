@@ -1,6 +1,7 @@
 package io.github.dzdialectapispring.sentence;
 
 
+import io.github.dzdialectapispring.DB;
 import io.github.dzdialectapispring.adjective.Adjective;
 import io.github.dzdialectapispring.adjective.AdjectiveService;
 import io.github.dzdialectapispring.adverb.AdverbService;
@@ -33,6 +34,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -74,7 +76,7 @@ public class SentenceBuilder {
     this.nounService      = nounService;
   }
 
-  public Optional<Sentence> generate(GeneratorParameters generatorParameters) {
+  public Optional<Sentence> generate(GeneratorParameters generatorParameters, boolean removeIdsFromPropositions) {
     sentenceContent = SentenceContent.builder().build();
     boolean resultOk = fillWordListFromSchema(generatorParameters);
     if (!resultOk) {
@@ -91,17 +93,60 @@ public class SentenceBuilder {
     sentence.getRandomWords().put(Lang.DZ, SentenceBuilderHelper.splitSentenceInWords(dzTranslation, false));
     sentence.setContent(sentenceContent);
     // generating a second random sentence
-    addRandomWordPropositions(sentence, generatorParameters);
+    addRandomWordPropositions(sentence, generatorParameters, removeIdsFromPropositions);
     Collections.shuffle(sentence.getRandomWords().get(Lang.FR));
     Collections.shuffle(sentence.getRandomWords().get(Lang.DZ));
     return Optional.of(sentence);
   }
 
-  private void addRandomWordPropositions(Sentence sentence, GeneratorParameters generatorParameters) {
-    if (sentence.getContent().getAbstractPronoun() != null
+  // @todo to fix when fixed ids
+  private void addRandomWordPropositions(Sentence sentence, GeneratorParameters generatorParameters, boolean removeIdsFromPropositions) {
+/*    if (sentence.getContent().getAbstractPronoun() != null
         && !sentence.getContent().getSentenceSchema().getId().equals("P")) { // to avoid having bad choices for P sentences
       PossessiveWord pronoun = sentence.getContent().getAbstractPronoun().getValues().get(0);
       generatorParameters.setAbstractPronoun(pronounService.getRandomAbstractPronoun(pronoun.getPossession()));
+    }*/
+
+    String sentenceId = sentence.getContent().getSentenceSchema().getId();
+
+    if (sentenceId.contains("A")) {
+      generatorParameters.setAbstractVerb(null);
+      generatorParameters.setAdjective(null);
+      int i = 0;
+      while (i < generatorParameters.getAlternativeCount()) {
+        fillWordListFromSchema(generatorParameters);
+        Word adj = wordListFr.stream().filter(w -> w.getWordType() == WordType.ADJECTIVE).findFirst().get().getWord();
+        if (!sentence.getRandomWords().get(Lang.FR).contains(adj.getTranslationValue(Lang.FR))) {
+          sentence.getRandomWords().get(Lang.FR).add(adj.getTranslationValue(Lang.FR));
+          sentence.getRandomWords().get(Lang.DZ).add(adj.getTranslationValue(Lang.DZ));
+          i++;
+        }
+      }
+      return;
+    } else if (sentenceId.equals("PV") || sentenceId.equals("P")) {
+      generatorParameters.setAbstractPronoun(null);
+      Set<String> frValues = new HashSet<>(sentence.getRandomWords().get(Lang.FR));
+      Set<String> dzValues = new HashSet<>(sentence.getRandomWords().get(Lang.DZ));
+      int         i        = 0;
+      while (i < generatorParameters.getAlternativeCount()) {
+        fillWordListFromSchema(generatorParameters);
+        String dzWord = SentenceBuilderHelper.splitSentenceInWords(generateArTranslation(Lang.DZ), true).get(0);
+        if (!dzValues.contains(dzWord)) { // to avoid having less values than expected
+          i++;
+        }
+        frValues.addAll(SentenceBuilderHelper.splitSentenceInWords(generateFrTranslation(), true));
+        dzValues.addAll(SentenceBuilderHelper.splitSentenceInWords(generateArTranslation(Lang.DZ), true));
+
+      }
+      sentence.getRandomWords().replace(Lang.FR, new ArrayList<>(frValues));
+      sentence.getRandomWords().replace(Lang.DZ, new ArrayList<>(dzValues));
+      return;
+    }
+
+    if (removeIdsFromPropositions) {
+      generatorParameters.setAbstractPronoun(null);
+      generatorParameters.setAbstractVerb(null);
+      generatorParameters.setAdjective(null);
     }
     for (int i = 0; i < generatorParameters.getAlternativeCount(); i++) {
       fillWordListFromSchema(generatorParameters);
@@ -110,7 +155,7 @@ public class SentenceBuilder {
     }
   }
 
-  private void resetAttributes(GeneratorParameters generatorParameters) {
+  public void resetAttributes(GeneratorParameters generatorParameters) {
 
     nounSubject      = null;
     abstractQuestion = null;
@@ -152,7 +197,7 @@ public class SentenceBuilder {
           }
           break;
         case ADJECTIVE:
-          success = buildAdjective(index);
+          success = buildAdjective(index, generatorParameters.getAdjective());
           if (!success) {
             return false;
           }
@@ -171,7 +216,7 @@ public class SentenceBuilder {
     return true;
   }
 
-  private boolean buildPronoun(int index, AbstractPronoun abstractPronoun) {
+  public boolean buildPronoun(int index, AbstractPronoun abstractPronoun) {
     if (abstractPronoun == null) {
       abstractPronoun = pronounService.getRandomAbstractPronoun();
     }
@@ -247,7 +292,7 @@ public class SentenceBuilder {
     return true;
   }
 
-  private boolean buildVerb(int index, Verb abstractVerb, Tense tense) {
+  public boolean buildVerb(int index, Verb abstractVerb, Tense tense) {
     if (abstractVerb == null) {
       Optional<Verb> abstractVerbOpt = verbService.getRandomAbstractVerb(sentenceContent.getSentenceSchema(), abstractQuestion);
       if (abstractVerbOpt.isEmpty()) {
@@ -287,8 +332,8 @@ public class SentenceBuilder {
       sentenceContent.setNegation(false);
     }
     if (subtense != Subtense.IMPERATIVE) {
-      wordListFr.add(new WordTypeWordTuple(WordType.VERB, abstractVerb.getVerbConjugation(abstractVerb, subject, subtense, Lang.FR), index));
-      wordListAr.add(new WordTypeWordTuple(WordType.VERB, abstractVerb.getVerbConjugation(abstractVerb, subject, subtense, Lang.DZ), index));
+      wordListFr.add(new WordTypeWordTuple(WordType.VERB, abstractVerb.getVerbConjugation(subject, subtense, Lang.FR), index));
+      wordListAr.add(new WordTypeWordTuple(WordType.VERB, abstractVerb.getVerbConjugation(subject, subtense, Lang.DZ), index));
     } else {
       PossessiveWord        randomPronoun = pronounService.getRandomImperativePersonalPronoun();
       Optional<Conjugation> frConjugation = abstractVerb.getImperativeVerbConjugation(randomPronoun, Lang.FR, sentenceContent.isNegation());
@@ -321,14 +366,17 @@ public class SentenceBuilder {
     return true;
   }
 
-  private boolean buildAdjective(int index) {
-    Optional<Adjective> adjective = adjectiveService.getAbstractAdjective(sentenceContent.getSentenceSchema(), abstractSubject, nounSubject);
-    if (adjective.isEmpty()) {
-      return false;
+  public boolean buildAdjective(int index, Adjective adjective) {
+    if (adjective == null) {
+      Optional<Adjective> adjectiveOpt = adjectiveService.getAbstractAdjective(sentenceContent.getSentenceSchema(), abstractSubject, nounSubject);
+      if (adjectiveOpt.isEmpty()) {
+        return false;
+      }
+      adjective = adjectiveOpt.get();
     }
-    sentenceContent.setAbstractAdjective(adjective.get());
-    wordListFr.add(new WordTypeWordTuple(WordType.ADJECTIVE, adjective.get().getAdjective(adjective.get(), subject, Lang.FR).get(), index));
-    wordListAr.add(new WordTypeWordTuple(WordType.ADJECTIVE, adjective.get().getAdjective(adjective.get(), subject, Lang.DZ).get(), index));
+    sentenceContent.setAbstractAdjective(adjective);
+    wordListFr.add(new WordTypeWordTuple(WordType.ADJECTIVE, Adjective.getAdjective(adjective, subject, Lang.FR).get(), index));
+    wordListAr.add(new WordTypeWordTuple(WordType.ADJECTIVE, Adjective.getAdjective(adjective, subject, Lang.DZ).get(), index));
 
     return true;
   }
@@ -369,6 +417,16 @@ public class SentenceBuilder {
         sentenceValue.append("ne "); // @todo use Traduction class and remove it
       }
       Word w = getFirstWordFromWordTypeFr(wordType, i);
+      // to manage adjectives with auxiliar avoir in french
+      if (wordType == WordType.VERB
+          && sentenceContent.getSentenceSchema().getFrSequence().contains(WordType.ADJECTIVE)
+          && sentenceContent.getAbstractAdjective().isFrAuxiliarAvoir()) {
+        Verb avoir = DB.VERBS.stream().filter(v -> v.getId().equals("avoir")).findFirst().get();
+        w = avoir.getConjugationByGenderSingularPossessionAndTense(subject.getGender(Lang.FR),
+                                                                   subject.isSingular(),
+                                                                   subject.getPossession(),
+                                                                   sentenceContent.getSubtense().getTense()).get();
+      }
       if (w != null) {
         sentenceValue.append(w.getTranslationValue(Lang.FR));
       }

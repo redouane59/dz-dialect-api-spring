@@ -22,6 +22,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class AdjectiveService {
 
+  public static Adjective getRandomAdjective() {
+    return DB.ADJECTIVES.stream().skip(RANDOM.nextInt(DB.ADJECTIVES.size())).findFirst().get();
+  }
+
   public Set<String> getAllAdjectivesIds(boolean includeTemporal, boolean includeDefinitive) {
     Set<Adjective> adjectives = DB.ADJECTIVES;
     Set<Adjective> result     = new HashSet<>();

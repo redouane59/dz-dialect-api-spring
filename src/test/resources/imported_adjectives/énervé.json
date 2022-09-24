@@ -1,1 +1,45 @@
-{"id":"énervé","wordType":"ADJECTIVE","values":[{"translations":[{"lang":"FR","value":"énervé"},{"lang":"DZ","value":"za3fan","ar_value":"زعفان"}],"gender":"M","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"énervée"},{"lang":"DZ","value":"za3fana","ar_value":"زعفانة"}],"gender":"F","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"énervé(e)s"},{"lang":"DZ","value":"za3fin","ar_value":"زاعفين"}],"gender":"X","singular":false,"tense":null}],"temporal":false,"definitive":false,"possible_nouns":[]}
+{
+  "id" : "énervé",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "énervé"
+    }, {
+      "lang" : "DZ",
+      "value" : "za3fan",
+      "ar_value" : "زعفان"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "énervée"
+    }, {
+      "lang" : "DZ",
+      "value" : "za3fana",
+      "ar_value" : "زعفانة"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "énervé(e)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "za3fin",
+      "ar_value" : "زاعفين"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

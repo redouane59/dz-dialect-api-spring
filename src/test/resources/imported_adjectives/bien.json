@@ -1,0 +1,45 @@
+{
+  "id" : "bien",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "bien"
+    }, {
+      "lang" : "DZ",
+      "value" : "mli7",
+      "ar_value" : "مليح"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "bien"
+    }, {
+      "lang" : "DZ",
+      "value" : "mli7a",
+      "ar_value" : "مليحا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "bien"
+    }, {
+      "lang" : "DZ",
+      "value" : "mle7",
+      "ar_value" : "ملاح"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

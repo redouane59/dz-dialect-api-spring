@@ -60,6 +60,27 @@
       <groupId>org.springframework.cloud</groupId>
       <version>1.0.0.RELEASE</version>
     </dependency>
+    <dependency>
+      <artifactId>google-oauth-client</artifactId>
+      <groupId>com.google.oauth-client</groupId>
+      <version>1.28.0</version>
+    </dependency>
+    <dependency>
+      <artifactId>google-api-client</artifactId>
+      <groupId>com.google.api-client</groupId>
+      <version>1.23.0</version>
+    </dependency>
+    <dependency>
+      <artifactId>google-api-services-sheets</artifactId>
+      <groupId>com.google.apis</groupId>
+      <version>v4-rev493-1.23.0</version>
+    </dependency>
+    <dependency>
+      <artifactId>google-oauth-client-jetty</artifactId>
+      <groupId>com.google.oauth-client</groupId>
+      <version>1.34.1</version>
+    </dependency>
+
   </dependencies>
   <description>Algerian dialect api</description>
   <groupId>io.github</groupId>

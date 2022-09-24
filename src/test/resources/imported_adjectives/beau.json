@@ -1,0 +1,45 @@
+{
+  "id" : "beau",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "beau"
+    }, {
+      "lang" : "DZ",
+      "value" : "chbeb",
+      "ar_value" : "شْباب"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "belle"
+    }, {
+      "lang" : "DZ",
+      "value" : "chebba",
+      "ar_value" : "شابا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "beaux/belles"
+    }, {
+      "lang" : "DZ",
+      "value" : "chebbin",
+      "ar_value" : "شابين"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

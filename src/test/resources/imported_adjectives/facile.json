@@ -1,0 +1,45 @@
+{
+  "id" : "facile",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "facile"
+    }, {
+      "lang" : "DZ",
+      "value" : "sehel",
+      "ar_value" : "ساهل"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "facile"
+    }, {
+      "lang" : "DZ",
+      "value" : "sehla",
+      "ar_value" : "ساهلا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "faciles"
+    }, {
+      "lang" : "DZ",
+      "value" : "sehlin",
+      "ar_value" : "ساهلين"
+    } ],
+    "gender" : "M",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

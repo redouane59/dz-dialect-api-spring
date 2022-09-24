@@ -1,1 +1,45 @@
-{"id":"marocain","wordType":"ADJECTIVE","values":[{"translations":[{"lang":"FR","value":"marocain"},{"lang":"DZ","value":"marouki","ar_value":"مرّوكي"}],"gender":"M","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"marocaine"},{"lang":"DZ","value":"maroukia","ar_value":"مرّوكية"}],"gender":"F","singular":true,"tense":null},{"translations":[{"lang":"FR","value":"marocain(e)s"},{"lang":"DZ","value":"mrarka","ar_value":"مراركة"}],"gender":"X","singular":false,"tense":null}],"temporal":false,"definitive":false,"possible_nouns":[]}
+{
+  "id" : "marocain",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "marocain"
+    }, {
+      "lang" : "DZ",
+      "value" : "marouki",
+      "ar_value" : "مرّوكي"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "marocaine"
+    }, {
+      "lang" : "DZ",
+      "value" : "maroukia",
+      "ar_value" : "مرّوكية"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "marocain(e)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "mrarka",
+      "ar_value" : "مراركة"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

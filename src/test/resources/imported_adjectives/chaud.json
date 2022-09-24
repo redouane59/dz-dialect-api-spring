@@ -1,0 +1,45 @@
+{
+  "id" : "chaud",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "chaud"
+    }, {
+      "lang" : "DZ",
+      "value" : "skhoun",
+      "ar_value" : "سْخون"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "chaude"
+    }, {
+      "lang" : "DZ",
+      "value" : "skhouna",
+      "ar_value" : "سْخونا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "chaud(e)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "skhounin",
+      "ar_value" : "سْخونين"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

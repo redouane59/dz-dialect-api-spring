@@ -1,0 +1,45 @@
+{
+  "id" : "léger",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "léger"
+    }, {
+      "lang" : "DZ",
+      "value" : "khfif",
+      "ar_value" : "خفيف"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "légère"
+    }, {
+      "lang" : "DZ",
+      "value" : "khfifa",
+      "ar_value" : "خفيفا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "léger(e)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "khfef",
+      "ar_value" : "خفاف"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

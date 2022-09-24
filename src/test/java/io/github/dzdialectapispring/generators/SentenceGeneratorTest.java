@@ -1,9 +1,11 @@
-package io.github.dzdialectapispring;
+package io.github.dzdialectapispring.generators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import io.github.dzdialectapispring.DB;
+import io.github.dzdialectapispring.DzDialectApiSpringApplication;
 import io.github.dzdialectapispring.other.enumerations.Tense;
 import io.github.dzdialectapispring.sentence.GeneratorParameters;
 import io.github.dzdialectapispring.sentence.SentenceDTO;

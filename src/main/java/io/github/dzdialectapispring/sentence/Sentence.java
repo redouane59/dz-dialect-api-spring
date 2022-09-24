@@ -39,6 +39,7 @@ public class Sentence extends AbstractSentence {
   @Builder
   public static class SentenceContent {
 
+    // @todo use list instead
     private Verb            abstractVerb;
     private AbstractPronoun abstractPronoun;
     private AbstractWord    abstractAdverb;

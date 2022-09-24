@@ -1,0 +1,45 @@
+{
+  "id" : "proche",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "proche"
+    }, {
+      "lang" : "DZ",
+      "value" : "9rib",
+      "ar_value" : "قْريب"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "proche"
+    }, {
+      "lang" : "DZ",
+      "value" : "9riba",
+      "ar_value" : "قريبا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "proches"
+    }, {
+      "lang" : "DZ",
+      "value" : "9rab",
+      "ar_value" : "قراب"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

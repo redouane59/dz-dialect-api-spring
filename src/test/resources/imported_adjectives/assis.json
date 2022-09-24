@@ -1,0 +1,45 @@
+{
+  "id" : "assis",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "assis"
+    }, {
+      "lang" : "DZ",
+      "value" : "9a3ad",
+      "ar_value" : "قاعد"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "assis"
+    }, {
+      "lang" : "DZ",
+      "value" : "9a3da",
+      "ar_value" : "قاعدة"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "assis(es)"
+    }, {
+      "lang" : "DZ",
+      "value" : "9a3dine",
+      "ar_value" : "قاعديين"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

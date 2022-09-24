@@ -6,6 +6,7 @@ import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
+import io.github.dzdialectapispring.adjective.Adjective;
 import io.github.dzdialectapispring.adjective.AdjectiveService;
 import io.github.dzdialectapispring.adverb.AdverbService;
 import io.github.dzdialectapispring.generic.ResourceList;
@@ -108,6 +109,10 @@ public class SentenceService {
     if (pronounId != null) {
       pronoun = pronounService.getPronounById(pronounId).get();
     }
+    Adjective adjective = null;
+    if (adjectiveId != null) {
+      adjective = adjectiveService.getAdjectiveById(adjectiveId);
+    }
     Tense tense = null;
     if (tenseId != null) {
       Optional<Tense> tenseOptional = Tense.findById(tenseId);
@@ -127,6 +132,7 @@ public class SentenceService {
     return GeneratorParameters.builder()
                               .abstractPronoun(pronoun)
                               .abstractVerb(verb)
+                              .adjective(adjective)
                               .tense(tense)
                               .excludePositive(excludePositive)
                               .excludeNegative(excludeNegative)
@@ -148,7 +154,7 @@ public class SentenceService {
     }
     generatorParameters.setSentenceSchema(sentenceSchema);
     sentenceBuilder = new SentenceBuilder(pronounService, verbService, questionService, adjectiveService, adverbService, nounService);
-    return sentenceBuilder.generate(generatorParameters);
+    return sentenceBuilder.generate(generatorParameters, true);
   }
 
   public Optional<SentenceSchema> getSentenceSchemaById(String sentenceSchemaId) {

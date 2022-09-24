@@ -1,0 +1,45 @@
+{
+  "id" : "ouvert",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "ouvert"
+    }, {
+      "lang" : "DZ",
+      "value" : "meftou7",
+      "ar_value" : "مفتوح"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "ouverte"
+    }, {
+      "lang" : "DZ",
+      "value" : "meftou7a",
+      "ar_value" : "مفتوحا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "ouvert(e)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "meftou7in",
+      "ar_value" : "مفتوحين"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

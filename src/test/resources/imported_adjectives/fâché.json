@@ -1,0 +1,45 @@
+{
+  "id" : "fâché",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "fâché"
+    }, {
+      "lang" : "DZ",
+      "value" : "mgachech",
+      "ar_value" : "مغشش"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "fâchée"
+    }, {
+      "lang" : "DZ",
+      "value" : "mgacha",
+      "ar_value" : "مغششه"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "fâché(e)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "mgachin",
+      "ar_value" : "مغشين"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

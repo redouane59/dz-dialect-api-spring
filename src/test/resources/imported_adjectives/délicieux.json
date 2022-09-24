@@ -1,0 +1,45 @@
+{
+  "id" : "délicieux",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "délicieux"
+    }, {
+      "lang" : "DZ",
+      "value" : "bnin",
+      "ar_value" : "بْنين"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "délicieuse"
+    }, {
+      "lang" : "DZ",
+      "value" : "bnina",
+      "ar_value" : "بنينا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "délicieux(ses)"
+    }, {
+      "lang" : "DZ",
+      "value" : "bnaan",
+      "ar_value" : "بنان"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}

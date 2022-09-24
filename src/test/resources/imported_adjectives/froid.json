@@ -1,0 +1,45 @@
+{
+  "id" : "froid",
+  "wordType" : "ADJECTIVE",
+  "values" : [ {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "froid"
+    }, {
+      "lang" : "DZ",
+      "value" : "bared",
+      "ar_value" : "بارد"
+    } ],
+    "gender" : "M",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "froide"
+    }, {
+      "lang" : "DZ",
+      "value" : "barda",
+      "ar_value" : "باردا"
+    } ],
+    "gender" : "F",
+    "singular" : true,
+    "tense" : null
+  }, {
+    "translations" : [ {
+      "lang" : "FR",
+      "value" : "froid(e)s"
+    }, {
+      "lang" : "DZ",
+      "value" : "bardin",
+      "ar_value" : "باردين"
+    } ],
+    "gender" : "X",
+    "singular" : false,
+    "tense" : null
+  } ],
+  "temporal" : false,
+  "definitive" : false,
+  "possible_nouns" : [ ],
+  "fr_aux_avoir" : false
+}
