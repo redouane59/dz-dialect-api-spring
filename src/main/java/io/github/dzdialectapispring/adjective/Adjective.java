@@ -9,6 +9,7 @@ import io.github.dzdialectapispring.helper.FileHelper;
 import io.github.dzdialectapispring.other.NounType;
 import io.github.dzdialectapispring.other.abstracts.AbstractWord;
 import io.github.dzdialectapispring.other.concrets.GenderedWord;
+import io.github.dzdialectapispring.other.concrets.Possession;
 import io.github.dzdialectapispring.other.concrets.PossessiveWord;
 import io.github.dzdialectapispring.other.concrets.Translation;
 import io.github.dzdialectapispring.other.enumerations.Gender;
@@ -111,10 +112,10 @@ public class Adjective extends AbstractWord {
     return DB.AUX_ETRE;
   }
 
-  public Conjugation getAuxiliarConjugationFromAdjective(PossessiveWord adjective, Lang lang, Tense tense) {
+  public Conjugation getAuxiliarConjugationFromAdjective(GenderedWord adjective, Lang lang, Possession possession, Tense tense) {
     return getAuxiliarFromAdjective(lang).getConjugationByGenderSingularPossessionAndTense(adjective.getGender(lang),
                                                                                            adjective.isSingular(),
-                                                                                           adjective.getPossession(),
+                                                                                           possession,
                                                                                            tense).get();
   }
 
